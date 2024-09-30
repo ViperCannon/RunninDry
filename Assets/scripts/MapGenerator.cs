@@ -36,4 +36,12 @@ public class MapGenerator : MonoBehaviour
 
         return tempData;
     }
+
+    private void displayMap()
+    {
+        int xPos = -500;
+        int yPos = -300;
+
+
+    }
 }
