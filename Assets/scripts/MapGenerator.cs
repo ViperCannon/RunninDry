@@ -5,9 +5,9 @@ using Map;
 
 public class MapGenerator : MonoBehaviour
 {
-    const int X_DIST = 30;
-    const int Y_DIST = 25;
-    const int PLACEMENT_RANDOMNESS = 5;
+    const float X_DIST = 2f;
+    const float Y_DIST = 1f;
+    const float PLACEMENT_RANDOMNESS = 0.4f;
     const int MAP_WIDTH = 7;
     const int PATHS = 6;
 
@@ -15,15 +15,25 @@ public class MapGenerator : MonoBehaviour
 
     private Node[][] mapData;
 
-    // Start is called before the first frame update
-    void Start()
+    public void generateMap()
     {
-        
+        mapData = generateIntialGrid();
     }
 
-    // Update is called once per frame
-    void Update()
+    private Node[][] generateIntialGrid()
     {
-        
+        Node[][] tempData = new Node[floors][];
+
+        for(int i = 0; i < floors; i++)
+        {
+            tempData[i] = new Node[MAP_WIDTH];
+
+            for(int j = 0; j < MAP_WIDTH; j++)
+            {
+                tempData[i][j] = new Node(i + 1);
+            }
+        }
+
+        return tempData;
     }
 }
