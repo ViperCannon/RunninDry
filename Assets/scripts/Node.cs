@@ -30,7 +30,6 @@ namespace Map
             nodeType = NodeType.Blank;
             prevNodes = new List<Node>();
             nextNodes = new List<Node>();
-
         }
 
         public Node(int h)
@@ -145,6 +144,8 @@ namespace Map
         {
             prevNodes = nodes;
         }
+
+
     }
 }
 
