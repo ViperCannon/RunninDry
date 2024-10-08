@@ -19,33 +19,23 @@ namespace Map
 
     public class Node
     {
-        private NodeType nodeType;
-        private List<Node> prevNodes;
-        private List<Node> nextNodes;
-        private int height;
+        NodeType nodeType;
+        List<Node> prevNodes;
+        List<Node> nextNodes;
+        GameObject gameNode;
 
         public Node()
         {
-            height = -1;
             nodeType = NodeType.Blank;
             prevNodes = new List<Node>();
             nextNodes = new List<Node>();
         }
 
-        public Node(int h)
-        {
-            height = h;
-            nodeType = NodeType.Blank;
-            prevNodes = new List<Node>();
-            nextNodes = new List<Node>();
-        }
-
-        public Node(NodeType type, List<Node> prev, List<Node> next, int h)
+        public Node(NodeType type, List<Node> prev, List<Node> next)
         {
             nodeType = type;
             prevNodes = prev;
             nextNodes = next;
-            height = h;
         }
 
         public void setRandomType()
@@ -83,16 +73,6 @@ namespace Map
 
                     break;
             }
-        }
-
-        public int getHeight()
-        {
-            return height;
-        }
-
-        public void setHeight(int h)
-        {
-            height = h;
         }
 
         public NodeType getNodeType()
@@ -145,7 +125,15 @@ namespace Map
             prevNodes = nodes;
         }
 
+        public GameObject getGameNode()
+        {
+            return gameNode;
+        }
 
+        public void setGameNode(GameObject n)
+        {
+            gameNode = n;
+        }
     }
 }
 
