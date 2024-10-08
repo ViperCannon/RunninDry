@@ -313,7 +313,7 @@ public class MapGenerator : MonoBehaviour
                 if(mapData[y][x] != null)
                 {
                     GameObject node = nodeVariants[((int)mapData[y][x].getNodeType())];
-                    Vector3 coords = new Vector3(xPos + Random.Range(PLACEMENT_RANDOMNESS * -1f, PLACEMENT_RANDOMNESS), yPos + Random.Range(PLACEMENT_RANDOMNESS * -1f, PLACEMENT_RANDOMNESS));
+                    Vector3 coords = new Vector3(xPos + Random.Range(PLACEMENT_RANDOMNESS * -1f, PLACEMENT_RANDOMNESS), yPos + (Random.Range(PLACEMENT_RANDOMNESS * -1f, PLACEMENT_RANDOMNESS) / 2f));
 
                     mapData[y][x].setGameNode(Instantiate(node, coords, Quaternion.identity));
                     mapData[y][x].getGameNode().transform.SetParent(content.transform, false);
