@@ -7,12 +7,12 @@ public class MapGenerator : MonoBehaviour
 {
     const float X_DIST = 100f;
     const float Y_DIST = 100f;
-    const float PLACEMENT_RANDOMNESS = 10f;
+    const float PLACEMENT_RANDOMNESS = 20f;
     const int MAP_WIDTH = 5;
     const int PATHS = 5;
 
     [SerializeField] 
-    int floors = 14;
+    int floors = 15;
 
     [SerializeField]
     GameObject[] nodeVariants;
@@ -27,13 +27,9 @@ public class MapGenerator : MonoBehaviour
     Node start;
     Node boss;
 
-    private void Start()
-    {
-        generateMap();
-    }
-
     public void generateMap()
     {
+        clearMap();
         mapData = generateIntialGrid();
         createPaths();
         displayMap();
@@ -43,9 +39,9 @@ public class MapGenerator : MonoBehaviour
     {
         start = new Node();
 
-        Node[][] tempData = new Node[floors][];
+        Node[][] tempData = new Node[floors - 1][];
 
-        for(int i = 0; i < floors; i++)
+        for(int i = 0; i < floors - 1; i++)
         {
             tempData[i] = new Node[MAP_WIDTH];
 
@@ -75,7 +71,7 @@ public class MapGenerator : MonoBehaviour
             current.addPrevNode(start);
             start.addNextNode(current);
 
-            for (int j = 1; j < floors; j++)
+            for (int j = 1; j < floors - 1; j++)
             {
                 switch (x)
                 {
@@ -134,7 +130,7 @@ public class MapGenerator : MonoBehaviour
 
     private void removeNodes()
     {
-        for (int y = 0; y < floors; y++)
+        for (int y = 0; y < floors - 1; y++)
         {
             for (int x = 0; x < MAP_WIDTH; x++)
             {
@@ -151,7 +147,7 @@ public class MapGenerator : MonoBehaviour
         start.setGameNode(Instantiate(nodeVariants[1], new Vector3(0f, -775f, 0f), Quaternion.identity));
         start.getGameNode().transform.SetParent(content.transform, false);
 
-        for (int y = 0; y < floors; y++)
+        for (int y = 0; y < floors - 1; y++)
         {
             float yPos = -675 + (100 * y); //(+ 100y)
 
@@ -181,5 +177,29 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void clearMap()
+    {
+        if(mapData != null)
+        {
+            start.delete();
+
+            for (int y = 0; y < floors - 1; y++)
+            {
+                for (int x = 0; x < MAP_WIDTH; x++)
+                {
+                    if (mapData[y][x] != null)
+                    {
+                        mapData[y][x].delete();
+                    }
+                }
+            }
+
+            foreach (GameObject l in GameObject.FindGameObjectsWithTag("Line"))
+            {
+                GameObject.Destroy(l);
+            }
+        } 
     }
 }

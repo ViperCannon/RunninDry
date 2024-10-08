@@ -92,7 +92,10 @@ namespace Map
 
         public void addNextNode(Node n)
         {
-            nextNodes.Add(n);
+            if(!nextNodes.Contains(n))
+            {
+                nextNodes.Add(n);
+            }  
         }
 
         public void removeNextNode(Node n)
@@ -112,7 +115,10 @@ namespace Map
 
         public void addPrevNode(Node p)
         {
-            prevNodes.Add(p);
+            if (!prevNodes.Contains(p))
+            {
+                prevNodes.Add(p);
+            }
         }
 
         public void removePrevNode(Node p)
@@ -133,6 +139,17 @@ namespace Map
         public void setGameNode(GameObject n)
         {
             gameNode = n;
+        }
+
+        public void delete()
+        {
+            if(gameNode != null)
+            {
+                Object.Destroy(gameNode);
+            }
+
+            prevNodes.Clear();
+            nextNodes.Clear();
         }
     }
 }
