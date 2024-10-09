@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Map
 {
@@ -23,12 +24,14 @@ namespace Map
         List<Node> prevNodes;
         List<Node> nextNodes;
         GameObject gameNode;
+        bool completed;
 
         public Node()
         {
             nodeType = NodeType.Blank;
             prevNodes = new List<Node>();
             nextNodes = new List<Node>();
+            completed = false;
         }
 
         public Node(NodeType type, List<Node> prev, List<Node> next)
@@ -36,6 +39,7 @@ namespace Map
             nodeType = type;
             prevNodes = prev;
             nextNodes = next;
+            completed = false;
         }
 
         public void setRandomType()
@@ -139,6 +143,37 @@ namespace Map
         public void setGameNode(GameObject n)
         {
             gameNode = n;
+        }
+
+        public bool isCompleted()
+        {
+            return completed;
+        }
+
+        public void complete()
+        {
+            if (!completed)
+            {
+                completed = true;
+
+                foreach(Node n in nextNodes)
+                {
+                    n.activate();
+                }
+            }
+        }
+
+        public void activate()
+        {
+            if(gameNode != null)
+            {
+                gameNode.GetComponentInChildren<Button>().interactable = true;
+            }
+        }
+
+        public void deactivate()
+        {
+            gameNode.GetComponentInChildren<Button>().interactable = false;
         }
 
         public void delete()

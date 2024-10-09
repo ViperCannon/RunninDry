@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Map;
 
 public class MapGenerator : MonoBehaviour
 {
     const float X_START = -200f;
-    const float Y_START = -675f;
+    const float Y_START = -575f;
     const float X_DIST = 100f;
     const float Y_DIST = 100f;
     const float PLACEMENT_RANDOMNESS = 20f; //reccommend to keep between 10 and 30
     const int MAP_WIDTH = 5;
     const int PATHS = 5; 
-    const int FLOORS = 14; //15th node is boss
+    const int FLOORS = 12; //13th node is boss
 
     [SerializeField]
     GameObject[] nodeVariants;
@@ -26,19 +27,20 @@ public class MapGenerator : MonoBehaviour
     Node[][] mapData;
     Node start;
     Node boss;
+    Node crew;
 
     public void generateMap()
     {
         clearMap();
-        mapData = generateIntialGrid();
+        start = new Node();
+        crew = start;
+        mapData = generateInitialGrid();
         createPaths();
         displayMap();
     }
 
-    private Node[][] generateIntialGrid()
-    {
-        start = new Node();
-
+    private Node[][] generateInitialGrid()
+    { 
         Node[][] tempData = new Node[FLOORS][];
 
         for(int i = 0; i < FLOORS; i++)
@@ -136,136 +138,127 @@ public class MapGenerator : MonoBehaviour
                 current.addNextNode(next);
                 next.addPrevNode(current);
 
-                bool repeat = true;
+                if(next.getNodeType() == NodeType.Blank || next.getNodeType() == current.getNodeType())
+                { 
+                    bool repeat = true;
 
-                while (repeat)
-                {
-                    int chance = Random.Range(0, 100);
-
-                    switch (j)
+                    while (repeat)
                     {
-                        case 1:
+                        int chance = Random.Range(0, 100);
 
-                            if (chance < 15)
-                            {
-                                next.setNodeType(NodeType.Combat);
-                            }
-                            else if (chance < 65)
-                            {
-                                next.setNodeType(NodeType.Negotiation);
-                            }
-                            else
-                            {
-                                next.setNodeType(NodeType.Event);
-                            }
-
-                            break;
-
-                        case 2:
-                        case 3:
-
-                            if (chance < 20)
-                            {
-                                next.setNodeType(NodeType.Combat);
-                            }
-                            else if (chance < 65)
-                            {
-                                next.setNodeType(NodeType.Negotiation);
-                            }
-                            else if (chance < 85)
-                            {
-                                next.setNodeType(NodeType.Event);
-                            }
-                            else
-                            {
-                                next.setNodeType(NodeType.Shop);
-                            }
-
-                            break;
-
-                        case 12:
-
-                            if (chance < 17)
-                            {
-                                next.setNodeType(NodeType.Combat);
-                            }
-                            else if (chance < 49)
-                            {
-                                next.setNodeType(NodeType.Negotiation);
-                            }
-                            else if (chance < 61)
-                            {
-                                next.setNodeType(NodeType.Event);
-                            }
-                            else if (chance < 83)
-                            {
-                                next.setNodeType(NodeType.Miniboss);
-                            }
-                            else if (chance < 88)
-                            {
-                                next.setNodeType(NodeType.Mystery);
-                            }
-                            else
-                            {
-                                next.setNodeType(NodeType.Shop);
-                            }
-
-                            break;
-
-                        case 13:
-                            
-                            next.setNodeType(NodeType.Pitstop);
-
-                            break;
-
-                        default:
-
-                            if (chance < 15)
-                            {
-                                next.setNodeType(NodeType.Combat);
-                            }
-                            else if (chance < 45)
-                            {
-                                next.setNodeType(NodeType.Negotiation);
-                            }
-                            else if (chance < 55)
-                            {
-                                next.setNodeType(NodeType.Event);
-                            }
-                            else if(chance < 70)
-                            {
-                                next.setNodeType(NodeType.Miniboss);
-                            }
-                            else if(chance < 75)
-                            {
-                                next.setNodeType(NodeType.Mystery);
-                            }
-                            else if(chance < 85)
-                            {
-                                next.setNodeType(NodeType.Shop);
-                            }
-                            else
-                            {
-                                next.setNodeType(NodeType.Pitstop);
-                            }
-
-                            break;
-                    }
-
-                    repeat = false;
-
-                    foreach(Node n in next.getPrevNodes())
-                    {
-                        if(n.getNodeType() == next.getNodeType())
+                        switch (j)
                         {
-                            repeat = true;
-                            break;
-                        }
-                    }
+                            case 1:
 
-                    if (!repeat)
-                    {
-                        foreach (Node n in next.getNextNodes())
+                                if (chance < 15)
+                                {
+                                    next.setNodeType(NodeType.Combat);
+                                }
+                                else if (chance < 65)
+                                {
+                                    next.setNodeType(NodeType.Negotiation);
+                                }
+                                else
+                                {
+                                    next.setNodeType(NodeType.Event);
+                                }
+
+                                break;
+
+                            case 2:
+                            case 3:
+
+                                if (chance < 20)
+                                {
+                                    next.setNodeType(NodeType.Combat);
+                                }
+                                else if (chance < 65)
+                                {
+                                    next.setNodeType(NodeType.Negotiation);
+                                }
+                                else if (chance < 85)
+                                {
+                                    next.setNodeType(NodeType.Event);
+                                }
+                                else
+                                {
+                                    next.setNodeType(NodeType.Shop);
+                                }
+
+                                break;
+
+                            case 10:
+
+                                if (chance < 17)
+                                {
+                                    next.setNodeType(NodeType.Combat);
+                                }
+                                else if (chance < 44)
+                                {
+                                    next.setNodeType(NodeType.Negotiation);
+                                }
+                                else if (chance < 56)
+                                {
+                                    next.setNodeType(NodeType.Event);
+                                }
+                                else if (chance < 83)
+                                {
+                                    next.setNodeType(NodeType.Miniboss);
+                                }
+                                else if (chance < 88)
+                                {
+                                    next.setNodeType(NodeType.Mystery);
+                                }
+                                else
+                                {
+                                    next.setNodeType(NodeType.Shop);
+                                }
+
+                                break;
+
+                            case 11:
+
+                                next.setNodeType(NodeType.Pitstop);
+
+                                break;
+
+                            default:
+
+                                if (chance < 15)
+                                {
+                                    next.setNodeType(NodeType.Combat);
+                                }
+                                else if (chance < 40)
+                                {
+                                    next.setNodeType(NodeType.Negotiation);
+                                }
+                                else if (chance < 50)
+                                {
+                                    next.setNodeType(NodeType.Event);
+                                }
+                                else if (chance < 65)
+                                {
+                                    next.setNodeType(NodeType.Miniboss);
+                                }
+                                else if (chance < 70)
+                                {
+                                    next.setNodeType(NodeType.Mystery);
+                                }
+                                else if (chance < 80)
+                                {
+                                    next.setNodeType(NodeType.Shop);
+                                }
+                                else
+                                {
+                                    next.setNodeType(NodeType.Pitstop);
+                                }
+
+                                break;
+                        }
+
+                        repeat = false;
+
+                        foreach (Node n in next.getPrevNodes())
                         {
                             if (n.getNodeType() == next.getNodeType())
                             {
@@ -273,7 +266,19 @@ public class MapGenerator : MonoBehaviour
                                 break;
                             }
                         }
-                    }  
+
+                        if (!repeat)
+                        {
+                            foreach (Node n in next.getNextNodes())
+                            {
+                                if (n.getNodeType() == next.getNodeType())
+                                {
+                                    repeat = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
                 }
 
                 current = next;
@@ -299,7 +304,7 @@ public class MapGenerator : MonoBehaviour
 
     private void displayMap()
     {
-        start.setGameNode(Instantiate(nodeVariants[1], new Vector3(0f, -775f, 0f), Quaternion.identity));
+        start.setGameNode(Instantiate(nodeVariants[1], new Vector3(0f, -675f, 0f), Quaternion.identity));
         start.getGameNode().transform.SetParent(content.transform, false);
 
         for (int y = 0; y < FLOORS; y++)
@@ -313,7 +318,8 @@ public class MapGenerator : MonoBehaviour
                 if(mapData[y][x] != null)
                 {
                     GameObject node = nodeVariants[((int)mapData[y][x].getNodeType())];
-                    Vector3 coords = new Vector3(xPos + Random.Range(PLACEMENT_RANDOMNESS * -1f, PLACEMENT_RANDOMNESS), yPos + (Random.Range(PLACEMENT_RANDOMNESS * -1f, PLACEMENT_RANDOMNESS) / 2f));
+                    Vector3 coords = new Vector3(xPos + Random.Range(PLACEMENT_RANDOMNESS * -1f, PLACEMENT_RANDOMNESS), 
+                        yPos + (Random.Range(PLACEMENT_RANDOMNESS * -1f, PLACEMENT_RANDOMNESS) / 2f));
 
                     mapData[y][x].setGameNode(Instantiate(node, coords, Quaternion.identity));
                     mapData[y][x].getGameNode().transform.SetParent(content.transform, false);
@@ -332,6 +338,9 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
+
+        crew.activate();
+        crew.complete();
     }
 
     private void clearMap()
@@ -356,5 +365,26 @@ public class MapGenerator : MonoBehaviour
                 GameObject.Destroy(l);
             }
         } 
+    }
+
+    public void selectNode(GameObject next)
+    {
+        next.GetComponentInChildren<Button>().enabled = false;
+
+        foreach (Node n in crew.getNextNodes())
+        {
+            if (n.getGameNode() != next)
+            {
+                n.deactivate();
+            }
+            else
+            {
+                crew = n;
+            }
+        }
+
+        //go into encounter
+
+        crew.complete();
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7800364853184443731}
   m_Layer: 5
   m_Name: Map
-  m_TagString: Untagged
+  m_TagString: Map
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,6 +306,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossNode Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4393886585396221453, guid: ff790843d719b1b488ce926c4ad4cef3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7800364853184443731}
     - target: {fileID: 6948481578309288278, guid: ff790843d719b1b488ce926c4ad4cef3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

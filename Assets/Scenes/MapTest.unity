@@ -130,6 +130,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 445633665}
     m_Modifications:
+    - target: {fileID: 2810155603461252628, guid: 5ca2ad0f0802f414ea2cc25c8e0c8046, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3049571336813118388, guid: 5ca2ad0f0802f414ea2cc25c8e0c8046, type: 3}
       propertyPath: m_Name
       value: CombatNode Variant
@@ -533,6 +537,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MysteryNode Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4388413990625870264, guid: 334a08da7f81cb44fb55e620f748e648, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6949345568032413411, guid: 334a08da7f81cb44fb55e620f748e648, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -890,6 +898,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossNode Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4393886585396221453, guid: ff790843d719b1b488ce926c4ad4cef3, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6948481578309288278, guid: ff790843d719b1b488ce926c4ad4cef3, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -989,6 +1001,14 @@ PrefabInstance:
     - target: {fileID: 549182988214710952, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
       propertyPath: m_Name
       value: Map
+      objectReference: {fileID: 0}
+    - target: {fileID: 2590325174029470462, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1450
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742054996354969696, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 625
       objectReference: {fileID: 0}
     - target: {fileID: 7921836035545785537, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
       propertyPath: m_Pivot.x
@@ -1455,6 +1475,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8284453215627211594, guid: 03c94bbbc2a3535478325a44b49af23d, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9103365936338523882, guid: 03c94bbbc2a3535478325a44b49af23d, type: 3}
       propertyPath: m_Name
       value: NegotiationNode Variant
@@ -1483,6 +1507,10 @@ PrefabInstance:
     - target: {fileID: 184688036244281721, guid: 41662139106cc04498a28c0607931a26, type: 3}
       propertyPath: m_Name
       value: ShopNode Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 1026197921270267097, guid: 41662139106cc04498a28c0607931a26, type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5956580247965215618, guid: 41662139106cc04498a28c0607931a26, type: 3}
       propertyPath: m_Pivot.x
@@ -1580,6 +1608,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 445633665}
     m_Modifications:
+    - target: {fileID: 362363947133314039, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 696524466319918679, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_Name
       value: BlankNode
@@ -2171,6 +2203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PitstopNode Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6747856937893570240, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2545,6 +2581,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6959388913061612873, guid: ebbaa56664a5bf74fb80a40d82b4225a, type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7798363189250386153, guid: ebbaa56664a5bf74fb80a40d82b4225a, type: 3}
       propertyPath: m_Name
       value: EventNode Variant
@@ -2787,6 +2827,10 @@ PrefabInstance:
     - target: {fileID: 8445287999014970255, guid: 90410e74222c80648b114a38e2082345, type: 3}
       propertyPath: m_Name
       value: MinibossNode Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8763545177990891055, guid: 90410e74222c80648b114a38e2082345, type: 3}
+      propertyPath: m_Interactable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
