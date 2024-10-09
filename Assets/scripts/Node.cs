@@ -23,7 +23,10 @@ namespace Map
         NodeType nodeType;
         List<Node> prevNodes;
         List<Node> nextNodes;
+
         GameObject gameNode;
+        Button nodeButton;
+
         bool completed;
 
         public Node()
@@ -143,6 +146,12 @@ namespace Map
         public void SetGameNode(GameObject n)
         {
             gameNode = n;
+            nodeButton = gameNode.GetComponentInChildren<Button>();
+        }
+
+        public Button GetNodeButton()
+        {
+            return nodeButton;
         }
 
         public bool IsCompleted()
@@ -156,7 +165,7 @@ namespace Map
             {
                 completed = true;
 
-                gameNode.GetComponentInChildren<Button>().enabled = false;
+                nodeButton.enabled = false;
 
                 foreach (Node n in nextNodes)
                 {
@@ -167,15 +176,19 @@ namespace Map
 
         public void Activate()
         {
-            if(gameNode != null)
+            if(nodeButton != null)
             {
-                gameNode.GetComponentInChildren<Button>().interactable = true;
+                nodeButton.interactable = true;
+                if(nodeType != NodeType.Boss)
+                {
+                    gameNode.GetComponentInChildren<NodeButtonFunction>().StartPulse();
+                }
             }
         }
 
         public void Deactivate()
         {
-            gameNode.GetComponentInChildren<Button>().interactable = false;
+            nodeButton.interactable = false;
         }
 
         public void Delete()

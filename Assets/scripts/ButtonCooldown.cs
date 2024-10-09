@@ -13,7 +13,7 @@ public class ButtonCooldown : MonoBehaviour
     {
         if (!cooldown)
         {
-            map.GetComponent<MapGenerator>().generateMap();
+            map.GetComponent<MapGenerator>().GenerateMap();
             cooldown = true;
             Invoke("ResetCooldown", 3.5f);
         }

@@ -138,6 +138,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: CombatNode Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8413210372772394506, guid: 5ca2ad0f0802f414ea2cc25c8e0c8046, type: 3}
+      propertyPath: m_Color.b
+      value: 0.046902817
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413210372772394506, guid: 5ca2ad0f0802f414ea2cc25c8e0c8046, type: 3}
+      propertyPath: m_Color.g
+      value: 0.19454794
+      objectReference: {fileID: 0}
+    - target: {fileID: 8413210372772394506, guid: 5ca2ad0f0802f414ea2cc25c8e0c8046, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5849056
+      objectReference: {fileID: 0}
     - target: {fileID: 8820407753097638223, guid: 5ca2ad0f0802f414ea2cc25c8e0c8046, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -574,6 +586,18 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6949345568032413411, guid: 334a08da7f81cb44fb55e620f748e648, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949345568032413411, guid: 334a08da7f81cb44fb55e620f748e648, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949345568032413411, guid: 334a08da7f81cb44fb55e620f748e648, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949345568032413411, guid: 334a08da7f81cb44fb55e620f748e648, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -620,6 +644,10 @@ PrefabInstance:
     - target: {fileID: 6949345568032413411, guid: 334a08da7f81cb44fb55e620f748e648, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6949345568032413411, guid: 334a08da7f81cb44fb55e620f748e648, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -849,7 +877,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0

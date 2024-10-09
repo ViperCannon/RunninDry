@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66ca1e093e5eb5499416d7e1f768f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nodeButton: {fileID: 362363947133314039}
 --- !u!1 &5461410373070882908
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +151,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.990566, g: 0.990566, b: 0.990566, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0.6313726}
+    m_DisabledColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 0.9137255}
     m_ColorMultiplier: 1.5
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -171,7 +172,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2004858140718103268}
         m_TargetAssemblyTypeName: NodeButtonFunction, Assembly-CSharp
-        m_MethodName: click
+        m_MethodName: Click
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
