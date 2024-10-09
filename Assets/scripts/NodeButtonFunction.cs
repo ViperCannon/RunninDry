@@ -13,7 +13,7 @@ public class NodeButtonFunction : MonoBehaviour
     float currentRatio = 1;
     float growthSpeed = 0.15f;
     float upperBound = 1.1f;
-    float lowerBound = 0.9f;
+    float lowerBound = 0.95f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +33,10 @@ public class NodeButtonFunction : MonoBehaviour
 
     IEnumerator Pulse()
     {
+        currentRatio = Random.Range(lowerBound, upperBound);
+
+        nodeButton.gameObject.transform.localScale = new Vector3(currentRatio, currentRatio, currentRatio);
+
         while (nodeButton.enabled && nodeButton.interactable)
         {
             if (!(nodeButton.enabled && nodeButton.interactable))
@@ -78,6 +82,7 @@ public class NodeButtonFunction : MonoBehaviour
         }
 
         nodeButton.gameObject.transform.localScale = Vector3.one;
+        currentRatio = 1;
 
         yield return null;
     }
