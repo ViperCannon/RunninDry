@@ -62,7 +62,7 @@ public class MapGenerator : MonoBehaviour
         {
             int x = Random.Range(0, MAP_WIDTH);
 
-            while (mapData[0][x].getNextNodes().Count >= 2)
+            while (mapData[0][x].GetNextNodes().Count >= 2)
             {
                 x = Random.Range(0, MAP_WIDTH);
             }
@@ -70,18 +70,18 @@ public class MapGenerator : MonoBehaviour
             Node current = mapData[0][x];
             Node next = current;
 
-            current.addPrevNode(start);
-            start.addNextNode(current);
+            current.AddPrevNode(start);
+            start.AddNextNode(current);
 
-            if(current.getNodeType() == NodeType.Blank)
+            if(current.GetNodeType() == NodeType.Blank)
             {
                 if(Random.Range(0, 3) > 0)
                 {
-                    current.setNodeType(NodeType.Negotiation);
+                    current.SetNodeType(NodeType.Negotiation);
                 }
                 else
                 {
-                    current.setNodeType(NodeType.Combat);
+                    current.SetNodeType(NodeType.Combat);
                 }
             }
 
@@ -91,7 +91,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     case 0:
                              
-                        if (mapData[j - 1][x + 1].getNextNodes().Contains(mapData[j][x]))
+                        if (mapData[j - 1][x + 1].GetNextNodes().Contains(mapData[j][x]))
                         {
                             break;
                         }
@@ -102,7 +102,7 @@ public class MapGenerator : MonoBehaviour
 
                     case 4:
                         
-                        if (mapData[j - 1][x - 1].getNextNodes().Contains(mapData[j][x]))
+                        if (mapData[j - 1][x - 1].GetNextNodes().Contains(mapData[j][x]))
                         {
                             break;
                         }
@@ -113,15 +113,15 @@ public class MapGenerator : MonoBehaviour
 
                     default:
                         
-                        if (mapData[j - 1][x + 1].getNextNodes().Contains(mapData[j][x]) && mapData[j - 1][x - 1].getNextNodes().Contains(mapData[j][x]))
+                        if (mapData[j - 1][x + 1].GetNextNodes().Contains(mapData[j][x]) && mapData[j - 1][x - 1].GetNextNodes().Contains(mapData[j][x]))
                         {
                             break;
                         }
-                        else if(mapData[j - 1][x + 1].getNextNodes().Contains(mapData[j][x]))
+                        else if(mapData[j - 1][x + 1].GetNextNodes().Contains(mapData[j][x]))
                         {
                             x += Random.Range(-1, 1);
                         }
-                        else if(mapData[j - 1][x - 1].getNextNodes().Contains(mapData[j][x]))
+                        else if(mapData[j - 1][x - 1].GetNextNodes().Contains(mapData[j][x]))
                         {
                             x += Random.Range(0, 2);
                         }
@@ -135,10 +135,10 @@ public class MapGenerator : MonoBehaviour
 
                 next = mapData[j][x];
 
-                current.addNextNode(next);
-                next.addPrevNode(current);
+                current.AddNextNode(next);
+                next.AddPrevNode(current);
 
-                if(next.getNodeType() == NodeType.Blank || next.getNodeType() == current.getNodeType())
+                if(next.GetNodeType() == NodeType.Blank || next.GetNodeType() == current.GetNodeType())
                 { 
                     bool repeat = true;
 
@@ -152,15 +152,15 @@ public class MapGenerator : MonoBehaviour
 
                                 if (chance < 15)
                                 {
-                                    next.setNodeType(NodeType.Combat);
+                                    next.SetNodeType(NodeType.Combat);
                                 }
                                 else if (chance < 65)
                                 {
-                                    next.setNodeType(NodeType.Negotiation);
+                                    next.SetNodeType(NodeType.Negotiation);
                                 }
                                 else
                                 {
-                                    next.setNodeType(NodeType.Event);
+                                    next.SetNodeType(NodeType.Event);
                                 }
 
                                 break;
@@ -170,19 +170,19 @@ public class MapGenerator : MonoBehaviour
 
                                 if (chance < 20)
                                 {
-                                    next.setNodeType(NodeType.Combat);
+                                    next.SetNodeType(NodeType.Combat);
                                 }
                                 else if (chance < 65)
                                 {
-                                    next.setNodeType(NodeType.Negotiation);
+                                    next.SetNodeType(NodeType.Negotiation);
                                 }
                                 else if (chance < 85)
                                 {
-                                    next.setNodeType(NodeType.Event);
+                                    next.SetNodeType(NodeType.Event);
                                 }
                                 else
                                 {
-                                    next.setNodeType(NodeType.Shop);
+                                    next.SetNodeType(NodeType.Shop);
                                 }
 
                                 break;
@@ -191,34 +191,34 @@ public class MapGenerator : MonoBehaviour
 
                                 if (chance < 17)
                                 {
-                                    next.setNodeType(NodeType.Combat);
+                                    next.SetNodeType(NodeType.Combat);
                                 }
                                 else if (chance < 44)
                                 {
-                                    next.setNodeType(NodeType.Negotiation);
+                                    next.SetNodeType(NodeType.Negotiation);
                                 }
                                 else if (chance < 56)
                                 {
-                                    next.setNodeType(NodeType.Event);
+                                    next.SetNodeType(NodeType.Event);
                                 }
                                 else if (chance < 83)
                                 {
-                                    next.setNodeType(NodeType.Miniboss);
+                                    next.SetNodeType(NodeType.Miniboss);
                                 }
                                 else if (chance < 88)
                                 {
-                                    next.setNodeType(NodeType.Mystery);
+                                    next.SetNodeType(NodeType.Mystery);
                                 }
                                 else
                                 {
-                                    next.setNodeType(NodeType.Shop);
+                                    next.SetNodeType(NodeType.Shop);
                                 }
 
                                 break;
 
                             case 11:
 
-                                next.setNodeType(NodeType.Pitstop);
+                                next.SetNodeType(NodeType.Pitstop);
 
                                 break;
 
@@ -226,31 +226,31 @@ public class MapGenerator : MonoBehaviour
 
                                 if (chance < 15)
                                 {
-                                    next.setNodeType(NodeType.Combat);
+                                    next.SetNodeType(NodeType.Combat);
                                 }
                                 else if (chance < 40)
                                 {
-                                    next.setNodeType(NodeType.Negotiation);
+                                    next.SetNodeType(NodeType.Negotiation);
                                 }
                                 else if (chance < 50)
                                 {
-                                    next.setNodeType(NodeType.Event);
+                                    next.SetNodeType(NodeType.Event);
                                 }
                                 else if (chance < 65)
                                 {
-                                    next.setNodeType(NodeType.Miniboss);
+                                    next.SetNodeType(NodeType.Miniboss);
                                 }
                                 else if (chance < 70)
                                 {
-                                    next.setNodeType(NodeType.Mystery);
+                                    next.SetNodeType(NodeType.Mystery);
                                 }
                                 else if (chance < 80)
                                 {
-                                    next.setNodeType(NodeType.Shop);
+                                    next.SetNodeType(NodeType.Shop);
                                 }
                                 else
                                 {
-                                    next.setNodeType(NodeType.Pitstop);
+                                    next.SetNodeType(NodeType.Pitstop);
                                 }
 
                                 break;
@@ -258,9 +258,9 @@ public class MapGenerator : MonoBehaviour
 
                         repeat = false;
 
-                        foreach (Node n in next.getPrevNodes())
+                        foreach (Node n in next.GetPrevNodes())
                         {
-                            if (n.getNodeType() == next.getNodeType())
+                            if (n.GetNodeType() == next.GetNodeType())
                             {
                                 repeat = true;
                                 break;
@@ -269,9 +269,9 @@ public class MapGenerator : MonoBehaviour
 
                         if (!repeat)
                         {
-                            foreach (Node n in next.getNextNodes())
+                            foreach (Node n in next.GetNextNodes())
                             {
-                                if (n.getNodeType() == next.getNodeType())
+                                if (n.GetNodeType() == next.GetNodeType())
                                 {
                                     repeat = true;
                                     break;
@@ -294,7 +294,7 @@ public class MapGenerator : MonoBehaviour
         {
             for (int x = 0; x < MAP_WIDTH; x++)
             {
-                if (mapData[y][x].getNextNodes().Count == 0  && mapData[y][x].getPrevNodes().Count == 0)
+                if (mapData[y][x].GetNextNodes().Count == 0  && mapData[y][x].GetPrevNodes().Count == 0)
                 {
                     mapData[y][x] = null;
                 }
@@ -304,8 +304,8 @@ public class MapGenerator : MonoBehaviour
 
     private void displayMap()
     {
-        start.setGameNode(Instantiate(nodeVariants[1], new Vector3(0f, -675f, 0f), Quaternion.identity));
-        start.getGameNode().transform.SetParent(content.transform, false);
+        start.SetGameNode(Instantiate(nodeVariants[1], new Vector3(0f, -675f, 0f), Quaternion.identity));
+        start.GetGameNode().transform.SetParent(content.transform, false);
 
         for (int y = 0; y < FLOORS; y++)
         {
@@ -317,19 +317,19 @@ public class MapGenerator : MonoBehaviour
 
                 if(mapData[y][x] != null)
                 {
-                    GameObject node = nodeVariants[((int)mapData[y][x].getNodeType())];
+                    GameObject node = nodeVariants[((int)mapData[y][x].GetNodeType())];
                     Vector3 coords = new Vector3(xPos + Random.Range(PLACEMENT_RANDOMNESS * -1f, PLACEMENT_RANDOMNESS), 
                         yPos + (Random.Range(PLACEMENT_RANDOMNESS * -1f, PLACEMENT_RANDOMNESS) / 2f));
 
-                    mapData[y][x].setGameNode(Instantiate(node, coords, Quaternion.identity));
-                    mapData[y][x].getGameNode().transform.SetParent(content.transform, false);
+                    mapData[y][x].SetGameNode(Instantiate(node, coords, Quaternion.identity));
+                    mapData[y][x].GetGameNode().transform.SetParent(content.transform, false);
 
-                    foreach(Node n in mapData[y][x].getPrevNodes())
+                    foreach(Node n in mapData[y][x].GetPrevNodes())
                     {
                         GameObject temp = Instantiate(line, coords, Quaternion.identity);
                         temp.transform.SetParent(content.transform, false);
                         temp.transform.SetAsFirstSibling();
-                        Vector3 rotCoords = mapData[y][x].getGameNode().transform.localPosition - n.getGameNode().transform.localPosition;
+                        Vector3 rotCoords = mapData[y][x].GetGameNode().transform.localPosition - n.GetGameNode().transform.localPosition;
                         float angle = 90f + Mathf.Atan2(rotCoords.y, rotCoords.x) * 180 / Mathf.PI;
                         temp.transform.rotation = Quaternion.Euler(0, 0, angle);
                         float height = Mathf.Sqrt((rotCoords.x * rotCoords.x) + (rotCoords.y * rotCoords.y));
@@ -339,15 +339,15 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        crew.activate();
-        crew.complete();
+        crew.Activate();
+        crew.Complete();
     }
 
     private void clearMap()
     {
         if(mapData != null)
         {
-            start.delete();
+            start.Delete();
 
             for (int y = 0; y < FLOORS; y++)
             {
@@ -355,7 +355,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     if (mapData[y][x] != null)
                     {
-                        mapData[y][x].delete();
+                        mapData[y][x].Delete();
                     }
                 }
             }
@@ -371,11 +371,11 @@ public class MapGenerator : MonoBehaviour
     {
         next.GetComponentInChildren<Button>().enabled = false;
 
-        foreach (Node n in crew.getNextNodes())
+        foreach (Node n in crew.GetNextNodes())
         {
-            if (n.getGameNode() != next)
+            if (n.GetGameNode() != next)
             {
-                n.deactivate();
+                n.Deactivate();
             }
             else
             {
@@ -385,6 +385,6 @@ public class MapGenerator : MonoBehaviour
 
         //go into encounter
 
-        crew.complete();
+        crew.Complete();
     }
 }

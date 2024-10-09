@@ -42,7 +42,7 @@ namespace Map
             completed = false;
         }
 
-        public void setRandomType()
+        public void SetRandomType()
         {
             int type = Random.Range(1, 7);
 
@@ -79,22 +79,22 @@ namespace Map
             }
         }
 
-        public NodeType getNodeType()
+        public NodeType GetNodeType()
         {
             return nodeType;
         }
 
-        public void setNodeType(NodeType type)
+        public void SetNodeType(NodeType type)
         {
             nodeType = type;
         }
 
-        public List<Node> getNextNodes()
+        public List<Node> GetNextNodes()
         {
             return nextNodes;
         }
 
-        public void addNextNode(Node n)
+        public void AddNextNode(Node n)
         {
             if(!nextNodes.Contains(n))
             {
@@ -102,22 +102,22 @@ namespace Map
             }  
         }
 
-        public void removeNextNode(Node n)
+        public void RemoveNextNode(Node n)
         {
             nextNodes.Remove(n);
         }
 
-        public void setNextNodes(List<Node> nodes)
+        public void SetNextNodes(List<Node> nodes)
         {
             nextNodes = nodes;
         }
 
-        public List<Node> getPrevNodes()
+        public List<Node> GetPrevNodes()
         {
             return prevNodes;
         }
 
-        public void addPrevNode(Node p)
+        public void AddPrevNode(Node p)
         {
             if (!prevNodes.Contains(p))
             {
@@ -125,45 +125,47 @@ namespace Map
             }
         }
 
-        public void removePrevNode(Node p)
+        public void RemovePrevNode(Node p)
         {
             prevNodes.Remove(p);
         }
 
-        public void setPrevNodes(List<Node> nodes)
+        public void SetPrevNodes(List<Node> nodes)
         {
             prevNodes = nodes;
         }
 
-        public GameObject getGameNode()
+        public GameObject GetGameNode()
         {
             return gameNode;
         }
 
-        public void setGameNode(GameObject n)
+        public void SetGameNode(GameObject n)
         {
             gameNode = n;
         }
 
-        public bool isCompleted()
+        public bool IsCompleted()
         {
             return completed;
         }
 
-        public void complete()
+        public void Complete()
         {
             if (!completed)
             {
                 completed = true;
 
-                foreach(Node n in nextNodes)
+                gameNode.GetComponentInChildren<Button>().enabled = false;
+
+                foreach (Node n in nextNodes)
                 {
-                    n.activate();
+                    n.Activate();
                 }
             }
         }
 
-        public void activate()
+        public void Activate()
         {
             if(gameNode != null)
             {
@@ -171,12 +173,12 @@ namespace Map
             }
         }
 
-        public void deactivate()
+        public void Deactivate()
         {
             gameNode.GetComponentInChildren<Button>().interactable = false;
         }
 
-        public void delete()
+        public void Delete()
         {
             if(gameNode != null)
             {
