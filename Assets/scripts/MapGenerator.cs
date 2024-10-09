@@ -29,17 +29,17 @@ public class MapGenerator : MonoBehaviour
     Node boss;
     Node crew;
 
-    public void generateMap()
+    public void GenerateMap()
     {
-        clearMap();
+        ClearMap();
         start = new Node();
         crew = start;
-        mapData = generateInitialGrid();
-        createPaths();
-        displayMap();
+        mapData = GenerateInitialGrid();
+        CreatePaths();
+        DisplayMap();
     }
 
-    private Node[][] generateInitialGrid()
+    private Node[][] GenerateInitialGrid()
     { 
         Node[][] tempData = new Node[FLOORS][];
 
@@ -56,7 +56,7 @@ public class MapGenerator : MonoBehaviour
         return tempData;
     }
 
-    private void createPaths()
+    private void CreatePaths()
     {
         for (int i = 0; i < PATHS; i++)
         {
@@ -64,7 +64,12 @@ public class MapGenerator : MonoBehaviour
 
             while (mapData[0][x].GetNextNodes().Count >= 2)
             {
-                x = Random.Range(0, MAP_WIDTH);
+                x++;
+
+                if(x == MAP_WIDTH)
+                {
+                    x = 0;
+                }
             }
 
             Node current = mapData[0][x];
@@ -127,7 +132,22 @@ public class MapGenerator : MonoBehaviour
                         }
                         else
                         {
-                            x += Random.Range(-1, 2);
+                            int temp = Random.Range(-1, 2);
+                            int tries = 0;
+
+                            while (mapData[j][x + temp].GetPrevNodes().Count >= 2 && tries < 3)
+                            {
+                                temp++;
+
+                                if(temp == 2)
+                                {
+                                    temp = -1;
+                                }
+
+                                tries++;
+                            }
+
+                            x += temp;
                         }
 
                         break;
@@ -139,156 +159,161 @@ public class MapGenerator : MonoBehaviour
                 next.AddPrevNode(current);
 
                 if(next.GetNodeType() == NodeType.Blank || next.GetNodeType() == current.GetNodeType())
-                { 
-                    bool repeat = true;
-
-                    while (repeat)
-                    {
-                        int chance = Random.Range(0, 100);
-
-                        switch (j)
-                        {
-                            case 1:
-
-                                if (chance < 15)
-                                {
-                                    next.SetNodeType(NodeType.Combat);
-                                }
-                                else if (chance < 65)
-                                {
-                                    next.SetNodeType(NodeType.Negotiation);
-                                }
-                                else
-                                {
-                                    next.SetNodeType(NodeType.Event);
-                                }
-
-                                break;
-
-                            case 2:
-                            case 3:
-
-                                if (chance < 20)
-                                {
-                                    next.SetNodeType(NodeType.Combat);
-                                }
-                                else if (chance < 65)
-                                {
-                                    next.SetNodeType(NodeType.Negotiation);
-                                }
-                                else if (chance < 85)
-                                {
-                                    next.SetNodeType(NodeType.Event);
-                                }
-                                else
-                                {
-                                    next.SetNodeType(NodeType.Shop);
-                                }
-
-                                break;
-
-                            case 10:
-
-                                if (chance < 17)
-                                {
-                                    next.SetNodeType(NodeType.Combat);
-                                }
-                                else if (chance < 44)
-                                {
-                                    next.SetNodeType(NodeType.Negotiation);
-                                }
-                                else if (chance < 56)
-                                {
-                                    next.SetNodeType(NodeType.Event);
-                                }
-                                else if (chance < 83)
-                                {
-                                    next.SetNodeType(NodeType.Miniboss);
-                                }
-                                else if (chance < 88)
-                                {
-                                    next.SetNodeType(NodeType.Mystery);
-                                }
-                                else
-                                {
-                                    next.SetNodeType(NodeType.Shop);
-                                }
-
-                                break;
-
-                            case 11:
-
-                                next.SetNodeType(NodeType.Pitstop);
-
-                                break;
-
-                            default:
-
-                                if (chance < 15)
-                                {
-                                    next.SetNodeType(NodeType.Combat);
-                                }
-                                else if (chance < 40)
-                                {
-                                    next.SetNodeType(NodeType.Negotiation);
-                                }
-                                else if (chance < 50)
-                                {
-                                    next.SetNodeType(NodeType.Event);
-                                }
-                                else if (chance < 65)
-                                {
-                                    next.SetNodeType(NodeType.Miniboss);
-                                }
-                                else if (chance < 70)
-                                {
-                                    next.SetNodeType(NodeType.Mystery);
-                                }
-                                else if (chance < 80)
-                                {
-                                    next.SetNodeType(NodeType.Shop);
-                                }
-                                else
-                                {
-                                    next.SetNodeType(NodeType.Pitstop);
-                                }
-
-                                break;
-                        }
-
-                        repeat = false;
-
-                        foreach (Node n in next.GetPrevNodes())
-                        {
-                            if (n.GetNodeType() == next.GetNodeType())
-                            {
-                                repeat = true;
-                                break;
-                            }
-                        }
-
-                        if (!repeat)
-                        {
-                            foreach (Node n in next.GetNextNodes())
-                            {
-                                if (n.GetNodeType() == next.GetNodeType())
-                                {
-                                    repeat = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
+                {
+                    AssignNodeType(next, j);
                 }
 
                 current = next;
             }
         }
 
-        removeNodes();
+        RemoveNodes();
     }
 
-    private void removeNodes()
+    private void AssignNodeType(Node node, int height)
+    {
+        bool repeat = true;
+
+        while (repeat)
+        {
+            int chance = Random.Range(0, 100);
+
+            switch (height)
+            {
+                case 1:
+
+                    if (chance < 15)
+                    {
+                        node.SetNodeType(NodeType.Combat);
+                    }
+                    else if (chance < 65)
+                    {
+                        node.SetNodeType(NodeType.Negotiation);
+                    }
+                    else
+                    {
+                        node.SetNodeType(NodeType.Event);
+                    }
+
+                    break;
+
+                case 2:
+                case 3:
+
+                    if (chance < 20)
+                    {
+                        node.SetNodeType(NodeType.Combat);
+                    }
+                    else if (chance < 65)
+                    {
+                        node.SetNodeType(NodeType.Negotiation);
+                    }
+                    else if (chance < 85)
+                    {
+                        node.SetNodeType(NodeType.Event);
+                    }
+                    else
+                    {
+                        node.SetNodeType(NodeType.Shop);
+                    }
+
+                    break;
+
+                case 10:
+
+                    if (chance < 17)
+                    {
+                        node.SetNodeType(NodeType.Combat);
+                    }
+                    else if (chance < 44)
+                    {
+                        node.SetNodeType(NodeType.Negotiation);
+                    }
+                    else if (chance < 56)
+                    {
+                        node.SetNodeType(NodeType.Event);
+                    }
+                    else if (chance < 83)
+                    {
+                        node.SetNodeType(NodeType.Miniboss);
+                    }
+                    else if (chance < 88)
+                    {
+                        node.SetNodeType(NodeType.Mystery);
+                    }
+                    else
+                    {
+                        node.SetNodeType(NodeType.Shop);
+                    }
+
+                    break;
+
+                case 11:
+
+                    node.SetNodeType(NodeType.Pitstop);
+
+                    break;
+
+                default:
+
+                    if (chance < 15)
+                    {
+                        node.SetNodeType(NodeType.Combat);
+                    }
+                    else if (chance < 40)
+                    {
+                        node.SetNodeType(NodeType.Negotiation);
+                    }
+                    else if (chance < 50)
+                    {
+                        node.SetNodeType(NodeType.Event);
+                    }
+                    else if (chance < 65)
+                    {
+                        node.SetNodeType(NodeType.Miniboss);
+                    }
+                    else if (chance < 70)
+                    {
+                        node.SetNodeType(NodeType.Mystery);
+                    }
+                    else if (chance < 80)
+                    {
+                        node.SetNodeType(NodeType.Shop);
+                    }
+                    else
+                    {
+                        node.SetNodeType(NodeType.Pitstop);
+                    }
+
+                    break;
+            }
+
+            repeat = false;
+
+            foreach (Node p in node.GetPrevNodes())
+            {
+                if (p.GetNodeType() == node.GetNodeType())
+                {
+                    repeat = true;
+                    break;
+                }
+            }
+
+            if (!repeat)
+            {
+                foreach (Node n in node.GetNextNodes())
+                {
+                    if (n.GetNodeType() == node.GetNodeType())
+                    {
+                        repeat = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    private void RemoveNodes()
     {
         for (int y = 0; y < FLOORS; y++)
         {
@@ -302,7 +327,7 @@ public class MapGenerator : MonoBehaviour
         }
     }
 
-    private void displayMap()
+    private void DisplayMap()
     {
         start.SetGameNode(Instantiate(nodeVariants[1], new Vector3(0f, -675f, 0f), Quaternion.identity));
         start.GetGameNode().transform.SetParent(content.transform, false);
@@ -343,7 +368,7 @@ public class MapGenerator : MonoBehaviour
         crew.Complete();
     }
 
-    private void clearMap()
+    private void ClearMap()
     {
         if(mapData != null)
         {
@@ -367,7 +392,7 @@ public class MapGenerator : MonoBehaviour
         } 
     }
 
-    public void selectNode(GameObject next)
+    public void SelectNode(GameObject next)
     {
         next.GetComponentInChildren<Button>().enabled = false;
 
