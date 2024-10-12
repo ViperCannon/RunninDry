@@ -29,6 +29,11 @@ public class MapGenerator : MonoBehaviour
     Node boss;
     Node crew;
 
+    private void Start()
+    {
+        GenerateMap();
+    }
+
     public void GenerateMap()
     {
         ClearMap();
