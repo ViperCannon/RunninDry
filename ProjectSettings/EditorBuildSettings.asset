@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/titlescreen.unity
     guid: 609ba8b844290e64d903e2eafeb6d12f
   - enabled: 1
-    path: Assets/Scenes/pausemenu.unity
-    guid: 4c46f1f34e20d254095d353cfa91f5ea
-  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
