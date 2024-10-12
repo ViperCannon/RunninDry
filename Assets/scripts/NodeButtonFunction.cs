@@ -9,6 +9,9 @@ public class NodeButtonFunction : MonoBehaviour
 
     [SerializeField]
     Button nodeButton;
+    [SerializeField]
+    public Animator carParent;
+    public Animator map;
 
     float currentRatio = 1;
     float growthSpeed = 0.15f;
@@ -19,13 +22,21 @@ public class NodeButtonFunction : MonoBehaviour
     void Start()
     {
         mapGenerator = GameObject.FindWithTag("Map");
+        map = mapGenerator.GetComponent<Animator>();
+        carParent = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
     }
 
     public void Click()
     {
         mapGenerator.GetComponent<MapGenerator>().SelectNode(this.gameObject);
+        StartCoroutine(StopCar());
     }
-
+    IEnumerator StopCar()
+    {
+        carParent.SetTrigger("stop");
+        map.SetTrigger("fadeout");
+        yield return null;
+    }
     public void StartPulse()
     {
         StartCoroutine(Pulse());
