@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    Animator map;
-    Animator carParent;
+    Animator overworld;
+    Animator car;
 
     // Start is called before the first frame update
     void Start()
     {
-        map = GameObject.FindWithTag("Map").GetComponent<Animator>();
-        carParent = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
-        carParent.SetTrigger("stop");
+        overworld = GameObject.FindWithTag("Map").GetComponent<Animator>();
+        car = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,8 +27,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator endingEncounter()
     {
-        map.SetTrigger("fadein");
-        carParent.SetTrigger("start");
+        overworld.SetTrigger("fadein");
+        car.SetTrigger("start");
         yield return null;
     }
 }

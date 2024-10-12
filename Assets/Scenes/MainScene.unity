@@ -364,6 +364,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarParent
       objectReference: {fileID: 0}
+    - target: {fileID: 1535695181060697301, guid: ac49e2e75118732439c7567513a5702c, type: 3}
+      propertyPath: m_TagString
+      value: car
+      objectReference: {fileID: 0}
     - target: {fileID: 2219344951976506213, guid: ac49e2e75118732439c7567513a5702c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
