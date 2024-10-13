@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class NodeButtonFunction : MonoBehaviour
 {
+    negotiationscript negotiationscript;
     GameObject mapGenerator;
 
     [SerializeField]
@@ -24,12 +25,27 @@ public class NodeButtonFunction : MonoBehaviour
         mapGenerator = GameObject.FindWithTag("Map");
         map = mapGenerator.GetComponent<Animator>();
         carParent = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
+        
+        GrabScripts();
+    }
+    public void GrabScripts()
+    {
+        if (GameObject.Find("NegotiationNode Variant") != null)
+        {
+            negotiationscript = GameObject.Find("NegotiationNode Variant").gameObject.GetComponent<negotiationscript>();
+        }
     }
 
     public void Click()
     {
         mapGenerator.GetComponent<MapGenerator>().SelectNode(this.gameObject);
         StartCoroutine(StopCar());
+        GrabScripts();
+        if (negotiationscript != null)
+        {
+            negotiationscript.GrabAssets();
+        }
+        
     }
     IEnumerator StopCar()
     {
