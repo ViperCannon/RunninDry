@@ -295,6 +295,11 @@ public class MapGenerator : MonoBehaviour
 
             repeat = false;
 
+            if(height == 11 || node.GetNodeType() == NodeType.Combat || node.GetNodeType() == NodeType.Negotiation)
+            {
+                break;
+            }
+
             foreach (Node p in node.GetPrevNodes())
             {
                 if (p.GetNodeType() == node.GetNodeType())
