@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     Animator overworld;
     Animator car;
     GameObject AssetHolder;
+    [SerializeField]
+    float waitTime;
     [Header("Negotiation")]
     public GameObject Nassets1;
     public GameObject Nassets2;
@@ -83,13 +85,13 @@ public class GameManager : MonoBehaviour
 
     IEnumerator endingEncounter()
     {
+        overworld.SetTrigger("fadein");
+        car.SetTrigger("start");
+        yield return new WaitForSeconds(waitTime);
         for (int i = 0; i < AssetHolder.transform.childCount; i++)
         {
             AssetHolder.transform.GetChild(i).gameObject.SetActive(false);
         }
-
-        overworld.SetTrigger("fadein");
-        car.SetTrigger("start");
         yield return null;
     }
 }

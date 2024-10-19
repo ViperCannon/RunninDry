@@ -1236,6 +1236,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1335212224}
+  - component: {fileID: 1335212226}
+  - component: {fileID: 1335212225}
   m_Layer: 0
   m_Name: NodeSpawnAssets
   m_TagString: Untagged
@@ -1252,7 +1254,7 @@ Transform:
   m_GameObject: {fileID: 1335212223}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 527, y: -131, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1272,6 +1274,39 @@ Transform:
   - {fileID: 8247593}
   m_Father: {fileID: 1996845273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1335212225
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335212223}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 43e665c8e6254564f8b50513c36cd4c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!225 &1335212226
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1335212223}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1441900333
 GameObject:
   m_ObjectHideFlags: 0
@@ -1410,6 +1445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91e9ccdc680a56a4880effe9bd82bd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 0.5
   Nassets1: {fileID: 0}
   Nassets2: {fileID: 0}
   Cassets1: {fileID: 0}
@@ -1781,10 +1817,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1335212224}
   - {fileID: 250624285}
   - {fileID: 1158148699}
   - {fileID: 1087210662}
-  - {fileID: 1335212224}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2264,6 +2300,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1996845273}
     m_Modifications:
+    - target: {fileID: 2850637902141750541, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850637902141750541, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 2850637902141750541, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4249800866361645420, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
       propertyPath: m_Name
       value: Map
