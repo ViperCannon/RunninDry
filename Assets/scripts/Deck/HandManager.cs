@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SpeakeasyStreet;
-using System;
 
 public class HandManager : MonoBehaviour
 {
@@ -24,33 +23,39 @@ public class HandManager : MonoBehaviour
 
     public List<GameObject> cardsInHand = new List<GameObject>();
 
+    const int MAX_HAND_SIZE = 7;
     public int initialDraw = 6;
 
     void Start()
     {
+        deckManager.PopulateDecks();
+
         for(int i = 0; i < initialDraw; i++)
         {
-            //AddCardToHand();
+            AddCardToHand(deckManager.DrawCard());
         }
     }
 
     public void AddCardToHand(Card cardData)
     {
-        
-        GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
-        cardsInHand.Add(newCard);
+        if(cardData != null)
+        {
+            GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
+            cardsInHand.Add(newCard);
 
-        newCard.GetComponent<CardDisplay>().cardData = cardData;
+            newCard.GetComponent<CardDisplay>().cardData = cardData;
+            newCard.GetComponent<CardDisplay>().UpdateCardDisplay();
 
-        verticalSpacing = (6f * cardsInHand.Count * cardsInHand.Count - 28f * cardsInHand.Count + 65f) / 5;
+            verticalSpacing = (6f * cardsInHand.Count * cardsInHand.Count - 28f * cardsInHand.Count + 65f) / 5;
 
-        UpdateHandVisuals();
+            UpdateHandVisuals();
+        }
     }
 
-    private void Update()
+    /*private void Update()
     {
         UpdateHandVisuals();
-    }
+    }*/
 
     private void UpdateHandVisuals()
     {
@@ -80,5 +85,16 @@ public class HandManager : MonoBehaviour
 
             cardsInHand[i].transform.localPosition = new Vector3(horizontalOffset, verticalOffset, 0f);
         }
+    }
+
+    public void NewEncounter()
+    {
+        Clear();
+        deckManager.Refresh();
+    }
+
+    public void Clear()
+    {
+        cardsInHand.Clear();
     }
 }

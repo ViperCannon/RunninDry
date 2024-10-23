@@ -8,6 +8,7 @@ TagManager:
   - Line
   - Map
   - car
+  - Card
   layers:
   - Default
   - TransparentFX
