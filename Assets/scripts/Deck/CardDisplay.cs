@@ -15,11 +15,6 @@ public class CardDisplay : MonoBehaviour
     public TMP_Text dmgText;
     public Image[] type;
 
-    void Start()
-    {
-        UpdateCardDisplay();
-    }
-
     public void UpdateCardDisplay()
     {
         nameText.text = cardData.cardName;
