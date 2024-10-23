@@ -8,10 +8,12 @@ namespace SpeakeasyStreet
     public class Card : ScriptableObject
     {
         public string cardName;
+        public string character;
         public CardType cardType;
         public int cost;
         public int damage;
         public DamageType damageType;
+        public bool starter;
 
         public enum CardType
         {
