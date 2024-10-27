@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 665f1fe863e892d4487712e5acea6143, type: 3}
-  m_Name: FriendlyTalkPixie
+  m_Name: EvilEye
   m_EditorClassIdentifier: 
-  cardName: Friendly Talk
-  character: Pixie
+  cardName: Evil Eye
+  character: Baldwin
   cardType: 0
   cost: 0
-  damage: 20
-  damageType: 2
-  starter: 1
+  damage: 0
+  numberOfDice: 1
+  sidedDice: 20
+  diceModifier: 1
+  subType: 03000000
+  unlocked: 1
