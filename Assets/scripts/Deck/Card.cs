@@ -12,8 +12,11 @@ namespace SpeakeasyStreet
         public CardType cardType;
         public int cost;
         public int damage;
-        public DamageType damageType;
-        public bool starter;
+        public int numberOfDice;
+        public int sidedDice;
+        public int diceModifier;
+        public SubType[] subType;
+        public bool unlocked;
 
         public enum CardType
         {
@@ -21,13 +24,15 @@ namespace SpeakeasyStreet
             Combat
         }
 
-        public enum DamageType
+        public enum SubType
         {
             Projectile,
             Melee,
             Diplomacy,
             Intimidation,
-            Bribery
+            Bribery,
+            Buff,
+            Debuff
         }
     }
 }

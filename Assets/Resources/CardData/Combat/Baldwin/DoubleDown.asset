@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 665f1fe863e892d4487712e5acea6143, type: 3}
-  m_Name: EvilEyeBaldwin
+  m_Name: DoubleDown
   m_EditorClassIdentifier: 
-  cardName: Evil Eye
+  cardName: Double Down
   character: Baldwin
   cardType: 0
-  cost: 0
-  damage: 21
-  damageType: 3
-  starter: 1
+  cost: 2
+  damage: 10
+  numberOfDice: 0
+  sidedDice: 0
+  diceModifier: 0
+  subType: 01000000
+  unlocked: 1
