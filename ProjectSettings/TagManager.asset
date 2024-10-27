@@ -9,6 +9,7 @@ TagManager:
   - Map
   - car
   - Card
+  - Enemy
   layers:
   - Default
   - TransparentFX
