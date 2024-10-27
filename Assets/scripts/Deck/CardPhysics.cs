@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
+    HandManager handManager;
     Vector3 originalPosition;
     Vector3 dragOffset;
     Quaternion originalRotation;
@@ -13,14 +14,15 @@ public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     
     int siblingIndex;
     
-    float floatHeight = 85f; // How high the card should float on hover
-    float yThreshold = 200f; // Maximum Y-level the card can go before arc starts
+    float floatHeight = 110f; // How high the card should float on hover
+    float yThreshold = 210f; // Maximum Y-level the card can go before arc starts
 
-    public Image image;
+    public Image highlight;
 
     void Start()
     {
         canvas = GetComponentInParent<Canvas>();
+        handManager = transform.parent.parent.GetComponentInChildren<HandManager>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -47,10 +49,19 @@ public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // Reset position
-        transform.localPosition = originalPosition;
-        transform.localRotation = originalRotation;
-        transform.SetSiblingIndex(siblingIndex);
+        //card is targeting
+        if(transform.localPosition.y >= yThreshold - 0.01)
+        {
+            handManager.PlayCard(transform.gameObject);
+        }
+        else
+        {
+            // Reset position
+            transform.localPosition = originalPosition;
+            transform.localRotation = originalRotation;
+            transform.SetSiblingIndex(siblingIndex);
+        }
+
         DragManager.isDragging = false;
     }
 
@@ -64,10 +75,12 @@ public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
             transform.SetAsLastSibling();
 
-            transform.localPosition += new Vector3(0, floatHeight, 0);
+            float addHeight = floatHeight - transform.localPosition.y;
+
+            transform.localPosition += new Vector3(0, addHeight, 0);
             transform.localRotation = Quaternion.identity;
 
-            image.color = new Color(0, 255, 23, 0.8f);
+            highlight.color = new Color(0, 255, 23, 0.8f);
         }
     }
 
@@ -75,7 +88,7 @@ public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         if (!DragManager.isDragging)
         {
-            image.color = new Color(0, 255, 23, 0);
+            highlight.color = new Color(0, 255, 23, 0);
             transform.localPosition = originalPosition;
             transform.localRotation = originalRotation;
             transform.SetSiblingIndex(siblingIndex);

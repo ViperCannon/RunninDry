@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using SpeakeasyStreet;
 
 
 public class DeckManager : MonoBehaviour
 {
+    [SerializeField]
+    HandManager handManager;
+
+    [SerializeField]
+    TMP_Text deckCounter;
+    [SerializeField]
+    TMP_Text discardCounter;
+
     Deck negotiationMaster = new Deck();
     Deck combatMaster = new Deck();
 
@@ -47,6 +56,18 @@ public class DeckManager : MonoBehaviour
         {
             return negotiationDeck.Remove(0);
         }
+    }
+
+    public void DiscardCard(Card card)
+    {
+        discardPile.Add(card);
+        UpdateCounters();
+    }
+
+    public void UpdateCounters()
+    {
+        deckCounter.text = negotiationDeck.Size().ToString();
+        discardCounter.text = discardPile.Size().ToString();
     }
 
     public void Refresh()
