@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class deckbuilder : MonoBehaviour, IPointerDownHandler
+public class DeckBuilder : MonoBehaviour, IPointerDownHandler
 {
     GameObject pixieCards;
     GameObject baldwinCards;

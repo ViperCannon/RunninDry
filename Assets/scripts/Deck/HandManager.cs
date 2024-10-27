@@ -13,6 +13,10 @@ public class HandManager : MonoBehaviour
 
     [SerializeField]
     Transform handTransform;
+    [SerializeField]
+    Transform deckTransform;
+    [SerializeField]
+    Transform discardTransform;
 
     [SerializeField]
     float fanSpread = -2.5f;
@@ -21,7 +25,7 @@ public class HandManager : MonoBehaviour
     [SerializeField]
     float verticalSpacing;
 
-    public List<GameObject> cardsInHand = new List<GameObject>();
+    public List<GameObject> cardsInHand = new();
 
     const int MAX_HAND_SIZE = 7;
     public int initialDraw = 6;
@@ -29,33 +33,55 @@ public class HandManager : MonoBehaviour
     void Start()
     {
         deckManager.PopulateDecks();
+        deckManager.UpdateCounters();
 
-        for(int i = 0; i < initialDraw; i++)
+        AttemptDraw(initialDraw);
+    }
+
+    public void AttemptDraw(int draw)
+    {
+        for(int i = 0; i < draw; i++)
         {
+            if (cardsInHand.Count >= MAX_HAND_SIZE)
+            {
+                Debug.Log("Hand is full!");
+                break;
+            }
+
             AddCardToHand(deckManager.DrawCard());
         }
     }
 
-    public void AddCardToHand(Card cardData)
+    public void AddCardToHand(Card card)
     {
-        if(cardData != null)
+        if(card != null)
         {
             GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
             cardsInHand.Add(newCard);
 
-            newCard.GetComponent<CardDisplay>().cardData = cardData;
+            newCard.GetComponent<CardDisplay>().cardData = card;
             newCard.GetComponent<CardDisplay>().UpdateCardDisplay();
 
             verticalSpacing = (6f * cardsInHand.Count * cardsInHand.Count - 28f * cardsInHand.Count + 65f) / 5;
 
             UpdateHandVisuals();
+            deckManager.UpdateCounters();
         }
     }
 
-    /*private void Update()
+    public void PlayCard(GameObject card)
     {
+        //resolve card effect
+
+        //if successful
+        cardsInHand.Remove(card);
         UpdateHandVisuals();
-    }*/
+        deckManager.DiscardCard(card.GetComponent<CardDisplay>().cardData);
+
+        //animation of card going to discard
+
+        Destroy(card);
+    }
 
     private void UpdateHandVisuals()
     {
