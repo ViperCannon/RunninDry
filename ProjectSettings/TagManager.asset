@@ -10,6 +10,8 @@ TagManager:
   - car
   - Card
   - Enemy
+  - negotiation
+  - combat
   layers:
   - Default
   - TransparentFX
