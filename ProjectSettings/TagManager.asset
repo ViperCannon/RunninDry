@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - negotiation
   - combat
+  - cardlist
   layers:
   - Default
   - TransparentFX

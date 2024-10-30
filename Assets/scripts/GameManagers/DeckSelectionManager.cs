@@ -26,6 +26,30 @@ public class DeckSelectionManager : MonoBehaviour
     {
         
     }
+
+    public void removeCard(/*string cardname*/)
+    {
+        cards.Clear();
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("cardlist");
+        foreach (GameObject go in gos)
+        {
+            Destroy(go);
+        }
+        /*cards.Remove(cardname);
+        GameObject[] gos = GameObject.FindGameObjectsWithTag("cardlist");
+        foreach (GameObject go in gos)
+        {
+            Destroy(go);
+        }
+
+        for (int i = 0; cards.Count >= i; i++)
+        {
+            GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
+            newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cards.ToArray()[i];
+            newCard.transform.position = newCard.transform.position + new Vector3(0, 75 * cards.Count, 0);
+        }*/
+    }
+
     void maxcards()
     {
         maxcardsbutton.SetActive(true);
