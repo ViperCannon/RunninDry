@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/titlescreen.unity
     guid: 609ba8b844290e64d903e2eafeb6d12f
+  - enabled: 1
+    path: Assets/Scenes/deckbuilder.unity
+    guid: 6ccd068805e144d498a8029362b79440
   m_configObjects: {}
