@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +8,9 @@ public class DeckSelectionManager : MonoBehaviour
 {
     public List<string> cards = new List<string>();
     public GameObject maxcardsbutton;
+    public GameObject deckCard;
+    public GameObject negotiationPosition;
+    public GameObject combatPosition;
     
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,9 @@ public class DeckSelectionManager : MonoBehaviour
     }
     public void negotiationcardSelected(string cardname)
     {
+        GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
+        newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+        newCard.transform.position = newCard.transform.position + new Vector3 (0, 75 * cards.Count, 0);
         cards.Add(cardname);
         Debug.Log("negotiation " + cardname);
         if (cards.Count > 8)
@@ -37,6 +44,9 @@ public class DeckSelectionManager : MonoBehaviour
     }
     public void combatcardSelected(string cardname)
     {
+        GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
+        newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+        newCard.transform.position = newCard.transform.position + new Vector3(0, 75 * cards.Count, 0);
         cards.Add(cardname);
         Debug.Log("combat " + cardname);
         if (cards.Count > 8)
