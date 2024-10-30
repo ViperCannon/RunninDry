@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -70,6 +71,10 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
                 GameObject.Find("filters").transform.Find("BNegotiation").gameObject.SetActive(true);
                 GameObject.Find("filters").transform.Find("BCombat").gameObject.SetActive(true);
             }
+        }
+        else if (this.gameObject.tag == "cardlist")
+        {
+            selectionManager.removeCard(/*this.gameObject.GetComponentInChildren<TMP_Text>().text*/);
         }
 
         if (this.gameObject.tag == "negotiation")
