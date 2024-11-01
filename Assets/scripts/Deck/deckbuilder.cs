@@ -74,7 +74,7 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
         }
         else if (this.gameObject.tag == "cardlist")
         {
-            selectionManager.removeCard(/*this.gameObject.GetComponentInChildren<TMP_Text>().text*/);
+            selectionManager.removeCard(this.gameObject.GetComponentInChildren<TMP_Text>().text);
         }
 
         if (this.gameObject.tag == "negotiation")
