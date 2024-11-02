@@ -50,14 +50,14 @@ public class DeckSelectionManager : MonoBehaviour
         {
             GameObject newCard = Instantiate(deckCard, combatPosition.transform);
             newCard.gameObject.GetComponentInChildren<TMP_Text>().text = Ccards.ToArray()[i];
-            newCard.transform.position = newCard.transform.position - new Vector3(0, 75 * i, 0);
+            newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * i, 0);
         }
         
         for (int i = 0; Ncards.Count - 1 >= i; i++)
         {
             GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
             newCard.gameObject.GetComponentInChildren<TMP_Text>().text = Ncards.ToArray()[i];
-            newCard.transform.position = newCard.transform.position + new Vector3(0, 75 * i, 0);
+            newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * i, 0);
         }
         /*for (int i = 0; cards.Count-1 >= i; i++)
         {
@@ -74,32 +74,32 @@ public class DeckSelectionManager : MonoBehaviour
     }
     public void negotiationcardSelected(string cardname)
     {
-        if (cards.Count <= 8)
+        if (cards.Count <= 10)
         {
             GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
             newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
-            newCard.transform.position = newCard.transform.position + new Vector3(0, 75 * Ncards.Count, 0);
+            newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * Ncards.Count, 0);
             cards.Add(cardname);
             Ncards.Add(cardname);
             Debug.Log("negotiation " + cardname);
         }
-        if (cards.Count >= 8)
+        if (cards.Count >= 10)
         {
             maxcards();
         }
     }
     public void combatcardSelected(string cardname)
     {
-        if (cards.Count <= 8)
+        if (cards.Count <= 10)
         {
             GameObject newCard = Instantiate(deckCard, combatPosition.transform);
             newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
-            newCard.transform.position = newCard.transform.position - new Vector3(0, 75 * Ccards.Count, 0);
+            newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * Ccards.Count, 0);
             cards.Add(cardname);
             Ccards.Add(cardname);
             Debug.Log("combat " + cardname);
         }
-        if (cards.Count >= 8)
+        if (cards.Count >= 10)
         {
             maxcards();
         }
