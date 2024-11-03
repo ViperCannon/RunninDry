@@ -1,3 +1,4 @@
+using SpeakeasyStreet;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,13 +7,23 @@ using UnityEngine.SceneManagement;
 
 public class DeckSelectionManager : MonoBehaviour
 {
-    public List<string> cards = new List<string>();
-    public List<string> Ncards = new List<string>();
-    public List<string> Ccards = new List<string>();
+    [Header("Total Cards")]
+    public List<string> TotalNegotiationCards = new List<string>();
+    public List<string> TotalCombatCards = new List<string>();
+    public List<string> Pixiecards = new List<string>();
+    public List<string> Baldwincards = new List<string>();
+    public List<string> Barleycards = new List<string>();
+    public List<string> NPixiecards = new List<string>();
+    public List<string> CPixiecards = new List<string>();
+    public List<string> NBaldwincards = new List<string>();
+    public List<string> CBaldwincards = new List<string>();
+    public List<string> NBarleycards = new List<string>();
+    public List<string> CBarleycards = new List<string>();
     public GameObject maxcardsbutton;
     public GameObject deckCard;
     public GameObject negotiationPosition;
     public GameObject combatPosition;
+    public string currentDeck = "Pixie";
     
     // Start is called before the first frame update
     void Start()
@@ -29,36 +40,100 @@ public class DeckSelectionManager : MonoBehaviour
         
     }
 
-    public void removeCard(string cardname)
+    public void removeCard(string cardname, string deckname)
     {
-        //cards.Clear();
         GameObject[] gos = GameObject.FindGameObjectsWithTag("cardlist");
         foreach (GameObject go in gos)
         {
             Destroy(go);
         }
-        cards.Remove(cardname);
-        if (Ccards.Contains(cardname))
+        if (TotalCombatCards.Contains(cardname))
         {
-            Ccards.Remove(cardname);
+            TotalCombatCards.Remove(cardname);
         }
-        else if (Ncards.Contains(cardname))
+        else if (TotalNegotiationCards.Contains(cardname))
         {
-            Ncards.Remove(cardname);
+            TotalNegotiationCards.Remove(cardname);
         }
-        for (int i = 0; Ccards.Count - 1 >= i; i++)
+
+        if (deckname == "Pixie")
         {
-            GameObject newCard = Instantiate(deckCard, combatPosition.transform);
-            newCard.gameObject.GetComponentInChildren<TMP_Text>().text = Ccards.ToArray()[i];
-            newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * i, 0);
+            Pixiecards.Remove(cardname);
+            if (CPixiecards.Contains(cardname))
+            {
+                CPixiecards.Remove(cardname);
+            }
+            else if (NPixiecards.Contains(cardname))
+            {
+                NPixiecards.Remove(cardname);
+            }
+            for (int i = 0; CPixiecards.Count - 1 >= i; i++)
+            {
+                GameObject newCard = Instantiate(deckCard, combatPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = CPixiecards.ToArray()[i];
+                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * i, 0);
+            }
+
+            for (int i = 0; NPixiecards.Count - 1 >= i; i++)
+            {
+                GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NPixiecards.ToArray()[i];
+                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * i, 0);
+            }
         }
+        else if (deckname == "Barley")
+        {
+            Barleycards.Remove(cardname);
+            if (CBarleycards.Contains(cardname))
+            {
+                CBarleycards.Remove(cardname);
+            }
+            else if (NBarleycards.Contains(cardname))
+            {
+                NBarleycards.Remove(cardname);
+            }
+            for (int i = 0; CBarleycards.Count - 1 >= i; i++)
+            {
+                GameObject newCard = Instantiate(deckCard, combatPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = CBarleycards.ToArray()[i];
+                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * i, 0);
+            }
+
+            for (int i = 0; NBarleycards.Count - 1 >= i; i++)
+            {
+                GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NBarleycards.ToArray()[i];
+                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * i, 0);
+            }
+        }
+        else if (deckname == "Baldwin")
+        {
+            Baldwincards.Remove(cardname);
+            if (CBaldwincards.Contains(cardname))
+            {
+                CBaldwincards.Remove(cardname);
+            }
+            else if (NBaldwincards.Contains(cardname))
+            {
+                NBaldwincards.Remove(cardname);
+            }
+            for (int i = 0; CBaldwincards.Count - 1 >= i; i++)
+            {
+                GameObject newCard = Instantiate(deckCard, combatPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = CBaldwincards.ToArray()[i];
+                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * i, 0);
+            }
+
+            for (int i = 0; NBaldwincards.Count - 1 >= i; i++)
+            {
+                GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NBaldwincards.ToArray()[i];
+                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * i, 0);
+            }
+        }
+        //cards.Clear();
         
-        for (int i = 0; Ncards.Count - 1 >= i; i++)
-        {
-            GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
-            newCard.gameObject.GetComponentInChildren<TMP_Text>().text = Ncards.ToArray()[i];
-            newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * i, 0);
-        }
+        
         /*for (int i = 0; cards.Count-1 >= i; i++)
         {
             GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
@@ -70,36 +145,95 @@ public class DeckSelectionManager : MonoBehaviour
 
     void maxcards()
     {
-        maxcardsbutton.SetActive(true);
-    }
-    public void negotiationcardSelected(string cardname)
-    {
-        if (cards.Count <= 10)
+        if (NPixiecards.Count >= 1 && CPixiecards.Count >= 1)
         {
-            GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
-            newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
-            newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * Ncards.Count, 0);
-            cards.Add(cardname);
-            Ncards.Add(cardname);
-            Debug.Log("negotiation " + cardname);
+            maxcardsbutton.SetActive(true);
         }
-        if (cards.Count >= 10)
+    }
+    public void negotiationcardSelected(string cardname, string deckname)
+    {
+        TotalNegotiationCards.Add(cardname);
+        if (deckname == "Pixie")
+        {
+            if (Pixiecards.Count < 10)
+            {
+                GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * NPixiecards.Count, 0);
+                Pixiecards.Add(cardname);
+                NPixiecards.Add(cardname);
+                Debug.Log("Pixie negotiation " + cardname);
+            }
+        }
+        else if (deckname == "Baldwin")
+        {
+            if (Baldwincards.Count < 10)
+            {
+                GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * NBaldwincards.Count, 0);
+                Baldwincards.Add(cardname);
+                NBaldwincards.Add(cardname);
+                Debug.Log("Baldwin negotiation " + cardname);
+            }
+        }
+        else if (deckname == "Barley")
+        {
+            if (Barleycards.Count < 10)
+            {
+                GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * NBarleycards.Count, 0);
+                Barleycards.Add(cardname);
+                NBarleycards.Add(cardname);
+                Debug.Log("Barley negotiation " + cardname);
+            }
+        }
+        if (Pixiecards.Count >= 10 && Barleycards.Count >= 10 && Baldwincards.Count >= 10)
         {
             maxcards();
         }
     }
-    public void combatcardSelected(string cardname)
+    public void combatcardSelected(string cardname, string deckname)
     {
-        if (cards.Count <= 10)
+        TotalCombatCards.Add(cardname);
+        if (deckname == "Pixie")
         {
-            GameObject newCard = Instantiate(deckCard, combatPosition.transform);
-            newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
-            newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * Ccards.Count, 0);
-            cards.Add(cardname);
-            Ccards.Add(cardname);
-            Debug.Log("combat " + cardname);
+            if (Pixiecards.Count < 10)
+            {
+                GameObject newCard = Instantiate(deckCard, combatPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * CPixiecards.Count, 0);
+                Pixiecards.Add(cardname);
+                CPixiecards.Add(cardname);
+                Debug.Log("combat " + cardname);
+            }
         }
-        if (cards.Count >= 10)
+        else if (deckname == "Barley")
+        {
+            if (Barleycards.Count < 10)
+            {
+                GameObject newCard = Instantiate(deckCard, combatPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * CBarleycards.Count, 0);
+                Barleycards.Add(cardname);
+                CBarleycards.Add(cardname);
+                Debug.Log("combat " + cardname);
+            }
+        }
+        else if (deckname == "Baldwin")
+        {
+            if (Baldwincards.Count < 10)
+            {
+                GameObject newCard = Instantiate(deckCard, combatPosition.transform);
+                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * CBaldwincards.Count, 0);
+                Baldwincards.Add(cardname);
+                CBaldwincards.Add(cardname);
+                Debug.Log("combat " + cardname);
+            }
+        }
+        if (Pixiecards.Count >= 10 && Barleycards.Count >= 10 && Baldwincards.Count >= 10)
         {
             maxcards();
         }
