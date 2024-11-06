@@ -15,7 +15,7 @@ namespace SpeakeasyStreet
         public int numberOfDice;
         public int sidedDice;
         public int diceModifier;
-        public SubType[] subType;
+        public List<SubType> subTypes;
         public bool unlocked;
 
         public enum CardType
@@ -32,7 +32,8 @@ namespace SpeakeasyStreet
             Intimidation,
             Bribery,
             Buff,
-            Debuff
+            Debuff,
+            Heal
         }
     }
 }

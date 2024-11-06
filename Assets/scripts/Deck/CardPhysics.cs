@@ -1,8 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine;
 
 public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -11,11 +10,13 @@ public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     Vector3 dragOffset;
     Quaternion originalRotation;
     Canvas canvas;
-    
+
     int siblingIndex;
-    
+
     float floatHeight = 110f; // How high the card should float on hover
     float yThreshold = 210f; // Maximum Y-level the card can go before arc starts
+
+    GameObject currentTarget;
 
     public Image highlight;
 
@@ -44,25 +45,48 @@ public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             // Center the card around the pointer
             transform.localPosition = new Vector3(position.x + dragOffset.x, Mathf.Clamp(position.y + dragOffset.y, originalPosition.y, originalPosition.y + yThreshold), 0);
 
+            UpdateTargetUnderMouse(eventData);
         }
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //card is targeting
-        if(transform.localPosition.y >= yThreshold - 0.01)
+        // Check if currentTarget is valid and if the Card is found via the CardDisplay component
+        if (transform.localPosition.y >= yThreshold - 0.01f && currentTarget != null)
         {
-            handManager.PlayCard(transform.gameObject);
+            // Get the CardDisplay component and access the card
+            CardDisplay cardDisplay = GetComponent<CardDisplay>();
+
+            if (cardDisplay != null && cardDisplay.cardData != null)
+            {
+                // Now pass the actual card data to the PlayCard method
+                if (!handManager.PlayCard(transform.gameObject, cardDisplay.cardData, currentTarget.GetComponent<CharacterInstance>()))
+                {
+                    // Reset position if PlayCard fails
+                    ResetCardPosition();
+                }
+            }
+            else
+            {
+                // Handle case where the CardDisplay or card is null
+                Debug.LogError("No CardDisplay component or Card data found.");
+                ResetCardPosition();
+            }
         }
         else
         {
-            // Reset position
-            transform.localPosition = originalPosition;
-            transform.localRotation = originalRotation;
-            transform.SetSiblingIndex(siblingIndex);
+            // Reset position if no valid target or other condition isn't met
+            ResetCardPosition();
         }
 
         DragManager.isDragging = false;
+    }
+
+    private void ResetCardPosition()
+    {
+        transform.localPosition = originalPosition;
+        transform.localRotation = originalRotation;
+        transform.SetSiblingIndex(siblingIndex);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -92,6 +116,33 @@ public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             transform.localPosition = originalPosition;
             transform.localRotation = originalRotation;
             transform.SetSiblingIndex(siblingIndex);
+        }
+    }
+
+    void UpdateTargetUnderMouse(PointerEventData eventData)
+    {
+        // Create a ray from the mouse cursor
+        Ray ray = Camera.main.ScreenPointToRay(eventData.position);
+        RaycastHit hit;
+
+        // Cast the ray and check if it hits anything
+        if (Physics.Raycast(ray, out hit))
+        {
+            // Update the target if the ray hits a valid object
+            currentTarget = hit.collider.gameObject;
+
+            // Optionally: highlight the target or interact with it in some way
+            // For example, highlight the target or show a visual feedback on hover
+            if (currentTarget != null)
+            {
+                // Add custom logic here (e.g., highlight the target or provide feedback)
+                Debug.Log("Target under mouse: " + currentTarget.name);
+            }
+        }
+        else
+        {
+            // If no target is hit, reset the current target
+            currentTarget = null;
         }
     }
 }

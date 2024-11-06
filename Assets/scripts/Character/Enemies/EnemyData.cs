@@ -7,5 +7,4 @@ using SpeakeasyStreet;
 public class EnemyData : ScriptableObject
 {
     public int baseMaxHealth;
-    public Card[] attacks;
 }
