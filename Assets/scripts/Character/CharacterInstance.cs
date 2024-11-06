@@ -2,16 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Character : ScriptableObject
+public class CharacterInstance : MonoBehaviour
 {
     public int maxHealth;
     public int currentHealth;
+    public float damageMultiplier = 1f;
+    public float defenseMultiplier = 1f;
+
+    public bool isStunned = false;
+
     public List<Buff> activeBuffs;
     public List<Debuff> activeDebuffs;
 
     private void Start()
     {
-        currentHealth = maxHealth;
         activeBuffs = new List<Buff>();
         activeDebuffs = new List<Debuff>();
     }
@@ -53,9 +57,9 @@ public class Character : ScriptableObject
         // Apply debuff effects if needed
     }
 
-    public bool RemoveDebuff(Buff debuff)
+    public bool RemoveDebuff(Debuff debuff)
     {
-        return activeBuffs.Remove(debuff);
+        return activeDebuffs.Remove(debuff);
     }
 
     public void UpdateEffects()
