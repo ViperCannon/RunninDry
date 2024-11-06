@@ -39,22 +39,22 @@ public class DeckManager : MonoBehaviour
 
     public Card DrawCard()
     {
-        if(negotiationDeck.IsEmpty() && discardPile.IsEmpty())
+        if(combatDeck.IsEmpty() && discardPile.IsEmpty())
         {
             Debug.Log("No more cards to draw from.");
             return null;
         }
-        else if (negotiationDeck.IsEmpty())
+        else if (combatDeck.IsEmpty())
         {
-            negotiationDeck.Copy(discardPile);
+            combatDeck.Copy(discardPile);
             discardPile.Clear();
-            negotiationDeck.Shuffle();
+            combatDeck.Shuffle();
 
-            return negotiationDeck.Remove(0);
+            return combatDeck.Remove(0);
         }
         else
         {
-            return negotiationDeck.Remove(0);
+            return combatDeck.Remove(0);
         }
     }
 
@@ -66,7 +66,7 @@ public class DeckManager : MonoBehaviour
 
     public void UpdateCounters()
     {
-        deckCounter.text = negotiationDeck.Size().ToString();
+        deckCounter.text = combatDeck.Size().ToString();
         discardCounter.text = discardPile.Size().ToString();
     }
 

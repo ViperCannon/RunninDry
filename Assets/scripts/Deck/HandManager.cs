@@ -6,8 +6,11 @@ using SpeakeasyStreet;
 public class HandManager : MonoBehaviour
 {
     [SerializeField]
+    CombatManager combatManager;
+    [SerializeField]
+    CardEffectResolver cardResolver;
+    [SerializeField]
     GameObject cardPrefab;
-
     [SerializeField]
     DeckManager deckManager;
 
@@ -27,7 +30,7 @@ public class HandManager : MonoBehaviour
 
     public List<GameObject> cardsInHand = new();
 
-    const int MAX_HAND_SIZE = 7;
+    const int MAX_HAND_SIZE = 6;
     public int initialDraw = 6;
 
     void Start()
@@ -35,7 +38,10 @@ public class HandManager : MonoBehaviour
         deckManager.PopulateDecks();
         deckManager.UpdateCounters();
 
-        AttemptDraw(initialDraw);
+        if(combatManager == null)
+        {
+            AttemptDraw(initialDraw);
+        }   
     }
 
     public void AttemptDraw(int draw)
@@ -49,6 +55,25 @@ public class HandManager : MonoBehaviour
             }
 
             AddCardToHand(deckManager.DrawCard());
+        }
+    }
+
+    public void Discard(GameObject cardDisplay)
+    {
+        cardsInHand.Remove(cardDisplay);
+        UpdateHandVisuals();
+        deckManager.DiscardCard(cardDisplay.GetComponent<CardDisplay>().cardData);
+        
+        //animation of card going to discard
+
+        Destroy(cardDisplay);
+    }
+
+    public void DiscardHand()
+    {
+        while(cardsInHand.Count > 0)
+        {
+            Discard(cardsInHand[0]);
         }
     }
 
@@ -69,18 +94,24 @@ public class HandManager : MonoBehaviour
         }
     }
 
-    public void PlayCard(GameObject card)
+    public bool PlayCard(GameObject cardDisplay, Card cardData, CharacterInstance target)
     {
-        //resolve card effect
+        //resolve card effect (need to add logic if player is downed.)
+        if (cardData.cost <= combatManager.currentCaps && !target.isDowned)
+        {
+            combatManager.currentCaps -= cardData.cost;
+            cardResolver.ResolveCardEffect(cardData, target);
 
-        //if successful
-        cardsInHand.Remove(card);
-        UpdateHandVisuals();
-        deckManager.DiscardCard(card.GetComponent<CardDisplay>().cardData);
+            Discard(cardDisplay);
 
-        //animation of card going to discard
+            return true;
+        }
+        else
+        {
+            Debug.Log("Can't Play Card!");
 
-        Destroy(card);
+            return false;
+        }   
     }
 
     private void UpdateHandVisuals()

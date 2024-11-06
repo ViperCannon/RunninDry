@@ -10,6 +10,8 @@ public class CharacterInstance : MonoBehaviour
     public float defenseMultiplier = 1f;
 
     public bool isStunned = false;
+    public bool isResilient = false;
+    public bool isDowned = false;
 
     public List<Buff> activeBuffs;
     public List<Debuff> activeDebuffs;
@@ -23,11 +25,15 @@ public class CharacterInstance : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (currentHealth < 0)
+        if (currentHealth <= 0)
         {
             currentHealth = 0;
+            isDowned = true;
         }
-        // Trigger any death or health change events here
+        else
+        {
+            isDowned = false;
+        }
     }
 
     public void Heal(int amount)

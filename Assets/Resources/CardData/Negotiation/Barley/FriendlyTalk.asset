@@ -21,4 +21,5 @@ MonoBehaviour:
   sidedDice: 10
   diceModifier: 0
   subType: 02000000
+  subTypes: 02000000
   unlocked: 1

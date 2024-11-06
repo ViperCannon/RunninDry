@@ -5,14 +5,18 @@ using SpeakeasyStreet;
 
 public class EnemyInstance : CharacterInstance
 {
+    [SerializeField]
     EnemyData baseData;
     public Card[] attacks;
 
-    public EnemyInstance(EnemyData enemyData)
+   void Start()
     {
-        baseData = enemyData;
         maxHealth = baseData.baseMaxHealth;
         currentHealth = maxHealth;
-        attacks = baseData.attacks;
+    }
+
+    public void PerformAction()
+    {
+
     }
 }

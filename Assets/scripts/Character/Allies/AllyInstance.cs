@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class AllyInstance : CharacterInstance
 {
+    [SerializeField]
     AllyData baseData;
 
-    public string allyName;
     public int caps;
-    
-    public AllyInstance(AllyData allyData)
+
+    void Start()
     {
-        baseData = allyData;
-        allyName = baseData.allyName;
         maxHealth = baseData.baseMaxHealth;
         currentHealth = maxHealth;
-        caps = baseData.caps;
     }
 }
