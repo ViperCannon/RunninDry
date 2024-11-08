@@ -1,0 +1,22 @@
+{
+	"Talkers": [
+		{
+			"TalkerId":1,
+			"TalkerName":"Cop1",
+			"TalkerText": "Police, hands up.",
+			"TalkerType": "Combat"
+		},
+		{
+			"TalkerId": 2,
+			"TalkerName": "Cop2",
+			"TalkerText": "nuh-uh",
+			"TalkerType": "Combat"
+		},
+		{
+			"TalkerId": 3,
+			"TalkerName": "Cop3",
+			"TalkerText": "*Bang*",
+			"TalkerType": "Combat"
+		}
+	]
+}
