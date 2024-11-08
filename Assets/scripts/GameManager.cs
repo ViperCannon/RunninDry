@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     Animator overworld;
     Animator car;
     GameObject AssetHolder;
+    TalkerDatabase TalkDatabase;
+    public int talkerint;
     [SerializeField]
     float waitTime;
     [Header("Negotiation")]
@@ -35,6 +37,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TalkDatabase = this.gameObject.GetComponent<TalkerDatabase>();
         overworld = GameObject.FindWithTag("Map").GetComponent<Animator>();
         car = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
         AssetHolder = GameObject.Find("NodeSpawnAssets");
@@ -44,7 +47,10 @@ public class GameManager : MonoBehaviour
             AssetHolder.transform.GetChild(i).gameObject.SetActive(false);
         }
     }
-
+    public void encounter(string type)
+    {
+        TalkDatabase.encounter(type);
+    }
     public void GrabAssets()
     {
         if (GameObject.Find("N1") != null && GameObject.Find("N2") != null)
@@ -81,6 +87,7 @@ public class GameManager : MonoBehaviour
     public void endEncounter()
     {
         StartCoroutine(endingEncounter());
+        TalkDatabase.textbox.SetActive(false);
     }
 
     IEnumerator endingEncounter()

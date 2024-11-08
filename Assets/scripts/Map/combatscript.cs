@@ -6,6 +6,8 @@ public class combatscript : MonoBehaviour
 {
     randomnumber randomnumber;
     GameManager gamemanager;
+    string encounterType = "Combat";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,8 @@ public class combatscript : MonoBehaviour
 
     public void loadAssets()
     {
+        gamemanager.talkerint = randomnumber.generatedNumber;
+        gamemanager.encounter(encounterType);
         if (randomnumber.generatedNumber == 1)
         {
             gamemanager.Cassets1.SetActive(true);

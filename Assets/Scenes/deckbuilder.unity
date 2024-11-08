@@ -711,13 +711,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da90d8d4249b98a4f98cf63c76d6de68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards: []
-  Ncards: []
-  Ccards: []
+  TotalNegotiationCards: []
+  TotalCombatCards: []
+  Pixiecards: []
+  Baldwincards: []
+  Barleycards: []
+  NPixiecards: []
+  CPixiecards: []
+  NBaldwincards: []
+  CBaldwincards: []
+  NBarleycards: []
+  CBarleycards: []
   maxcardsbutton: {fileID: 229822536}
   deckCard: {fileID: 601099138075608665, guid: 9e863e2f2eac61a49b18b65c3e714dc8, type: 3}
   negotiationPosition: {fileID: 425470746}
   combatPosition: {fileID: 156168561}
+  currentDeck: Pixie
 --- !u!1 &229822536
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,7 +797,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
