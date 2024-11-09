@@ -10,6 +10,7 @@ public class negotiationscript : MonoBehaviour
     GameObject assets1;
     [SerializeField]
     GameObject assets2;
+    string encounterType = "Negotiation";
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +41,8 @@ public class negotiationscript : MonoBehaviour
     }
     public void loadAssets()
     {
+        gamemanager.talkerint = randomnumber.generatedNumber;
+        gamemanager.encounter(encounterType);
         if (randomnumber.generatedNumber == 1)
         {
             gamemanager.Nassets1.SetActive(true);

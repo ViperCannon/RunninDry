@@ -6,6 +6,7 @@ public class eventscript : MonoBehaviour
 {
     randomnumber randomnumber;
     GameManager gamemanager;
+    string encounterType = "Event";
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,8 @@ public class eventscript : MonoBehaviour
 
     public void loadAssets()
     {
+        gamemanager.talkerint = randomnumber.generatedNumber;
+        gamemanager.encounter(encounterType);
         if (randomnumber.generatedNumber == 1)
         {
             gamemanager.Eassets1.SetActive(true);

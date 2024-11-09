@@ -6,6 +6,7 @@ public class mysteryscript : MonoBehaviour
 {
     randomnumber randomnumber;
     GameManager gamemanager;
+    string encounterType = "Mystery";
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,8 @@ public class mysteryscript : MonoBehaviour
 
     public void loadAssets()
     {
+        gamemanager.talkerint = randomnumber.generatedNumber;
+        gamemanager.encounter(encounterType);
         if (randomnumber.generatedNumber == 1)
         {
             gamemanager.Massets1.SetActive(true);
