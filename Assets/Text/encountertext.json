@@ -1,8 +1,8 @@
 {
 	"Talkers": [
 		{
-			"TalkerId":1,
-			"TalkerName":"Cop1",
+			"TalkerId": 1,
+			"TalkerName": "Cop1",
 			"TalkerText": "Police, hands up.",
 			"TalkerType": "Combat"
 		},
@@ -17,6 +17,42 @@
 			"TalkerName": "Cop3",
 			"TalkerText": "*Bang*",
 			"TalkerType": "Combat"
+		},
+		{
+			"TalkerId": 1,
+			"TalkerName": "Gamer",
+			"TalkerText": "I am, in fact, gaming",
+			"TalkerType": "Negotiation"
+		},
+		{
+			"TalkerId": 2,
+			"TalkerName": "non-gamer",
+			"TalkerText": "I am not gaming",
+			"TalkerType": "Negotiation"
+		},
+		{
+			"TalkerId": 1,
+			"TalkerName": "Event1",
+			"TalkerText": "event text 1",
+			"TalkerType": "Event"
+		},
+		{
+			"TalkerId": 2,
+			"TalkerName": "Event2",
+			"TalkerText": "event text 2",
+			"TalkerType": "Event"
+		},
+		{
+			"TalkerId": 1,
+			"TalkerName": "mystery1",
+			"TalkerText": "ghostbusters",
+			"TalkerType": "Mystery"
+		},
+		{
+			"TalkerId": 2,
+			"TalkerName": "mystery2",
+			"TalkerText": "scooby-doo",
+			"TalkerType": "Mystery"
 		}
 	]
 }
