@@ -35,7 +35,8 @@ public class TalkerDatabase : MonoBehaviour
         text.text = GetTalkerText(manager.talkerint, type);
         talkername.text = GetTalkerName(manager.talkerint, type);
         talkerimage.texture = Resources.Load<Texture2D>("Dialogueimages/" + type+"/"+manager.talkerint.ToString());
-        //for image, resource folder, folder with images with sub folders with the "type" and then name images after talkerint
+        //for button text, if different options are required use the talker strings to include data for what the 4 buttons should be ie public string TalkerOption1, 2, 3, etc
+        //have 4 functions for each button and each one could sort with If statements for the talkertype and then talkerID 
     }
 
     void Start()
