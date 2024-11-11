@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     GameObject AssetHolder;
     TalkerDatabase TalkDatabase;
     public int talkerint;
+    public string talkertype;
     [SerializeField]
     float waitTime;
     [Header("Negotiation")]
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
     }
     public void encounter(string type)
     {
+        talkertype = type;
         TalkDatabase.encounter(type);
     }
     public void GrabAssets()
@@ -87,6 +89,10 @@ public class GameManager : MonoBehaviour
     public void endEncounter()
     {
         StartCoroutine(endingEncounter());
+        for (int i = 0; i < TalkDatabase.optionbuttons.transform.childCount; i++)
+        {
+            TalkDatabase.optionbuttons.transform.GetChild(i).gameObject.SetActive(false);
+        }
         TalkDatabase.textbox.SetActive(false);
     }
 
