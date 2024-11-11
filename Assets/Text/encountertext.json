@@ -4,55 +4,100 @@
 			"TalkerId": 1,
 			"TalkerName": "Cop1",
 			"TalkerText": "Police, hands up.",
-			"TalkerType": "Combat"
+			"TalkerType": "Combat",
+			"Optioncount": 2,
+			"Option1": "text",
+			"Option2": "text",
+			"Option3": "text",
+			"Option4": "text"
 		},
 		{
 			"TalkerId": 2,
 			"TalkerName": "Cop2",
 			"TalkerText": "nuh-uh",
-			"TalkerType": "Combat"
+			"TalkerType": "Combat",
+			"Optioncount": 2,
+			"Option1": "text",
+			"Option2": "text",
+			"Option3": "text",
+			"Option4": "text"
 		},
 		{
 			"TalkerId": 3,
 			"TalkerName": "Cop3",
 			"TalkerText": "*Bang*",
-			"TalkerType": "Combat"
+			"TalkerType": "Combat",
+			"Optioncount": 2,
+			"Option1": "text",
+			"Option2": "text",
+			"Option3": "text",
+			"Option4": "text"
 		},
 		{
 			"TalkerId": 1,
 			"TalkerName": "Gamer",
 			"TalkerText": "I am, in fact, gaming",
-			"TalkerType": "Negotiation"
+			"TalkerType": "Negotiation",
+			"Optioncount": 4,
+			"Option1": "text",
+			"Option2": "text",
+			"Option3": "text",
+			"Option4": "text"
 		},
 		{
 			"TalkerId": 2,
 			"TalkerName": "non-gamer",
 			"TalkerText": "I am not gaming",
-			"TalkerType": "Negotiation"
+			"TalkerType": "Negotiation",
+			"Optioncount": 4,
+			"Option1": "text",
+			"Option2": "text",
+			"Option3": "text",
+			"Option4": "text"
 		},
 		{
 			"TalkerId": 1,
 			"TalkerName": "Event1",
 			"TalkerText": "event text 1",
-			"TalkerType": "Event"
+			"TalkerType": "Event",
+			"Optioncount": 4,
+			"Option1": "text",
+			"Option2": "text",
+			"Option3": "text",
+			"Option4": "text"
 		},
 		{
 			"TalkerId": 2,
 			"TalkerName": "Event2",
 			"TalkerText": "event text 2",
-			"TalkerType": "Event"
+			"TalkerType": "Event",
+			"Optioncount": 4,
+			"Option1": "text",
+			"Option2": "text",
+			"Option3": "text",
+			"Option4": "text"
 		},
 		{
 			"TalkerId": 1,
 			"TalkerName": "mystery1",
 			"TalkerText": "ghostbusters",
-			"TalkerType": "Mystery"
+			"TalkerType": "Mystery",
+			"Optioncount": 4,
+			"Option1": "text",
+			"Option2": "text",
+			"Option3": "text",
+			"Option4": "text"
 		},
 		{
 			"TalkerId": 2,
 			"TalkerName": "mystery2",
 			"TalkerText": "scooby-doo",
-			"TalkerType": "Mystery"
+			"TalkerType": "Mystery",
+			"Optioncount": 4,
+			"Option1": "text",
+			"Option2": "text",
+			"Option3": "text",
+			"Option4": "text"
 		}
 	]
 }
