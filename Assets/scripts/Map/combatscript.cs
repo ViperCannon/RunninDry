@@ -25,11 +25,11 @@ public class combatscript : MonoBehaviour
     {
         gamemanager.talkerint = randomnumber.generatedNumber;
         gamemanager.encounter(encounterType);
-        if (randomnumber.generatedNumber == 1)
+        if (randomnumber.generatedNumber <= 3)
         {
             gamemanager.Cassets1.SetActive(true);
         }
-        else if (randomnumber.generatedNumber == 2)
+        else if (randomnumber.generatedNumber >= 4)
         {
             gamemanager.Cassets2.SetActive(true);
         }

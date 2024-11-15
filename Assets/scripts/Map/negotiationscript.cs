@@ -43,11 +43,11 @@ public class negotiationscript : MonoBehaviour
     {
         gamemanager.talkerint = randomnumber.generatedNumber;
         gamemanager.encounter(encounterType);
-        if (randomnumber.generatedNumber == 1)
+        if (randomnumber.generatedNumber <= 3)
         {
             gamemanager.Nassets1.SetActive(true);
         }
-        else if (randomnumber.generatedNumber == 2) 
+        else if (randomnumber.generatedNumber >= 4) 
         {
             gamemanager.Nassets2.SetActive(true);
         }

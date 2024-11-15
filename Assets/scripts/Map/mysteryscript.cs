@@ -24,11 +24,11 @@ public class mysteryscript : MonoBehaviour
     {
         gamemanager.talkerint = randomnumber.generatedNumber;
         gamemanager.encounter(encounterType);
-        if (randomnumber.generatedNumber == 1)
+        if (randomnumber.generatedNumber <= 3)
         {
             gamemanager.Massets1.SetActive(true);
         }
-        else if (randomnumber.generatedNumber == 2)
+        else if (randomnumber.generatedNumber >= 4)
         {
             gamemanager.Massets2.SetActive(true);
         }

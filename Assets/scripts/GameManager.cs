@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     Animator car;
     GameObject AssetHolder;
     TalkerDatabase TalkDatabase;
+    relationshipframework relations;
     public int talkerint;
     public string talkertype;
     [SerializeField]
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        relations = this.gameObject.GetComponent<relationshipframework>();
         TalkDatabase = this.gameObject.GetComponent<TalkerDatabase>();
         overworld = GameObject.FindWithTag("Map").GetComponent<Animator>();
         car = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
@@ -94,6 +96,13 @@ public class GameManager : MonoBehaviour
             TalkDatabase.optionbuttons.transform.GetChild(i).gameObject.SetActive(false);
         }
         TalkDatabase.textbox.SetActive(false);
+        print(relations.copRelations);
+        print(relations.civilianRelations);
+        print(relations.drunkardRelations);
+        print(relations.prohibitionistsRelations);
+        print(relations.russianMobRelations);
+        print(relations.norwegianMobRelations);
+        print(relations.sicilianMobRelations);
     }
 
     IEnumerator endingEncounter()
