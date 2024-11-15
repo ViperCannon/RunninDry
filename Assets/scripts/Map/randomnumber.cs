@@ -20,7 +20,7 @@ public class randomnumber : MonoBehaviour
 
     public void generateNumber()
     {
-        generatedNumber = Random.Range(1, 3);
+        generatedNumber = Random.Range(1, 6);
         print(generatedNumber);
     }
 

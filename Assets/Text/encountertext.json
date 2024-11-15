@@ -9,7 +9,11 @@
 			"Option1": "text",
 			"Option2": "text",
 			"Option3": "text",
-			"Option4": "text"
+			"Option4": "text",
+			"Option1outcome": "text",
+			"Option2outcome": "text",
+			"Option3outcome": "text",
+			"Option4outcome": "text"
 		},
 		{
 			"TalkerId": 2,
@@ -20,7 +24,11 @@
 			"Option1": "text",
 			"Option2": "text",
 			"Option3": "text",
-			"Option4": "text"
+			"Option4": "text",
+			"Option1outcome": "text",
+			"Option2outcome": "text",
+			"Option3outcome": "text",
+			"Option4outcome": "text"
 		},
 		{
 			"TalkerId": 3,
@@ -31,7 +39,11 @@
 			"Option1": "text",
 			"Option2": "text",
 			"Option3": "text",
-			"Option4": "text"
+			"Option4": "text",
+			"Option1outcome": "text",
+			"Option2outcome": "text",
+			"Option3outcome": "text",
+			"Option4outcome": "text"
 		},
 		{
 			"TalkerId": 1,
@@ -42,7 +54,11 @@
 			"Option1": "text",
 			"Option2": "text",
 			"Option3": "text",
-			"Option4": "text"
+			"Option4": "text",
+			"Option1outcome": "text",
+			"Option2outcome": "text",
+			"Option3outcome": "text",
+			"Option4outcome": "text"
 		},
 		{
 			"TalkerId": 2,
@@ -53,29 +69,56 @@
 			"Option1": "text",
 			"Option2": "text",
 			"Option3": "text",
-			"Option4": "text"
+			"Option4": "text",
+			"Option1outcome": "text",
+			"Option2outcome": "text",
+			"Option3outcome": "text",
+			"Option4outcome": "text"
 		},
 		{
 			"TalkerId": 1,
 			"TalkerName": "Event1",
-			"TalkerText": "event text 1",
+			"TalkerText": "A baker, transporting his goods by hand cart, has an unlucky break- that being one of his cart's wheels. As his bread spills over the road, a nearby policeman stops traffic to assist him.",
 			"TalkerType": "Event",
-			"Optioncount": 4,
-			"Option1": "text",
-			"Option2": "text",
-			"Option3": "text",
-			"Option4": "text"
+			"Optioncount": 3,
+			"Option1": "Get out and help the baker.",
+			"Option2": "Don't risk it.",
+			"Option3": "Get outta there!",
+			"Option4": "text",
+			"Option1outcome": "You hop out of the truck and quickly help the baker rein in his wayward grains. The policeman notices you.",
+			"Option2outcome": "You shrink down in the car, attempting to make yourself unrecognizable.",
+			"Option3outcome": "You gun it, running over the baker's dozen or so loaves.",
+			"Option4outcome": "text"
 		},
 		{
 			"TalkerId": 2,
 			"TalkerName": "Event2",
-			"TalkerText": "event text 2",
+			"TalkerText": "A small orange and white cat runs into the road, followed closely by a young girl. The car has to swerve to a stop to avoid hitting her.",
 			"TalkerType": "Event",
-			"Optioncount": 4,
-			"Option1": "text",
-			"Option2": "text",
-			"Option3": "text",
-			"Option4": "text"
+			"Optioncount": 3,
+			"Option1": "Tell her off.",
+			"Option2": "Continue on your way.",
+			"Option3": "Give her something to keep her off the road.",
+			"Option4": "text",
+			"Option1outcome": "The girl scoops up the cat and runs off crying, noticed by a few passersby.",
+			"Option2outcome": "The cat and girl wander off the road and you continue onwards.",
+			"Option3outcome": "You toss her a dollar and tell her to get a candy from the market. She takes it, beaming, and hurries off, the cat following close behind her.",
+			"Option4outcome": "text"
+		},
+		{
+			"TalkerId": 3,
+			"TalkerName": "Event3",
+			"TalkerText": "A crowd of civilians cross the street. And cross. And cross... and they don't seem to be stopping anytime soon.",
+			"TalkerType": "Event",
+			"Optioncount": 3,
+			"Option1": "Beep at them.",
+			"Option2": "Inch forward.",
+			"Option3": "Gun  it.",
+			"Option4": "text",
+			"Option1outcome": "Startled, some of the passersby drop their bags. Some people...",
+			"Option2outcome": "You slowly inch forward into the stream of people and they flow around you like water. Within a couple seconds, you're on the other side of the strange deluge. How bizarre...",
+			"Option3outcome": "You floor the accelerator, tires squealing. You don't hit anyone, luckily, but people have to throw themselves out of the way. Somehow, a purse ends up snagged to the hood ornament.",
+			"Option4outcome": "text"
 		},
 		{
 			"TalkerId": 1,
@@ -86,7 +129,11 @@
 			"Option1": "text",
 			"Option2": "text",
 			"Option3": "text",
-			"Option4": "text"
+			"Option4": "text",
+			"Option1outcome": "text",
+			"Option2outcome": "text",
+			"Option3outcome": "text",
+			"Option4outcome": "text"
 		},
 		{
 			"TalkerId": 2,
@@ -97,7 +144,11 @@
 			"Option1": "text",
 			"Option2": "text",
 			"Option3": "text",
-			"Option4": "text"
+			"Option4": "text",
+			"Option1outcome": "text",
+			"Option2outcome": "text",
+			"Option3outcome": "text",
+			"Option4outcome": "text"
 		}
 	]
 }
