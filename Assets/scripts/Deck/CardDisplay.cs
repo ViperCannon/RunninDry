@@ -18,7 +18,16 @@ public class CardDisplay : MonoBehaviour
     public void UpdateCardDisplay()
     {
         nameText.text = cardData.cardName;
-        costText.text = cardData.cost.ToString();
+
+        if (cardData.subTypes.Contains(Card.SubType.Unload))
+        {
+            costText.text = "X";
+        }
+        else
+        {
+            costText.text = cardData.cost.ToString();
+        }    
+
         dmgText.text = cardData.damage.ToString();
 
         if(cardData.cardType is Card.CardType.Negotiation)

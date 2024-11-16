@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using SpeakeasyStreet;
 
 public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -51,32 +53,31 @@ public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // Check if currentTarget is valid and if the Card is found via the CardDisplay component
-        if (transform.localPosition.y >= yThreshold - 0.01f && currentTarget != null)
-        {
-            // Get the CardDisplay component and access the card
-            CardDisplay cardDisplay = GetComponent<CardDisplay>();
+        Card cardData = GetComponent<CardDisplay>().cardData;
 
-            if (cardDisplay != null && cardDisplay.cardData != null)
+        if (transform.localPosition.y >= yThreshold - 0.01f || currentTarget != null)
+        {
+
+            if (cardData.validTargets[0] != Card.CardTarget.Enemy && cardData.validTargets[0] != Card.CardTarget.Player
+                && handManager.PlayCard(transform.gameObject, cardData, currentTarget.GetComponent<CharacterInstance>()))
             {
-                // Now pass the actual card data to the PlayCard method
-                if (!handManager.PlayCard(transform.gameObject, cardDisplay.cardData, currentTarget.GetComponent<CharacterInstance>()))
-                {
-                    // Reset position if PlayCard fails
-                    ResetCardPosition();
-                }
+                Debug.Log("Successfully Played Card!");
+            }
+            else if (currentTarget != null && currentTarget.CompareTag(cardData.validTargets[0].ToString()) && (currentTarget.name != cardData.name 
+                || cardData.validTargets.Contains(Card.CardTarget.Self)) && handManager.PlayCard(transform.gameObject, cardData, currentTarget.GetComponent<CharacterInstance>()))
+            {
+                Debug.Log("Successfully Played Card!");
             }
             else
             {
-                // Handle case where the CardDisplay or card is null
-                Debug.LogError("No CardDisplay component or Card data found.");
                 ResetCardPosition();
+                highlight.color = new Color(0, 255, 23, 0);
             }
         }
         else
         {
-            // Reset position if no valid target or other condition isn't met
             ResetCardPosition();
+            highlight.color = new Color(0, 255, 23, 0);
         }
 
         DragManager.isDragging = false;
@@ -136,7 +137,6 @@ public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
             if (currentTarget != null)
             {
                 // Add custom logic here (e.g., highlight the target or provide feedback)
-                Debug.Log("Target under mouse: " + currentTarget.name);
             }
         }
         else
