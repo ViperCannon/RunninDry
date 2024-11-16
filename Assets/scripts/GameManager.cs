@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
         {
             TalkDatabase.optionbuttons.transform.GetChild(i).gameObject.SetActive(false);
         }
-        TalkDatabase.textbox.SetActive(false);
+        //TalkDatabase.textbox.SetActive(false);
         print(relations.copRelations);
         print(relations.civilianRelations);
         print(relations.drunkardRelations);
@@ -107,6 +107,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator endingEncounter()
     {
+        TalkDatabase.text.text = TalkDatabase.responsetext;
+        yield return new WaitForSeconds(5);
+        TalkDatabase.textbox.SetActive(false);
+        //TalkDatabase.text = TalkDatabase.Getresponse();
         overworld.SetTrigger("fadein");
         car.SetTrigger("start");
         yield return new WaitForSeconds(waitTime);
