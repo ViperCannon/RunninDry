@@ -17,6 +17,7 @@ MonoBehaviour:
   cardType: 1
   cost: 1
   damage: 8
+  damageMulti: 1
   numberOfDice: 0
   sidedDice: 0
   diceModifier: 0

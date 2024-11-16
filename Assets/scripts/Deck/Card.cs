@@ -12,6 +12,7 @@ namespace SpeakeasyStreet
         public CardType cardType;
         public int cost;
         public int damage;
+        public int damageMulti;
         public int numberOfDice;
         public int sidedDice;
         public int diceModifier;
@@ -50,6 +51,26 @@ namespace SpeakeasyStreet
             AllPlayers,
             AllCharacters,
             Generic //card doesnt target an enemy or character. Typically deck/hand manipulation cards
+        }
+
+        public bool IsAOE()
+        {
+            if(validTargets.Contains(Card.CardTarget.AllEnemies) || validTargets.Contains(Card.CardTarget.AllPlayers) || validTargets.Contains(Card.CardTarget.AllCharacters))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool IsSelfInclusive()
+        {
+            if(validTargets.Contains(Card.CardTarget.Player) && validTargets.Contains(Card.CardTarget.Self))
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }
