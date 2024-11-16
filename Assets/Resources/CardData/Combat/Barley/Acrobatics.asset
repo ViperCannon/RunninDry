@@ -16,11 +16,11 @@ MonoBehaviour:
   character: Barley
   cardType: 1
   cost: 2
-  damage: 4
+  damage: 0
   numberOfDice: 0
   sidedDice: 0
   diceModifier: 0
   cardDescription: 
-  subTypes: 01000000
-  validTargets: 05000000
+  subTypes: 09000000
+  validTargets: 07000000
   unlocked: 1

@@ -25,7 +25,7 @@ namespace SpeakeasyStreet
         private void ResolveCombatCard(Card card, CharacterInstance target)
         {
             // Example: Apply damage based on card attributes
-            if (card.subTypes.Contains(Card.SubType.Melee) || card.subTypes.Contains(Card.SubType.Projectile))
+            if (card.damage != 0)
             {
                 ApplyDamage(card, target);
             }

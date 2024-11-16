@@ -22,5 +22,5 @@ MonoBehaviour:
   diceModifier: 0
   cardDescription: 
   subTypes: 05000000
-  validTargets: 04000000
+  validTargets: 05000000
   unlocked: 1
