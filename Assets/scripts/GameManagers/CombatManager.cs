@@ -31,6 +31,8 @@ public class CombatManager : MonoBehaviour
     // Method to start combat and initialize variables
     public void Start()
     {
+        Debug.Log("Combat Instance Started");
+
         currentPhase = CombatPhase.PlayerTurn;
 
         capsRefreshLimit = 0;
@@ -50,6 +52,8 @@ public class CombatManager : MonoBehaviour
         {
             if (currentPhase == CombatPhase.PlayerTurn)
             {
+                Debug.Log("Start Player Turn.");
+
                 // Wait for the player(s) to finish their turn
                 yield return StartCoroutine(HandlePlayerTurn());
 
@@ -58,6 +62,8 @@ public class CombatManager : MonoBehaviour
             }
             else if (currentPhase == CombatPhase.EnemyTurn)
             {
+                Debug.Log("Start Enemy Turn.");
+
                 // Handle enemies' turn actions
                 yield return StartCoroutine(HandleEnemyTurn());
 
@@ -100,6 +106,7 @@ public class CombatManager : MonoBehaviour
 
     public void EndTurn()
     {
+        Debug.Log("Player Turn Ended");
         hasEndedTurn = true;
     }
 
@@ -111,6 +118,7 @@ public class CombatManager : MonoBehaviour
 
     void EndCombat()
     {
+        Debug.Log("Combat Ended.");
         // Handle the end of combat (e.g., show results, transition to the next scene, etc.)
     }
 }

@@ -20,6 +20,7 @@ MonoBehaviour:
   numberOfDice: 0
   sidedDice: 0
   diceModifier: 0
-  subType: 00000000
+  cardDescription: 
   subTypes: 00000000
+  validTargets: 02000000
   unlocked: 1
