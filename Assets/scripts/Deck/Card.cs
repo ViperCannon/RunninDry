@@ -36,7 +36,8 @@ namespace SpeakeasyStreet
             Buff,
             Debuff,
             Heal,
-            Unload //X cost cards that use up the remaining of the player's CAPs
+            Unload, //X cost cards that use up the remaining of the player's CAPs
+            Draw
         }
 
         public enum CardTarget
@@ -45,7 +46,9 @@ namespace SpeakeasyStreet
             Random,
             Enemy, //Any enemy except for the case of an enemy using an ability. The active enemy is excluded as a target in that case.
             Player, //Any ally excluding the ally whose card is being played
-            AOE, //card does same effect (before accounting for buffs or debuffs) to either all characters, all enemies, or both
+            AllEnemies,
+            AllPlayers,
+            AllCharacters,
             Generic //card doesnt target an enemy or character. Typically deck/hand manipulation cards
         }
     }
