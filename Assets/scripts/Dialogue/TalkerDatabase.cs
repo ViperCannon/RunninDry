@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor.Presets;
 using UnityEngine;
 using UnityEngine.UI;
+using static Unity.Burst.Intrinsics.X86;
 
 [System.Serializable]
 public class TalkerDataEntry
@@ -42,6 +45,7 @@ public class TalkerDatabase : MonoBehaviour
     public TMP_Text text;
     public TMP_Text talkername;
     public RawImage talkerimage;
+    public string responsetext;
     GameManager manager;
     relationshipframework relations;
     public void encounter(string type)
@@ -89,6 +93,36 @@ public class TalkerDatabase : MonoBehaviour
         {
             optionbuttons.transform.GetChild(i).gameObject.SetActive(true);
         }
+    }
+
+    public string Getresponse(int talkerId, string type, int optionnumber)
+    {
+        for (int i = 0; i < MyTalkerData.Talkers.Length; ++i)
+        {
+            if (MyTalkerData.Talkers[i].TalkerType == type)
+            {
+                if (MyTalkerData.Talkers[i].TalkerId == talkerId)
+                {
+                    if (optionnumber == 1)
+                    {
+                        return MyTalkerData.Talkers[i].Option1outcome;
+                    }
+                    else if (optionnumber == 2)
+                    {
+                        return MyTalkerData.Talkers[i].Option2outcome;
+                    }
+                    else if (optionnumber == 3)
+                    {
+                        return MyTalkerData.Talkers[i].Option3outcome;
+                    }
+                    else if(optionnumber == 4)
+                    {
+                        return MyTalkerData.Talkers[i].Option4outcome;
+                    }
+                }
+            }
+        }
+        return "[NO_NAME_FOUND]";
     }
 
     public string GetTalkerName(int talkerId, string type)
@@ -145,7 +179,53 @@ public class TalkerDatabase : MonoBehaviour
             {
                 relations.civilianRelations -= 2;
             }
+            else if (manager.talkerint == 4)
+            {
+                //hp + 5
+                //cash -2
+                relations.civilianRelations += 3;
+            }
+            else if (manager.talkerint == 5)
+            {
+                //cash + 10
+                relations.civilianRelations += 5;
+                relations.copRelations -= 5;
+            }
+            else if (manager.talkerint == 6)
+            {
+                if (relations.civilianRelations >= 60)
+                {
+                    //she smiles, takes your assistance, and presses a bill into your hands(+2 Civ Rp, +3 Cash)
+                    relations.civilianRelations += 2;
+                }
+                else if (relations.civilianRelations >=25 && relations.civilianRelations < 60)
+                {
+                    //If between 25 and 60, she smiles and takes your assistance (+2 Civ RP)
+                    relations.civilianRelations += 2;
+                }
+                else if (relations.civilianRelations < 25)
+                {
+                    //she frowns and walks away(-2 Civ RP)
+                    relations.civilianRelations -= 2;
+                }
+            }
         }
+        else if (manager.talkertype == "Negotiation")
+        {
+            if (manager.talkerint == 1)
+            {
+                //Negotiation P/I/B: 14/8/10  On success, the man cools off, apologizes, and gets back in his car. On fail, your words worsen the situation, and he elbows one of your car windows in (-1 Paneling). He then hightails it out of there
+                manager.endEncounter();
+            }
+        }
+        else if (manager.talkertype == "Combat")
+        {
+            if (manager.talkerint == 1)
+            {
+                //begin combat with 2 civs and 2 drunks
+            }
+        }
+        responsetext = Getresponse(manager.talkerint, manager.talkertype, 1);
     }
     public void option2()
     {
@@ -170,7 +250,37 @@ public class TalkerDatabase : MonoBehaviour
             {
                 manager.endEncounter();
             }
+            else if (manager.talkerint == 4)
+            {
+                manager.endEncounter();
+            }
+            else if (manager.talkerint == 5)
+            {
+                //skill check to add either +15 cash and 2 civ rp or just + 1 civ rp
+                manager.endEncounter();
+            }
+            else if (manager.talkerint == 6)
+            {
+                manager.endEncounter();
+            }
         }
+        else if (manager.talkertype == "Negotiation")
+        {
+            if (manager.talkerint == 1)
+            {
+                //Begin combat with 2 civilians.
+            }
+        }
+        else if (manager.talkertype == "Combat")
+        {
+            if (manager.talkerint == 1)
+            {
+                //-1 booze, +10 Drunks RP, +5 Civ RP
+                relations.drunkardRelations += 10;
+                relations.civilianRelations += 5;
+            }
+        }
+        responsetext = Getresponse(manager.talkerint, manager.talkertype, 2);
     }
     public void option3()
     {
@@ -191,7 +301,13 @@ public class TalkerDatabase : MonoBehaviour
                 //cash -5
                 relations.civilianRelations -= 5;
             }
+            else if (manager.talkerint == 4)
+            {
+                //hp +3
+                relations.civilianRelations -= 5;
+            }
         }
+        responsetext = Getresponse(manager.talkerint, manager.talkertype, 3);
     }
     public void option4()
     {
@@ -199,6 +315,7 @@ public class TalkerDatabase : MonoBehaviour
         {
 
         }
+        responsetext = Getresponse(manager.talkerint, manager.talkertype, 4);
     }
 
 }
