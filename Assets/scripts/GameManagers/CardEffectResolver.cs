@@ -6,36 +6,101 @@ namespace SpeakeasyStreet
 {
     public class CardEffectResolver : MonoBehaviour
     {
-        public void ResolveCardEffect(Card card, CharacterInstance target)
-        {
-            // Check card type and resolve the corresponding effect
-            switch (card.cardType)
-            {
-                case Card.CardType.Combat:
-                    ResolveCombatCard(card, target);
-                    break;
+        CombatManager cManager;
 
-                case Card.CardType.Negotiation:
-                    ResolveNegotiationCard(card, target);
-                    break;
-            }
+        void Start()
+        {
+            cManager = GetComponent<CombatManager>();
         }
 
-        // Resolve Combat Card Effects
-        private void ResolveCombatCard(Card card, CharacterInstance target)
+        public void ResolveTargetCardEffect(Card card, CharacterInstance target, int cost)
         {
             // Example: Apply damage based on card attributes
             if (card.damage != 0)
             {
-                ApplyDamage(card, target);
+                ApplyDamage(card, target, cost);
             }
             if (card.subTypes.Contains(Card.SubType.Buff))
             {
-                ApplyBuff(card, target);
+                ApplyBuff(card, target, cost);
             }
             if (card.subTypes.Contains(Card.SubType.Debuff))
             {
-                ApplyDebuff(card, target);
+                ApplyDebuff(card, target, cost);
+            }
+        }
+
+        // Resolve Combat Card Effects
+        public void ResolveNonTargetCardEffect(Card card, int cost)
+        {
+            switch (card.validTargets[0])
+            {
+                case Card.CardTarget.AllEnemies:
+
+                    AllEnemiesEffect(card, cost);
+
+                    break;
+
+                case Card.CardTarget.AllPlayers:
+
+                    AllPlayersEffect(card, cost);
+
+                    break;
+
+                case Card.CardTarget.AllCharacters:
+
+                    AllEnemiesEffect(card, cost);
+                    AllPlayersEffect(card, cost);
+
+                    break;
+
+                default: //handle generic
+
+                    break;
+            }
+        }
+
+        private void AllEnemiesEffect(Card card, int cost)
+        {
+            foreach (EnemyInstance e in cManager.enemies)
+            {
+                if (!e.isDowned)
+                {
+                    if (card.damage != 0)
+                    {
+                        ApplyDamage(card, e, cost);
+                    }
+                    if (card.subTypes.Contains(Card.SubType.Buff))
+                    {
+                        ApplyBuff(card, e, cost);
+                    }
+                    if (card.subTypes.Contains(Card.SubType.Debuff))
+                    {
+                        ApplyDebuff(card, e, cost);
+                    }
+                }
+            }
+        }
+
+        private void AllPlayersEffect(Card card, int cost)
+        {
+            foreach (AllyInstance p in cManager.players)
+            {
+                if (!p.isDowned)
+                {
+                    if (card.damage != 0)
+                    {
+                        ApplyDamage(card, p, cost);
+                    }
+                    if (card.subTypes.Contains(Card.SubType.Buff))
+                    {
+                        ApplyBuff(card, p, cost);
+                    }
+                    if (card.subTypes.Contains(Card.SubType.Debuff))
+                    {
+                        ApplyDebuff(card, p, cost);
+                    }
+                }
             }
         }
 
@@ -57,13 +122,15 @@ namespace SpeakeasyStreet
         }
 
         // Apply damage to a random enemy (or specific target if desired)
-        private void ApplyDamage(Card card, CharacterInstance target)
+        private void ApplyDamage(Card card, CharacterInstance target, int cost)
         {
-            int totalDamage = card.damage;
-            // Add additional logic to handle dice rolls
+            for(int i = 0; i < card.damageMulti; i++)
+            {
+                int totalDamage = card.damage * cost;
+                // Add additional logic to handle dice rolls
 
-            target.TakeDamage(totalDamage);
-
+                target.TakeDamage(totalDamage);
+            }
         }
 
         // Roll dice logic
@@ -78,13 +145,13 @@ namespace SpeakeasyStreet
         }
 
         // Apply buffs to the player
-        private void ApplyBuff(Card card, CharacterInstance character)
+        private void ApplyBuff(Card card, CharacterInstance character, int cost)
         {
             // Buff logic here.
         }
 
         // Apply debuffs to the enemies
-        private void ApplyDebuff(Card card, CharacterInstance character)
+        private void ApplyDebuff(Card card, CharacterInstance character, int cost)
         {
             // Debuff logic here.
         }

@@ -58,13 +58,12 @@ public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         if (transform.localPosition.y >= yThreshold - 0.01f || currentTarget != null)
         {
 
-            if (cardData.validTargets[0] != Card.CardTarget.Enemy && cardData.validTargets[0] != Card.CardTarget.Player
-                && handManager.PlayCard(transform.gameObject, cardData, null))
+            if (cardData.IsAOE() || cardData.validTargets[0] == Card.CardTarget.Generic && handManager.PlayCard(transform.gameObject, cardData, null))
             {
                 Debug.Log("Successfully Played Card!");
             }
             else if (currentTarget != null && currentTarget.CompareTag(cardData.validTargets[0].ToString()) && (currentTarget.name != cardData.character 
-                || cardData.validTargets.Contains(Card.CardTarget.Self)) && handManager.PlayCard(transform.gameObject, cardData, currentTarget.GetComponent<CharacterInstance>()))
+                || cardData.IsSelfInclusive()) && handManager.PlayCard(transform.gameObject, cardData, currentTarget.GetComponent<CharacterInstance>()))
             {
                 Debug.Log("Successfully Played Card!");
             }

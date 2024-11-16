@@ -97,10 +97,35 @@ public class HandManager : MonoBehaviour
     public bool PlayCard(GameObject cardDisplay, Card cardData, CharacterInstance target)
     {
         //resolve card effect (need to add logic if player is downed.)
-        if (cardData.cost <= combatManager.currentCaps && !target.isDowned)
+        if (cardData.cost <= combatManager.currentCaps && target != null && !target.isDowned)
         {
-            combatManager.currentCaps -= cardData.cost;
-            cardResolver.ResolveCardEffect(cardData, target);
+            if (cardData.subTypes.Contains(Card.SubType.Unload))
+            {
+                cardResolver.ResolveTargetCardEffect(cardData, target, combatManager.currentCaps);
+                combatManager.currentCaps = 0;
+            }
+            else
+            {
+                cardResolver.ResolveTargetCardEffect(cardData, target, 1);
+                combatManager.currentCaps -= cardData.cost;  
+            }
+
+            Discard(cardDisplay);
+
+            return true;
+        }
+        else if (cardData.cost <= combatManager.currentCaps && (cardData.IsAOE() || cardData.validTargets[0] == Card.CardTarget.Generic))
+        {
+            if (cardData.subTypes.Contains(Card.SubType.Unload))
+            {
+                cardResolver.ResolveNonTargetCardEffect(cardData, combatManager.currentCaps);
+                combatManager.currentCaps = 0;
+            }
+            else
+            {
+                cardResolver.ResolveNonTargetCardEffect(cardData, 1);
+                combatManager.currentCaps -= cardData.cost;
+            }
 
             Discard(cardDisplay);
 
