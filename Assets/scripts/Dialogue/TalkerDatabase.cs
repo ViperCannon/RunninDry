@@ -155,6 +155,21 @@ public class TalkerDatabase : MonoBehaviour
         return "[NO_TEXT_FOUND]";
     }
 
+    public void getResponse(int choicenumber)
+    {
+        StartCoroutine(optionchoicetext(choicenumber));
+    }
+    IEnumerator optionchoicetext(int choicenumber)
+    {
+        text.text = responsetext;
+        yield return new WaitForSeconds(6);
+
+
+        manager.endEncounter();
+        StopCoroutine(optionchoicetext(choicenumber));
+        yield return null;
+    }
+
     public void option1()
     {
         if (manager.talkertype == "Event")
@@ -215,7 +230,7 @@ public class TalkerDatabase : MonoBehaviour
             if (manager.talkerint == 1)
             {
                 //Negotiation P/I/B: 14/8/10  On success, the man cools off, apologizes, and gets back in his car. On fail, your words worsen the situation, and he elbows one of your car windows in (-1 Paneling). He then hightails it out of there
-                manager.endEncounter();
+                //manager.endEncounter();
             }
         }
         else if (manager.talkertype == "Combat")
@@ -235,7 +250,7 @@ public class TalkerDatabase : MonoBehaviour
             {
                 if (relations.copRelations >= 25)
                 {
-                    manager.endEncounter();
+                    //manager.endEncounter();
                 }
                 else
                 {
@@ -244,24 +259,24 @@ public class TalkerDatabase : MonoBehaviour
             }
             else if (manager.talkerint == 2)
             {
-                manager.endEncounter();
+                //manager.endEncounter();
             }
             else if (manager.talkerint == 3)
             {
-                manager.endEncounter();
+               //manager.endEncounter();
             }
             else if (manager.talkerint == 4)
             {
-                manager.endEncounter();
+                //manager.endEncounter();
             }
             else if (manager.talkerint == 5)
             {
                 //skill check to add either +15 cash and 2 civ rp or just + 1 civ rp
-                manager.endEncounter();
+                //manager.endEncounter();
             }
             else if (manager.talkerint == 6)
             {
-                manager.endEncounter();
+                //manager.endEncounter();
             }
         }
         else if (manager.talkertype == "Negotiation")

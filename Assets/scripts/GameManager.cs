@@ -107,8 +107,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator endingEncounter()
     {
-        TalkDatabase.text.text = TalkDatabase.responsetext;
-        yield return new WaitForSeconds(5);
+        //TalkDatabase.text.text = TalkDatabase.responsetext;
+        //yield return new WaitForSeconds(5);
         TalkDatabase.textbox.SetActive(false);
         //TalkDatabase.text = TalkDatabase.Getresponse();
         overworld.SetTrigger("fadein");
@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviour
         {
             AssetHolder.transform.GetChild(i).gameObject.SetActive(false);
         }
+        StopCoroutine(endingEncounter());
         yield return null;
     }
 }
