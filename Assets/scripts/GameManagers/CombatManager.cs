@@ -13,14 +13,15 @@ public class CombatManager : MonoBehaviour
 
     [SerializeField]
     CombatPhase currentPhase;
-    [SerializeField]
-    HandManager handManager;
+
     [SerializeField]
     DeckManager deckManager;
     [SerializeField]
     GameManager gameManager;
-
+    
     bool hasEndedTurn = false;
+
+    public HandManager handManager;
 
     public List<AllyInstance> players;
     public List<EnemyInstance> enemies;
