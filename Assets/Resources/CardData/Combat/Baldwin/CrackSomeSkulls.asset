@@ -17,10 +17,13 @@ MonoBehaviour:
   cardType: 1
   cost: 2
   damage: 12
+  damageMulti: 0
+  turnDuration: 0
   numberOfDice: 0
   sidedDice: 0
   diceModifier: 0
   cardDescription: 
+  cardEffects: []
   subTypes: 01000000
   validTargets: 02000000
   unlocked: 0

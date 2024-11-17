@@ -13,10 +13,12 @@ namespace SpeakeasyStreet
         public int cost;
         public int damage;
         public int damageMulti;
+        public int turnDuration;
         public int numberOfDice;
         public int sidedDice;
         public int diceModifier;
         public string cardDescription;
+        public List<ScriptableObject> cardEffects;
         public List<SubType> subTypes;
         public List<CardTarget> validTargets;
         public bool unlocked;
