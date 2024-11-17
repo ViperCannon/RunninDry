@@ -127,6 +127,8 @@ public class HandManager : MonoBehaviour
                 combatManager.currentCaps -= cardData.cost;
             }
 
+            combatManager.lastPlayedCard = cardData;
+
             Discard(cardDisplay);
 
             return true;

@@ -25,8 +25,10 @@ public class CombatManager : MonoBehaviour
     public List<AllyInstance> players;
     public List<EnemyInstance> enemies;
 
-    int capsRefreshLimit;
+    public int capsRefreshLimit;
     public int currentCaps;
+
+    public Card lastPlayedCard;
 
     // Method to start combat and initialize variables
     public void Start()
