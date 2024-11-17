@@ -10,7 +10,7 @@ public class Bleed : Debuff
     {
         debuffName = "Bleed";
         turnDuration = 0;
-        intensity = 0f;
+        intensity = 0;
         target = null;
     }
 
@@ -18,7 +18,7 @@ public class Bleed : Debuff
     {
         debuffName = "Bleed";
         turnDuration = initTurnDuration;
-        intensity = 0f;
+        intensity = 0;
         target = character;
     }
 

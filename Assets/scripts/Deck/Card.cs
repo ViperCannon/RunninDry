@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace SpeakeasyStreet
 {
+
+    //separate in future
     [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
     public class Card : ScriptableObject
     {
@@ -13,7 +15,11 @@ namespace SpeakeasyStreet
         public int cost;
         public int damage;
         public int damageMulti;
-        public int turnDuration;
+        public int secondaryDamage;
+        public int selfDamage;
+        public int turnDuration; //for applied effects
+        public int chanceEffect; //chance for applied effects (do not use for blind)
+        public int drawAmount;
         public int numberOfDice;
         public int sidedDice;
         public int diceModifier;
