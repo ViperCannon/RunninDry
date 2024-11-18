@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     relationshipframework relations;
     public int talkerint;
     public string talkertype;
+    public GameObject continuebutton;
     [SerializeField]
     float waitTime;
     [Header("Negotiation")]
@@ -90,6 +91,9 @@ public class GameManager : MonoBehaviour
 
     public void endEncounter()
     {
+        //if talkdatabase.choiceint == 1 2 3 or 4 &&
+        //do thing. may need to copy and paste the talkdatabase option 1-4 code here.
+        continuebutton.SetActive(false);
         StartCoroutine(endingEncounter());
         for (int i = 0; i < TalkDatabase.optionbuttons.transform.childCount; i++)
         {

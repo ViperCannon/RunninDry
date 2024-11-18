@@ -36,6 +36,7 @@ public class TalkerDatabase : MonoBehaviour
     public TextAsset MyJsonData;
     TalkerDataJSON MyTalkerData;
     int optionCount;
+    public int choiceint;
     public GameObject textbox;
     public GameObject optionbuttons;
     public TMP_Text optionstext1;
@@ -157,17 +158,9 @@ public class TalkerDatabase : MonoBehaviour
 
     public void getResponse(int choicenumber)
     {
-        StartCoroutine(optionchoicetext(choicenumber));
-    }
-    IEnumerator optionchoicetext(int choicenumber)
-    {
         text.text = responsetext;
-        yield return new WaitForSeconds(6);
-
-
-        manager.endEncounter();
-        StopCoroutine(optionchoicetext(choicenumber));
-        yield return null;
+        manager.continuebutton.SetActive(true);
+        choiceint = choicenumber;
     }
 
     public void option1()
