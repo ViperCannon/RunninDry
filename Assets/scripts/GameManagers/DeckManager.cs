@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using SpeakeasyStreet;
 
-
 public class DeckManager : MonoBehaviour
 {
     [SerializeField]
