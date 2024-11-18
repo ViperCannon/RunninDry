@@ -24,14 +24,19 @@ public class Bleed : Debuff
 
     new public void ResolveEffect(Card card, CharacterInstance character, int cost, CombatManager cManager)
     {
+        Effect((CombatCard)card, character);
+    }
+
+    void Effect(CombatCard card, CharacterInstance character)
+    {
         Bleed existingBleed = null;
-        
+
         foreach (Debuff debuff in character.activeDebuffs)
         {
-            if (debuff is Bleed)  
+            if (debuff is Bleed bleed)
             {
-                existingBleed = (Bleed)debuff;  
-                break; 
+                existingBleed = bleed;
+                break;
             }
         }
 

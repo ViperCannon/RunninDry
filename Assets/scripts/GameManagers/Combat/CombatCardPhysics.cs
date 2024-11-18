@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using SpeakeasyStreet;
 
-public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     HandManager handManager;
     Vector3 originalPosition;
@@ -53,16 +53,16 @@ public class CardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Card cardData = GetComponent<CardDisplay>().cardData;
+        CombatCard cardData = GetComponent<CombatCardDisplay>().cardData;
 
         if (transform.localPosition.y >= yThreshold - 0.01f || currentTarget != null)
         {
 
-            if (cardData.IsAOE() || cardData.validTargets[0] == Card.CardTarget.Generic && handManager.PlayCard(transform.gameObject, cardData, null))
+            if (cardData.IsAOE() || cardData.validTargets[0] == CombatCard.CardTarget.Generic && handManager.PlayCard(transform.gameObject, cardData, null))
             {
                 Debug.Log("Successfully Played Card!");
             }
-            else if (currentTarget != null && currentTarget.CompareTag(cardData.validTargets[0].ToString()) && (currentTarget.name != cardData.character 
+            else if (currentTarget != null && currentTarget.CompareTag(cardData.validTargets[0].ToString()) && (currentTarget.name != cardData.character.ToString() 
                 || cardData.IsSelfInclusive()) && handManager.PlayCard(transform.gameObject, cardData, currentTarget.GetComponent<CharacterInstance>()))
             {
                 Debug.Log("Successfully Played Card!");

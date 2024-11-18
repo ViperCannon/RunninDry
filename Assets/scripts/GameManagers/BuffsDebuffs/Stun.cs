@@ -30,13 +30,18 @@ public class Stun : Debuff
 
     new public void ResolveEffect(Card card, CharacterInstance character, int cost, CombatManager cManager)
     {
+        Effect((CombatCard)card, character);
+    }
+
+    void Effect(CombatCard card, CharacterInstance character)
+    {
         Stun existingStun = null;
 
         foreach (Debuff debuff in character.activeDebuffs)
         {
-            if (debuff is Stun)
+            if (debuff is Stun stun)
             {
-                existingStun = (Stun)debuff;
+                existingStun = stun;
                 break;
             }
         }
@@ -47,7 +52,7 @@ public class Stun : Debuff
         }
         else
         {
-            character.ApplyDebuff(new Bleed(character, card.turnDuration));
+            character.ApplyDebuff(new Stun(character, card.turnDuration));
         }
     }
 
