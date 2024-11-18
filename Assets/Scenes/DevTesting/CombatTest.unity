@@ -300,17 +300,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 60503955}
   m_CullTransparentMesh: 1
---- !u!114 &104764250 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8420971676294571977, guid: a9fc88bbd6c1b0545b0c946919649605, type: 3}
-  m_PrefabInstance: {fileID: 449237662}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bdb5032f3c718d46a9b920d9816f406, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &148556181
 GameObject:
   m_ObjectHideFlags: 0
@@ -569,7 +558,7 @@ GameObject:
   - component: {fileID: 362629746}
   - component: {fileID: 362629745}
   m_Layer: 5
-  m_Name: Persuasion
+  m_Name: Diplomacy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -751,6 +740,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1285873252}
     m_Modifications:
+    - target: {fileID: 1208522402772242587, guid: a9fc88bbd6c1b0545b0c946919649605, type: 3}
+      propertyPath: inCombat
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2387587267595306537, guid: a9fc88bbd6c1b0545b0c946919649605, type: 3}
       propertyPath: m_Name
       value: DeckSystem
@@ -1966,7 +1959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentPhase: 0
-  deckManager: {fileID: 104764250}
+  deckManager: {fileID: 0}
   gameManager: {fileID: 0}
   handManager: {fileID: 879180068}
   players:
@@ -2019,10 +2012,10 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 542729000}
-  - {fileID: 1030059086}
   - {fileID: 381986808}
   - {fileID: 1891462591}
   - {fileID: 1307183480}
+  - {fileID: 1030059086}
   m_Father: {fileID: 504042464}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2235,6 +2228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1117679080}
   - component: {fileID: 1117679082}
+  - component: {fileID: 1117679083}
   m_Layer: 5
   m_Name: NegotiationCardPrefab
   m_TagString: Untagged
@@ -2307,6 +2301,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 249.95172, y: 349.99194}
   m_EdgeRadius: 0
+--- !u!114 &1117679083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117679079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c3683a0c7572e842b0f94f543273742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardImage: {fileID: 0}
+  characterFlair:
+  - {fileID: 1460697148}
+  - {fileID: 917902070}
+  - {fileID: 1976723928}
+  nameText: {fileID: 1588437035}
+  descText: {fileID: 1195356273}
+  cardData: {fileID: 0}
+  type:
+  - {fileID: 362629745}
+  - {fileID: 459056695}
+  - {fileID: 559596027}
+  cost: 0
 --- !u!1 &1195356271
 GameObject:
   m_ObjectHideFlags: 0
@@ -2550,13 +2569,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353ca3552ebcaa346a10fbb48b344a25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cardData: {fileID: 0}
   cardImage: {fileID: 0}
-  characterFlair: []
+  characterFlair:
+  - {fileID: 60503957}
+  - {fileID: 1572272399}
+  - {fileID: 551354614}
   nameText: {fileID: 192548177}
-  descText: {fileID: 0}
+  descText: {fileID: 1537300438}
   cardData: {fileID: 0}
-  cost: []
+  cost:
+  - {fileID: 0}
+  - {fileID: 542729001}
+  - {fileID: 381986809}
+  - {fileID: 1891462592}
+  - {fileID: 1307183481}
+  - {fileID: 1030059087}
   currentDamage: 0
   currentSecondaryDamage: 0
   currentHeal: 0

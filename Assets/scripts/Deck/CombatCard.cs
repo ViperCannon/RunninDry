@@ -10,8 +10,8 @@ public class CombatCard : Card
     public int damage;
     public int secondaryDamage;
     public int selfDamage;
-    public int heal; //tracked as negative damage
-    public int secondaryHeal; //tracked as negative damage
+    public int heal;
+    public int secondaryHeal;
     public int turnDuration; //for applied effects
     public int chanceEffect; //chance for applied effects (do not use for blind)
     public List<CombatSubType> subTypes;
