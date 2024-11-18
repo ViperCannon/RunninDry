@@ -62,8 +62,15 @@ public class HandManager : MonoBehaviour
     {
         cardsInHand.Remove(cardDisplay);
         UpdateHandVisuals();
-        deckManager.DiscardCard(cardDisplay.GetComponent<CardDisplay>().cardData);
-        
+        if (deckManager.inCombat)
+        {
+            deckManager.DiscardCard(cardDisplay.GetComponent<CombatCardDisplay>().cardData);
+        }
+        else
+        {
+            deckManager.DiscardCard(cardDisplay.GetComponent<NegotiationCardDisplay>().cardData);
+        }
+
         //animation of card going to discard
     }
 

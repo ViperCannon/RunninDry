@@ -4,7 +4,7 @@ using TMPro;
 
 public class CombatCardDisplay : CardDisplay
 {
-    new public CombatCard cardData;
+    public CombatCard cardData;
 
     public Image[] cost;
 
@@ -15,7 +15,7 @@ public class CombatCardDisplay : CardDisplay
 
     public int unload = -1; //used to keep track of how many caps an unload card uses. Default to -1 if card is not an unload card.
 
-    new public void UpdateCardDisplay()
+    public void UpdateCardDisplay()
     {
         nameText.text = cardData.cardName;
 
