@@ -54,7 +54,7 @@ public class HandManager : MonoBehaviour
                 break;
             }
 
-            AddCardToHand(deckManager.DrawCard());
+            CallAddCardToHand(deckManager.DrawCard());
         }
     }
 
@@ -65,8 +65,6 @@ public class HandManager : MonoBehaviour
         deckManager.DiscardCard(cardDisplay.GetComponent<CardDisplay>().cardData);
         
         //animation of card going to discard
-
-        Destroy(cardDisplay);
     }
 
     public void DiscardHand()
@@ -77,15 +75,31 @@ public class HandManager : MonoBehaviour
         }
     }
 
-    public void AddCardToHand(Card card)
+    public void CallAddCardToHand(Card card)
+    {
+        if (card is CombatCard cc)
+        {
+            AddCardToHand(cc);
+        }
+        else if (card is NegotiationCard nc)
+        {
+            AddCardToHand(nc);
+        }
+        else
+        {
+            Debug.Log("Invalid Card!");
+        }
+    }
+
+    public void AddCardToHand(CombatCard card)
     {
         if(card != null)
         {
             GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
             cardsInHand.Add(newCard);
 
-            newCard.GetComponent<CardDisplay>().cardData = card;
-            newCard.GetComponent<CardDisplay>().UpdateCardDisplay();
+            newCard.GetComponent<CombatCardDisplay>().cardData = card;
+            newCard.GetComponent<CombatCardDisplay>().UpdateCardDisplay();
 
             verticalSpacing = (6f * cardsInHand.Count * cardsInHand.Count - 28f * cardsInHand.Count + 65f) / 5;
 
@@ -94,42 +108,44 @@ public class HandManager : MonoBehaviour
         }
     }
 
-    public bool PlayCard(GameObject cardDisplay, Card cardData, CharacterInstance target)
+    public void AddCardToHand(NegotiationCard card)
+    {
+        if (card != null)
+        {
+            GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
+            cardsInHand.Add(newCard);
+
+            newCard.GetComponent<NegotiationCardDisplay>().cardData = card;
+            newCard.GetComponent<NegotiationCardDisplay>().UpdateCardDisplay();
+
+            verticalSpacing = (6f * cardsInHand.Count * cardsInHand.Count - 28f * cardsInHand.Count + 65f) / 5;
+
+            UpdateHandVisuals();
+            deckManager.UpdateCounters();
+        }
+    }
+
+    public bool PlayCard(GameObject cardDisplay, CombatCard cardData, CharacterInstance target)
     {
         //resolve card effect (need to add logic if player is downed.)
-        if (cardData.cost <= combatManager.currentCaps && target != null && !target.isDowned)
+        if (cardData.cost <= combatManager.currentCaps && ((target != null && !target.isDowned) || cardData.IsAOE() || cardData.validTargets[0] == CombatCard.CardTarget.Generic))
         {
             Discard(cardDisplay);
 
-            if (cardData.subTypes.Contains(Card.SubType.Unload))
+            if (cardData.subTypes.Contains(CombatCard.CombatSubType.Unload))
             {
-                cardResolver.ResolveTargetCardEffect(cardData, target, combatManager.currentCaps);
+                cardResolver.ResolveCardEffects(cardData, target, combatManager.currentCaps);
                 combatManager.currentCaps = 0;
             }
             else
             {
-                cardResolver.ResolveTargetCardEffect(cardData, target, 1);
-                combatManager.currentCaps -= cardData.cost;  
-            }
-
-            return true;
-        }
-        else if (cardData.cost <= combatManager.currentCaps && (cardData.IsAOE() || cardData.validTargets[0] == Card.CardTarget.Generic))
-        {
-            Discard(cardDisplay);
-
-            if (cardData.subTypes.Contains(Card.SubType.Unload))
-            {
-                cardResolver.ResolveNonTargetCardEffect(cardData, combatManager.currentCaps);
-                combatManager.currentCaps = 0;
-            }
-            else
-            {
-                cardResolver.ResolveNonTargetCardEffect(cardData, 1);
+                cardResolver.ResolveCardEffects(cardData, target, 1);
                 combatManager.currentCaps -= cardData.cost;
             }
 
             combatManager.lastPlayedCard = cardData;
+
+            Destroy(cardDisplay);
 
             return true;
         }
@@ -139,6 +155,12 @@ public class HandManager : MonoBehaviour
 
             return false;
         }   
+    }
+
+    public bool PlayCard(GameObject cardDisplay, NegotiationCard cardData)
+    {
+        //check bribery cost, otherwise card always plays
+        return true;
     }
 
     private void UpdateHandVisuals()

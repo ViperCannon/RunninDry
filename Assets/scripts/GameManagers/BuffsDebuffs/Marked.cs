@@ -32,6 +32,11 @@ public class Marked : Debuff
 
     new public void ResolveEffect(Card card, CharacterInstance character, int cost, CombatManager cManager)
     {
+        Effect((CombatCard)card, character);
+    }
+
+    void Effect(CombatCard card, CharacterInstance character)
+    {
         bool hasMarked = false;
 
         foreach (Debuff debuff in character.activeDebuffs)
@@ -52,7 +57,7 @@ public class Marked : Debuff
             else
             {
                 character.ApplyDebuff(new Marked(character));
-            } 
+            }
         }
     }
 

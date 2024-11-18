@@ -5,13 +5,14 @@ using SpeakeasyStreet;
 public class GenericRandomDamageEffect : ScriptableObject, CardEffectInterface
 {
     //random target aside from the one specified. If target is null, then just a random target.
-    public void ResolveEffect(Card card, CharacterInstance target, int cost, CombatManager cManager)
+    public void ResolveEffect(Card temp, CharacterInstance target, int cost, CombatManager cManager)
     {
+        CombatCard card = (CombatCard)temp;
         CharacterInstance newTarget = null;
 
         if(target == null)
         {
-            if (card.validTargets.Contains(Card.CardTarget.Enemy))
+            if (card.validTargets.Contains(CombatCard.CardTarget.Enemy))
             {
                 while(newTarget == target)
                 {
@@ -26,12 +27,9 @@ public class GenericRandomDamageEffect : ScriptableObject, CardEffectInterface
                 }
             }
         }
+      
+        int totalDamage = card.damage * cost;
 
-        for (int i = 0; i < card.damageMulti; i++)
-        {
-            int totalDamage = card.damage * cost;
-
-            newTarget.TakeDamage(totalDamage);
-        }
+        newTarget.TakeDamage(totalDamage);     
     }
 }
