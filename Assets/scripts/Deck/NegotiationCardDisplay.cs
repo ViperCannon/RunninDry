@@ -4,13 +4,13 @@ using TMPro;
 
 public class NegotiationCardDisplay : CardDisplay
 {
-    new public NegotiationCard cardData;
+    public NegotiationCard cardData;
 
     public Image[] type;
 
     public int cost; //mainly for bribery cards
 
-    new public void UpdateCardDisplay()
+    public void UpdateCardDisplay()
     {
         nameText.text = cardData.cardName;
 
