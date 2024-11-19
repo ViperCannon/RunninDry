@@ -13,7 +13,7 @@ namespace SpeakeasyStreet
             cManager = GetComponent<CombatManager>();
         }
 
-        public void ResolveCardEffects(CombatCard card, CharacterInstance target, int cost)
+        public void ResolveCardEffects(CardDisplay cardInstance, CharacterInstance target)
         {
 
         }

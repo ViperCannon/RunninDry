@@ -16,7 +16,7 @@ public class Blind : Debuff
 
     public Blind(CharacterInstance character)
     {
-        debuffName = "Marked";
+        debuffName = "Blind";
         turnDuration = 1;
         intensity = 25;
         target = character;
@@ -24,18 +24,18 @@ public class Blind : Debuff
 
     public Blind(CharacterInstance character, int initTurnDuration)
     {
-        debuffName = "Marked";
+        debuffName = "Blin";
         turnDuration = initTurnDuration;
         intensity = 25;
         target = character;
     }
 
-    new public void ResolveEffect(Card card, CharacterInstance character, int cost, CombatManager cManager)
+    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
-        Effect((CombatCard)card, character);
+        Effect((CombatCardDisplay)cardInstance, character);
     }
 
-    void Effect(CombatCard card, CharacterInstance character)
+    void Effect(CombatCardDisplay card, CharacterInstance character)
     {
         Blind existingBlind = null;
 
@@ -48,7 +48,7 @@ public class Blind : Debuff
             }
         }
 
-        for (int i = 0; i < card.turnDuration; i++)
+        for (int i = 0; i < card.cardData.turnDuration; i++)
         {
             AttemptBlind(existingBlind, character);
         }
