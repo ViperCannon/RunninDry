@@ -12,21 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37dcde15ecb28344598abe7925af9690, type: 3}
   m_Name: Acrobatics
   m_EditorClassIdentifier: 
-  cardName: Swing!
+  cardName: Acrobatics
   cost: 1
-  drawAmount: 0
-  cardDescription: Deals {damage} melee damage
+  drawAmount: 2
+  cardDescription: 'Deals {damage} melee damage
+
+    Draw two cards'
   cardEffects:
   - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
+  - {fileID: 11400000, guid: e0d146735183f964e9d4bae856adb425, type: 2}
   unlocked: 1
   character: 2
-  damage: 8
+  damage: 4
   secondaryDamage: 0
   selfDamage: 0
   heal: 0
   secondaryHeal: 0
   turnDuration: 0
   chanceEffect: 0
-  subTypes: 01000000
+  subTypes: 0100000006000000
   validTargets: 02000000
   cardArt: {fileID: 0}

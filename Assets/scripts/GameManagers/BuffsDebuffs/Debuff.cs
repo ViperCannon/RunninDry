@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using SpeakeasyStreet;
 
-public abstract class Debuff : ScriptableObject, CardEffectInterface
+public abstract class Debuff : ScriptableObject, ICardEffect
 {
     public string debuffName;
     public int turnDuration;
     public int intensity;
     public CharacterInstance target;
 
-    public void ResolveEffect(Card card, CharacterInstance character, int cost, CombatManager cManager)
+    public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
 
     }

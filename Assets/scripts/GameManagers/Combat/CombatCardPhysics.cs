@@ -53,17 +53,17 @@ public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        CombatCard cardData = GetComponent<CombatCardDisplay>().cardData;
+        CombatCardDisplay cardDisplay = GetComponent<CombatCardDisplay>();
 
         if (transform.localPosition.y >= yThreshold - 0.01f || currentTarget != null)
         {
 
-            if (cardData.IsAOE() || cardData.validTargets[0] == CombatCard.CardTarget.Generic && handManager.PlayCard(transform.gameObject, cardData, null))
+            if (cardDisplay.cardData.IsAOE() || cardDisplay.cardData.validTargets[0] == CombatCard.CardTarget.Generic && handManager.PlayCard(transform.gameObject, cardDisplay, null))
             {
                 Debug.Log("Successfully Played Card!");
             }
-            else if (currentTarget != null && currentTarget.CompareTag(cardData.validTargets[0].ToString()) && (currentTarget.name != cardData.character.ToString() 
-                || cardData.IsSelfInclusive()) && handManager.PlayCard(transform.gameObject, cardData, currentTarget.GetComponent<CharacterInstance>()))
+            else if (currentTarget != null && currentTarget.CompareTag(cardDisplay.cardData.validTargets[0].ToString()) && (currentTarget.name != cardDisplay.cardData.character.ToString() 
+                || cardDisplay.cardData.IsSelfInclusive()) && handManager.PlayCard(transform.gameObject, cardDisplay, currentTarget.GetComponent<CharacterInstance>()))
             {
                 Debug.Log("Successfully Played Card!");
             }

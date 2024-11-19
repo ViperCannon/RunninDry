@@ -28,12 +28,12 @@ public class Stun : Debuff
         target = character;
     }
 
-    new public void ResolveEffect(Card card, CharacterInstance character, int cost, CombatManager cManager)
+    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
-        Effect((CombatCard)card, character);
+        Effect((CombatCardDisplay)cardInstance, character);
     }
 
-    void Effect(CombatCard card, CharacterInstance character)
+    void Effect(CombatCardDisplay card, CharacterInstance character)
     {
         Stun existingStun = null;
 
@@ -48,11 +48,11 @@ public class Stun : Debuff
 
         if (existingStun != null)
         {
-            existingStun.AddStacks(card.turnDuration);
+            existingStun.AddStacks(card.cardData.turnDuration);
         }
         else
         {
-            character.ApplyDebuff(new Stun(character, card.turnDuration));
+            character.ApplyDebuff(new Stun(character, card.cardData.turnDuration));
         }
     }
 

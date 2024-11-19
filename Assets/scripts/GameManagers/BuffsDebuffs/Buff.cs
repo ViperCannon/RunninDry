@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using SpeakeasyStreet;
 
-public abstract class Buff : ScriptableObject, CardEffectInterface
+public abstract class Buff : ScriptableObject, ICardEffect
 {
     public string BuffName;
     public int turnDuration;
     public float intensity;
 
-    public void ResolveEffect(Card card, CharacterInstance target, int cost, CombatManager cManager)
+    public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
 
     }

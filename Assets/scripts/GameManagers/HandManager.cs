@@ -58,17 +58,17 @@ public class HandManager : MonoBehaviour
         }
     }
 
-    public void Discard(GameObject cardDisplay)
+    public void Discard(GameObject card)
     {
-        cardsInHand.Remove(cardDisplay);
+        cardsInHand.Remove(card);
         UpdateHandVisuals();
         if (deckManager.inCombat)
         {
-            deckManager.DiscardCard(cardDisplay.GetComponent<CombatCardDisplay>().cardData);
+            deckManager.DiscardCard(card.GetComponent<CombatCardDisplay>().cardData);
         }
         else
         {
-            deckManager.DiscardCard(cardDisplay.GetComponent<NegotiationCardDisplay>().cardData);
+            deckManager.DiscardCard(card.GetComponent<NegotiationCardDisplay>().cardData);
         }
 
         //animation of card going to discard
@@ -132,27 +132,29 @@ public class HandManager : MonoBehaviour
         }
     }
 
-    public bool PlayCard(GameObject cardDisplay, CombatCard cardData, CharacterInstance target)
+    public bool PlayCard(GameObject card, CombatCardDisplay cardDisplay, CharacterInstance target)
     {
+        CombatCard cardData = cardDisplay.cardData;
+
         //resolve card effect (need to add logic if player is downed.)
         if (cardData.cost <= combatManager.currentCaps && ((target != null && !target.isDowned) || cardData.IsAOE() || cardData.validTargets[0] == CombatCard.CardTarget.Generic))
         {
-            Discard(cardDisplay);
+            Discard(card);
 
             if (cardData.subTypes.Contains(CombatCard.CombatSubType.Unload))
             {
-                cardResolver.ResolveCardEffects(cardData, target, combatManager.currentCaps);
+                cardResolver.ResolveCardEffects(cardDisplay, target);
                 combatManager.currentCaps = 0;
             }
             else
             {
-                cardResolver.ResolveCardEffects(cardData, target, 1);
+                cardResolver.ResolveCardEffects(cardDisplay, target);
                 combatManager.currentCaps -= cardData.cost;
             }
 
             combatManager.lastPlayedCard = cardData;
 
-            Destroy(cardDisplay);
+            Destroy(card);
 
             return true;
         }

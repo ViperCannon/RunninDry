@@ -1,18 +1,22 @@
 using UnityEngine;
-using SpeakeasyStreet;
 
 [CreateAssetMenu(fileName = "New GenericDrawEffect", menuName = "GenericDrawEffect")]
-public class GenericDrawEffect : ScriptableObject, CardEffectInterface
+public class GenericDrawEffect : ScriptableObject, ICardEffect
 {
-    public void ResolveEffect(Card card, CharacterInstance target, int cost, CombatManager cManager)
+    public void ResolveEffect(CardDisplay cardInstance, CharacterInstance target, CombatManager cManager)
     {
-        if(cost > 0) //unload (X-cost) cards
+        Effect((CombatCardDisplay)cardInstance, target, cManager);
+    }
+
+    public void Effect(CombatCardDisplay card, CharacterInstance target, CombatManager cManager)
+    {
+        if (card.cardData.subTypes.Contains(CombatCard.CombatSubType.Unload)) //unload (X-cost) cards
         {
-            cManager.handManager.AttemptDraw(cost);
+            cManager.handManager.AttemptDraw(card.unload);
         }
-        else if(card.drawAmount > 0) //draw specified by card
+        else //draw specified by card
         {
-            cManager.handManager.AttemptDraw(card.drawAmount);
+            cManager.handManager.AttemptDraw(card.cardData.drawAmount);
         }
     }
 }

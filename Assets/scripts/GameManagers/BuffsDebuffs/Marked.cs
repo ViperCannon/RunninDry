@@ -30,12 +30,12 @@ public class Marked : Debuff
         target = character;
     }
 
-    new public void ResolveEffect(Card card, CharacterInstance character, int cost, CombatManager cManager)
+    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
-        Effect((CombatCard)card, character);
+        Effect((CombatCardDisplay)cardInstance, character);
     }
 
-    void Effect(CombatCard card, CharacterInstance character)
+    void Effect(CombatCardDisplay card, CharacterInstance character)
     {
         bool hasMarked = false;
 
@@ -50,9 +50,9 @@ public class Marked : Debuff
 
         if (!hasMarked)
         {
-            if (card.turnDuration > 0)
+            if (card.cardData.turnDuration > 0)
             {
-                character.ApplyDebuff(new Marked(character, card.turnDuration));
+                character.ApplyDebuff(new Marked(character, card.cardData.turnDuration));
             }
             else
             {

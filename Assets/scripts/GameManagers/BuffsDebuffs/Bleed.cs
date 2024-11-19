@@ -22,12 +22,12 @@ public class Bleed : Debuff
         target = character;
     }
 
-    new public void ResolveEffect(Card card, CharacterInstance character, int cost, CombatManager cManager)
+    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
-        Effect((CombatCard)card, character);
+        Effect((CombatCardDisplay)cardInstance, character);
     }
 
-    void Effect(CombatCard card, CharacterInstance character)
+    void Effect(CombatCardDisplay card, CharacterInstance character)
     {
         Bleed existingBleed = null;
 
@@ -42,11 +42,11 @@ public class Bleed : Debuff
 
         if (existingBleed != null)
         {
-            existingBleed.AddStacks(card.turnDuration);
+            existingBleed.AddStacks(card.cardData.turnDuration);
         }
         else
         {
-            character.ApplyDebuff(new Bleed(character, card.turnDuration));
+            character.ApplyDebuff(new Bleed(character, card.cardData.turnDuration));
         }
     }
 
