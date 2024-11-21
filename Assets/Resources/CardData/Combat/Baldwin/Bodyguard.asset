@@ -17,11 +17,11 @@ MonoBehaviour:
   drawAmount: 0
   cardDescription: 'Give another ally Bodyguard for three turns
 
-    Heal {heal}
-    hp'
+    Baldwin heals
+    {heal}'
   cardEffects:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d47763f8b0429c2489ae5e780ce07296, type: 2}
+  - {fileID: 11400000, guid: 4123a189142579d45beb759b704f481f, type: 2}
   unlocked: 0
   character: 1
   damage: 0

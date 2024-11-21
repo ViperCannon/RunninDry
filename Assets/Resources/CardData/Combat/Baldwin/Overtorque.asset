@@ -17,10 +17,10 @@ MonoBehaviour:
   drawAmount: 0
   cardDescription: 'Deal {damage} melee damge
 
-    Lose {selfDamage} hp'
+    Baldwin loses {selfDamage} hp'
   cardEffects:
   - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 8c8192ec262a17847a3b3dcf2be2dcfc, type: 2}
   unlocked: 0
   character: 1
   damage: 15

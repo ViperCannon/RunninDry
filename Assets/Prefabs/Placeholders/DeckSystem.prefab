@@ -536,8 +536,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatManager: {fileID: 0}
   cardResolver: {fileID: 0}
-  cardPrefab: {fileID: 5792574375876087522, guid: a44a4e76e836fc5409d3efb8de85611f, type: 3}
-  deckManager: {fileID: 0}
+  combatCardPrefab: {fileID: 6918855918595928429, guid: 8a3f8740bdad72c49ab1d372bc242991, type: 3}
+  negotiationCardPrefab: {fileID: 8560931936898634180, guid: 5a61abea3958558439dab38fd729649f, type: 3}
+  deckManager: {fileID: 1208522402772242587}
   handTransform: {fileID: 8824336952584642201}
   deckTransform: {fileID: 5705456732772663297}
   discardTransform: {fileID: 8329499745520722616}

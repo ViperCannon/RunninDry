@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using SpeakeasyStreet;
 
 public abstract class Debuff : ScriptableObject, ICardEffect
 {

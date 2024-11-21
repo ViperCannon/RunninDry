@@ -58,7 +58,7 @@ public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler,
         if (transform.localPosition.y >= yThreshold - 0.01f || currentTarget != null)
         {
 
-            if (cardDisplay.cardData.IsAOE() || cardDisplay.cardData.validTargets[0] == CombatCard.CardTarget.Generic && handManager.PlayCard(transform.gameObject, cardDisplay, null))
+            if (!(cardDisplay.cardData.validTargets[0] == CombatCard.CardTarget.Player || cardDisplay.cardData.validTargets[0] == CombatCard.CardTarget.Enemy) && handManager.PlayCard(transform.gameObject, cardDisplay, null))
             {
                 Debug.Log("Successfully Played Card!");
             }
@@ -129,13 +129,12 @@ public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler,
         if (Physics.Raycast(ray, out hit))
         {
             // Update the target if the ray hits a valid object
-            currentTarget = hit.collider.gameObject;
+            currentTarget = hit.collider.GetComponentInParent<Transform>().gameObject;
 
-            // Optionally: highlight the target or interact with it in some way
-            // For example, highlight the target or show a visual feedback on hover
             if (currentTarget != null)
             {
-                // Add custom logic here (e.g., highlight the target or provide feedback)
+                // Add custom logic here (e.g., highlight the target and update card numbers)
+                Debug.Log(currentTarget.name);
             }
         }
         else

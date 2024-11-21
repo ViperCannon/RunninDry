@@ -1,18 +1,64 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Disarmed : MonoBehaviour
+[CreateAssetMenu(fileName = "New Disarmed", menuName = "Disarmed")]
+public class Disarmed : Debuff
 {
-    // Start is called before the first frame update
-    void Start()
+    public Disarmed()
     {
-        
+        debuffName = "Disarmed";
+        turnDuration = 0;
+        intensity = 0;
+        target = null;
     }
 
-    // Update is called once per frame
-    void Update()
+    public Disarmed(CharacterInstance character, int initTurnDuration)
     {
-        
+        debuffName = "Disarmed";
+        turnDuration = initTurnDuration;
+        intensity = 0;
+        target = character;
+    }
+
+    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
+    {
+        Effect((CombatCardDisplay)cardInstance, character);
+    }
+
+    void Effect(CombatCardDisplay card, CharacterInstance character)
+    {
+        Disarmed existingDisarmed = null;
+
+        foreach (Debuff debuff in character.activeDebuffs)
+        {
+            if (debuff is Disarmed disarmed)
+            {
+                existingDisarmed = disarmed;
+                break;
+            }
+        }
+
+        if (existingDisarmed != null)
+        {
+            existingDisarmed.AddStacks(card.cardData.turnDuration);
+        }
+        else
+        {
+            character.ApplyDebuff(new Disarmed(character, card.cardData.turnDuration));
+        }
+    }
+
+    public override void UpdateEffect()
+    {
+        turnDuration--;
+
+        if (turnDuration <= 0)
+        {
+            target.RemoveDebuff(this);
+        }
+    }
+
+    void AddStacks(int addTurnDurration)
+    {
+        turnDuration += addTurnDurration;
     }
 }

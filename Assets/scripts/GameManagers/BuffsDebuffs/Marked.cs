@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using SpeakeasyStreet;
 
 [CreateAssetMenu(fileName = "New Marked", menuName = "Marked")]
 public class Marked : Debuff
