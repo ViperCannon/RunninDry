@@ -17,7 +17,7 @@ MonoBehaviour:
   drawAmount: 0
   cardDescription: All allies gain Pissed Off for two turns
   cardEffects:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 101b52dcd904d5840b659a71dcce742e, type: 2}
   unlocked: 0
   character: 1
   damage: 0

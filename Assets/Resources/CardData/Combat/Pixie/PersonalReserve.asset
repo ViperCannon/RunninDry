@@ -16,7 +16,8 @@ MonoBehaviour:
   cost: 2
   drawAmount: 0
   cardDescription: Heal an ally for {heal}
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: fc2b1b90b59a16b40826be29ce6e272d, type: 2}
   unlocked: 0
   character: 0
   damage: 0

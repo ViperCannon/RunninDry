@@ -12,5 +12,18 @@ namespace SpeakeasyStreet
         public string cardDescription;
         public List<ScriptableObject> cardEffects;
         public bool unlocked;
+
+        public List<ICardEffect> GetCardEffects()
+        {
+            List<ICardEffect> effects = new List<ICardEffect>();
+            foreach (var effect in cardEffects)
+            {
+                if (effect is ICardEffect cardEffect)
+                {
+                    effects.Add(cardEffect);
+                }
+            }
+            return effects;
+        }
     }
 }

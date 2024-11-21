@@ -15,7 +15,21 @@ namespace SpeakeasyStreet
 
         public void ResolveCardEffects(CardDisplay cardInstance, CharacterInstance target)
         {
+            if(cardInstance is CombatCardDisplay)
+            {
+                CombatCardDisplay card = (CombatCardDisplay)cardInstance;
 
+                foreach (ICardEffect effect in card.cardData.GetCardEffects())
+                {
+                    effect.ResolveEffect(cardInstance, target, cManager);
+                }
+            }
+            else
+            {
+
+            }
+
+            
         }
     }
 }

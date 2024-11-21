@@ -10,7 +10,9 @@ public class HandManager : MonoBehaviour
     [SerializeField]
     CardEffectResolver cardResolver;
     [SerializeField]
-    GameObject cardPrefab;
+    GameObject combatCardPrefab;
+    [SerializeField]
+    GameObject negotiationCardPrefab;
     [SerializeField]
     DeckManager deckManager;
 
@@ -58,6 +60,20 @@ public class HandManager : MonoBehaviour
         }
     }
 
+    public void PlayDiscard(GameObject card)
+    {
+        cardsInHand.Remove(card);
+        UpdateHandVisuals();
+        if (deckManager.inCombat)
+        {
+            deckManager.DiscardCard(card.GetComponent<CombatCardDisplay>().cardData);
+        }
+        else
+        {
+            deckManager.DiscardCard(card.GetComponent<NegotiationCardDisplay>().cardData);
+        }
+    }
+
     public void Discard(GameObject card)
     {
         cardsInHand.Remove(card);
@@ -72,6 +88,7 @@ public class HandManager : MonoBehaviour
         }
 
         //animation of card going to discard
+        Destroy(card);
     }
 
     public void DiscardHand()
@@ -100,9 +117,9 @@ public class HandManager : MonoBehaviour
 
     public void AddCardToHand(CombatCard card)
     {
-        if(card != null)
+        if (card != null)
         {
-            GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
+            GameObject newCard = Instantiate(combatCardPrefab, handTransform.position, Quaternion.identity, handTransform);
             cardsInHand.Add(newCard);
 
             newCard.GetComponent<CombatCardDisplay>().cardData = card;
@@ -119,7 +136,7 @@ public class HandManager : MonoBehaviour
     {
         if (card != null)
         {
-            GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
+            GameObject newCard = Instantiate(negotiationCardPrefab, handTransform.position, Quaternion.identity, handTransform);
             cardsInHand.Add(newCard);
 
             newCard.GetComponent<NegotiationCardDisplay>().cardData = card;
@@ -139,7 +156,7 @@ public class HandManager : MonoBehaviour
         //resolve card effect (need to add logic if player is downed.)
         if (cardData.cost <= combatManager.currentCaps && ((target != null && !target.isDowned) || cardData.IsAOE() || cardData.validTargets[0] == CombatCard.CardTarget.Generic))
         {
-            Discard(card);
+            PlayDiscard(card);
 
             if (cardData.subTypes.Contains(CombatCard.CombatSubType.Unload))
             {

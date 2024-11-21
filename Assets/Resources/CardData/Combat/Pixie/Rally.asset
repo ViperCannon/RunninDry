@@ -17,7 +17,7 @@ MonoBehaviour:
   drawAmount: 0
   cardDescription: Inspires all allies for three turns
   cardEffects:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: abfc6f7fc3f050c4e9bb1f6838b5a074, type: 2}
   unlocked: 1
   character: 0
   damage: 0

@@ -24,7 +24,7 @@ public class Blind : Debuff
 
     public Blind(CharacterInstance character, int initTurnDuration)
     {
-        debuffName = "Blin";
+        debuffName = "Blind";
         turnDuration = initTurnDuration;
         intensity = 25;
         target = character;
