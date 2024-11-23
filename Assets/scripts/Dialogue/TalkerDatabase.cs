@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Collections.LowLevel.Unsafe;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.Presets;
 using UnityEngine;
+using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
 using static Unity.Burst.Intrinsics.X86;
+using static Unity.Burst.Intrinsics.X86.Avx;
+using static Unity.Collections.Unicode;
 
 [System.Serializable]
 public class TalkerDataEntry
@@ -225,12 +231,31 @@ public class TalkerDatabase : MonoBehaviour
                 //Negotiation P/I/B: 14/8/10  On success, the man cools off, apologizes, and gets back in his car. On fail, your words worsen the situation, and he elbows one of your car windows in (-1 Paneling). He then hightails it out of there
                 //manager.endEncounter();
             }
+            else if (manager.talkerint == 2)
+            {
+                //Negotiation P/I/B: 12, 16, 25
+                //On success: The crowd hears your words and begins to chant "Booze! Booze! Booze!" The abolitionists hightail it out of there. +10 Dru RP, +5 Civ RP. -15 Abo RP.
+                //On fail: The crowd becomes restless, opinion turning on you.The Abolitionist speaker smiles then yells "Get 'em!" - 5 Abo RP, -5 Civ RP, +5 Dru RP. Begin combat with 3 abolitionists and 2 civilians.
+            }
+            else if (manager.talkerint == 3)
+            {
+                //-15 Cash, +5 HP to all party members, +1 tire or paneling
+                relations.civilianRelations += 2;
+            }
         }
         else if (manager.talkertype == "Combat")
         {
             if (manager.talkerint == 1)
             {
                 //begin combat with 2 civs and 2 drunks
+            }
+            else if (manager.talkerint == 2)
+            {
+                //begin combat with 2 civs 1 drunk
+            }
+            else if (manager.talkerint == 3)
+            {
+                //combat with 4 abolitionists
             }
         }
         responsetext = Getresponse(manager.talkerint, manager.talkertype, 1);
@@ -278,6 +303,18 @@ public class TalkerDatabase : MonoBehaviour
             {
                 //Begin combat with 2 civilians.
             }
+            else if (manager.talkerint == 2)
+            {
+                //Negotiation P/I/B: 18, 12, 25
+                //On success: The crowd hears your words and begins to chant "Booze! Booze! Booze!" The abolitionists hightail it out of there. +10 Dru RP, +5 Civ RP. -15 Abo RP.
+                //On fail: The crowd becomes restless, opinion turning on you.The Abolitionist speaker smiles then yells "Get 'em!" - 5 Abo RP, -5 Civ RP, +5 Dru RP. Begin combat with 3 abolitionists and 2 civilians.
+            }
+            else if (manager.talkerint == 3)
+            {
+                //Negotiation P/I/B: 11/8/13
+                //On success: The young attendant balks and lets you go. -5 Civ RP, +5 HP to all party members, +1 tire or paneling
+                //On fail: The attendant calls out for help, and three nearby policemen move in to support him. - 5 Civ and Cop RP, begin combat with 3 cops
+            }
         }
         else if (manager.talkertype == "Combat")
         {
@@ -286,6 +323,12 @@ public class TalkerDatabase : MonoBehaviour
                 //-1 booze, +10 Drunks RP, +5 Civ RP
                 relations.drunkardRelations += 10;
                 relations.civilianRelations += 5;
+            }
+            else if (manager.talkerint == 3)
+            {
+                relations.prohibitionistsRelations -= 15;
+                relations.civilianRelations -= 5;
+                //-1 paneling
             }
         }
         responsetext = Getresponse(manager.talkerint, manager.talkertype, 2);
@@ -312,6 +355,24 @@ public class TalkerDatabase : MonoBehaviour
             else if (manager.talkerint == 4)
             {
                 //hp +3
+                relations.civilianRelations -= 5;
+            }
+        }
+        else if (manager.talkertype == "Negotiation")
+        {
+            if (manager.talkerint == 2)
+            {
+                //(+25 Cash).
+                //Begin combat with 1 abolitionist, 1 civilian, 1 drunk, and 1 policeman.
+                relations.prohibitionistsRelations -= 10;
+                relations.copRelations -= 5;
+                relations.norwegianMobRelations += 10;
+                relations.russianMobRelations += 10;
+                relations.sicilianMobRelations += 10;
+            }
+            else if (manager.talkerint == 3)
+            {
+                //+1 tire or paneling
                 relations.civilianRelations -= 5;
             }
         }

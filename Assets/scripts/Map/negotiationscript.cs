@@ -41,7 +41,19 @@ public class negotiationscript : MonoBehaviour
     }
     public void loadAssets()
     {
-        gamemanager.talkerint = randomnumber.generatedNumber;
+        if (randomnumber.generatedNumber == 1 || randomnumber.generatedNumber == 2)
+        {
+            gamemanager.talkerint = 1;
+        }
+        else if (randomnumber.generatedNumber == 3 || randomnumber.generatedNumber == 4)
+        {
+            gamemanager.talkerint = 2;
+        }
+        else if (randomnumber.generatedNumber == 5 || randomnumber.generatedNumber == 6)
+        {
+            gamemanager.talkerint = 3;
+        }
+        //gamemanager.talkerint = randomnumber.generatedNumber;
         gamemanager.encounter(encounterType);
         if (randomnumber.generatedNumber <= 3)
         {

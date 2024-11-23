@@ -2457,6 +2457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyJsonData: {fileID: 4900000, guid: b4e73d78b10b24d46864877d7057dae5, type: 3}
+  choiceint: 0
   textbox: {fileID: 2043536753}
   optionbuttons: {fileID: 2050476393}
   optionstext1: {fileID: 542567118}
