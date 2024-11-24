@@ -196,12 +196,12 @@ public class TalkerDatabase : MonoBehaviour
             else if (manager.talkerint == 4)
             {
                 //hp + 5
-                //cash -2
+                relations.cash -= 2;
                 relations.civilianRelations += 3;
             }
             else if (manager.talkerint == 5)
             {
-                //cash + 10
+                relations.cash += 10;
                 relations.civilianRelations += 5;
                 relations.copRelations -= 5;
             }
@@ -211,6 +211,7 @@ public class TalkerDatabase : MonoBehaviour
                 {
                     //she smiles, takes your assistance, and presses a bill into your hands(+2 Civ Rp, +3 Cash)
                     relations.civilianRelations += 2;
+                    relations.cash += 3;
                 }
                 else if (relations.civilianRelations >=25 && relations.civilianRelations < 60)
                 {
@@ -239,8 +240,9 @@ public class TalkerDatabase : MonoBehaviour
             }
             else if (manager.talkerint == 3)
             {
-                //-15 Cash, +5 HP to all party members, +1 tire or paneling
+                relations.cash -= 15;
                 relations.civilianRelations += 2;
+                relations.paneling += 1;
             }
         }
         else if (manager.talkertype == "Combat")
@@ -320,7 +322,7 @@ public class TalkerDatabase : MonoBehaviour
         {
             if (manager.talkerint == 1)
             {
-                //-1 booze, +10 Drunks RP, +5 Civ RP
+                relations.booze -= 1;
                 relations.drunkardRelations += 10;
                 relations.civilianRelations += 5;
             }
@@ -328,7 +330,7 @@ public class TalkerDatabase : MonoBehaviour
             {
                 relations.prohibitionistsRelations -= 15;
                 relations.civilianRelations -= 5;
-                //-1 paneling
+                relations.paneling -= 1;
             }
         }
         responsetext = Getresponse(manager.talkerint, manager.talkertype, 2);
@@ -344,12 +346,12 @@ public class TalkerDatabase : MonoBehaviour
             }
             else if (manager.talkerint == 2)
             {
-                //cash -1
+                relations.cash -= 1;
                 relations.civilianRelations += 3;
             }
             else if (manager.talkerint == 3)
             {
-                //cash -5
+                relations.cash -= 5;
                 relations.civilianRelations -= 5;
             }
             else if (manager.talkerint == 4)
@@ -362,7 +364,7 @@ public class TalkerDatabase : MonoBehaviour
         {
             if (manager.talkerint == 2)
             {
-                //(+25 Cash).
+                relations.cash += 25;
                 //Begin combat with 1 abolitionist, 1 civilian, 1 drunk, and 1 policeman.
                 relations.prohibitionistsRelations -= 10;
                 relations.copRelations -= 5;
@@ -372,7 +374,7 @@ public class TalkerDatabase : MonoBehaviour
             }
             else if (manager.talkerint == 3)
             {
-                //+1 tire or paneling
+                relations.tires += 1;
                 relations.civilianRelations -= 5;
             }
         }

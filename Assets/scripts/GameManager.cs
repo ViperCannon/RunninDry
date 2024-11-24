@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class GameManager : MonoBehaviour
     GameObject AssetHolder;
     TalkerDatabase TalkDatabase;
     relationshipframework relations;
+    public TMP_Text stats;
     public int talkerint;
     public string talkertype;
     public GameObject continuebutton;
@@ -41,6 +43,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         relations = this.gameObject.GetComponent<relationshipframework>();
+        relations.cash = 40;
+        relations.paneling = 3;
+        relations.booze = 8; //each booze sells for $4
+        relations.tires = 3;
         TalkDatabase = this.gameObject.GetComponent<TalkerDatabase>();
         overworld = GameObject.FindWithTag("Map").GetComponent<Animator>();
         car = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
@@ -50,6 +56,7 @@ public class GameManager : MonoBehaviour
         {
             AssetHolder.transform.GetChild(i).gameObject.SetActive(false);
         }
+        stats.text = "Cash: " + relations.cash.ToString() + " Booze: " + relations.booze.ToString() + " Tires: " + relations.tires.ToString() + " Paneling: " + relations.paneling.ToString();
     }
     public void encounter(string type)
     {
@@ -94,6 +101,7 @@ public class GameManager : MonoBehaviour
 
     public void endEncounter()
     {
+        stats.text = "Cash: "+relations.cash.ToString() + " Booze: "+relations.booze.ToString()+ " Tires: " + relations.tires.ToString() + " Paneling: " + relations.paneling.ToString();
         //if talkdatabase.choiceint == 1 2 3 or 4 &&
         //do thing. may need to copy and paste the talkdatabase option 1-4 code here.
         continuebutton.SetActive(false);
