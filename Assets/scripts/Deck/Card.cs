@@ -1,39 +1,29 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace SpeakeasyStreet
 {
-    [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
     public class Card : ScriptableObject
     {
         public string cardName;
-        public string character;
-        public CardType cardType;
         public int cost;
-        public int damage;
-        public int numberOfDice;
-        public int sidedDice;
-        public int diceModifier;
-        public List<SubType> subTypes;
+        public int drawAmount;
+        [TextArea] 
+        public string cardDescription;
+        public List<ScriptableObject> cardEffects;
         public bool unlocked;
 
-        public enum CardType
+        public List<ICardEffect> GetCardEffects()
         {
-            Negotiation,
-            Combat
-        }
-
-        public enum SubType
-        {
-            Projectile,
-            Melee,
-            Diplomacy,
-            Intimidation,
-            Bribery,
-            Buff,
-            Debuff,
-            Heal
+            List<ICardEffect> effects = new List<ICardEffect>();
+            foreach (var effect in cardEffects)
+            {
+                if (effect is ICardEffect cardEffect)
+                {
+                    effects.Add(cardEffect);
+                }
+            }
+            return effects;
         }
     }
 }

@@ -9,17 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 665f1fe863e892d4487712e5acea6143, type: 3}
+  m_Script: {fileID: 11500000, guid: 37dcde15ecb28344598abe7925af9690, type: 3}
   m_Name: LeftHook
   m_EditorClassIdentifier: 
   cardName: Left Hook
-  character: Pixie
-  cardType: 1
   cost: 1
-  damage: 3
-  numberOfDice: 0
-  sidedDice: 0
-  diceModifier: 0
-  subType: 0100000006000000
-  subTypes: 0100000006000000
+  drawAmount: 0
+  cardDescription: 'Deal {damage} mele damage
+
+    50% chance to stun'
+  cardEffects:
+  - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
+  - {fileID: 11400000, guid: 88c432c3ab0e3da41a91cbb4e05e2acc, type: 2}
   unlocked: 0
+  character: 0
+  damage: 3
+  secondaryDamage: 0
+  selfDamage: 0
+  heal: 0
+  secondaryHeal: 0
+  turnDuration: 1
+  chanceEffect: 50
+  subTypes: 0100000003000000
+  validTargets: 02000000
+  cardArt: {fileID: 0}

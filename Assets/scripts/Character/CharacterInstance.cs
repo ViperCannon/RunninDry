@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SpeakeasyStreet;
 
 public class CharacterInstance : MonoBehaviour
 {
+    CombatManager combatManager;
+    
     public int maxHealth;
     public int currentHealth;
     public float damageMultiplier = 1f;
@@ -18,6 +21,8 @@ public class CharacterInstance : MonoBehaviour
 
     private void Start()
     {
+        combatManager = FindObjectOfType<CombatManager>();
+
         activeBuffs = new List<Buff>();
         activeDebuffs = new List<Debuff>();
     }
