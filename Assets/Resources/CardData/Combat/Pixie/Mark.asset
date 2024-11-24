@@ -9,17 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 665f1fe863e892d4487712e5acea6143, type: 3}
+  m_Script: {fileID: 11500000, guid: 37dcde15ecb28344598abe7925af9690, type: 3}
   m_Name: Mark
   m_EditorClassIdentifier: 
-  cardName: Mark
-  character: Pixie
-  cardType: 1
+  cardName: Marked
   cost: 2
-  damage: 5
-  numberOfDice: 0
-  sidedDice: 0
-  diceModifier: 0
-  subType: 0000000006000000
-  subTypes: 0000000006000000
+  drawAmount: 0
+  cardDescription: 'Deal {damage} projectile damage
+
+    Target becomes Marked'
+  cardEffects:
+  - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
+  - {fileID: 11400000, guid: 572940da8ae33d64e99c28e9b7e036cb, type: 2}
   unlocked: 1
+  character: 0
+  damage: 5
+  secondaryDamage: 0
+  selfDamage: 0
+  heal: 0
+  secondaryHeal: 0
+  turnDuration: 0
+  chanceEffect: 0
+  subTypes: 0000000003000000
+  validTargets: 02000000
+  cardArt: {fileID: 0}

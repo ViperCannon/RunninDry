@@ -9,17 +9,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 665f1fe863e892d4487712e5acea6143, type: 3}
+  m_Script: {fileID: 11500000, guid: 37dcde15ecb28344598abe7925af9690, type: 3}
   m_Name: DoubleTap
   m_EditorClassIdentifier: 
-  cardName: Double Tap
-  character: Pixie
-  cardType: 1
+  cardName: DoubleTap
   cost: 2
-  damage: 6
-  numberOfDice: 0
-  sidedDice: 0
-  diceModifier: 0
-  subType: 00000000
-  subTypes: 00000000
+  drawAmount: 0
+  cardDescription: Deal {damage} projectile damage twice
+  cardEffects:
+  - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
+  - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
   unlocked: 0
+  character: 0
+  damage: 6
+  secondaryDamage: 0
+  selfDamage: 0
+  heal: 0
+  secondaryHeal: 0
+  turnDuration: 0
+  chanceEffect: 0
+  subTypes: 00000000
+  validTargets: 02000000
+  cardArt: {fileID: 0}

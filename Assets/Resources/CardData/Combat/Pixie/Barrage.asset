@@ -9,17 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 665f1fe863e892d4487712e5acea6143, type: 3}
+  m_Script: {fileID: 11500000, guid: 37dcde15ecb28344598abe7925af9690, type: 3}
   m_Name: Barrage
   m_EditorClassIdentifier: 
   cardName: Barrage
-  character: Pixie
-  cardType: 1
-  cost: -1
-  damage: 5
-  numberOfDice: 0
-  sidedDice: 0
-  diceModifier: 0
-  subType: 00000000
-  subTypes: 00000000
+  cost: 5
+  drawAmount: 0
+  cardDescription: Deals {damage} projectile damage X times
+  cardEffects:
+  - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
   unlocked: 0
+  character: 0
+  damage: 5
+  secondaryDamage: 0
+  selfDamage: 0
+  heal: 0
+  secondaryHeal: 0
+  turnDuration: 0
+  chanceEffect: 0
+  subTypes: 0000000005000000
+  validTargets: 02000000
+  cardArt: {fileID: 0}

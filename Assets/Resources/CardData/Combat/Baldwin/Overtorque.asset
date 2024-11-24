@@ -9,17 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 665f1fe863e892d4487712e5acea6143, type: 3}
+  m_Script: {fileID: 11500000, guid: 37dcde15ecb28344598abe7925af9690, type: 3}
   m_Name: Overtorque
   m_EditorClassIdentifier: 
   cardName: Overtorque
-  character: Baldwin
-  cardType: 1
-  cost: 1
-  damage: 15
-  numberOfDice: 0
-  sidedDice: 0
-  diceModifier: 0
-  subType: 01000000
-  subTypes: 01000000
+  cost: 2
+  drawAmount: 0
+  cardDescription: 'Deal {damage} melee damge
+
+    Baldwin loses {selfDamage} hp'
+  cardEffects:
+  - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
+  - {fileID: 11400000, guid: 8c8192ec262a17847a3b3dcf2be2dcfc, type: 2}
   unlocked: 0
+  character: 1
+  damage: 15
+  secondaryDamage: 0
+  selfDamage: 5
+  heal: 0
+  secondaryHeal: 0
+  turnDuration: 0
+  chanceEffect: 0
+  subTypes: 01000000
+  validTargets: 02000000
+  cardArt: {fileID: 0}
