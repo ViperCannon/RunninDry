@@ -11,4 +11,17 @@ public class relationshipframework : MonoBehaviour
     public float prohibitionistsRelations;
     public float drunkardRelations;
     public float civilianRelations;
+
+    public int cash = 40;
+    public int paneling = 3;
+    public int booze = 8; //each booze sells for $4
+    public int tires = 3;
+
+    private void Start()
+    {
+        cash = 40;
+        paneling = 3;
+        booze = 8; //each booze sells for $4
+        tires = 3;
+    }
 }
