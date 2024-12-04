@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,9 +14,13 @@ public class GameManager : MonoBehaviour
     TalkerDatabase TalkDatabase;
     relationshipframework relations;
     public TMP_Text stats;
+    public TMP_Text scoretext;
     public int talkerint;
     public string talkertype;
+    public ScrollingBackground ScrollingBackground;
     public GameObject continuebutton;
+    public GameObject scorecanvas;
+    public GameObject maincanvas;
     [SerializeField]
     float waitTime;
     [Header("Negotiation")]
@@ -65,6 +70,17 @@ public class GameManager : MonoBehaviour
         talkertype = type;
         TalkDatabase.encounter(type);
     }
+
+    public void scorescreen()
+    {
+        ScrollingBackground.isScrolling = false;
+        scorecanvas.SetActive(true);
+        maincanvas.SetActive(false);
+        relations.score = (float)(relations.booze * (4 * 0.75)) + relations.cash + (relations.paneling * 2) + (relations.tires * 2);
+        scoretext.text = "Score: " + relations.score.ToString();
+        //scoretext.text = "Cash: " + relations.cash.ToString() + " Booze: " + relations.booze.ToString() + " Tires: " + relations.tires.ToString() + " Paneling: " + relations.paneling.ToString();
+    }
+
     public void GrabAssets()
     {
         if (GameObject.Find("N1") != null && GameObject.Find("N2") != null)
@@ -99,6 +115,15 @@ public class GameManager : MonoBehaviour
         {
             endEncounter();
         }
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            scorescreen();
+        }
+    }
+
+    public void mainmenu()
+    {
+        SceneManager.LoadScene(0);
     }
 
     public void endEncounter()

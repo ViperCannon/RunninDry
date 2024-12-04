@@ -16,6 +16,7 @@ public class relationshipframework : MonoBehaviour
     public int paneling = 3;
     public int booze = 8; //each booze sells for $4
     public int tires = 3;
+    public float score;
 
     private void Start()
     {

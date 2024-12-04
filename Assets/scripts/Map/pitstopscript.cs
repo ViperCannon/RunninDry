@@ -6,6 +6,7 @@ public class pitstopscript : MonoBehaviour
 {
     randomnumber randomnumber;
     GameManager gamemanager;
+    string encounterType = "Pitstop";
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +22,13 @@ public class pitstopscript : MonoBehaviour
 
     public void loadAssets()
     {
-        if (randomnumber.generatedNumber == 1)
+        gamemanager.talkerint = randomnumber.generatedNumber;
+        gamemanager.encounter(encounterType);
+        if (randomnumber.generatedNumber <= 3)
         {
             gamemanager.Passets1.SetActive(true);
         }
-        else if (randomnumber.generatedNumber == 2)
+        else if (randomnumber.generatedNumber >= 4)
         {
             gamemanager.Passets2.SetActive(true);
         }
