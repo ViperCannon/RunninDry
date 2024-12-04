@@ -7,6 +7,7 @@ public class NodeButtonFunction : MonoBehaviour
 {
     negotiationscript negotiationscript;
     GameObject mapGenerator;
+    ScrollingBackground bg;
 
     [SerializeField]
     Button nodeButton;
@@ -24,7 +25,8 @@ public class NodeButtonFunction : MonoBehaviour
     {
         mapGenerator = GameObject.FindWithTag("Map");
         map = mapGenerator.GetComponent<Animator>();
-        carParent = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
+        carParent = GameObject.FindWithTag("car").GetComponent<Animator>();
+        bg = GameObject.FindWithTag("Background").GetComponent<ScrollingBackground>();
         
         GrabScripts();
     }
@@ -32,7 +34,7 @@ public class NodeButtonFunction : MonoBehaviour
     {
         if (GameObject.Find("NegotiationNode Variant") != null)
         {
-            negotiationscript = GameObject.Find("NegotiationNode Variant").gameObject.GetComponent<negotiationscript>();
+            negotiationscript = GameObject.Find("NegotiationNode Variant").GetComponent<negotiationscript>();
         }
     }
 
@@ -50,6 +52,7 @@ public class NodeButtonFunction : MonoBehaviour
     IEnumerator StopCar()
     {
         carParent.SetTrigger("stop");
+        bg.isScrolling = false;
         map.SetTrigger("fadeout");
         yield return null;
     }

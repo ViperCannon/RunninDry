@@ -123,13 +123,13 @@ public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler,
     {
         // Create a ray from the mouse cursor
         Ray ray = Camera.main.ScreenPointToRay(eventData.position);
-        RaycastHit hit;
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);  // Use Physics2D.Raycast for 2D colliders
 
         // Cast the ray and check if it hits anything
-        if (Physics.Raycast(ray, out hit))
+        if (hit.collider != null)
         {
             // Update the target if the ray hits a valid object
-            currentTarget = hit.collider.GetComponentInParent<Transform>().gameObject;
+            currentTarget = hit.collider.gameObject.transform.parent.gameObject;
 
             if (currentTarget != null)
             {

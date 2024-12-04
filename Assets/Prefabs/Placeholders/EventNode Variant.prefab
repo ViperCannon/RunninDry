@@ -41,16 +41,20 @@ PrefabInstance:
       value: EventNode Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6285186647748342761, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 517c4e7c7172c454fbc7454b1795e7a4, type: 3}
+    - target: {fileID: 6285186647748342761, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_Color.b
-      value: 0.8018868
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6285186647748342761, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_Color.g
-      value: 0.2004717
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6285186647748342761, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_Color.r
-      value: 0.721303
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6453851404642022572, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_Pivot.x

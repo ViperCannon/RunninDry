@@ -10,5 +10,7 @@ public class GenericDamageEffect : ScriptableObject, ICardEffect
         int totalDamage = card.currentDamage;
 
         target.TakeDamage(totalDamage);
+
+        Debug.Log(target.name + " recieved " + totalDamage + " damnage.");
     }
 }
