@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class DeckSelectionManager : MonoBehaviour
 {
+    public float spacing;
     [Header("Total Cards")]
     public List<string> TotalNegotiationCards = new List<string>();
     public List<string> TotalCombatCards = new List<string>();
@@ -71,14 +72,14 @@ public class DeckSelectionManager : MonoBehaviour
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = CPixiecards.ToArray()[i];
-                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * i, 0);
+                newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * i, 0);
             }
 
             for (int i = 0; NPixiecards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NPixiecards.ToArray()[i];
-                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * i, 0);
+                newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * i, 0);
             }
         }
         else if (deckname == "Barley")
@@ -96,14 +97,14 @@ public class DeckSelectionManager : MonoBehaviour
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = CBarleycards.ToArray()[i];
-                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * i, 0);
+                newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * i, 0);
             }
 
             for (int i = 0; NBarleycards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NBarleycards.ToArray()[i];
-                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * i, 0);
+                newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * i, 0);
             }
         }
         else if (deckname == "Baldwin")
@@ -121,14 +122,14 @@ public class DeckSelectionManager : MonoBehaviour
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = CBaldwincards.ToArray()[i];
-                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * i, 0);
+                newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * i, 0);
             }
 
             for (int i = 0; NBaldwincards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NBaldwincards.ToArray()[i];
-                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * i, 0);
+                newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * i, 0);
             }
         }
         //cards.Clear();
@@ -159,7 +160,7 @@ public class DeckSelectionManager : MonoBehaviour
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
-                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * NPixiecards.Count, 0);
+                newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * NPixiecards.Count, 0);
                 Pixiecards.Add(cardname);
                 NPixiecards.Add(cardname);
                 Debug.Log("Pixie negotiation " + cardname);
@@ -171,7 +172,7 @@ public class DeckSelectionManager : MonoBehaviour
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
-                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * NBaldwincards.Count, 0);
+                newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * NBaldwincards.Count, 0);
                 Baldwincards.Add(cardname);
                 NBaldwincards.Add(cardname);
                 Debug.Log("Baldwin negotiation " + cardname);
@@ -183,7 +184,7 @@ public class DeckSelectionManager : MonoBehaviour
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
-                newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * NBarleycards.Count, 0);
+                newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * NBarleycards.Count, 0);
                 Barleycards.Add(cardname);
                 NBarleycards.Add(cardname);
                 Debug.Log("Barley negotiation " + cardname);
@@ -203,7 +204,7 @@ public class DeckSelectionManager : MonoBehaviour
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
-                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * CPixiecards.Count, 0);
+                newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * CPixiecards.Count, 0);
                 Pixiecards.Add(cardname);
                 CPixiecards.Add(cardname);
                 Debug.Log("combat " + cardname);
@@ -215,7 +216,7 @@ public class DeckSelectionManager : MonoBehaviour
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
-                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * CBarleycards.Count, 0);
+                newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * CBarleycards.Count, 0);
                 Barleycards.Add(cardname);
                 CBarleycards.Add(cardname);
                 Debug.Log("combat " + cardname);
@@ -227,7 +228,7 @@ public class DeckSelectionManager : MonoBehaviour
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
-                newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * CBaldwincards.Count, 0);
+                newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * CBaldwincards.Count, 0);
                 Baldwincards.Add(cardname);
                 CBaldwincards.Add(cardname);
                 Debug.Log("combat " + cardname);
