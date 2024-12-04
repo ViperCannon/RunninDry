@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     Animator overworld;
     Animator car;
+    ScrollingBackground bg;
     GameObject AssetHolder;
     TalkerDatabase TalkDatabase;
     relationshipframework relations;
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         TalkDatabase = this.gameObject.GetComponent<TalkerDatabase>();
         overworld = GameObject.FindWithTag("Map").GetComponent<Animator>();
         car = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
+        bg = GameObject.FindWithTag("Background").GetComponent<ScrollingBackground>();
         AssetHolder = GameObject.Find("NodeSpawnAssets");
         GrabAssets();
         for (int i = 0; i < AssetHolder.transform.childCount; i++)
@@ -128,6 +130,7 @@ public class GameManager : MonoBehaviour
         //TalkDatabase.text = TalkDatabase.Getresponse();
         overworld.SetTrigger("fadein");
         car.SetTrigger("start");
+        bg.isScrolling = true;
         yield return new WaitForSeconds(waitTime);
         for (int i = 0; i < AssetHolder.transform.childCount; i++)
         {
