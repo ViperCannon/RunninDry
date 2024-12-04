@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3300347504289847704
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3078379666164350544}
+  - component: {fileID: 5876931198854666681}
+  - component: {fileID: 5998117970647157962}
+  - component: {fileID: 8684965860373665175}
+  m_Layer: 5
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3078379666164350544
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300347504289847704}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 800.5, y: 447.5}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5876931198854666681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300347504289847704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91e9ccdc680a56a4880effe9bd82bd42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stats: {fileID: 0}
+  scoretext: {fileID: 0}
+  talkerint: 0
+  talkertype: 
+  ScrollingBackground: {fileID: 0}
+  continuebutton: {fileID: 0}
+  scorecanvas: {fileID: 0}
+  maincanvas: {fileID: 0}
+  waitTime: 0.5
+  Nassets1: {fileID: 0}
+  Nassets2: {fileID: 0}
+  Cassets1: {fileID: 0}
+  Cassets2: {fileID: 0}
+  Eassets1: {fileID: 0}
+  Eassets2: {fileID: 0}
+  MBassets1: {fileID: 0}
+  MBassets2: {fileID: 0}
+  Massets1: {fileID: 0}
+  Massets2: {fileID: 0}
+  Passets1: {fileID: 0}
+  Passets2: {fileID: 0}
+  Sassets1: {fileID: 0}
+  Sassets2: {fileID: 0}
+--- !u!114 &5998117970647157962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300347504289847704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f4a58f0bac9d1148a30a18b743e5f2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MyJsonData: {fileID: 4900000, guid: b4e73d78b10b24d46864877d7057dae5, type: 3}
+  choiceint: 0
+  textbox: {fileID: 0}
+  optionbuttons: {fileID: 0}
+  optionstext1: {fileID: 0}
+  optionstext2: {fileID: 0}
+  optionstext3: {fileID: 0}
+  optionstext4: {fileID: 0}
+  text: {fileID: 0}
+  talkername: {fileID: 0}
+  talkerimage: {fileID: 0}
+  responsetext: 
+--- !u!114 &8684965860373665175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300347504289847704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e76956123824a45962ad283e568c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  copRelations: 50
+  russianMobRelations: 50
+  norwegianMobRelations: 50
+  sicilianMobRelations: 50
+  prohibitionistsRelations: 50
+  drunkardRelations: 50
+  civilianRelations: 50
+  cash: 0
+  paneling: 0
+  booze: 0
+  tires: 0
+  score: 0
