@@ -419,7 +419,7 @@ public class MapGenerator : MonoBehaviour
             else
             {
                 crew = n;
-                gameManager.GetComponent<MusicController>().UpdateMusic(n.GetNodeType().ToString());
+                //gameManager.GetComponent<MusicController>().UpdateMusic(n.GetNodeType().ToString());
             }
         }
 
