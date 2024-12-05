@@ -10,7 +10,7 @@ public class NodeButtonFunction : MonoBehaviour
     ScrollingBackground bg;
 
     [SerializeField]
-    Button nodeButton;
+    public Button nodeButton;
     [SerializeField]
     public Animator carParent;
     public Animator map;
