@@ -16,6 +16,9 @@ public class MapGenerator : MonoBehaviour
     const int FLOORS = 12; //13th node is boss
 
     [SerializeField]
+    GameObject gameManager;
+    
+    [SerializeField]
     GameObject[] nodeVariants;
 
     [SerializeField]
@@ -31,6 +34,7 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameObject.FindWithTag("GameManager");
         GenerateMap();
     }
 
@@ -405,7 +409,7 @@ public class MapGenerator : MonoBehaviour
     public void SelectNode(GameObject next)
     {
         next.GetComponentInChildren<Button>().enabled = false;
-
+        
         foreach (Node n in crew.GetNextNodes())
         {
             if (n.GetGameNode() != next)
@@ -415,8 +419,11 @@ public class MapGenerator : MonoBehaviour
             else
             {
                 crew = n;
+                gameManager.GetComponent<MusicController>().UpdateMusic(n.GetNodeType().ToString());
             }
         }
+
+        
 
         //go into encounter
 

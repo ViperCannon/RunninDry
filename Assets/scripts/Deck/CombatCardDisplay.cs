@@ -19,7 +19,12 @@ public class CombatCardDisplay : CardDisplay
 
     public void UpdateCardDisplay()
     {
-        if(character == null)
+        currentDamage = cardData.damage;
+        currentSelfDamage = cardData.selfDamage;
+        currentHeal = cardData.heal;
+        currentSelfHeal = cardData.secondaryHeal;
+
+        if (character == null)
         {
             AllyInstance[] allies = FindObjectsOfType<AllyInstance>();
 
