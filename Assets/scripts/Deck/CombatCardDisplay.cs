@@ -37,6 +37,8 @@ public class CombatCardDisplay : CardDisplay
             } 
         }
 
+        cardImage.sprite = cardData.cardArt;
+
         nameText.text = cardData.cardName;
 
         characterFlair[(int)cardData.character].gameObject.SetActive(true);

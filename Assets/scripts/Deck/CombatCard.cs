@@ -16,7 +16,6 @@ public class CombatCard : Card
     public int chanceEffect; //chance for applied effects (do not use for blind)
     public List<CombatSubType> subTypes;
     public List<CardTarget> validTargets;
-    public Image cardArt;
 
     public enum PlayableCharacter
     {

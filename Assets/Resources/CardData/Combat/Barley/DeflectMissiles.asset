@@ -29,4 +29,4 @@ MonoBehaviour:
   chanceEffect: 0
   subTypes: 02000000
   validTargets: 00000000
-  cardArt: {fileID: 0}
+  cardArt: {fileID: 21300000, guid: 47f40b6b8fb3b6840b7ee4d9bd688e43, type: 3}

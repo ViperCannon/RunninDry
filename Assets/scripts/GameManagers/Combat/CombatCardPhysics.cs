@@ -58,7 +58,7 @@ public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler,
         if (transform.localPosition.y >= yThreshold - 0.01f || currentTarget != null)
         {
 
-            if (!(cardDisplay.cardData.validTargets[0] == CombatCard.CardTarget.Player || cardDisplay.cardData.validTargets[0] == CombatCard.CardTarget.Enemy) && handManager.PlayCard(transform.gameObject, cardDisplay, null))
+            if (cardDisplay.cardData.validTargets[0] != CombatCard.CardTarget.Player && cardDisplay.cardData.validTargets[0] != CombatCard.CardTarget.Enemy && handManager.PlayCard(transform.gameObject, cardDisplay, null))
             {
                 Debug.Log("Successfully Played Card!");
             }

@@ -6,6 +6,7 @@ namespace SpeakeasyStreet
     public class Card : ScriptableObject
     {
         public string cardName;
+        public Sprite cardArt;
         public int cost;
         public int drawAmount;
         [TextArea] 
