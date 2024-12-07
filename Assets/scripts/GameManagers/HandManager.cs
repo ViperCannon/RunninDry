@@ -154,7 +154,7 @@ public class HandManager : MonoBehaviour
         CombatCard cardData = cardDisplay.cardData;
 
         //resolve card effect (need to add logic if player is downed.)
-        if (cardData.cost <= combatManager.currentCaps && ((target != null && !target.isDowned) || cardData.IsAOE() || cardData.validTargets[0] == CombatCard.CardTarget.Generic))
+        if (cardData.cost <= combatManager.currentCaps && ((target != null && !target.isDowned) || cardData.IsAOE() || cardData.validTargets[0] == CombatCard.CardTarget.Random || cardData.validTargets[0] == CombatCard.CardTarget.Generic))
         {
             PlayDiscard(card);
 

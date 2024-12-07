@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HammerHome
   m_EditorClassIdentifier: 
   cardName: Hammer Home
+  cardArt: {fileID: 21300000, guid: 5bd33ee3bad7dfb458380e36b943ac37, type: 3}
   cost: 2
   drawAmount: 0
   cardDescription: 'Deal {damage} melee damage
@@ -32,4 +33,3 @@ MonoBehaviour:
   chanceEffect: 0
   subTypes: 0100000003000000
   validTargets: 02000000
-  cardArt: {fileID: 0}

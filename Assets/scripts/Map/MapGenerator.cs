@@ -367,7 +367,7 @@ public class MapGenerator : MonoBehaviour
                     {
                         GameObject temp = Instantiate(line, coords, Quaternion.identity);
                         temp.transform.SetParent(content.transform, false);
-                        temp.transform.SetAsFirstSibling();
+                        temp.transform.SetSiblingIndex(1);
                         Vector3 rotCoords = mapData[y][x].GetGameNode().transform.localPosition - n.GetGameNode().transform.localPosition;
                         float angle = 90f + Mathf.Atan2(rotCoords.y, rotCoords.x) * 180 / Mathf.PI;
                         temp.transform.rotation = Quaternion.Euler(0, 0, angle);
