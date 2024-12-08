@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DeckSelectionManager : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class DeckSelectionManager : MonoBehaviour
     public GameObject negotiationPosition;
     public GameObject combatPosition;
     public string currentDeck = "Pixie";
+    public RawImage pixiesignature;
+    public RawImage barleysignature;
+    public RawImage baldwinsignature;
     
     // Start is called before the first frame update
     void Start()
@@ -81,6 +85,7 @@ public class DeckSelectionManager : MonoBehaviour
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NPixiecards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * i, 0);
             }
+            pixiesignature.gameObject.SetActive(false);
         }
         else if (deckname == "Barley")
         {
@@ -106,6 +111,7 @@ public class DeckSelectionManager : MonoBehaviour
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NBarleycards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * i, 0);
             }
+            barleysignature.gameObject.SetActive(false);
         }
         else if (deckname == "Baldwin")
         {
@@ -131,6 +137,7 @@ public class DeckSelectionManager : MonoBehaviour
                 newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NBaldwincards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * i, 0);
             }
+            baldwinsignature.gameObject.SetActive(false);
         }
         //cards.Clear();
         
@@ -164,6 +171,10 @@ public class DeckSelectionManager : MonoBehaviour
                 Pixiecards.Add(cardname);
                 NPixiecards.Add(cardname);
                 Debug.Log("Pixie negotiation " + cardname);
+                if (Pixiecards.Count == 10)
+                {
+                    pixiesignature.gameObject.SetActive(true);
+                }
             }
         }
         else if (deckname == "Baldwin")
@@ -176,6 +187,10 @@ public class DeckSelectionManager : MonoBehaviour
                 Baldwincards.Add(cardname);
                 NBaldwincards.Add(cardname);
                 Debug.Log("Baldwin negotiation " + cardname);
+                if (Baldwincards.Count == 10)
+                {
+                    baldwinsignature.gameObject.SetActive(true);
+                }
             }
         }
         else if (deckname == "Barley")
@@ -188,6 +203,10 @@ public class DeckSelectionManager : MonoBehaviour
                 Barleycards.Add(cardname);
                 NBarleycards.Add(cardname);
                 Debug.Log("Barley negotiation " + cardname);
+                if (Barleycards.Count == 10)
+                {
+                    barleysignature.gameObject.SetActive(true);
+                }
             }
         }
         if (Pixiecards.Count >= 10 && Barleycards.Count >= 10 && Baldwincards.Count >= 10)
@@ -208,6 +227,10 @@ public class DeckSelectionManager : MonoBehaviour
                 Pixiecards.Add(cardname);
                 CPixiecards.Add(cardname);
                 Debug.Log("combat " + cardname);
+                if (Pixiecards.Count == 10)
+                {
+                    pixiesignature.gameObject.SetActive(true);
+                }
             }
         }
         else if (deckname == "Barley")
@@ -220,6 +243,10 @@ public class DeckSelectionManager : MonoBehaviour
                 Barleycards.Add(cardname);
                 CBarleycards.Add(cardname);
                 Debug.Log("combat " + cardname);
+                if (Barleycards.Count == 10)
+                {
+                    barleysignature.gameObject.SetActive(true);
+                }
             }
         }
         else if (deckname == "Baldwin")
@@ -232,11 +259,44 @@ public class DeckSelectionManager : MonoBehaviour
                 Baldwincards.Add(cardname);
                 CBaldwincards.Add(cardname);
                 Debug.Log("combat " + cardname);
+                if (Baldwincards.Count == 10)
+                {
+                    baldwinsignature.gameObject.SetActive(true);
+                }
             }
         }
         if (Pixiecards.Count >= 10 && Barleycards.Count >= 10 && Baldwincards.Count >= 10)
         {
             maxcards();
+        }
+    }
+
+    public void checksignatures(string character)
+    {
+        if (character == "Pixie")
+        {
+            if (Pixiecards.Count == 10)
+            {
+                pixiesignature.gameObject.SetActive(true);
+            }
+        }
+        if (character == "Barley")
+        {
+            if (Barleycards.Count == 10)
+            {
+                barleysignature.gameObject.SetActive(true);
+            }
+        }
+        if (character == "Baldwin")
+        {
+            if (Baldwincards.Count == 10)
+            {
+                baldwinsignature.gameObject.SetActive(true);
+            }
+        }
+        else
+        {
+            //do nothing
         }
     }
 }
