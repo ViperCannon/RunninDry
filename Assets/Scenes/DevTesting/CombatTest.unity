@@ -1651,6 +1651,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1208522402772242587, guid: a9fc88bbd6c1b0545b0c946919649605, type: 3}
       propertyPath: inCombat
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1208522402772242587, guid: a9fc88bbd6c1b0545b0c946919649605, type: 3}
+      propertyPath: inNegotiation
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2387587267595306537, guid: a9fc88bbd6c1b0545b0c946919649605, type: 3}
