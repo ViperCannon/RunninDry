@@ -18,7 +18,10 @@ public class CombatManager : MonoBehaviour
     DeckManager deckManager;
     [SerializeField]
     GameManager gameManager;
-    
+    [SerializeField]
+    Canvas combatCanvas;
+
+    GameObject car;
     bool hasEndedTurn = false;
 
     public HandManager handManager;
@@ -31,9 +34,24 @@ public class CombatManager : MonoBehaviour
 
     public Card lastPlayedCard;
 
+    float zoomInSize = 5f;
+    float zoomOutSize = 10f;
+    float zoomSpeed = 2f;
+
+
     // Method to start combat and initialize variables
     public void Start()
     {
+        car = GameObject.FindWithTag("car");
+
+        if(car != null)
+            car.SetActive(false);
+
+        foreach(Transform child in combatCanvas.transform)
+        {
+            child.gameObject.SetActive(true);
+        }
+
         Debug.Log("Combat Instance Started");
 
         currentPhase = CombatPhase.PlayerTurn;
@@ -42,10 +60,40 @@ public class CombatManager : MonoBehaviour
 
         foreach(AllyInstance p in players)
         {
-            capsRefreshLimit += p.caps;
+            if (p != null)
+            {
+                p.gameObject.SetActive(true);
+                capsRefreshLimit += p.caps;
+            }          
         }
 
+        foreach (EnemyInstance e in enemies)
+        {
+            if(e != null)
+            {
+                e.gameObject.SetActive(true);
+            }
+            
+        }
+
+        StartCoroutine(ZoomCamera(zoomOutSize));
+
         StartCoroutine(HandleCombatTurns());
+    }
+
+    IEnumerator ZoomCamera(float targetSize)
+    {
+        float startSize = Camera.main.orthographicSize;
+        float timeElapsed = 0f;
+
+        while (timeElapsed < 1f)
+        {
+            Camera.main.orthographicSize = Mathf.Lerp(startSize, targetSize, timeElapsed);
+            timeElapsed += Time.deltaTime * zoomSpeed;
+            yield return null;
+        }
+
+        Camera.main.orthographicSize = targetSize; // Ensure final size is exactly the target
     }
 
     // Method to handle the turn-based combat flow
@@ -100,10 +148,13 @@ public class CombatManager : MonoBehaviour
     // Method to handle enemy turns
     IEnumerator HandleEnemyTurn()
     {
-        foreach (var enemy in enemies)
+        foreach (EnemyInstance e in enemies)
         {
-            enemy.PerformAction(); // Let each enemy perform its action
-            yield return new WaitForSeconds(1f); // Wait for a short period between actions
+            if(e != null && e.gameObject.activeSelf)
+            {
+                e.PerformAction(); // Let each enemy perform its action
+                yield return new WaitForSeconds(1f); // Wait for a short period between actions
+            }     
         }
     }
 
@@ -115,12 +166,57 @@ public class CombatManager : MonoBehaviour
 
     bool IsCombatOver()
     {
+        bool over = false;
+
+        foreach(AllyInstance p in players)
+        {
+            if (p != null && p.isDowned)
+            {
+                over = true;
+            }
+            else
+            {
+                over = false;
+                break;
+            }
+        }
+
+        if (!over)
+        {
+            foreach (EnemyInstance e in enemies)
+            {
+                if (e != null && !e.gameObject.activeSelf)
+                {
+                    over = true;
+                }
+                else
+                {
+                    over = false;
+                    break;
+                }
+            }
+        }
+
         // Check if the game has ended (all enemies defeated or all players dead)
-        return players.Exists(p => p.currentHealth <= 0) || enemies.Exists(e => e.currentHealth <= 0);
+        return over;
     }
 
     void EndCombat()
     {
+        StartCoroutine(ZoomCamera(zoomInSize));
+        combatCanvas.gameObject.SetActive(false);
+
+        foreach (AllyInstance p in players)
+        {
+            if (p != null)
+            {
+                p.gameObject.SetActive(false);
+            }
+        }
+
+        if (car != null)
+            car.SetActive(true);
+
         Debug.Log("Combat Ended.");
         // Handle the end of combat (e.g., show results, transition to the next scene, etc.)
     }

@@ -160,6 +160,7 @@ public class HandManager : MonoBehaviour
 
             if (cardData.subTypes.Contains(CombatCard.CombatSubType.Unload))
             {
+                cardDisplay.unload = combatManager.currentCaps;
                 cardResolver.ResolveCardEffects(cardDisplay, target);
                 combatManager.currentCaps = 0;
             }
