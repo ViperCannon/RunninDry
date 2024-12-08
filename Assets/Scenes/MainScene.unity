@@ -1227,7 +1227,6 @@ RectTransform:
   m_Children:
   - {fileID: 1095170417}
   - {fileID: 356704459}
-  - {fileID: 829506551}
   - {fileID: 398819413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4335,8 +4334,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bc93dd2777bb7a144a0f646fdef92ca0, type: 2}
+  m_sharedMaterial: {fileID: 1364427006170033096, guid: bc93dd2777bb7a144a0f646fdef92ca0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4600,7 +4599,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &829506551
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4608,12 +4607,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 829506550}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 209781611}
+  m_Children:
+  - {fileID: 2043536754}
+  m_Father: {fileID: 1996845273}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6299,6 +6299,10 @@ PrefabInstance:
     - target: {fileID: 2387587267595306537, guid: a9fc88bbd6c1b0545b0c946919649605, type: 3}
       propertyPath: m_Name
       value: DeckSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 2387587267595306537, guid: a9fc88bbd6c1b0545b0c946919649605, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2564570887856896454, guid: a9fc88bbd6c1b0545b0c946919649605, type: 3}
       propertyPath: deckManager
@@ -11362,8 +11366,8 @@ RectTransform:
   - {fileID: 250624285}
   - {fileID: 1158148699}
   - {fileID: 1087210662}
-  - {fileID: 2043536754}
   - {fileID: 930014242}
+  - {fileID: 829506551}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -12025,7 +12029,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043536753}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12033,11 +12037,11 @@ RectTransform:
   - {fileID: 691287109}
   - {fileID: 1732597581}
   - {fileID: 2050476394}
-  m_Father: {fileID: 1996845273}
+  m_Father: {fileID: 829506551}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 127}
+  m_AnchoredPosition: {x: 470.88144, y: -299.68042}
   m_SizeDelta: {x: 700, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2043536755
