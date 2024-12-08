@@ -16,7 +16,6 @@ public class GameManager : MonoBehaviour
     GameObject AssetHolder;
     TalkerDatabase TalkDatabase;
     relationshipframework relations;
-    public TMP_Text stats;
     public TMP_Text scoretext;
     public int talkerint;
     public string talkertype;
@@ -25,7 +24,11 @@ public class GameManager : MonoBehaviour
     public GameObject scorecanvas;
     public GameObject maincanvas;
     public GameObject combatManager;
-
+    [Header("Stats")]
+    public TMP_Text cash;
+    public TMP_Text tires;
+    public TMP_Text paneling;
+    public TMP_Text booze;
     [SerializeField]
     float waitTime;
     [Header("Negotiation")]
@@ -68,7 +71,10 @@ public class GameManager : MonoBehaviour
         {
             AssetHolder.transform.GetChild(i).gameObject.SetActive(false);
         }
-        stats.text = "Cash: " + relations.cash.ToString() + " Booze: " + relations.booze.ToString() + " Tires: " + relations.tires.ToString() + " Paneling: " + relations.paneling.ToString();
+        cash.text = relations.cash.ToString();
+        tires.text = relations.tires.ToString();
+        paneling.text = relations.paneling.ToString();
+        booze.text = relations.booze.ToString();
     }
     public void encounter(string type)
     {
@@ -133,7 +139,10 @@ public class GameManager : MonoBehaviour
 
     public void endEncounter()
     {
-        stats.text = "Cash: "+relations.cash.ToString() + " Booze: "+relations.booze.ToString()+ " Tires: " + relations.tires.ToString() + " Paneling: " + relations.paneling.ToString();
+        cash.text = relations.cash.ToString();
+        tires.text = relations.tires.ToString();
+        paneling.text = relations.paneling.ToString();
+        booze.text = relations.booze.ToString();
         //if talkdatabase.choiceint == 1 2 3 or 4 &&
         //do thing. may need to copy and paste the talkdatabase option 1-4 code here.
         continuebutton.SetActive(false);

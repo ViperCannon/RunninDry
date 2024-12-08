@@ -45,6 +45,7 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
             }
             ChangeCardList(selectionManager.currentDeck);
             Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
+            selectionManager.checksignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "Baldwin")
         {
@@ -62,6 +63,7 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
                 GameObject.Find("filters").transform.Find("BCombat").gameObject.SetActive(false);
             }
             ChangeCardList(selectionManager.currentDeck);
+            selectionManager.checksignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "Barley")
         {
@@ -79,6 +81,7 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
                 GameObject.Find("filters").transform.Find("BCombat").gameObject.SetActive(true);
             }
             ChangeCardList(selectionManager.currentDeck);
+            selectionManager.checksignatures(this.gameObject.name);
         }
         else if (this.gameObject.tag == "cardlist")
         {
@@ -99,31 +102,37 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
         {
             pixieCards.transform.Find("Negotiation").gameObject.SetActive(true);
             pixieCards.transform.Find("Combat").gameObject.SetActive(false);
+            selectionManager.checksignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "PCombat")
         {
             pixieCards.transform.Find("Combat").gameObject.SetActive(true);
             pixieCards.transform.Find("Negotiation").gameObject.SetActive(false);
+            selectionManager.checksignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "BDCombat")
         {
             baldwinCards.transform.Find("Combat").gameObject.SetActive(true);
             baldwinCards.transform.Find("Negotiation").gameObject.SetActive(false);
+            selectionManager.checksignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "BDNegotiation")
         {
             baldwinCards.transform.Find("Negotiation").gameObject.SetActive(true);
             baldwinCards.transform.Find("Combat").gameObject.SetActive(false);
+            selectionManager.checksignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "BCombat")
         {
             barleyCards.transform.Find("Combat").gameObject.SetActive(true);
             barleyCards.transform.Find("Negotiation").gameObject.SetActive(false);
+            selectionManager.checksignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "BNegotiation")
         {
             barleyCards.transform.Find("Negotiation").gameObject.SetActive(true);
             barleyCards.transform.Find("Combat").gameObject.SetActive(false);
+            selectionManager.checksignatures(this.gameObject.name);
         }
     }
 
