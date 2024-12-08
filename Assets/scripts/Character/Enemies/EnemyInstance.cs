@@ -19,4 +19,19 @@ public class EnemyInstance : CharacterInstance
     {
 
     }
+
+    public override void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            isDowned = true;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            isDowned = false;
+        }
+    }
 }

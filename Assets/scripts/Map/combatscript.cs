@@ -6,6 +6,7 @@ public class combatscript : MonoBehaviour
 {
     randomnumber randomnumber;
     GameManager gamemanager;
+    public GameObject combatManager;
     string encounterType = "Combat";
 
     // Start is called before the first frame update
@@ -13,17 +14,12 @@ public class combatscript : MonoBehaviour
     {
         randomnumber = this.gameObject.GetComponent<randomnumber>();
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        combatManager = gamemanager.combatManager;
     }
 
     public void loadAssets()
     {
-        if (randomnumber.generatedNumber == 1 || randomnumber.generatedNumber == 2)
+        /*if (randomnumber.generatedNumber == 1 || randomnumber.generatedNumber == 2)
         {
             gamemanager.talkerint = 1;
         }
@@ -44,6 +40,8 @@ public class combatscript : MonoBehaviour
         else if (randomnumber.generatedNumber >= 4)
         {
             gamemanager.Cassets2.SetActive(true);
-        }
+        }*/
+
+        combatManager.SetActive(true);
     }
 }

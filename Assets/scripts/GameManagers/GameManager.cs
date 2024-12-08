@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public GameObject continuebutton;
     public GameObject scorecanvas;
     public GameObject maincanvas;
+    public GameObject combatManager;
+
     [SerializeField]
     float waitTime;
     [Header("Negotiation")]
@@ -159,7 +161,7 @@ public class GameManager : MonoBehaviour
         overworld.SetTrigger("fadein");
         car.SetTrigger("start");
         bg.isScrolling = true;
-        mController.UpdateMusic("");
+        //mController.UpdateMusic("");
         yield return new WaitForSeconds(waitTime);
         for (int i = 0; i < AssetHolder.transform.childCount; i++)
         {

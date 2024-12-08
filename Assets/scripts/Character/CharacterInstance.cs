@@ -27,18 +27,9 @@ public class CharacterInstance : MonoBehaviour
         activeDebuffs = new List<Debuff>();
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
-        currentHealth -= damage;
-        if (currentHealth <= 0)
-        {
-            currentHealth = 0;
-            isDowned = true;
-        }
-        else
-        {
-            isDowned = false;
-        }
+    
     }
 
     public void Heal(int amount)

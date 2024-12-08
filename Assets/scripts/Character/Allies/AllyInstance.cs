@@ -14,4 +14,18 @@ public class AllyInstance : CharacterInstance
         maxHealth = baseData.baseMaxHealth;
         currentHealth = maxHealth;
     }
+
+    public override void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            currentHealth = 0;
+            isDowned = true;
+        }
+        else
+        {
+            isDowned = false;
+        }
+    }
 }
