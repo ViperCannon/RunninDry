@@ -11,6 +11,8 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
     GameObject pixieCards;
     GameObject baldwinCards;
     GameObject barleyCards;
+    TMP_Text cardName;
+    public bool exempt;
     //public string currentDeck = "Pixie";
 
     DeckSelectionManager selectionManager;
@@ -21,6 +23,11 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
         pixieCards = GameObject.Find("pixiecards");
         baldwinCards = GameObject.Find("baldwincards");
         barleyCards = GameObject.Find("barleycards");
+        cardName = gameObject.GetComponentInChildren<TMP_Text>();
+        if (!exempt)
+        { 
+            cardName.text = this.gameObject.name;
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
