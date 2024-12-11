@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab7cbf5f47936304c971bb83119f85fa, type: 3}
   m_Name: Threaten
   m_EditorClassIdentifier: 
-  cardName: Evil Eye
+  cardName: Threaten
   cardArt: {fileID: 21300000, guid: d1c424ce15eb17b4aaf0c03c537aa818, type: 3}
   cost: 0
   drawAmount: 0
