@@ -98,7 +98,7 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
         if (this.gameObject.tag == "negotiation")
         {
             selectionManager.negotiationcardSelected(this.gameObject.name, selectionManager.currentDeck);
-            Debug.Log(this.gameObject.name + selectionManager.currentDeck);
+            Debug.Log(this.gameObject.name + " " + selectionManager.currentDeck);
         }
         else if (this.gameObject.tag == "combat")
         {
