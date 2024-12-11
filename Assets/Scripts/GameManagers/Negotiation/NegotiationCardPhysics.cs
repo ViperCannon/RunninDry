@@ -66,6 +66,9 @@ public class NegotiationCardPhysics : MonoBehaviour, IPointerEnterHandler, IPoin
         if (eventData.button != PointerEventData.InputButton.Left)
             return;
 
-        
+        if (!handManager.PlayCard(GetComponent<NegotiationCardDisplay>()))
+        {
+            Debug.Log("Not enough cash!");
+        }
     }
 }

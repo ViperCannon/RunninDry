@@ -17,7 +17,8 @@ MonoBehaviour:
   cost: 0
   drawAmount: 0
   cardDescription: 
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 6d31d92759a03a045b5afe5f0c9d1868, type: 2}
   unlocked: 0
   character: 0
   numberOfDice: 5

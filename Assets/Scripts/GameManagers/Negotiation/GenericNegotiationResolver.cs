@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericNegotiationResolver : ICardEffect
+[CreateAssetMenu(fileName = "New GenericNegotiationEffect", menuName = "GenericNegotiationEffect")]
+public class GenericNegotiationResolver : ScriptableObject, ICardEffect
 {
     public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target, CombatManager cManager)
     {
@@ -16,6 +15,8 @@ public class GenericNegotiationResolver : ICardEffect
 
         int result = RollDice(numOfDice, sidedDice);
 
+        Debug.Log("negot");
+
         switch (((int)cardInstance.cardData.subTypes[0]))
         {
             case 0:
@@ -24,12 +25,22 @@ public class GenericNegotiationResolver : ICardEffect
                 {
                     //resolve crit effects
 
-
+                    nManager.Success();
+                    nManager.EndNegotiation();
 
                 }
                 else
                 {
-
+                    if(result + modifier > 12)
+                    {
+                        nManager.Success();
+                        nManager.EndNegotiation();
+                    }
+                    else
+                    {
+                        nManager.Fail();
+                        nManager.EndNegotiation();
+                    }
                 }
 
                 break;
@@ -40,12 +51,22 @@ public class GenericNegotiationResolver : ICardEffect
                 {
                     //resolve crit effects
 
-
+                    nManager.Success();
+                    nManager.EndNegotiation();
 
                 }
                 else
                 {
-
+                    if (result + modifier > 12)
+                    {
+                        nManager.Success();
+                        nManager.EndNegotiation();
+                    }
+                    else
+                    {
+                        nManager.Fail();
+                        nManager.EndNegotiation();
+                    }
                 }
 
                 break;
@@ -56,12 +77,22 @@ public class GenericNegotiationResolver : ICardEffect
                 {
                     //resolve crit effects
 
-
+                    nManager.Success();
+                    nManager.EndNegotiation();
 
                 }
                 else
                 {
-
+                    if (result + modifier > 12)
+                    {
+                        nManager.Success();
+                        nManager.EndNegotiation();
+                    }
+                    else
+                    {
+                        nManager.Fail();
+                        nManager.EndNegotiation();
+                    }
                 }
 
                 break;
