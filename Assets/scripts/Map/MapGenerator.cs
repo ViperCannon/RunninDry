@@ -29,13 +29,23 @@ public class MapGenerator : MonoBehaviour
 
     Node[][] mapData;
     Node start;
-    Node boss;
     Node crew;
+
+    public bool tutorial = true;
 
     private void Start()
     {
         gameManager = GameObject.FindWithTag("GameManager");
-        GenerateMap();
+        
+
+        if (!tutorial)
+        {
+            GenerateMap();
+        }
+        else
+        {
+            GenerateTutorial();
+        }
     }
 
     public void GenerateMap()
@@ -45,6 +55,16 @@ public class MapGenerator : MonoBehaviour
         crew = start;
         mapData = GenerateInitialGrid();
         CreatePaths();
+        DisplayMap();
+    }
+
+    public void GenerateTutorial()
+    {
+        ClearMap();
+        start = new Node();
+        crew = start;
+        mapData = GenerateTutorialGrid();
+        CreateTutorial();
         DisplayMap();
     }
 
@@ -59,6 +79,38 @@ public class MapGenerator : MonoBehaviour
             for(int j = 0; j < MAP_WIDTH; j++)
             {
                 tempData[i][j] = new Node();
+            }
+        }
+
+        return tempData;
+    }
+
+    private Node[][] GenerateTutorialGrid()
+    {
+        Node[][] tempData = new Node[FLOORS][];
+
+        for (int i = 0; i < FLOORS; i++)
+        {
+            tempData[i] = new Node[MAP_WIDTH];
+
+            for (int j = 0; j < MAP_WIDTH; j++)
+            {
+                if (i == 5 && j == 1) 
+                {
+                    tempData[i][j] = new Node();
+                }
+                else if(i == 5 && j == 3)
+                {
+                    tempData[i][j] = new Node();
+                }
+                else if(i != 5 && j == 2)
+                {
+                    tempData[i][j] = new Node();
+                }
+                else
+                {
+                    tempData[i][j] = null;
+                }
             }
         }
 
@@ -177,6 +229,109 @@ public class MapGenerator : MonoBehaviour
         }
 
         RemoveNodes();
+    }
+
+    private void CreateTutorial()
+    {
+        for (int i = 0; i < FLOORS; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    mapData[i][2].AddPrevNode(start);
+                    start.AddNextNode(mapData[i][2]);
+
+                    mapData[i][2].SetNodeType(NodeType.Negotiation);
+
+
+                    break;
+
+                case 1:
+                case 8:
+                case 10:
+
+                    mapData[i][2].AddPrevNode(mapData[i - 1][2]);
+                    mapData[i - 1][2].AddNextNode(mapData[i][2]);
+
+                    mapData[i][2].SetNodeType(NodeType.Negotiation);
+
+                    break;
+                
+                case 2:
+                case 4:
+
+                    mapData[i][2].AddPrevNode(mapData[i - 1][2]);
+                    mapData[i - 1][2].AddNextNode(mapData[i][2]);
+
+                    mapData[i][2].SetNodeType(NodeType.Combat);
+
+                    break;
+
+                case 3:
+
+                    mapData[i][2].AddPrevNode(mapData[i - 1][2]);
+                    mapData[i - 1][2].AddNextNode(mapData[i][2]);
+
+                    mapData[i][2].SetNodeType(NodeType.Blank);
+
+                    break;
+
+                case 5:
+                    
+                    mapData[i][1].AddPrevNode(mapData[i - 1][2]);
+                    mapData[i - 1][2].AddNextNode(mapData[i][1]);
+
+                    mapData[i][1].SetNodeType(NodeType.Miniboss);
+
+
+                    mapData[i][3].AddPrevNode(mapData[i - 1][2]);
+                    mapData[i - 1][2].AddNextNode(mapData[i][3]);
+
+                    mapData[i][3].SetNodeType(NodeType.Pitstop);
+
+                    break;
+
+                case 6:
+
+                    mapData[i][2].AddPrevNode(mapData[i - 1][1]);
+                    mapData[i - 1][1].AddNextNode(mapData[i][2]);
+
+                    mapData[i][2].AddPrevNode(mapData[i - 1][3]);
+                    mapData[i - 1][3].AddNextNode(mapData[i][2]);
+
+                    mapData[i][2].SetNodeType(NodeType.Event);
+
+                    break;
+
+                case 7:
+
+                    mapData[i][2].AddPrevNode(mapData[i - 1][2]);
+                    mapData[i - 1][2].AddNextNode(mapData[i][2]);
+
+                    mapData[i][2].SetNodeType(NodeType.Shop);
+
+                    break;
+
+                case 9:
+
+                    mapData[i][2].AddPrevNode(mapData[i - 1][2]);
+                    mapData[i - 1][2].AddNextNode(mapData[i][2]);
+
+                    mapData[i][2].SetNodeType(NodeType.Mystery);
+
+                    break;
+
+                case 11:
+
+                    mapData[i][2].AddPrevNode(mapData[i - 1][2]);
+                    mapData[i - 1][2].AddNextNode(mapData[i][2]);
+
+                    mapData[i][2].SetNodeType(NodeType.Pitstop);
+
+                    break;
+
+            }
+        }
     }
 
     private void AssignNodeType(Node node, int height)
