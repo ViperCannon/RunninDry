@@ -127,6 +127,7 @@ public class TutorialButtonAdvance : MonoBehaviour
     }
     IEnumerator StopCar()
     {
+        Debug.Log("StopCar");
         carParent.SetTrigger("stop");
         bg.isScrolling = false;
         map.SetTrigger("fadeout");
