@@ -19,12 +19,7 @@ public class Disarmed : Debuff
         target = character;
     }
 
-    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
-    {
-        Effect((CombatCardDisplay)cardInstance, character);
-    }
-
-    void Effect(CombatCardDisplay card, CharacterInstance character)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
         Disarmed existingDisarmed = null;
 
@@ -39,11 +34,11 @@ public class Disarmed : Debuff
 
         if (existingDisarmed != null)
         {
-            existingDisarmed.AddStacks(card.cardData.turnDuration);
+            existingDisarmed.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyDebuff(new Disarmed(character, card.cardData.turnDuration));
+            character.ApplyDebuff(new Disarmed(character, cardInstance.cardData.turnDuration));
         }
     }
 

@@ -19,12 +19,7 @@ public class Bulwark : Buff
         target = character;
     }
 
-    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
-    {
-        Effect((CombatCardDisplay)cardInstance, character);
-    }
-
-    void Effect(CombatCardDisplay card, CharacterInstance character)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
         Bulwark existingBulwark = null;
 
@@ -39,11 +34,11 @@ public class Bulwark : Buff
 
         if (existingBulwark != null)
         {
-            existingBulwark.AddStacks(card.cardData.turnDuration);
+            existingBulwark.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyBuff(new Bulwark(character, card.cardData.turnDuration));
+            character.ApplyBuff(new Bulwark(character, cardInstance.cardData.turnDuration));
         }
     }
 

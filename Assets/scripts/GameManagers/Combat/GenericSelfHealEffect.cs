@@ -3,13 +3,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New GenericSelfHealEffect", menuName = "GenericSelfHealEffect")]
 public class GenericSelfHealEffect : ScriptableObject, ICardEffect
 {
-    public void ResolveEffect(CardDisplay cardInstance, CharacterInstance target, CombatManager cManager)
+    public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target, CombatManager cManager)
     {
-        CombatCardDisplay card = (CombatCardDisplay)cardInstance;
 
-        int totalHeal = card.currentSelfHeal;
+        int totalHeal = cardInstance.currentSelfHeal;
 
-        card.character.GetComponent<AllyInstance>().Heal(totalHeal);
+        cardInstance.character.GetComponent<AllyInstance>().Heal(totalHeal);
+    }
+
+    public void ResolveEffect(NegotiationCardDisplay cardInstance, NegotiationManager nManager)
+    {
+
     }
 }
 

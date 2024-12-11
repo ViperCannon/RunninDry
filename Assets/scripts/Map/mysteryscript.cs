@@ -14,12 +14,6 @@ public class mysteryscript : MonoBehaviour
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void loadAssets()
     {
         gamemanager.talkerint = randomnumber.generatedNumber;

@@ -13,12 +13,6 @@ public class shopscript : MonoBehaviour
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void loadAssets()
     {
         if (randomnumber.generatedNumber == 1)

@@ -3,12 +3,15 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New GenericHealEffect", menuName = "GenericHealEffect")]
 public class GenericHealEffect : ScriptableObject, ICardEffect
 {
-    public void ResolveEffect(CardDisplay cardInstance, CharacterInstance target, CombatManager cManager)
+    public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target, CombatManager cManager)
     {
-        CombatCardDisplay card = (CombatCardDisplay)cardInstance;
-
-        int totalHeal = card.currentHeal;
+        int totalHeal = cardInstance.currentHeal;
 
         target.Heal(totalHeal);
+    }
+
+    public void ResolveEffect(NegotiationCardDisplay cardInstance, NegotiationManager nManager)
+    {
+
     }
 }

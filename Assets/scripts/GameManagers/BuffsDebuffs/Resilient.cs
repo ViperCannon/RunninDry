@@ -19,12 +19,7 @@ public class Resilient : Buff
         target = character;
     }
 
-    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
-    {
-        Effect((CombatCardDisplay)cardInstance, character);
-    }
-
-    void Effect(CombatCardDisplay card, CharacterInstance character)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
         Resilient existingResilient = null;
 
@@ -39,11 +34,11 @@ public class Resilient : Buff
 
         if (existingResilient != null)
         {
-            existingResilient.AddStacks(card.cardData.turnDuration);
+            existingResilient.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyBuff(new Resilient(character, card.cardData.turnDuration));
+            character.ApplyBuff(new Resilient(character, cardInstance.cardData.turnDuration));
         }
     }
 

@@ -8,6 +8,7 @@ using SpeakeasyStreet;
 public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     HandManager handManager;
+    CombatManager combatManager;
     Vector3 originalPosition;
     Vector3 dragOffset;
     Quaternion originalRotation;
@@ -21,11 +22,13 @@ public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler,
     GameObject currentTarget;
 
     public Image highlight;
+    
 
     void Start()
     {
         canvas = GetComponentInParent<Canvas>();
         handManager = transform.parent.parent.GetComponentInChildren<HandManager>();
+        combatManager = GameObject.Find("CombatManager").GetComponent<CombatManager>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -62,7 +65,7 @@ public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler,
             {
                 Debug.Log("Successfully Played Card!");
             }
-            else if (currentTarget != null && currentTarget.CompareTag(cardDisplay.cardData.validTargets[0].ToString()) && (currentTarget.name != cardDisplay.cardData.character.ToString() 
+            else if (((cardDisplay.cardData.cost == 0)  || (combatManager.currentCaps >= cardDisplay.cardData.cost)) && currentTarget != null && currentTarget.CompareTag(cardDisplay.cardData.validTargets[0].ToString()) && (currentTarget.name != cardDisplay.cardData.character.ToString() 
                 || cardDisplay.cardData.IsSelfInclusive()) && handManager.PlayCard(transform.gameObject, cardDisplay, currentTarget.GetComponent<CharacterInstance>()))
             {
                 Debug.Log("Successfully Played Card!");
