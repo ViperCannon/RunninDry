@@ -32,7 +32,6 @@ public class NegotiationManager : MonoBehaviour
         fail.SetActive(true);
     }
 
-
     public void EndNegotiation()
     {
         deckManager.inNegotiation = false;
