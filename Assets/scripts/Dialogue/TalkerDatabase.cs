@@ -1,11 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.Collections.LowLevel.Unsafe;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.Presets;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.HID;
 using UnityEngine.UI;
