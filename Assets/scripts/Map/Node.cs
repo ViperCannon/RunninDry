@@ -181,7 +181,8 @@ namespace Map
                 nodeButton.interactable = true;
                 if(nodeType != NodeType.Boss)
                 {
-                    gameNode.GetComponentInChildren<NodeButtonFunction>().StartPulse();
+                    //gameNode.GetComponentInChildren<NodeButtonFunction>().StartPulse();
+                    gameNode.GetComponentInChildren<TutorialButtonAdvance>().StartPulse();
                 }
             }
         }

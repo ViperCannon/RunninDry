@@ -7,10 +7,12 @@ namespace SpeakeasyStreet
     public class CardEffectResolver : MonoBehaviour
     {
         CombatManager cManager;
+        NegotiationManager nManager;
 
         void Start()
         {
             cManager = GetComponent<CombatManager>();
+            nManager = GetComponent<NegotiationManager>();
         }
 
         public void ResolveCardEffects(CardDisplay cardInstance, CharacterInstance target)
@@ -26,7 +28,18 @@ namespace SpeakeasyStreet
             }
             else
             {
+                
+                NegotiationCardDisplay card = (NegotiationCardDisplay)cardInstance;
 
+                Debug.Log(card.cardData.GetCardEffects().Count);
+
+                
+
+                foreach (ICardEffect effect in card.cardData.GetCardEffects())
+                {
+                    Debug.Log("resolving");
+                    effect.ResolveEffect(card, nManager);
+                }
             }
 
             

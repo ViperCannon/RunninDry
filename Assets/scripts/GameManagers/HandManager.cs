@@ -8,6 +8,10 @@ public class HandManager : MonoBehaviour
     [SerializeField]
     CombatManager combatManager;
     [SerializeField]
+    NegotiationManager negotiationManager;
+    [SerializeField]
+    GameManager gameManager;
+    [SerializeField]
     CardEffectResolver cardResolver;
     [SerializeField]
     GameObject combatCardPrefab;
@@ -37,8 +41,8 @@ public class HandManager : MonoBehaviour
 
     void Start()
     {
-        deckManager.PopulateDecks();
-        deckManager.UpdateCounters();
+        //deckManager.PopulateDecks();
+       // deckManager.UpdateCounters();
 
         if(combatManager == null)
         {
@@ -184,10 +188,19 @@ public class HandManager : MonoBehaviour
         }   
     }
 
-    public bool PlayCard(GameObject cardDisplay, NegotiationCard cardData)
+    public bool PlayCard(NegotiationCardDisplay cardDisplay)
     {
         //check bribery cost, otherwise card always plays
-        return true;
+        if(cardDisplay.cardData.cost <= gameManager.relations.cash)
+        {
+            gameManager.relations.cash -= cardDisplay.cardData.cost;
+            gameManager.cash.text = gameManager.relations.cash.ToString();
+            negotiationManager.GetComponent<CardEffectResolver>().ResolveCardEffects(cardDisplay, null);
+            
+            return true;
+        }
+
+        return false;
     }
 
     private void UpdateHandVisuals()

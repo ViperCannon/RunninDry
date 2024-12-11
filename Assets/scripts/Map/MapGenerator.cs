@@ -95,15 +95,7 @@ public class MapGenerator : MonoBehaviour
 
             for (int j = 0; j < MAP_WIDTH; j++)
             {
-                if (i == 5 && j == 1) 
-                {
-                    tempData[i][j] = new Node();
-                }
-                else if(i == 5 && j == 3)
-                {
-                    tempData[i][j] = new Node();
-                }
-                else if(i != 5 && j == 2)
+                if (j == 2)
                 {
                     tempData[i][j] = new Node();
                 }
@@ -277,27 +269,19 @@ public class MapGenerator : MonoBehaviour
                     break;
 
                 case 5:
-                    
-                    mapData[i][1].AddPrevNode(mapData[i - 1][2]);
-                    mapData[i - 1][2].AddNextNode(mapData[i][1]);
+                case 11:
 
-                    mapData[i][1].SetNodeType(NodeType.Miniboss);
+                    mapData[i][2].AddPrevNode(mapData[i - 1][2]);
+                    mapData[i - 1][2].AddNextNode(mapData[i][2]);
 
-
-                    mapData[i][3].AddPrevNode(mapData[i - 1][2]);
-                    mapData[i - 1][2].AddNextNode(mapData[i][3]);
-
-                    mapData[i][3].SetNodeType(NodeType.Pitstop);
+                    mapData[i][2].SetNodeType(NodeType.Pitstop);
 
                     break;
 
                 case 6:
 
-                    mapData[i][2].AddPrevNode(mapData[i - 1][1]);
-                    mapData[i - 1][1].AddNextNode(mapData[i][2]);
-
-                    mapData[i][2].AddPrevNode(mapData[i - 1][3]);
-                    mapData[i - 1][3].AddNextNode(mapData[i][2]);
+                    mapData[i][2].AddPrevNode(mapData[i - 1][2]);
+                    mapData[i - 1][2].AddNextNode(mapData[i][2]);
 
                     mapData[i][2].SetNodeType(NodeType.Event);
 
@@ -320,16 +304,6 @@ public class MapGenerator : MonoBehaviour
                     mapData[i][2].SetNodeType(NodeType.Mystery);
 
                     break;
-
-                case 11:
-
-                    mapData[i][2].AddPrevNode(mapData[i - 1][2]);
-                    mapData[i - 1][2].AddNextNode(mapData[i][2]);
-
-                    mapData[i][2].SetNodeType(NodeType.Pitstop);
-
-                    break;
-
             }
         }
     }

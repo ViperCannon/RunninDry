@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     ScrollingBackground bg;
     GameObject AssetHolder;
     TalkerDatabase TalkDatabase;
-    relationshipframework relations;
+    public relationshipframework relations;
     public TMP_Text scoretext;
     public int talkerint;
     public string talkertype;
@@ -145,12 +145,12 @@ public class GameManager : MonoBehaviour
         booze.text = relations.booze.ToString();
         //if talkdatabase.choiceint == 1 2 3 or 4 &&
         //do thing. may need to copy and paste the talkdatabase option 1-4 code here.
-        continuebutton.SetActive(false);
+        //continuebutton.SetActive(false);
         StartCoroutine(endingEncounter());
-        for (int i = 0; i < TalkDatabase.optionbuttons.transform.childCount; i++)
+       /* for (int i = 0; i < TalkDatabase.optionbuttons.transform.childCount; i++)
         {
             TalkDatabase.optionbuttons.transform.GetChild(i).gameObject.SetActive(false);
-        }
+        }*/
         //TalkDatabase.textbox.SetActive(false);
         print(relations.copRelations);
         print(relations.civilianRelations);

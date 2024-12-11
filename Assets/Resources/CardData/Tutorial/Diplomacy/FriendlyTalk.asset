@@ -17,7 +17,8 @@ MonoBehaviour:
   cost: 0
   drawAmount: 0
   cardDescription: Just hear me out
-  cardEffects: []
+  cardEffects:
+  - {fileID: 11400000, guid: 6d31d92759a03a045b5afe5f0c9d1868, type: 2}
   unlocked: 1
   character: 2
   numberOfDice: 2

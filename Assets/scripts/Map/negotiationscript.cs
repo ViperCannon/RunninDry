@@ -26,11 +26,6 @@ public class negotiationscript : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void GrabAssets()
     {
         if (GameObject.Find("N1") != null && GameObject.Find("N2") != null)

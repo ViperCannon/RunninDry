@@ -42,7 +42,7 @@ public class CombatManager : MonoBehaviour
 
 
     // Method to start combat and initialize variables
-    public void Start()
+    public void OnEnable()
     {
         car = GameObject.FindWithTag("car");
 
@@ -53,6 +53,15 @@ public class CombatManager : MonoBehaviour
         {
             child.gameObject.SetActive(true);
         }
+
+        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            enemies.Add(enemy.GetComponent<EnemyInstance>());
+        }
+
+        deckManager.inCombat = true;
+        deckManager.PopulateDecks();
+        deckManager.UpdateCounters();
 
         Debug.Log("Combat Instance Started");
 
@@ -143,7 +152,7 @@ public class CombatManager : MonoBehaviour
         // Handle player actions (drawing cards, playing cards, etc.)
         handManager.AttemptDraw(6);
 
-        while (!hasEndedTurn)
+        while (!hasEndedTurn && !IsCombatOver())
         {
             // Wait until the player decides to end their turn
             yield return null;
@@ -218,7 +227,7 @@ public class CombatManager : MonoBehaviour
         {
             foreach (EnemyInstance e in enemies)
             {
-                if (e != null && !e.gameObject.activeSelf)
+                if (e == null || (e != null && !e.gameObject.activeSelf))
                 {
                     over = true;
                 }
@@ -249,6 +258,10 @@ public class CombatManager : MonoBehaviour
 
         if (car != null)
             car.SetActive(true);
+
+        deckManager.inCombat = false;
+
+        gameManager.endEncounter();
 
         Debug.Log("Combat Ended.");
         // Handle the end of combat (e.g., show results, transition to the next scene, etc.)
