@@ -54,6 +54,11 @@ public class CombatManager : MonoBehaviour
             child.gameObject.SetActive(true);
         }
 
+        if(enemies.Count > 0)
+        {
+            enemies.Clear();
+        }
+
         foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             enemies.Add(enemy.GetComponent<EnemyInstance>());
@@ -106,6 +111,11 @@ public class CombatManager : MonoBehaviour
         }
 
         Camera.main.orthographicSize = targetSize; // Ensure final size is exactly the target
+
+        if(targetSize == zoomInSize)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Method to handle the turn-based combat flow
@@ -120,8 +130,12 @@ public class CombatManager : MonoBehaviour
                 // Wait for the player(s) to finish their turn
                 yield return StartCoroutine(HandlePlayerTurn());
 
-                // Transition to enemy turn
-                currentPhase = CombatPhase.EnemyTurn;
+                if (!IsCombatOver())
+                {
+                    // Transition to enemy turn
+                    currentPhase = CombatPhase.EnemyTurn;
+                }
+                
             }
             else if (currentPhase == CombatPhase.EnemyTurn)
             {
@@ -129,9 +143,11 @@ public class CombatManager : MonoBehaviour
 
                 // Handle enemies' turn actions
                 yield return StartCoroutine(HandleEnemyTurn());
-
-                // Transition back to player turn
-                currentPhase = CombatPhase.PlayerTurn;
+                if (!IsCombatOver())
+                {
+                    // Transition back to player turn
+                    currentPhase = CombatPhase.PlayerTurn;
+                }     
             }
         }
 
@@ -245,8 +261,11 @@ public class CombatManager : MonoBehaviour
 
     void EndCombat()
     {
-        StartCoroutine(ZoomCamera(zoomInSize));
-        combatCanvas.gameObject.SetActive(false);
+
+        foreach (Transform child in combatCanvas.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
 
         foreach (AllyInstance p in players)
         {
@@ -262,6 +281,8 @@ public class CombatManager : MonoBehaviour
         deckManager.inCombat = false;
 
         gameManager.endEncounter();
+
+        StartCoroutine(ZoomCamera(zoomInSize));
 
         Debug.Log("Combat Ended.");
         // Handle the end of combat (e.g., show results, transition to the next scene, etc.)

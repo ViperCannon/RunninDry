@@ -22,6 +22,7 @@ MonoBehaviour:
     enemy, increase damage by {secondaryDamage}'
   cardEffects:
   - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
+  - {fileID: 11400000, guid: e0d146735183f964e9d4bae856adb425, type: 2}
   unlocked: 0
   character: 2
   damage: 15

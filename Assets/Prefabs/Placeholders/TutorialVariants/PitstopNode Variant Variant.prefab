@@ -93,9 +93,13 @@ PrefabInstance:
       value: PitstopNode Variant Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6747856937893570240, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747856937893570240, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3483837119421088652}
     - target: {fileID: 6747856937893570240, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -103,6 +107,22 @@ PrefabInstance:
     - target: {fileID: 6747856937893570240, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747856937893570240, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747856937893570240, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: loadAssets
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747856937893570240, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TutorialButtonAdvance, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6747856937893570240, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: pitstopscript, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2106043562698577086, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}

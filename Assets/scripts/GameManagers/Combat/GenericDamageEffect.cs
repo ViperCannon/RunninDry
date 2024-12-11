@@ -16,10 +16,21 @@ public class GenericDamageEffect : ScriptableObject, ICardEffect
             totalDamage = cardInstance.currentDamage * cardInstance.unload;
         }
         
+        if(target != null)
+        {
+            target.TakeDamage(totalDamage);
+        }   
+        else
+            foreach(EnemyInstance enemy in cManager.enemies)
+            {
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(totalDamage);   
+                }
+                    
+            }
 
-        target.TakeDamage(totalDamage);
-
-        Debug.Log(target.name + " recieved " + totalDamage + " damnage.");
+        
     }
 
     public void ResolveEffect(NegotiationCardDisplay cardInstance, NegotiationManager nManager)
