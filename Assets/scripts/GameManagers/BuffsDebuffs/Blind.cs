@@ -30,12 +30,7 @@ public class Blind : Debuff
         target = character;
     }
 
-    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
-    {
-        Effect((CombatCardDisplay)cardInstance, character);
-    }
-
-    void Effect(CombatCardDisplay card, CharacterInstance character)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
         Blind existingBlind = null;
 
@@ -48,7 +43,7 @@ public class Blind : Debuff
             }
         }
 
-        for (int i = 0; i < card.cardData.turnDuration; i++)
+        for (int i = 0; i < cardInstance.cardData.turnDuration; i++)
         {
             AttemptBlind(existingBlind, character);
         }

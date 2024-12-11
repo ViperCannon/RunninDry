@@ -4,12 +4,11 @@ using UnityEngine;
 public class GenericRandomDamageEffect : ScriptableObject, ICardEffect
 {
     //random target aside from the one specified. If target is null, then just a random target.
-    public void ResolveEffect(CardDisplay cardInstance, CharacterInstance target, CombatManager cManager)
+    public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target, CombatManager cManager)
     {
-        CombatCardDisplay card = (CombatCardDisplay)cardInstance;
         CharacterInstance newTarget = target;
 
-        if (card.cardData.validTargets.Contains(CombatCard.CardTarget.Enemy))
+        if (cardInstance.cardData.validTargets.Contains(CombatCard.CardTarget.Enemy))
         {
             while(newTarget == target)
             {
@@ -24,8 +23,13 @@ public class GenericRandomDamageEffect : ScriptableObject, ICardEffect
             }
         }
 
-        int totalDamage = card.currentDamage; //account for target's buff/debuffs in future
+        int totalDamage = cardInstance.currentDamage; //account for target's buff/debuffs in future
 
         newTarget.TakeDamage(totalDamage);     
+    }
+
+    public void ResolveEffect(NegotiationCardDisplay cardInstance, NegotiationManager nManager)
+    {
+
     }
 }

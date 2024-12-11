@@ -19,12 +19,7 @@ public class Unsure : Debuff
         target = character;
     }
 
-    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
-    {
-        Effect((CombatCardDisplay)cardInstance, character);
-    }
-
-    void Effect(CombatCardDisplay card, CharacterInstance character)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
         Unsure existingUnsure = null;
 
@@ -39,11 +34,11 @@ public class Unsure : Debuff
 
         if (existingUnsure != null)
         {
-            existingUnsure.AddStacks(card.cardData.turnDuration);
+            existingUnsure.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyDebuff(new Unsure(character, card.cardData.turnDuration));
+            character.ApplyDebuff(new Unsure(character, cardInstance.cardData.turnDuration));
         }
     }
 

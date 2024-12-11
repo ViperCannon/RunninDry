@@ -19,12 +19,7 @@ public class Inspired : Buff
         target = character;
     }
 
-    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
-    {
-        Effect((CombatCardDisplay)cardInstance, character);
-    }
-
-    void Effect(CombatCardDisplay card, CharacterInstance character)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
         Inspired existingInspired = null;
 
@@ -39,11 +34,11 @@ public class Inspired : Buff
 
         if (existingInspired != null)
         {
-            existingInspired.AddStacks(card.cardData.turnDuration);
+            existingInspired.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyBuff(new Inspired(character, card.cardData.turnDuration));
+            character.ApplyBuff(new Inspired(character, cardInstance.cardData.turnDuration));
         }
     }
 

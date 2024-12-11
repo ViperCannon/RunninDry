@@ -19,12 +19,7 @@ public class PissedOff : Buff
         target = character;
     }
 
-    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
-    {
-        Effect((CombatCardDisplay)cardInstance, character);
-    }
-
-    void Effect(CombatCardDisplay card, CharacterInstance character)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
         PissedOff existingPissedOff = null;
 
@@ -39,11 +34,11 @@ public class PissedOff : Buff
 
         if (existingPissedOff != null)
         {
-            existingPissedOff.AddStacks(card.cardData.turnDuration);
+            existingPissedOff.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyBuff(new PissedOff(character, card.cardData.turnDuration));
+            character.ApplyBuff(new PissedOff(character, cardInstance.cardData.turnDuration));
         }
     }
 

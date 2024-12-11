@@ -21,7 +21,7 @@ namespace SpeakeasyStreet
 
                 foreach (ICardEffect effect in card.cardData.GetCardEffects())
                 {
-                    effect.ResolveEffect(cardInstance, target, cManager);
+                    effect.ResolveEffect(card, target, cManager);
                 }
             }
             else

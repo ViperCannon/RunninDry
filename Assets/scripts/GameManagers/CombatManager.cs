@@ -20,6 +20,8 @@ public class CombatManager : MonoBehaviour
     GameManager gameManager;
     [SerializeField]
     Canvas combatCanvas;
+    [SerializeField]
+    CapsHolder capsHolder;
 
     GameObject car;
     bool hasEndedTurn = false;
@@ -56,6 +58,7 @@ public class CombatManager : MonoBehaviour
 
         currentPhase = CombatPhase.PlayerTurn;
 
+        currentCaps = 0;
         capsRefreshLimit = 0;
 
         foreach(AllyInstance p in players)
@@ -131,7 +134,11 @@ public class CombatManager : MonoBehaviour
     {
         hasEndedTurn = false;
 
-        currentCaps = capsRefreshLimit;
+        yield return new WaitForEndOfFrame();
+
+        Debug.Log(capsRefreshLimit - currentCaps);
+
+        UpdateCaps(capsRefreshLimit - currentCaps);
 
         // Handle player actions (drawing cards, playing cards, etc.)
         handManager.AttemptDraw(6);
@@ -155,6 +162,32 @@ public class CombatManager : MonoBehaviour
                 e.PerformAction(); // Let each enemy perform its action
                 yield return new WaitForSeconds(1f); // Wait for a short period between actions
             }     
+        }
+    }
+
+    public void UpdateCaps(int c)
+    {
+        if(c > 0)
+        {
+            for(int caps = currentCaps; caps < capsHolder.caps.Length && c > 0; caps++)
+            {
+
+                capsHolder.caps[caps].SetActive(true);
+
+                currentCaps++;
+                c--;
+            }
+        }
+        else
+        {
+            for (int caps = currentCaps - 1; caps > -1 && c < 0; caps--)
+            {
+
+                capsHolder.caps[caps].SetActive(false);
+
+                currentCaps--;
+                c++;
+            }
         }
     }
 

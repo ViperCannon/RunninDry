@@ -12,12 +12,6 @@ public class randomnumber : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void generateNumber()
     {
         generatedNumber = Random.Range(1, 6);

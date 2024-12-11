@@ -162,12 +162,12 @@ public class HandManager : MonoBehaviour
             {
                 cardDisplay.unload = combatManager.currentCaps;
                 cardResolver.ResolveCardEffects(cardDisplay, target);
-                combatManager.currentCaps = 0;
+                combatManager.UpdateCaps(-combatManager.currentCaps);
             }
             else
             {
                 cardResolver.ResolveCardEffects(cardDisplay, target);
-                combatManager.currentCaps -= cardData.cost;
+                combatManager.UpdateCaps(-cardData.cost);
             }
 
             combatManager.lastPlayedCard = cardData;

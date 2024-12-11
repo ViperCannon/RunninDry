@@ -19,5 +19,7 @@ public class NegotiationCardDisplay : CardDisplay
         type[(int)cardData.subTypes[0]].gameObject.SetActive(true);
 
         descText.text = cardData.cardDescription;
+
+        cardImage.sprite = cardData.cardArt;
     }
 }

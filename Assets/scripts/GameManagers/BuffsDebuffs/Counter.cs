@@ -19,12 +19,7 @@ public class Counter : Buff
         target = character;
     }
 
-    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
-    {
-        Effect((CombatCardDisplay)cardInstance, character);
-    }
-
-    void Effect(CombatCardDisplay card, CharacterInstance character)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
         Counter existingCounter = null;
 
@@ -39,11 +34,11 @@ public class Counter : Buff
 
         if (existingCounter != null)
         {
-            existingCounter.AddStacks(card.cardData.turnDuration);
+            existingCounter.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyBuff(new Counter(character, card.cardData.turnDuration));
+            character.ApplyBuff(new Counter(character, cardInstance.cardData.turnDuration));
         }
     }
 

@@ -19,12 +19,7 @@ public class Protected : Buff
         target = character;
     }
 
-    new public void ResolveEffect(CardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
-    {
-        Effect((CombatCardDisplay)cardInstance, character);
-    }
-
-    void Effect(CombatCardDisplay card, CharacterInstance character)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
     {
         Protected existingProtected = null;
 
@@ -39,11 +34,11 @@ public class Protected : Buff
 
         if (existingProtected != null)
         {
-            existingProtected.AddStacks(card.cardData.turnDuration);
+            existingProtected.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyBuff(new Protected(character, card.cardData.turnDuration));
+            character.ApplyBuff(new Protected(character, cardInstance.cardData.turnDuration));
         }
     }
 
