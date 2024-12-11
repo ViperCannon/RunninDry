@@ -1,36 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class AudioSlider : MonoBehaviour
 {
     [SerializeField]
     private AudioMixer audioMixer;
-    [SerializeField]
-    private AudioSource audioSource;
-    [SerializeField]
-    private AudioMixMode mixMode;
+
 
     private void Start()
     {
-        audioMixer.SetFloat("Volume", Mathf.Log10(PlayerPrefs.GetFloat("Volume", 1) * 20));
+        audioMixer.SetFloat(transform.name, Mathf.Log10(PlayerPrefs.GetFloat("Volume", 1) * 20));
     }
 
-    public void onChangeSlider(float Value)
+    public void onChangeSlider()
     {
-        switch(mixMode)
-        {
-            case AudioMixMode.LogarithmicMixerVolume:
-                audioMixer.SetFloat("Volume", Mathf.Log10(Value) * 20);
-                PlayerPrefs.SetFloat("Volume", Value);
-                PlayerPrefs.Save();
-                break;
-        }
-    }
-
-    public enum AudioMixMode
-    {
-        LogarithmicMixerVolume
+        audioMixer.SetFloat(transform.name, Mathf.Log10(GetComponent<Slider>().value) * 20);
+        PlayerPrefs.SetFloat(transform.name, GetComponent<Slider>().value);
+        PlayerPrefs.Save();
     }
 }
