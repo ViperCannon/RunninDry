@@ -48,7 +48,8 @@ public class TalkerDatabase : MonoBehaviour
     public string responsetext;
     GameManager manager;
     relationshipframework relations;
-    public void encounter(string type)
+
+    public void Encounter(string type)
     {
         textbox.SetActive(true);
         text.text = GetTalkerText(manager.talkerint, type);
@@ -95,7 +96,7 @@ public class TalkerDatabase : MonoBehaviour
         }
     }
 
-    public string Getresponse(int talkerId, string type, int optionnumber)
+    public string GetResponse(int talkerId, string type, int optionnumber)
     {
         for (int i = 0; i < MyTalkerData.Talkers.Length; ++i)
         {
@@ -155,14 +156,14 @@ public class TalkerDatabase : MonoBehaviour
         return "[NO_TEXT_FOUND]";
     }
 
-    public void getResponse(int choicenumber)
+    public void GetResponse(int choicenumber)
     {
         text.text = responsetext;
         manager.continuebutton.SetActive(true);
         choiceint = choicenumber;
     }
 
-    public void option1()
+    public void Option1()
     {
         if (manager.talkertype == "Event")
         {
@@ -253,9 +254,9 @@ public class TalkerDatabase : MonoBehaviour
                 //combat with 4 abolitionists
             }
         }
-        responsetext = Getresponse(manager.talkerint, manager.talkertype, 1);
+        responsetext = GetResponse(manager.talkerint, manager.talkertype, 1);
     }
-    public void option2()
+    public void Option2()
     {
         if (manager.talkertype == "Event")
         {
@@ -326,9 +327,9 @@ public class TalkerDatabase : MonoBehaviour
                 relations.paneling -= 1;
             }
         }
-        responsetext = Getresponse(manager.talkerint, manager.talkertype, 2);
+        responsetext = GetResponse(manager.talkerint, manager.talkertype, 2);
     }
-    public void option3()
+    public void Option3()
     {
         if (manager.talkertype == "Event")
         {
@@ -371,15 +372,15 @@ public class TalkerDatabase : MonoBehaviour
                 relations.civilianRelations -= 5;
             }
         }
-        responsetext = Getresponse(manager.talkerint, manager.talkertype, 3);
+        responsetext = GetResponse(manager.talkerint, manager.talkertype, 3);
     }
-    public void option4()
+    public void Option4()
     {
         if (manager.talkertype == "")
         {
 
         }
-        responsetext = Getresponse(manager.talkerint, manager.talkertype, 4);
+        responsetext = GetResponse(manager.talkerint, manager.talkertype, 4);
     }
 
 }
