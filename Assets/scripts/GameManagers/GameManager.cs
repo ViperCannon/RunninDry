@@ -74,10 +74,10 @@ public class GameManager : MonoBehaviour
         paneling.text = relations.paneling.ToString();
         booze.text = relations.booze.ToString();
     }
-    public void encounter(string type)
+    public void Encounter(string type)
     {
         talkertype = type;
-        TalkDatabase.encounter(type);
+        TalkDatabase.Encounter(type);
     }
 
     public void scorescreen()
