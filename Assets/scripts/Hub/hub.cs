@@ -5,11 +5,7 @@ using UnityEngine.EventSystems;
 
 public class hub : MonoBehaviour, IPointerDownHandler
 {
-    public GameObject chairs;
-    public GameObject bottles;
-
-    public int bottleCost;
-    public int chairCost;
+    
 
     relationshipframework relationshipframework;
     //add more objects as items get added
@@ -24,6 +20,11 @@ public class hub : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         //do the if (this.gameobject.name == "bottles" && relationshipframework.cash >= bottleCost) 
+    }
+
+    public void purchasedUpgrade(string item)
+    {
+        //this is where any additional effects we want to have happen would happen
     }
 
     private void AddPhysics2DRaycaster()
