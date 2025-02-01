@@ -17,7 +17,7 @@ public class pitstopscript : MonoBehaviour
     public void loadAssets()
     {
         gamemanager.talkerint = randomnumber.generatedNumber;
-        gamemanager.encounter(encounterType);
+        gamemanager.Encounter(encounterType);
         if (randomnumber.generatedNumber <= 3)
         {
             gamemanager.Passets1.SetActive(true);

@@ -49,7 +49,7 @@ public class negotiationscript : MonoBehaviour
             gamemanager.talkerint = 3;
         }
         //gamemanager.talkerint = randomnumber.generatedNumber;
-        gamemanager.encounter(encounterType);
+        gamemanager.Encounter(encounterType);
         if (randomnumber.generatedNumber <= 3)
         {
             gamemanager.Nassets1.SetActive(true);
