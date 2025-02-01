@@ -165,97 +165,120 @@ public class TalkerDatabase : MonoBehaviour
 
     public void Option1()
     {
-        if (manager.talkertype == "Event")
+        switch (manager.talkertype)
         {
-            if (manager.talkerint == 1)
-            {
-                if (relations.copRelations >= 40)
+            case "Event":
+                switch (manager.talkerint)
                 {
-                    relations.copRelations += 2;
-                    relations.civilianRelations += 2;
+                    case 1:
+                        if (relations.copRelations >= 40)
+                        {
+                            relations.copRelations += 2;
+                            relations.civilianRelations += 2;
+                        }
+                        else
+                        {
+                            // Initiate a combat encounter with one cop.
+                        }
+                        break;
+
+                    case 2:
+                        relations.civilianRelations -= 5;
+                        break;
+
+                    case 3:
+                        relations.civilianRelations -= 2;
+                        break;
+
+                    case 4:
+                        // Heal the player by 5 HP.
+                        relations.cash -= 2;
+                        relations.civilianRelations += 3;
+                        break;
+
+                    case 5:
+                        relations.cash += 10;
+                        relations.civilianRelations += 5;
+                        relations.copRelations -= 5;
+                        break;
+
+                    case 6:
+                        if (relations.civilianRelations >= 60)
+                        {
+                            // She smiles, takes your assistance, and presses a bill into your hands. (+2 Civ Rp, +3 Cash)
+                            relations.civilianRelations += 2;
+                            relations.cash += 3;
+                        }
+                        else if (relations.civilianRelations >= 25 && relations.civilianRelations < 60)
+                        {
+                            // She smiles and takes your assistance. (+2 Civ RP)
+                            relations.civilianRelations += 2;
+                        }
+                        else if (relations.civilianRelations < 25)
+                        {
+                            // She frowns and walks away. (-2 Civ RP)
+                            relations.civilianRelations -= 2;
+                        }
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
                 }
-                else
+                break;
+
+            case "Negotiation":
+                switch (manager.talkerint)
                 {
-                    //start combat with 1 cop
+                    case 1:
+                        /* Negotiation P/I/B: 14/8/10
+                         * SUCCESS: the man cools off, apologizes, and gets back in his car.
+                         * FAIL: your words worsen the situation, and he elbows one of your car windows in. (-1 Paneling) He then hightails it out of there.
+                         */
+                        break;
+
+                    case 2:
+                        /* Negotiation P/I/B: 12, 16, 25
+                         * SUCCESS: The crowd hears your words and begins to chant "Booze! Booze! Booze!" The abolitionists hightail it out of there. (+10 Dru RP, +5 Civ RP. -15 Abo RP)
+                         * FAIL: The crowd becomes restless, opinion turning on you. The Abolitionist speaker smiles then yells "Get 'em!" (- 5 Abo RP, -5 Civ RP, +5 Dru RP) Begin combat with 3 abolitionists and 2 civilians.
+                         */
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
                 }
-            }
-            else if (manager.talkerint == 2)
-            {
-                relations.civilianRelations -= 5;
-            }
-            else if (manager.talkerint == 3)
-            {
-                relations.civilianRelations -= 2;
-            }
-            else if (manager.talkerint == 4)
-            {
-                //hp + 5
-                relations.cash -= 2;
-                relations.civilianRelations += 3;
-            }
-            else if (manager.talkerint == 5)
-            {
-                relations.cash += 10;
-                relations.civilianRelations += 5;
-                relations.copRelations -= 5;
-            }
-            else if (manager.talkerint == 6)
-            {
-                if (relations.civilianRelations >= 60)
+                break;
+
+            case "Combat":
+                switch (manager.talkerint)
                 {
-                    //she smiles, takes your assistance, and presses a bill into your hands(+2 Civ Rp, +3 Cash)
-                    relations.civilianRelations += 2;
-                    relations.cash += 3;
+                    case 1:
+                        // Initiate a combat encounter with two civilians and two drunks.
+                        break;
+
+                    case 2:
+                        // Initiate a combat encounter with two civilians and one drunk.
+                        break;
+
+                    case 3:
+                        // Initiate a combat encounter with two civilians and two drunks.
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
                 }
-                else if (relations.civilianRelations >=25 && relations.civilianRelations < 60)
-                {
-                    //If between 25 and 60, she smiles and takes your assistance (+2 Civ RP)
-                    relations.civilianRelations += 2;
-                }
-                else if (relations.civilianRelations < 25)
-                {
-                    //she frowns and walks away(-2 Civ RP)
-                    relations.civilianRelations -= 2;
-                }
-            }
+                break;
+
+            default:
+                Debug.Log("Invalid talkertype. Check for a spelling error!");
+                break;
         }
-        else if (manager.talkertype == "Negotiation")
-        {
-            if (manager.talkerint == 1)
-            {
-                //Negotiation P/I/B: 14/8/10  On success, the man cools off, apologizes, and gets back in his car. On fail, your words worsen the situation, and he elbows one of your car windows in (-1 Paneling). He then hightails it out of there
-                //manager.endEncounter();
-            }
-            else if (manager.talkerint == 2)
-            {
-                //Negotiation P/I/B: 12, 16, 25
-                //On success: The crowd hears your words and begins to chant "Booze! Booze! Booze!" The abolitionists hightail it out of there. +10 Dru RP, +5 Civ RP. -15 Abo RP.
-                //On fail: The crowd becomes restless, opinion turning on you.The Abolitionist speaker smiles then yells "Get 'em!" - 5 Abo RP, -5 Civ RP, +5 Dru RP. Begin combat with 3 abolitionists and 2 civilians.
-            }
-            else if (manager.talkerint == 3)
-            {
-                relations.cash -= 15;
-                relations.civilianRelations += 2;
-                relations.paneling += 1;
-            }
-        }
-        else if (manager.talkertype == "Combat")
-        {
-            if (manager.talkerint == 1)
-            {
-                //begin combat with 2 civs and 2 drunks
-            }
-            else if (manager.talkerint == 2)
-            {
-                //begin combat with 2 civs 1 drunk
-            }
-            else if (manager.talkerint == 3)
-            {
-                //combat with 4 abolitionists
-            }
-        }
+
         responsetext = GetResponse(manager.talkerint, manager.talkertype, 1);
     }
+
     public void Option2()
     {
         if (manager.talkertype == "Event")
