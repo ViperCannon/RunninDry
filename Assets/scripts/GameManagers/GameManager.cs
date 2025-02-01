@@ -55,10 +55,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         relations = this.gameObject.GetComponent<relationshipframework>();
-        relations.cash = 40;
-        relations.paneling = 3;
-        relations.booze = 8; //each booze sells for $4
-        relations.tires = 3;
         TalkDatabase = this.gameObject.GetComponent<TalkerDatabase>();
         overworld = GameObject.FindWithTag("Map").GetComponent<Animator>();
         car = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
