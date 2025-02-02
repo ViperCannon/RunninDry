@@ -7,13 +7,13 @@ public class upgrade : MonoBehaviour, IPointerDownHandler
 {
     public int cost;
 
-    relationshipframework relationshipframework;
+    RelationshipsFramework relationshipframework;
     hub hub;
 
     // Start is called before the first frame update
     void Start()
     {
-        relationshipframework = GameObject.Find("GameManager").GetComponent<relationshipframework>();
+        relationshipframework = GameObject.Find("GameManager").GetComponent<RelationshipsFramework>();
         hub = GameObject.Find("Canvas").GetComponent <hub>();
     }
 

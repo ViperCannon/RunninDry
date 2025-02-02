@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     ScrollingBackground bg;
     GameObject AssetHolder;
     TalkerDatabase TalkDatabase;
-    public relationshipframework relations;
+    public RelationshipsFramework relations;
     public TMP_Text scoretext;
     public int talkerint;
     public string talkertype;
@@ -54,7 +54,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        relations = this.gameObject.GetComponent<relationshipframework>();
+        relations = this.gameObject.GetComponent<RelationshipsFramework>();
         TalkDatabase = this.gameObject.GetComponent<TalkerDatabase>();
         overworld = GameObject.FindWithTag("Map").GetComponent<Animator>();
         car = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();

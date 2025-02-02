@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class relationshipframework : MonoBehaviour
+public class RelationshipsFramework : MonoBehaviour
 {
     public float copRelations;
     public float russianMobRelations;

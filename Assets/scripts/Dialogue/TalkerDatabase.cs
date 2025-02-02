@@ -47,7 +47,7 @@ public class TalkerDatabase : MonoBehaviour
     public RawImage talkerimage;
     public string responsetext;
     GameManager manager;
-    relationshipframework relations;
+    RelationshipsFramework relations;
 
     public void Encounter(string type)
     {
@@ -67,7 +67,7 @@ public class TalkerDatabase : MonoBehaviour
 
     void Start()
     {
-        relations = this.gameObject.GetComponent<relationshipframework>();
+        relations = this.gameObject.GetComponent<RelationshipsFramework>();
         manager = this.gameObject.GetComponent<GameManager>();
         string json = MyJsonData.text;
         MyTalkerData = JsonUtility.FromJson<TalkerDataJSON>(json);
