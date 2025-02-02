@@ -78,16 +78,13 @@ public class TalkerDatabase : MonoBehaviour
     {
         for (int i = 0; i < MyTalkerData.Talkers.Length -1 ; ++i)
         {
-            if (MyTalkerData.Talkers[i].TalkerType == type)
+            if (MyTalkerData.Talkers[i].TalkerType == type && MyTalkerData.Talkers[i].TalkerId == talkerId)
             {
-                if (MyTalkerData.Talkers[i].TalkerId == talkerId)
-                {
-                    optionCount = MyTalkerData.Talkers[i].Optioncount;
-                    optionstext1.text = MyTalkerData.Talkers[i].Option1;
-                    optionstext2.text = MyTalkerData.Talkers[i].Option2;
-                    optionstext3.text = MyTalkerData.Talkers[i].Option3;
-                    optionstext4.text = MyTalkerData.Talkers[i].Option4;
-                }
+                optionCount = MyTalkerData.Talkers[i].Optioncount;
+                optionstext1.text = MyTalkerData.Talkers[i].Option1;
+                optionstext2.text = MyTalkerData.Talkers[i].Option2;
+                optionstext3.text = MyTalkerData.Talkers[i].Option3;
+                optionstext4.text = MyTalkerData.Talkers[i].Option4;
             }
         }
         for (int i = 0; i < optionCount; i++)
@@ -96,30 +93,25 @@ public class TalkerDatabase : MonoBehaviour
         }
     }
 
-    public string GetResponse(int talkerId, string type, int optionnumber)
+    public string GetResponse(int talkerId, string type, int optionNumber)
     {
         for (int i = 0; i < MyTalkerData.Talkers.Length; ++i)
         {
-            if (MyTalkerData.Talkers[i].TalkerType == type)
+            if (MyTalkerData.Talkers[i].TalkerType == type && MyTalkerData.Talkers[i].TalkerId == talkerId)
             {
-                if (MyTalkerData.Talkers[i].TalkerId == talkerId)
+                switch (optionNumber)
                 {
-                    if (optionnumber == 1)
-                    {
+                    case 1:
                         return MyTalkerData.Talkers[i].Option1outcome;
-                    }
-                    else if (optionnumber == 2)
-                    {
+
+                    case 2:
                         return MyTalkerData.Talkers[i].Option2outcome;
-                    }
-                    else if (optionnumber == 3)
-                    {
+
+                    case 3:
                         return MyTalkerData.Talkers[i].Option3outcome;
-                    }
-                    else if(optionnumber == 4)
-                    {
+
+                    case 4:
                         return MyTalkerData.Talkers[i].Option4outcome;
-                    }
                 }
             }
         }
@@ -130,12 +122,9 @@ public class TalkerDatabase : MonoBehaviour
     {
         for(int i = 0; i < MyTalkerData.Talkers.Length; ++i)
         {
-            if (MyTalkerData.Talkers[i].TalkerType == type)
+            if (MyTalkerData.Talkers[i].TalkerType == type && MyTalkerData.Talkers[i].TalkerId == talkerId)
             {
-                if (MyTalkerData.Talkers[i].TalkerId == talkerId)
-                {
-                    return MyTalkerData.Talkers[i].TalkerName;
-                }
+                return MyTalkerData.Talkers[i].TalkerName;
             }
         }
         return "[NO_NAME_FOUND]";
@@ -145,12 +134,9 @@ public class TalkerDatabase : MonoBehaviour
     {
         for (int i = 0; i < MyTalkerData.Talkers.Length; ++i)
         {
-            if (MyTalkerData.Talkers[i].TalkerType == type)
+            if (MyTalkerData.Talkers[i].TalkerType == type && MyTalkerData.Talkers[i].TalkerId == talkerId)
             {
-                if (MyTalkerData.Talkers[i].TalkerId == talkerId)
-                {
-                    return MyTalkerData.Talkers[i].TalkerText;
-                }
+                return MyTalkerData.Talkers[i].TalkerText;
             }
         }
         return "[NO_TEXT_FOUND]";
@@ -222,7 +208,7 @@ public class TalkerDatabase : MonoBehaviour
                         break;
 
                     default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        DebugLogInvalidTalkerint();
                         break;
                 }
                 break;
@@ -245,7 +231,7 @@ public class TalkerDatabase : MonoBehaviour
                         break;
 
                     default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        DebugLogInvalidTalkerint();
                         break;
                 }
                 break;
@@ -266,13 +252,13 @@ public class TalkerDatabase : MonoBehaviour
                         break;
 
                     default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        DebugLogInvalidTalkerint();
                         break;
                 }
                 break;
 
             default:
-                Debug.Log("Invalid talkertype. Check for a spelling error!");
+                DebugLogInvalidTalkertype();
                 break;
         }
 
@@ -319,7 +305,7 @@ public class TalkerDatabase : MonoBehaviour
                         break;
 
                     default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        DebugLogInvalidTalkerint();
                         break;
                 }
                 break;
@@ -346,7 +332,7 @@ public class TalkerDatabase : MonoBehaviour
                         break;
 
                     default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        DebugLogInvalidTalkerint();
                         break;
                 }
                 break;
@@ -360,30 +346,18 @@ public class TalkerDatabase : MonoBehaviour
                         relations.civilianRelations += 5;
                         break;
 
-                    case 2:
-                        // There was no else-if for 2 in the origial code, only 1 and 3. Is this a bug? - David
-                        break;
-
-                    case 3:
-                        relations.prohibitionistsRelations -= 15;
-                        relations.civilianRelations -= 5;
-                        relations.paneling -= 1;
-                        break;
-
                     default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        DebugLogInvalidTalkerint();
                         break;
                 }
                 break;
 
             default:
-                Debug.Log("Invalid talkertype. Check for a spelling error!");
+                DebugLogInvalidTalkertype();
                 break;
         }
 
         responsetext = GetResponse(manager.talkerint, manager.talkertype, 2);
-
-        // DAVID, YOUR CODE ENDS HERE DUMBASS - David
     }
 
     public void Option3()
@@ -394,19 +368,27 @@ public class TalkerDatabase : MonoBehaviour
                 switch (manager.talkerint)
                 {
                     case 1:
-                        // LOGIC
+                        relations.civilianRelations -= 4;
+                        relations.copRelations -= 2;
                         break;
 
                     case 2:
-                        // LOGIC
+                        relations.cash -= 1;
+                        relations.civilianRelations += 3;
                         break;
 
                     case 3:
-                        // LOGIC
+                        relations.cash -= 5;
+                        relations.civilianRelations -= 5;
+                        break;
+
+                    case 4:
+                        // Full-Party Heal: +3 HP.
+                        relations.civilianRelations -= 5;
                         break;
 
                     default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        DebugLogInvalidTalkerint();
                         break;
                 }
                 break;
@@ -414,99 +396,42 @@ public class TalkerDatabase : MonoBehaviour
             case "Negotiation":
                 switch (manager.talkerint)
                 {
-                    case 1:
-                        //LOGIC
-                        break;
-
                     case 2:
-                        // LOGIC
+                        relations.cash += 25;
+                        relations.prohibitionistsRelations -= 10;
+                        relations.copRelations -= 5;
+                        relations.norwegianMobRelations += 10;
+                        relations.russianMobRelations += 10;
+                        relations.sicilianMobRelations += 10;
+                        // Initiate a combat encounter with 1 abolitionist, 1 civilian, 1 drunk, and 1 policeman.
                         break;
 
                     case 3:
-                        // LOGIC
+                        relations.tires += 1;
+                        relations.civilianRelations -= 5;
                         break;
 
                     default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        DebugLogInvalidTalkerint();
                         break;
                 }
                 break;
 
             case "Combat":
-                switch (manager.talkerint)
-                {
-                    case 1:
-                        // LOGIC
-                        break;
-
-                    case 2:
-                        // LOGIC
-                        break;
-
-                    case 3:
-                        // LOGIC
-                        break;
-
-                    default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
-                        break;
-                }
+                Debug.Log("There's no Combat option set!");
                 break;
 
             default:
-                Debug.Log("Invalid talkertype. Check for a spelling error!");
+                DebugLogInvalidTalkertype();
                 break;
         }
 
         responsetext = GetResponse(manager.talkerint, manager.talkertype, 1);
-
-        // DAVID, YOUR CODE ENDS HERE DUMBASS - David
-
-        if (manager.talkertype == "Event")
-        {
-            if (manager.talkerint == 1)
-            {
-                relations.civilianRelations -= 4;
-                relations.copRelations -= 2;
-            }
-            else if (manager.talkerint == 2)
-            {
-                relations.cash -= 1;
-                relations.civilianRelations += 3;
-            }
-            else if (manager.talkerint == 3)
-            {
-                relations.cash -= 5;
-                relations.civilianRelations -= 5;
-            }
-            else if (manager.talkerint == 4)
-            {
-                //hp +3
-                relations.civilianRelations -= 5;
-            }
-        }
-        else if (manager.talkertype == "Negotiation")
-        {
-            if (manager.talkerint == 2)
-            {
-                relations.cash += 25;
-                //Begin combat with 1 abolitionist, 1 civilian, 1 drunk, and 1 policeman.
-                relations.prohibitionistsRelations -= 10;
-                relations.copRelations -= 5;
-                relations.norwegianMobRelations += 10;
-                relations.russianMobRelations += 10;
-                relations.sicilianMobRelations += 10;
-            }
-            else if (manager.talkerint == 3)
-            {
-                relations.tires += 1;
-                relations.civilianRelations -= 5;
-            }
-        }
-        responsetext = GetResponse(manager.talkerint, manager.talkertype, 3);
     }
+
     public void Option4()
     {
+        // TODO: THIS METHOD SEEMED LARGELY UNIMPLEMENTED. I'll leave a some skeleton work here, but 
         switch (manager.talkertype)
         {
             case "Event":
@@ -525,7 +450,7 @@ public class TalkerDatabase : MonoBehaviour
                         break;
 
                     default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        DebugLogInvalidTalkerint();
                         break;
                 }
                 break;
@@ -546,7 +471,7 @@ public class TalkerDatabase : MonoBehaviour
                         break;
 
                     default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        DebugLogInvalidTalkerint();
                         break;
                 }
                 break;
@@ -567,13 +492,13 @@ public class TalkerDatabase : MonoBehaviour
                         break;
 
                     default:
-                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        DebugLogInvalidTalkerint();
                         break;
                 }
                 break;
 
             default:
-                Debug.Log("Invalid talkertype. Check for a spelling error!");
+                DebugLogInvalidTalkertype();
                 break;
         }
 
@@ -586,6 +511,16 @@ public class TalkerDatabase : MonoBehaviour
 
         }
         responsetext = GetResponse(manager.talkerint, manager.talkertype, 4);
+    }
+
+    void DebugLogInvalidTalkertype()
+    {
+        Debug.Log("Invalid talkertype. Check to make sure the spelling is correct!");
+    }
+    
+    void DebugLogInvalidTalkerint()
+    {
+        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
     }
 
 }
