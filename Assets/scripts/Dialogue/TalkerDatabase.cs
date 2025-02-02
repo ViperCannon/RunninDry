@@ -191,7 +191,7 @@ public class TalkerDatabase : MonoBehaviour
                         break;
 
                     case 4:
-                        // Heal the player by 5 HP.
+                        // Full-Party Heal; +5 HP.
                         relations.cash -= 2;
                         relations.civilianRelations += 3;
                         break;
@@ -238,7 +238,7 @@ public class TalkerDatabase : MonoBehaviour
                         break;
 
                     case 2:
-                        /* Negotiation P/I/B: 12, 16, 25
+                        /* Negotiation P/I/B: 12/16/25
                          * SUCCESS: The crowd hears your words and begins to chant "Booze! Booze! Booze!" The abolitionists hightail it out of there. (+10 Dru RP, +5 Civ RP. -15 Abo RP)
                          * FAIL: The crowd becomes restless, opinion turning on you. The Abolitionist speaker smiles then yells "Get 'em!" (- 5 Abo RP, -5 Civ RP, +5 Dru RP) Begin combat with 3 abolitionists and 2 civilians.
                          */
@@ -281,79 +281,187 @@ public class TalkerDatabase : MonoBehaviour
 
     public void Option2()
     {
-        if (manager.talkertype == "Event")
+        switch (manager.talkertype)
         {
-            if (manager.talkerint == 1)
-            {
-                if (relations.copRelations >= 25)
+            case "Event":
+                switch (manager.talkerint)
                 {
-                    //manager.endEncounter();
+                    case 1:
+                        if (relations.copRelations >= 25)
+                        {
+                            // End event.
+                        }
+                        else
+                        {
+                            // Initiate a combat encounter with one cop.
+                        }
+                        break;
+
+                    case 2:
+                        // End event.
+                        break;
+
+                    case 3:
+                        // End event.
+                        break;
+
+                    case 4:
+                        // End event.
+                        break;
+
+                    case 5:
+                        // Skill check! Results in either +15 Cash/+2 Civ RP or just +1 Civ RP
+                        // End event.
+                        break;
+
+                    case 6:
+                        // End event.
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
                 }
-                else
+                break;
+
+            case "Negotiation":
+                switch (manager.talkerint)
                 {
-                    //start combat with 1 cop
+                    case 1:
+                        // Initiate a combat encounter with two civilians.
+                        break;
+
+                    case 2:
+                        /* Negotiation P/I/B: 18/12/25
+                         * SUCCESS: The crowd hears your words and begins to chant "Booze! Booze! Booze!" The abolitionists hightail it out of there. (+10 Dru RP, +5 Civ RP. -15 Abo RP)
+                         * FAIL: The crowd becomes restless, opinion turning on you. The Abolitionist speaker smiles then yells "Get 'em!" (- 5 Abo RP, -5 Civ RP, +5 Dru RP) Begin combat with 3 abolitionists and 2 civilians.
+                         */
+                        break;
+
+                    case 3:
+                        /* Negotiation P/I/B: 12/16/25
+                         * SUCCESS: The young attendant balks and lets you go. (-5 Civ RP, Full-Party Heal; +5 HP, +1 Tire or Paneling)
+                         * FAIL: The attendant calls out for help, and three nearby policemen move in to support him. (-5 Civ RP, -5 Cop RP) Initiate a combat encounter with three cops.
+                         */
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
                 }
-            }
-            else if (manager.talkerint == 2)
-            {
-                //manager.endEncounter();
-            }
-            else if (manager.talkerint == 3)
-            {
-               //manager.endEncounter();
-            }
-            else if (manager.talkerint == 4)
-            {
-                //manager.endEncounter();
-            }
-            else if (manager.talkerint == 5)
-            {
-                //skill check to add either +15 cash and 2 civ rp or just + 1 civ rp
-                //manager.endEncounter();
-            }
-            else if (manager.talkerint == 6)
-            {
-                //manager.endEncounter();
-            }
+                break;
+
+            case "Combat":
+                switch (manager.talkerint)
+                {
+                    case 1:
+                        relations.booze -= 1;
+                        relations.drunkardRelations += 10;
+                        relations.civilianRelations += 5;
+                        break;
+
+                    case 2:
+                        // There was no else-if for 2 in the origial code, only 1 and 3. Is this a bug? - David
+                        break;
+
+                    case 3:
+                        relations.prohibitionistsRelations -= 15;
+                        relations.civilianRelations -= 5;
+                        relations.paneling -= 1;
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
+                }
+                break;
+
+            default:
+                Debug.Log("Invalid talkertype. Check for a spelling error!");
+                break;
         }
-        else if (manager.talkertype == "Negotiation")
-        {
-            if (manager.talkerint == 1)
-            {
-                //Begin combat with 2 civilians.
-            }
-            else if (manager.talkerint == 2)
-            {
-                //Negotiation P/I/B: 18, 12, 25
-                //On success: The crowd hears your words and begins to chant "Booze! Booze! Booze!" The abolitionists hightail it out of there. +10 Dru RP, +5 Civ RP. -15 Abo RP.
-                //On fail: The crowd becomes restless, opinion turning on you.The Abolitionist speaker smiles then yells "Get 'em!" - 5 Abo RP, -5 Civ RP, +5 Dru RP. Begin combat with 3 abolitionists and 2 civilians.
-            }
-            else if (manager.talkerint == 3)
-            {
-                //Negotiation P/I/B: 11/8/13
-                //On success: The young attendant balks and lets you go. -5 Civ RP, +5 HP to all party members, +1 tire or paneling
-                //On fail: The attendant calls out for help, and three nearby policemen move in to support him. - 5 Civ and Cop RP, begin combat with 3 cops
-            }
-        }
-        else if (manager.talkertype == "Combat")
-        {
-            if (manager.talkerint == 1)
-            {
-                relations.booze -= 1;
-                relations.drunkardRelations += 10;
-                relations.civilianRelations += 5;
-            }
-            else if (manager.talkerint == 3)
-            {
-                relations.prohibitionistsRelations -= 15;
-                relations.civilianRelations -= 5;
-                relations.paneling -= 1;
-            }
-        }
+
         responsetext = GetResponse(manager.talkerint, manager.talkertype, 2);
+
+        // DAVID, YOUR CODE ENDS HERE DUMBASS - David
     }
+
     public void Option3()
     {
+        switch (manager.talkertype)
+        {
+            case "Event":
+                switch (manager.talkerint)
+                {
+                    case 1:
+                        // LOGIC
+                        break;
+
+                    case 2:
+                        // LOGIC
+                        break;
+
+                    case 3:
+                        // LOGIC
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
+                }
+                break;
+
+            case "Negotiation":
+                switch (manager.talkerint)
+                {
+                    case 1:
+                        //LOGIC
+                        break;
+
+                    case 2:
+                        // LOGIC
+                        break;
+
+                    case 3:
+                        // LOGIC
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
+                }
+                break;
+
+            case "Combat":
+                switch (manager.talkerint)
+                {
+                    case 1:
+                        // LOGIC
+                        break;
+
+                    case 2:
+                        // LOGIC
+                        break;
+
+                    case 3:
+                        // LOGIC
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
+                }
+                break;
+
+            default:
+                Debug.Log("Invalid talkertype. Check for a spelling error!");
+                break;
+        }
+
+        responsetext = GetResponse(manager.talkerint, manager.talkertype, 1);
+
+        // DAVID, YOUR CODE ENDS HERE DUMBASS - David
+
         if (manager.talkertype == "Event")
         {
             if (manager.talkerint == 1)
@@ -399,6 +507,80 @@ public class TalkerDatabase : MonoBehaviour
     }
     public void Option4()
     {
+        switch (manager.talkertype)
+        {
+            case "Event":
+                switch (manager.talkerint)
+                {
+                    case 1:
+                        // LOGIC
+                        break;
+
+                    case 2:
+                        // LOGIC
+                        break;
+
+                    case 3:
+                        // LOGIC
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
+                }
+                break;
+
+            case "Negotiation":
+                switch (manager.talkerint)
+                {
+                    case 1:
+                        //LOGIC
+                        break;
+
+                    case 2:
+                        // LOGIC
+                        break;
+
+                    case 3:
+                        // LOGIC
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
+                }
+                break;
+
+            case "Combat":
+                switch (manager.talkerint)
+                {
+                    case 1:
+                        // LOGIC
+                        break;
+
+                    case 2:
+                        // LOGIC
+                        break;
+
+                    case 3:
+                        // LOGIC
+                        break;
+
+                    default:
+                        Debug.Log("Invalid talkerint. Check to make sure the number is correct!");
+                        break;
+                }
+                break;
+
+            default:
+                Debug.Log("Invalid talkertype. Check for a spelling error!");
+                break;
+        }
+
+        responsetext = GetResponse(manager.talkerint, manager.talkertype, 1);
+
+        // DAVID, YOUR CODE ENDS HERE DUMBASS - David
+
         if (manager.talkertype == "")
         {
 
