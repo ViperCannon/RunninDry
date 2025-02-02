@@ -49,18 +49,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60d8134f939364b43a200135ef5fe16e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
   nodeVariants:
-  - {fileID: 3479921448943363096, guid: 334a08da7f81cb44fb55e620f748e648, type: 3}
-  - {fileID: 696524466319918679, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
-  - {fileID: 3049571336813118388, guid: 5ca2ad0f0802f414ea2cc25c8e0c8046, type: 3}
-  - {fileID: 9103365936338523882, guid: 03c94bbbc2a3535478325a44b49af23d, type: 3}
-  - {fileID: 7798363189250386153, guid: ebbaa56664a5bf74fb80a40d82b4225a, type: 3}
-  - {fileID: 184688036244281721, guid: 41662139106cc04498a28c0607931a26, type: 3}
-  - {fileID: 5839156039162332000, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}
+  - {fileID: 2012093214751530629, guid: 2d5923ff85619e940b5750f69d53595a, type: 3}
+  - {fileID: 5062829170192040255, guid: a83f839680a3196489fe9c2bf8e160f0, type: 3}
+  - {fileID: 5289876573352165761, guid: 4bcda1dc38683484b9efd13d1f4ba483, type: 3}
+  - {fileID: 2558851654807583353, guid: 20463d51e93ff1d4eb0152d437180648, type: 3}
+  - {fileID: 8990119166705847401, guid: 2c3a5cb063717eb4d91bb05d25515bee, type: 3}
+  - {fileID: 6187805063690675593, guid: e95b86554c014884a941a3b3c408b000, type: 3}
+  - {fileID: 7751230843650510152, guid: baf9e388e2387ca44b2b66fbf27408c8, type: 3}
   - {fileID: 8445287999014970255, guid: 90410e74222c80648b114a38e2082345, type: 3}
   - {fileID: 3483487896293438381, guid: ff790843d719b1b488ce926c4ad4cef3, type: 3}
   content: {fileID: 7149813420415944404}
   line: {fileID: 3057348305353195804, guid: e0d0bd687c3980d41bb3c1c6c11ce54f, type: 3}
+  tutorial: 1
 --- !u!1 &1824567339564525097
 GameObject:
   m_ObjectHideFlags: 0
