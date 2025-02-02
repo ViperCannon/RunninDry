@@ -9374,6 +9374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 856529522}
+  - component: {fileID: 856529523}
   m_Layer: 5
   m_Name: Buttons
   m_TagString: Untagged
@@ -9401,6 +9402,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &856529523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856529521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef09e6e18eaa4fb4292ab7a44c672fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nManager: {fileID: 1516182938}
+  deckManager: {fileID: 1095170416}
+  handManager: {fileID: 1095170415}
+  combatCanvas: {fileID: 209781610}
 --- !u!1 &863810391
 GameObject:
   m_ObjectHideFlags: 0
@@ -12918,13 +12935,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 856529523}
+        m_TargetAssemblyTypeName: NegotiationStart, Assembly-CSharp
+        m_MethodName: onClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -18209,7 +18226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab8956de5a867524da101e6256f563bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameManager: {fileID: 0}
+  gameManager: {fileID: 1542855109}
 --- !u!1 &1691833130
 GameObject:
   m_ObjectHideFlags: 0
@@ -23828,7 +23845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
       propertyPath: tutorial
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
       propertyPath: gameManager
@@ -23843,10 +23860,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5062829170192040255, guid: a83f839680a3196489fe9c2bf8e160f0, type: 3}
     - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
-      propertyPath: nodeVariants.Array.data[2]
-      value: 
-      objectReference: {fileID: 5289876573352165761, guid: 4bcda1dc38683484b9efd13d1f4ba483, type: 3}
-    - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
       propertyPath: nodeVariants.Array.data[3]
       value: 
       objectReference: {fileID: 2558851654807583353, guid: 20463d51e93ff1d4eb0152d437180648, type: 3}
@@ -23858,14 +23871,6 @@ PrefabInstance:
       propertyPath: nodeVariants.Array.data[5]
       value: 
       objectReference: {fileID: 6187805063690675593, guid: e95b86554c014884a941a3b3c408b000, type: 3}
-    - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
-      propertyPath: nodeVariants.Array.data[6]
-      value: 
-      objectReference: {fileID: 7751230843650510152, guid: baf9e388e2387ca44b2b66fbf27408c8, type: 3}
-    - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
-      propertyPath: nodeVariants.Array.data[7]
-      value: 
-      objectReference: {fileID: 8445287999014970255, guid: 90410e74222c80648b114a38e2082345, type: 3}
     - target: {fileID: 8983113072633781156, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
