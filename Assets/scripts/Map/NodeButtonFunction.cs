@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class NodeButtonFunction : MonoBehaviour
 {
-    negotiationscript negotiationscript;
+    NegotiationScript negotiationscript;
     GameObject mapGenerator;
     ScrollingBackground bg;
 
@@ -34,7 +34,7 @@ public class NodeButtonFunction : MonoBehaviour
     {
         if (GameObject.Find("NegotiationNode Variant") != null)
         {
-            negotiationscript = GameObject.Find("NegotiationNode Variant").GetComponent<negotiationscript>();
+            negotiationscript = GameObject.Find("NegotiationNode Variant").GetComponent<NegotiationScript>();
         }
     }
 

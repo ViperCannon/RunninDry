@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class combatscript : MonoBehaviour
+public class CombatScript : MonoBehaviour
 {
-    randomnumber randomnumber;
+    RandomNumber randomNumber;
     GameManager gamemanager;
     public GameObject combatManager;
     string encounterType = "Combat";
@@ -12,32 +12,32 @@ public class combatscript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randomnumber = this.gameObject.GetComponent<randomnumber>();
+        randomNumber = this.gameObject.GetComponent<RandomNumber>();
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
         combatManager = gamemanager.combatManager;
     }
 
-    public void loadAssets()
+    public void LoadAssets()
     {
-        /*if (randomnumber.generatedNumber == 1 || randomnumber.generatedNumber == 2)
+        /*if (RandomNumber.generatedNumber == 1 || RandomNumber.generatedNumber == 2)
         {
             gamemanager.talkerint = 1;
         }
-        else if (randomnumber.generatedNumber == 3 || randomnumber.generatedNumber == 4)
+        else if (RandomNumber.generatedNumber == 3 || RandomNumber.generatedNumber == 4)
         {
             gamemanager.talkerint = 2;
         }
-        else if (randomnumber.generatedNumber == 5 || randomnumber.generatedNumber == 6)
+        else if (RandomNumber.generatedNumber == 5 || RandomNumber.generatedNumber == 6)
         {
             gamemanager.talkerint = 3;
         }
-        //gamemanager.talkerint = randomnumber.generatedNumber;
+        //gamemanager.talkerint = RandomNumber.generatedNumber;
         gamemanager.encounter(encounterType);
-        if (randomnumber.generatedNumber <= 3)
+        if (RandomNumber.generatedNumber <= 3)
         {
             gamemanager.Cassets1.SetActive(true);
         }
-        else if (randomnumber.generatedNumber >= 4)
+        else if (RandomNumber.generatedNumber >= 4)
         {
             gamemanager.Cassets2.SetActive(true);
         }*/

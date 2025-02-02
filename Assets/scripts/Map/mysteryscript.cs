@@ -2,27 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class mysteryscript : MonoBehaviour
+public class MysteryScript : MonoBehaviour
 {
-    randomnumber randomnumber;
+    RandomNumber randomNumber;
     GameManager gamemanager;
     string encounterType = "Mystery";
     // Start is called before the first frame update
     void Start()
     {
-        randomnumber = this.gameObject.GetComponent<randomnumber>();
+        randomNumber = this.gameObject.GetComponent<RandomNumber>();
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void loadAssets()
     {
-        gamemanager.talkerint = randomnumber.generatedNumber;
+        gamemanager.talkerint = randomNumber.generatedNumber;
         gamemanager.Encounter(encounterType);
-        if (randomnumber.generatedNumber <= 3)
+        if (randomNumber.generatedNumber <= 3)
         {
             gamemanager.Massets1.SetActive(true);
         }
-        else if (randomnumber.generatedNumber >= 4)
+        else if (randomNumber.generatedNumber >= 4)
         {
             gamemanager.Massets2.SetActive(true);
         }

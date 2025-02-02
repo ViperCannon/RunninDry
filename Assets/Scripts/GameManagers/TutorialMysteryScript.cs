@@ -14,13 +14,13 @@ public class TutorialMysteryScript : MonoBehaviour
 
     /*public void loadAssets()
     {
-        gamemanager.talkerint = randomnumber.generatedNumber;
+        gamemanager.talkerint = RandomNumber.generatedNumber;
         gamemanager.encounter(encounterType);
-        if (randomnumber.generatedNumber <= 3)
+        if (RandomNumber.generatedNumber <= 3)
         {
             gamemanager.Massets1.SetActive(true);
         }
-        else if (randomnumber.generatedNumber >= 4)
+        else if (RandomNumber.generatedNumber >= 4)
         {
             gamemanager.Massets2.SetActive(true);
         }

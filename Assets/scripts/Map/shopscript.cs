@@ -2,24 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class shopscript : MonoBehaviour
+public class ShopScript : MonoBehaviour
 {
-    randomnumber randomnumber;
+    RandomNumber randomNumber;
     GameManager gamemanager;
     // Start is called before the first frame update
     void Start()
     {
-        randomnumber = this.gameObject.GetComponent<randomnumber>();
+        randomNumber = this.gameObject.GetComponent<RandomNumber>();
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     public void loadAssets()
     {
-        if (randomnumber.generatedNumber == 1)
+        if (randomNumber.generatedNumber == 1)
         {
             gamemanager.Sassets1.SetActive(true);
         }
-        else if (randomnumber.generatedNumber == 2)
+        else if (randomNumber.generatedNumber == 2)
         {
             gamemanager.Sassets2.SetActive(true);
         }
