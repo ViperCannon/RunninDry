@@ -7,14 +7,14 @@ public class hub : MonoBehaviour, IPointerDownHandler
 {
     
 
-    relationshipframework relationshipframework;
+    RelationshipsFramework relationshipframework;
     //add more objects as items get added
 
     void Start()
     {
         AddPhysics2DRaycaster();
         //may need to change GameManager to something else depending what holds the money variable
-        relationshipframework = GameObject.Find("GameManager").GetComponent<relationshipframework>();
+        relationshipframework = GameObject.Find("GameManager").GetComponent<RelationshipsFramework>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
