@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class MinibossScript : MonoBehaviour
 {
-    randomnumber randomnumber;
+    RandomNumber randomNumber;
     GameManager gamemanager;
     // Start is called before the first frame update
     void Start()
     {
-        randomnumber = this.gameObject.GetComponent<randomnumber>();
+        randomNumber = this.gameObject.GetComponent<RandomNumber>();
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    public void loadAssets()
+    public void LoadAssets()
     {
-        if (randomnumber.generatedNumber == 1)
+        if (randomNumber.generatedNumber == 1)
         {
             gamemanager.MBassets1.SetActive(true);
         }
-        else if (randomnumber.generatedNumber == 2)
+        else if (randomNumber.generatedNumber == 2)
         {
             gamemanager.MBassets2.SetActive(true);
         }
