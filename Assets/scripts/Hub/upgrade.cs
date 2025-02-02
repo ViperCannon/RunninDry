@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class upgrade : MonoBehaviour, IPointerDownHandler
+public class Upgrade : MonoBehaviour, IPointerDownHandler
 {
     public int cost;
 
     RelationshipsFramework relationshipframework;
-    hub hub;
+    Hub hub;
 
     // Start is called before the first frame update
     void Start()
     {
         relationshipframework = GameObject.Find("GameManager").GetComponent<RelationshipsFramework>();
-        hub = GameObject.Find("Canvas").GetComponent <hub>();
+        hub = GameObject.Find("Canvas").GetComponent <Hub>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
