@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class minibossscript : MonoBehaviour
+public class MinibossScript : MonoBehaviour
 {
     randomnumber randomnumber;
     GameManager gamemanager;

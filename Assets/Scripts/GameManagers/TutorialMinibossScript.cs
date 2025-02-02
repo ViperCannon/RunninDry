@@ -13,11 +13,11 @@ public class TutorialMinibossScript : MonoBehaviour
 
     /*public void loadAssets()
     {
-        if (randomnumber.generatedNumber == 1)
+        if (RandomNumber.generatedNumber == 1)
         {
             gamemanager.MBassets1.SetActive(true);
         }
-        else if (randomnumber.generatedNumber == 2)
+        else if (RandomNumber.generatedNumber == 2)
         {
             gamemanager.MBassets2.SetActive(true);
         }

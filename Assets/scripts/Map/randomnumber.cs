@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class randomnumber : MonoBehaviour
+public class RandomNumber : MonoBehaviour
 {
     public int generatedNumber;
 
@@ -12,7 +12,7 @@ public class randomnumber : MonoBehaviour
         
     }
 
-    public void generateNumber()
+    public void GenerateNumber()
     {
         generatedNumber = Random.Range(1, 6);
         print(generatedNumber);

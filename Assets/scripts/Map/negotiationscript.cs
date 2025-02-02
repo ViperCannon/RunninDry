@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class negotiationscript : MonoBehaviour
+public class NegotiationScript : MonoBehaviour
 {
     randomnumber randomnumber;
     GameManager gamemanager;
@@ -48,7 +48,7 @@ public class negotiationscript : MonoBehaviour
         {
             gamemanager.talkerint = 3;
         }
-        //gamemanager.talkerint = randomnumber.generatedNumber;
+        //gamemanager.talkerint = RandomNumber.generatedNumber;
         gamemanager.Encounter(encounterType);
         if (randomnumber.generatedNumber <= 3)
         {
