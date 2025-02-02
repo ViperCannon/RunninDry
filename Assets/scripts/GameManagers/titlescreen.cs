@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class titlescreen : MonoBehaviour
+public class TitleScreen : MonoBehaviour
 {
     public int sceneID;
 
