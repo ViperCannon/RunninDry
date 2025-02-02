@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NegotiationScript : MonoBehaviour
 {
-    randomnumber randomnumber;
+    RandomNumber randomNumber;
     GameManager gamemanager;
     [SerializeField]
     GameObject assets1;
@@ -15,7 +15,7 @@ public class NegotiationScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        randomnumber = this.gameObject.GetComponent<randomnumber>();
+        randomNumber = this.gameObject.GetComponent<RandomNumber>();
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
         //GrabAssets();
         if (assets1 != null && assets2 != null)
@@ -36,25 +36,25 @@ public class NegotiationScript : MonoBehaviour
     }
     public void loadAssets()
     {
-        if (randomnumber.generatedNumber == 1 || randomnumber.generatedNumber == 2)
+        if (randomNumber.generatedNumber == 1 || randomNumber.generatedNumber == 2)
         {
             gamemanager.talkerint = 1;
         }
-        else if (randomnumber.generatedNumber == 3 || randomnumber.generatedNumber == 4)
+        else if (randomNumber.generatedNumber == 3 || randomNumber.generatedNumber == 4)
         {
             gamemanager.talkerint = 2;
         }
-        else if (randomnumber.generatedNumber == 5 || randomnumber.generatedNumber == 6)
+        else if (randomNumber.generatedNumber == 5 || randomNumber.generatedNumber == 6)
         {
             gamemanager.talkerint = 3;
         }
         //gamemanager.talkerint = RandomNumber.generatedNumber;
         gamemanager.Encounter(encounterType);
-        if (randomnumber.generatedNumber <= 3)
+        if (randomNumber.generatedNumber <= 3)
         {
             gamemanager.Nassets1.SetActive(true);
         }
-        else if (randomnumber.generatedNumber >= 4) 
+        else if (randomNumber.generatedNumber >= 4) 
         {
             gamemanager.Nassets2.SetActive(true);
         }
