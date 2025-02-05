@@ -54,21 +54,25 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        relations = this.gameObject.GetComponent<RelationshipsFramework>();
         TalkDatabase = this.gameObject.GetComponent<TalkerDatabase>();
-        overworld = GameObject.FindWithTag("Map").GetComponent<Animator>();
-        car = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
-        bg = GameObject.FindWithTag("Background").GetComponent<ScrollingBackground>();
-        AssetHolder = GameObject.Find("NodeSpawnAssets");
-        GrabAssets();
-        for (int i = 0; i < AssetHolder.transform.childCount; i++)
+        if (GameObject.FindWithTag("Map") != null) //perhaps edit this section to include more Null exceptions
         {
-            AssetHolder.transform.GetChild(i).gameObject.SetActive(false);
+            relations = this.gameObject.GetComponent<RelationshipsFramework>();
+            
+            overworld = GameObject.FindWithTag("Map").GetComponent<Animator>();
+            car = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
+            bg = GameObject.FindWithTag("Background").GetComponent<ScrollingBackground>();
+            AssetHolder = GameObject.Find("NodeSpawnAssets");
+            GrabAssets();
+            for (int i = 0; i < AssetHolder.transform.childCount; i++)
+            {
+                AssetHolder.transform.GetChild(i).gameObject.SetActive(false);
+            }
+            cash.text = relations.cash.ToString();
+            tires.text = relations.tires.ToString();
+            paneling.text = relations.paneling.ToString();
+            booze.text = relations.booze.ToString();
         }
-        cash.text = relations.cash.ToString();
-        tires.text = relations.tires.ToString();
-        paneling.text = relations.paneling.ToString();
-        booze.text = relations.booze.ToString();
     }
     public void Encounter(string type)
     {
