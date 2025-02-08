@@ -91,6 +91,11 @@ public class TalkerDatabase : MonoBehaviour
         {
             optionbuttons.transform.GetChild(i).gameObject.SetActive(true);
         }
+
+        if (optionstext1.text == "text") optionbuttons.transform.GetChild(0).gameObject.SetActive(false);
+        if (optionstext2.text == "text") optionbuttons.transform.GetChild(1).gameObject.SetActive(false);
+        if (optionstext3.text == "text") optionbuttons.transform.GetChild(2).gameObject.SetActive(false);
+        if (optionstext4.text == "text") optionbuttons.transform.GetChild(3).gameObject.SetActive(false);
     }
 
     public string GetResponse(int talkerId, string type, int optionNumber)
