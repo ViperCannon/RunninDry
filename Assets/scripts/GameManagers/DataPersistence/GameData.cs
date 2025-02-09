@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RelationshipsFramework : MonoBehaviour
+[System.Serializable]
+
+public class GameData
 {
     public float copRelations;
     public float russianMobRelations;
@@ -12,17 +14,13 @@ public class RelationshipsFramework : MonoBehaviour
     public float drunkardRelations;
     public float civilianRelations;
 
-    public int cash = 40;
-    public int paneling = 3;
-    public int booze = 8; // Each booze sells for $4.
-    public int tires = 3;
-    public float score;
+    public int cash;
+    public int paneling;
+    public int booze;
+    public int tires;
 
-    private void Start()
+    public GameData()
     {
-        //cash = 40;
-        //paneling = 3;
-        //booze = 8; // Each booze sells for $4.
-        //tires = 3;
+        
     }
 }
