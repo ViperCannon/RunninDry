@@ -21,6 +21,6 @@ public class GameData
 
     public GameData()
     {
-        
+        this.cash = 40;
     }
 }
