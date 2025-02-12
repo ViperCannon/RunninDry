@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class TutorialButtonAdvance : MonoBehaviour
 {
-    NegotiationScript negotiationscript;
     GameObject mapGenerator;
     ScrollingBackground bg;
     TutorialManager tManage;

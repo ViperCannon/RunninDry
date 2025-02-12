@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class NodeButtonFunction : MonoBehaviour
 {
-    NegotiationScript negotiationscript;
     GameObject mapGenerator;
     ScrollingBackground bg;
 
@@ -32,10 +31,10 @@ public class NodeButtonFunction : MonoBehaviour
     }
     public void GrabScripts()
     {
-        if (GameObject.Find("NegotiationNode Variant") != null)
-        {
-            negotiationscript = GameObject.Find("NegotiationNode Variant").GetComponent<NegotiationScript>();
-        }
+        //if (GameObject.Find("NegotiationNode Variant") != null)
+        //{
+           //negotiationscript = GameObject.Find("NegotiationNode Variant").GetComponent<NegotiationScript>();
+        //}
     }
 
     public void Click()
@@ -43,10 +42,10 @@ public class NodeButtonFunction : MonoBehaviour
         mapGenerator.GetComponent<MapGenerator>().SelectNode(this.gameObject);
         StartCoroutine(StopCar());
         GrabScripts();
-        if (negotiationscript != null)
-        {
-            negotiationscript.GrabAssets();
-        }
+        //if (negotiationscript != null)
+        //{
+            //negotiationscript.GrabAssets();
+        //}
         
     }
     IEnumerator StopCar()
