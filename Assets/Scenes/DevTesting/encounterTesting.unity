@@ -202,8 +202,6 @@ GameObject:
   - component: {fileID: 294959882}
   - component: {fileID: 294959881}
   - component: {fileID: 294959880}
-  - component: {fileID: 294959879}
-  - component: {fileID: 294959878}
   m_Layer: 5
   m_Name: GenerateEventButton
   m_TagString: Untagged
@@ -231,32 +229,6 @@ RectTransform:
   m_AnchoredPosition: {x: -30, y: 90}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 1, y: 0}
---- !u!114 &294959878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294959876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df23d7d1be105d642bc4646c80c3da18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combatManager: {fileID: 0}
---- !u!114 &294959879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294959876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1105a5603ede294fb49e503a80746fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generatedNumber: 0
 --- !u!114 &294959880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1360,8 +1332,6 @@ GameObject:
   - component: {fileID: 677326038}
   - component: {fileID: 677326037}
   - component: {fileID: 677326036}
-  - component: {fileID: 677326035}
-  - component: {fileID: 677326034}
   m_Layer: 5
   m_Name: GenerateCombatButton
   m_TagString: Untagged
@@ -1389,32 +1359,6 @@ RectTransform:
   m_AnchoredPosition: {x: -30, y: 150}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 1, y: 0}
---- !u!114 &677326034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677326032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df23d7d1be105d642bc4646c80c3da18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combatManager: {fileID: 0}
---- !u!114 &677326035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 677326032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1105a5603ede294fb49e503a80746fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generatedNumber: 0
 --- !u!114 &677326036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1689,20 +1633,6 @@ MonoBehaviour:
   paneling: {fileID: 0}
   booze: {fileID: 0}
   waitTime: 0
-  Nassets1: {fileID: 0}
-  Nassets2: {fileID: 0}
-  Cassets1: {fileID: 0}
-  Cassets2: {fileID: 0}
-  Eassets1: {fileID: 0}
-  Eassets2: {fileID: 0}
-  MBassets1: {fileID: 0}
-  MBassets2: {fileID: 0}
-  Massets1: {fileID: 0}
-  Massets2: {fileID: 0}
-  Passets1: {fileID: 0}
-  Passets2: {fileID: 0}
-  Sassets1: {fileID: 0}
-  Sassets2: {fileID: 0}
 --- !u!4 &791864664
 Transform:
   m_ObjectHideFlags: 0
@@ -2541,8 +2471,6 @@ GameObject:
   - component: {fileID: 1722572682}
   - component: {fileID: 1722572681}
   - component: {fileID: 1722572680}
-  - component: {fileID: 1722572679}
-  - component: {fileID: 1722572678}
   m_Layer: 5
   m_Name: GenerateNegotiationButton
   m_TagString: Untagged
@@ -2570,32 +2498,6 @@ RectTransform:
   m_AnchoredPosition: {x: -30, y: 30}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 1, y: 0}
---- !u!114 &1722572678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722572676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df23d7d1be105d642bc4646c80c3da18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  combatManager: {fileID: 0}
---- !u!114 &1722572679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1722572676}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1105a5603ede294fb49e503a80746fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generatedNumber: 0
 --- !u!114 &1722572680
 MonoBehaviour:
   m_ObjectHideFlags: 0
