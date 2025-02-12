@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class DialogueTestTrigger : MonoBehaviour
 {
-    [Header("Ink JSON")]
-    [SerializeField] private TextAsset inkJSON;
+    private TextAsset currentJSON;
+
+    [Header("List of Ink JSON Scenarios")]
+    [SerializeField] private TextAsset[] inkJSONs;
 
     public void TestDialogue()
     {
@@ -14,6 +16,13 @@ public class DialogueTestTrigger : MonoBehaviour
             Debug.LogWarning("The dialogue box is already open!");
             return;
         }
-        DialogueManager.GetInstance().OpenDialogue(inkJSON);
+
+        SetNewDialogue();
+        DialogueManager.GetInstance().OpenDialogue(currentJSON);
+    }
+
+    public void SetNewDialogue()
+    {
+        currentJSON = inkJSONs[Random.Range(0, inkJSONs.Length)];
     }
 }
