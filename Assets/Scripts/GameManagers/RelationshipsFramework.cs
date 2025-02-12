@@ -12,10 +12,10 @@ public class RelationshipsFramework : MonoBehaviour, IDataPersistence
     public float drunkardRelations;
     public float civilianRelations;
 
-    public int cash = 40;
-    public int paneling = 3;
-    public int booze = 8; // Each booze sells for $4.
-    public int tires = 3;
+    public int cash;
+    public int paneling;
+    public int booze; // Each booze sells for $4.
+    public int tires;
     public float score;
 
     public void LoadData(GameData data)

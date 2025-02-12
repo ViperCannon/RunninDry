@@ -19,6 +19,7 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("Click");
         if (relationshipframework.cash >= cost)
         {
             relationshipframework.cash -= cost;
