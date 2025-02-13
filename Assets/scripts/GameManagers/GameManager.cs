@@ -7,11 +7,15 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField]
     MusicController mController;
-    
-    Animator overworld;
-    Animator car;
+
+    public GameObject car;
+    public GameObject InSceneCar;
+    public GameObject OutSceneCar;
+    public GameObject map;
+    public GameObject InSceneMap;
+    public GameObject OutSceneMap;
     ScrollingBackground bg;
-    GameObject AssetHolder;
+
     TalkerDatabase TalkDatabase;
     public RelationshipsFramework relations;
     public TMP_Text scoretext;
@@ -38,15 +42,8 @@ public class GameManager : MonoBehaviour
         {
             relations = this.gameObject.GetComponent<RelationshipsFramework>();
             
-            overworld = GameObject.FindWithTag("Map").GetComponent<Animator>();
-            car = GameObject.FindWithTag("car").gameObject.GetComponent<Animator>();
             bg = GameObject.FindWithTag("Background").GetComponent<ScrollingBackground>();
-            AssetHolder = GameObject.Find("NodeSpawnAssets");
 
-            for (int i = 0; i < AssetHolder.transform.childCount; i++)
-            {
-                AssetHolder.transform.GetChild(i).gameObject.SetActive(false);
-            }
             cash.text = relations.cash.ToString();
             tires.text = relations.tires.ToString();
             paneling.text = relations.paneling.ToString();
@@ -80,6 +77,26 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    private void CarMoveIn()
+    {
+
+    }
+
+    private void CarMoveOut()
+    {
+
+    }
+
+    private void MapMoveIn()
+    {
+
+    }
+
+    private void MapMoveOut()
+    {
+
+    }
+
     public void endEncounter()
     {
         cash.text = relations.cash.ToString();
@@ -110,15 +127,14 @@ public class GameManager : MonoBehaviour
         //yield return new WaitForSeconds(5);
         TalkDatabase.textbox.SetActive(false);
         //TalkDatabase.text = TalkDatabase.Getresponse();
-        overworld.SetTrigger("fadein");
-        car.SetTrigger("start");
+        
+        //overworld.SetTrigger("fadein");
+        //car.SetTrigger("start");
+
         bg.isScrolling = true;
         //mController.UpdateMusic("");
         yield return new WaitForSeconds(waitTime);
-        for (int i = 0; i < AssetHolder.transform.childCount; i++)
-        {
-            AssetHolder.transform.GetChild(i).gameObject.SetActive(false);
-        }
+
         StopCoroutine(endingEncounter());
         yield return null;
     }
