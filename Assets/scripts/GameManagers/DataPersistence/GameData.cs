@@ -8,6 +8,9 @@ public class GameData
 {
     public List<string> hubPurchases;
 
+    public List<Buff> activeBuffs;
+    public List<Debuff> activeDebuffs;
+
     public float copRelations;
     public float russianMobRelations;
     public float norwegianMobRelations;
@@ -20,6 +23,7 @@ public class GameData
     public int paneling;
     public int booze;
     public int tires;
+
 
     public GameData()
     {
@@ -35,6 +39,9 @@ public class GameData
         this.prohibitionistsRelations = 50;
         this.drunkardRelations = 50;
         this.civilianRelations = 50;
+
+        activeBuffs = new List<Buff>();
+        activeDebuffs = new List<Debuff>();
 
         hubPurchases = new List<string>();
     }
