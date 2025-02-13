@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using SpeakeasyStreet;
 
-public class CharacterInstance : MonoBehaviour
+public class CharacterInstance : MonoBehaviour, IDataPersistence
 {
     CombatManager combatManager;
     
@@ -67,5 +67,16 @@ public class CharacterInstance : MonoBehaviour
     public void UpdateEffects()
     {
         // Update buffs and debuffs each turn or frame as necessary
+    }
+    public void LoadData(GameData data)
+    {
+        activeBuffs = data.activeBuffs;
+        activeDebuffs = data.activeDebuffs;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.activeBuffs = activeBuffs;
+        data.activeDebuffs = activeDebuffs;
     }
 }
