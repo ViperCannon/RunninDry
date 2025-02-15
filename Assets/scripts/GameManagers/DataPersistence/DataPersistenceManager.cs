@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System.IO;
+using System;
 
 public class DataPersistenceManager : MonoBehaviour
 {
@@ -39,6 +41,10 @@ public class DataPersistenceManager : MonoBehaviour
 
     public void NewGame()
     {
+        if (System.IO.File.Exists(Application.persistentDataPath + "/" + fileName))
+        {
+            System.IO.File.Delete(Application.persistentDataPath + "/" + fileName);
+        }
         this.gameData = new GameData();
     }
 
