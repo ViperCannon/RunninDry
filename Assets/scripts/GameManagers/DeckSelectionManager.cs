@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class DeckSelectionManager : MonoBehaviour
+public class DeckSelectionManager : MonoBehaviour, IDataPersistence
 {
     public float spacing;
     [Header("Total Cards")]
@@ -299,4 +299,35 @@ public class DeckSelectionManager : MonoBehaviour
             //do nothing
         }
     }
+
+    public void LoadData(GameData data)
+    {
+        TotalCombatCards = data.TotalCombatCards;
+        TotalNegotiationCards = data.TotalNegotiationCards;
+        Pixiecards = data.Pixiecards;
+        Barleycards = data.Barleycards;
+        Baldwincards = data.Baldwincards;
+        CPixiecards = data.CPixiecards;
+        CBarleycards = data.CBarleycards;
+        CBaldwincards = data.CBaldwincards;
+        NPixiecards = data.NPixiecards;
+        NBarleycards = data.NBarleycards;
+        NBaldwincards = data.NBaldwincards;
+    }
+
+    public void SaveData(ref GameData data)
+    {
+        data.TotalCombatCards = TotalCombatCards;
+        data.TotalNegotiationCards = TotalNegotiationCards;
+        data.Pixiecards = Pixiecards;
+        data.Barleycards = Barleycards;
+        data.Baldwincards = Baldwincards;
+        data.CPixiecards = CPixiecards;
+        data.CBarleycards = CBarleycards;
+        data.CBaldwincards = CBaldwincards;
+        data.NPixiecards = NPixiecards;
+        data.NBarleycards = NBarleycards;
+        data.NBaldwincards = NBaldwincards;
+    }
+
 }

@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainScene.unity
     guid: f25b09498fffd8b418513021d44ebcdc
+  - enabled: 1
+    path: Assets/Scenes/MusicSwapTest.unity
+    guid: b23f20cdd2efc814a960fda4876a9316
   m_configObjects: {}

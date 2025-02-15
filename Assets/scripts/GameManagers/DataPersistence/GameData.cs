@@ -6,6 +6,19 @@ using UnityEngine;
 
 public class GameData
 {
+    public List<string> TotalNegotiationCards;
+    public List<string> TotalCombatCards;
+    public List<string> Pixiecards;
+    public List<string> Baldwincards;
+    public List<string> Barleycards;
+    public List<string> NPixiecards;
+    public List<string> CPixiecards;
+    public List<string> NBaldwincards;
+    public List<string> CBaldwincards;
+    public List<string> NBarleycards;
+    public List<string> CBarleycards;
+
+
     public List<string> hubPurchases;
 
     public List<Buff> activeBuffs;
@@ -24,6 +37,7 @@ public class GameData
     public int booze;
     public int tires;
 
+    public int sceneInt;
 
     public GameData()
     {
@@ -44,5 +58,19 @@ public class GameData
         activeDebuffs = new List<Debuff>();
 
         hubPurchases = new List<string>();
-    }
+
+        this.sceneInt = 0;
+
+        TotalNegotiationCards = new List<string>();
+        TotalCombatCards = new List<string>();
+        Pixiecards = new List<string>();
+        Baldwincards = new List<string>();
+        Barleycards = new List<string>();
+        NPixiecards = new List<string>();
+        CPixiecards = new List<string>();
+        NBaldwincards = new List<string>();
+        CBaldwincards = new List<string>();
+        NBarleycards = new List<string>();
+        CBarleycards = new List<string>();
+}
 }
