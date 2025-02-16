@@ -5,6 +5,7 @@ using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static Ink.Runtime.Story;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 
+    private InkExternalFunctions externalFunctions;
+
     void Awake()
     {
         if (instance != null)
@@ -28,6 +31,8 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("Found more than one Dialogue Manager instance in the scene!");
         }
         instance = this;
+
+        externalFunctions = new InkExternalFunctions();
     }
 
     private void Start()
@@ -67,6 +72,8 @@ public class DialogueManager : MonoBehaviour
     public void OpenDialogue(TextAsset inkJSON)
     {
         currentStory = new Story(inkJSON.text);
+        externalFunctions.Bind(currentStory);
+
         DialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
         dialogueText.gameObject.SetActive(true);
@@ -91,6 +98,8 @@ public class DialogueManager : MonoBehaviour
 
     public void CloseDialogue()
     {
+        externalFunctions.Unbind(currentStory);
+
         DialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.gameObject.SetActive(false);
@@ -133,5 +142,10 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
+    }
+
+    private void OnDestroy()
+    {
+        externalFunctions.Unbind(currentStory);
     }
 }
