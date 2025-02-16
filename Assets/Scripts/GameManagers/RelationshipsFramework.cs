@@ -4,19 +4,34 @@ using UnityEngine;
 
 public class RelationshipsFramework : MonoBehaviour, IDataPersistence
 {
-    public float copRelations;
-    public float russianMobRelations;
-    public float norwegianMobRelations;
-    public float sicilianMobRelations;
-    public float prohibitionistsRelations;
-    public float drunkardRelations;
-    public float civilianRelations;
+
+    public static RelationshipsFramework Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
+    public int copRelations;
+    public int russianMobRelations;
+    public int norwegianMobRelations;
+    public int sicilianMobRelations;
+    public int prohibitionistsRelations;
+    public int drunkardRelations;
+    public int civilianRelations;
 
     public int cash;
     public int paneling;
     public int booze; // Each booze sells for $4.
     public int tires;
-    public float score;
+    public int score;
 
     public void LoadData(GameData data)
     {

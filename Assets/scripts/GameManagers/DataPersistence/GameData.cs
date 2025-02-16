@@ -24,13 +24,13 @@ public class GameData
     public List<Buff> activeBuffs;
     public List<Debuff> activeDebuffs;
 
-    public float copRelations;
-    public float russianMobRelations;
-    public float norwegianMobRelations;
-    public float sicilianMobRelations;
-    public float prohibitionistsRelations;
-    public float drunkardRelations;
-    public float civilianRelations;
+    public int copRelations;
+    public int russianMobRelations;
+    public int norwegianMobRelations;
+    public int sicilianMobRelations;
+    public int prohibitionistsRelations;
+    public int drunkardRelations;
+    public int civilianRelations;
 
     public int cash;
     public int paneling;

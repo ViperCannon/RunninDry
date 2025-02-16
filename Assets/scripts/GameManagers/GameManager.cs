@@ -5,6 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+
+    public static GameManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if(Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        } 
+    }
+
     [SerializeField]
     MusicController mController;
 
@@ -15,6 +30,8 @@ public class GameManager : MonoBehaviour
     public GameObject InSceneMap;
     public GameObject OutSceneMap;
     ScrollingBackground bg;
+
+    public bool newGame;
 
     TalkerDatabase TalkDatabase;
     public RelationshipsFramework relations;
@@ -37,10 +54,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TalkDatabase = this.gameObject.GetComponent<TalkerDatabase>();
+        TalkDatabase = gameObject.GetComponent<TalkerDatabase>();
         if (GameObject.FindWithTag("Map") != null) //perhaps edit this section to include more Null exceptions
         {
-            relations = this.gameObject.GetComponent<RelationshipsFramework>();
+            relations = gameObject.GetComponent<RelationshipsFramework>();
             
             bg = GameObject.FindWithTag("Background").GetComponent<ScrollingBackground>();
 
@@ -61,15 +78,9 @@ public class GameManager : MonoBehaviour
         ScrollingBackground.isScrolling = false;
         scorecanvas.SetActive(true);
         maincanvas.SetActive(false);
-        relations.score = (float)(relations.booze * (4 * 0.75)) + relations.cash + (relations.paneling * 2) + (relations.tires * 2);
+        relations.score = (relations.booze * 3) + relations.cash + (relations.paneling * 2) + (relations.tires * 2);
         scoretext.text = "Score: " + relations.score.ToString();
         //scoretext.text = "Cash: " + relations.cash.ToString() + " Booze: " + relations.booze.ToString() + " Tires: " + relations.tires.ToString() + " Paneling: " + relations.paneling.ToString();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void mainmenu()
