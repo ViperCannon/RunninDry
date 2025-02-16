@@ -1,3 +1,9 @@
+EXTERNAL AddCash(int amount)
+
+EXTERNAL AlterCopRelations(int amount)
+EXTERNAL AlterProhibitionistRelations(int amount)
+EXTERNAL AlterCivilianRelations(int amount)
+
 -> main
 
 === main ===
@@ -10,6 +16,11 @@ As you continue down the street, you notice a crowd gathering at a small park. A
     You start vehemently attacking the opposing speaker and their allies, criticizing their appearance, superficial morals, prudishness, and cold demeanor. The crowd murmurs... [ADD SUCCESS/FAILURE CONDITIONS!]
     
 + [Cause some "mayhem."]
-You get on stage and pull out your weapon, firing into the air. The organized crowd becomes a mob in seconds, some scrambling to get away, others moving to intercept you. In the chaos, you're able to grab a few purses (+25 Cash). [-5 Abolitionist and Police Rep, +10 Mob rep, Begin a combat encounter with one civilian, one drunk, and one cop.]
+~ AddCash(25)
+~ AlterCopRelations(-10)
+~ AlterProhibitionistRelations(-10)
+~ AlterCivilianRelations(-5)
+You get on stage and pull out your weapon, firing into the air. The organized crowd becomes a mob in seconds, some scrambling to get away, others moving to intercept you. In the chaos, you're able to grab a few purses (+25 Cash). [-10 Abolitionist and Police Rep, -5 Civilian Rep, Begin a combat encounter with one civilian, one drunk, and one cop.]
+    
 
 - -> END
