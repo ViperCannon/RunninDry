@@ -1687,8 +1687,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatJSONs:
   - {fileID: 4900000, guid: 28f2b1ec1be5e354ebb3a3c754963f52, type: 3}
-  eventJSONs:
-  - {fileID: 4900000, guid: cac8996c48611d240a38375d2c06685b, type: 3}
+  eventJSONs: []
   negotiationJSONs:
   - {fileID: 4900000, guid: 4966043bd71467f4bbe4186b53d9d376, type: 3}
 --- !u!1 &920089624
