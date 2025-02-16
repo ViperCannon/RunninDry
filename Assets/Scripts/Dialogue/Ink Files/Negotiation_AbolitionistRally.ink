@@ -12,5 +12,4 @@ As you continue down the street, you notice a crowd gathering at a small park. A
 + [Cause some "mayhem."]
 You get on stage and pull out your weapon, firing into the air. The organized crowd becomes a mob in seconds, some scrambling to get away, others moving to intercept you. In the chaos, you're able to grab a few purses (+25 Cash). [-5 Abolitionist and Police Rep, +10 Mob rep, Begin a combat encounter with one civilian, one drunk, and one cop.]
 
-
 - -> END
