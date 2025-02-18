@@ -6,8 +6,6 @@ using UnityEngine.Experimental.Playables;
 
 public class InkExternalFunctions
 {
-    [SerializeField] RelationshipsFramework relations;
-    
     public void Bind(Story story)
     {
         story.BindExternalFunction("StartCombat", () => StartCombat());
@@ -28,6 +26,8 @@ public class InkExternalFunctions
         story.BindExternalFunction("AlterProhibitionistRelations", (int amount) => AlterProhibitionistRelations(amount));
         story.BindExternalFunction("AlterDrunkardRelations", (int amount) => AlterDrunkardRelations(amount));
         story.BindExternalFunction("AlterCivilianRelations", (int amount) => AlterCivilianRelations(amount));
+
+        story.BindExternalFunction("FullPartyHeal", (int amount) => FullPartyHeal(amount));
     }
 
     public void Unbind(Story story)
@@ -48,6 +48,8 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("AlterProhibitionistRelations");
         story.UnbindExternalFunction("AlterDrunkardRelations");
         story.UnbindExternalFunction("AlterCivilianRelations");
+
+        story.UnbindExternalFunction("FullPartyHeal");
     }
 
     private void StartCombat()
@@ -65,7 +67,7 @@ public class InkExternalFunctions
     #region Functions that Add or Subtract from Player Resources
     private void AddCash(int amount)
     {
-        relations.cash += amount;
+        // relations.cash += amount;
 
         if (amount > 0) Debug.Log("The player should have their Cash increased by " + amount + "!");
         else Debug.Log("The player should have their Cash decreased by " + amount + "!");
@@ -73,7 +75,7 @@ public class InkExternalFunctions
 
     private void AddBooze(int amount)
     {
-        relations.booze += amount;
+        // relations.booze += amount;
 
         if (amount > 0) Debug.Log("The player should have their Booze increased by " + amount + "!");
         else Debug.Log("The player should have their Booze decreased by " + amount + "!");
@@ -81,7 +83,7 @@ public class InkExternalFunctions
 
     private void AddScore(int amount)
     {
-        relations.score += amount;
+        // relations.score += amount;
 
         if (amount > 0) Debug.Log("The player should have their Score increased by " + amount + "!");
         else Debug.Log("The player should have their Score decreased by " + amount + "!");
@@ -89,7 +91,7 @@ public class InkExternalFunctions
 
     private void AddTires(int amount)
     {
-        relations.tires += amount;
+        // relations.tires += amount;
 
         if (amount > 0) Debug.Log("The player should have their Tires increased by " + amount + "!");
         else Debug.Log("The player should have their Tires decreased by " + amount + "!");
@@ -97,7 +99,7 @@ public class InkExternalFunctions
 
     private void AddPaneling(int amount)
     {
-        relations.paneling += amount;
+        // relations.paneling += amount;
         
         if (amount > 0) Debug.Log("The player should have their Paneling increased by " + amount + "!");
         else Debug.Log("The player should have their Paneling decreased by " + amount + "!");
@@ -107,7 +109,7 @@ public class InkExternalFunctions
     #region Functions that Increase or Decrease Faction Relations
     private void AlterCopRelations(int amount)
     {
-        relations.copRelations += amount;
+        // relations.copRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the cops increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the cops decreased by " + amount + "!");
@@ -115,7 +117,7 @@ public class InkExternalFunctions
 
     private void AlterRussianMobRelations(int amount)
     {
-        relations.russianMobRelations += amount;
+        // relations.russianMobRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the Russian mob increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the Russian mob decreased by " + amount + "!");
@@ -123,7 +125,7 @@ public class InkExternalFunctions
 
     private void AlterNorwegianMobRelations(int amount)
     {
-        relations.norwegianMobRelations += amount;
+        // relations.norwegianMobRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the Norwegian mob increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the Norwegian mob decreased by " + amount + "!");
@@ -131,7 +133,7 @@ public class InkExternalFunctions
 
     private void AlterSicilianMobRelations(int amount)
     {
-        relations.sicilianMobRelations += amount;
+        // relations.sicilianMobRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the Sicilian mob increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the Sicilian mob decreased by " + amount + "!");
@@ -139,7 +141,7 @@ public class InkExternalFunctions
 
     private void AlterProhibitionistRelations(int amount)
     {
-        relations.prohibitionistsRelations += amount;
+        // relations.prohibitionistsRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the prohibitionists increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the prohibitionists decreased by " + amount + "!");
@@ -147,7 +149,7 @@ public class InkExternalFunctions
 
     private void AlterDrunkardRelations(int amount)
     {
-        relations.drunkardRelations += amount;
+        // relations.drunkardRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the drunkards increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the drunkards decreased by " + amount + "!");
@@ -155,10 +157,15 @@ public class InkExternalFunctions
 
     private void AlterCivilianRelations(int amount)
     {
-        relations.civilianRelations += amount;
+        // relations.civilianRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with civilians increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with civilians decreased by " + amount + "!");
     }
     #endregion
+
+    private void FullPartyHeal(int amount)
+    {
+        Debug.Log("All player characters should be healed by " + amount + " HP!");
+    }
 }
