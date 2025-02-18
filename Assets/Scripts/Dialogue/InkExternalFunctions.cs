@@ -6,6 +6,8 @@ using UnityEngine.Experimental.Playables;
 
 public class InkExternalFunctions
 {
+    [SerializeField] RelationshipsFramework relations;
+    
     public void Bind(Story story)
     {
         story.BindExternalFunction("StartCombat", () => StartCombat());
@@ -63,7 +65,7 @@ public class InkExternalFunctions
     #region Functions that Add or Subtract from Player Resources
     private void AddCash(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.cash += amount;
 
         if (amount > 0) Debug.Log("The player should have their Cash increased by " + amount + "!");
         else Debug.Log("The player should have their Cash decreased by " + amount + "!");
@@ -71,7 +73,7 @@ public class InkExternalFunctions
 
     private void AddBooze(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.booze += amount;
 
         if (amount > 0) Debug.Log("The player should have their Booze increased by " + amount + "!");
         else Debug.Log("The player should have their Booze decreased by " + amount + "!");
@@ -79,7 +81,7 @@ public class InkExternalFunctions
 
     private void AddScore(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.score += amount;
 
         if (amount > 0) Debug.Log("The player should have their Score increased by " + amount + "!");
         else Debug.Log("The player should have their Score decreased by " + amount + "!");
@@ -87,7 +89,7 @@ public class InkExternalFunctions
 
     private void AddTires(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.tires += amount;
 
         if (amount > 0) Debug.Log("The player should have their Tires increased by " + amount + "!");
         else Debug.Log("The player should have their Tires decreased by " + amount + "!");
@@ -95,7 +97,7 @@ public class InkExternalFunctions
 
     private void AddPaneling(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.paneling += amount;
         
         if (amount > 0) Debug.Log("The player should have their Paneling increased by " + amount + "!");
         else Debug.Log("The player should have their Paneling decreased by " + amount + "!");
@@ -105,7 +107,7 @@ public class InkExternalFunctions
     #region Functions that Increase or Decrease Faction Relations
     private void AlterCopRelations(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.copRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the cops increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the cops decreased by " + amount + "!");
@@ -113,7 +115,7 @@ public class InkExternalFunctions
 
     private void AlterRussianMobRelations(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.russianMobRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the Russian mob increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the Russian mob decreased by " + amount + "!");
@@ -121,7 +123,7 @@ public class InkExternalFunctions
 
     private void AlterNorwegianMobRelations(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.norwegianMobRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the Norwegian mob increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the Norwegian mob decreased by " + amount + "!");
@@ -129,7 +131,7 @@ public class InkExternalFunctions
 
     private void AlterSicilianMobRelations(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.sicilianMobRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the Sicilian mob increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the Sicilian mob decreased by " + amount + "!");
@@ -137,7 +139,7 @@ public class InkExternalFunctions
 
     private void AlterProhibitionistRelations(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.prohibitionistsRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the prohibitionists increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the prohibitionists decreased by " + amount + "!");
@@ -145,7 +147,7 @@ public class InkExternalFunctions
 
     private void AlterDrunkardRelations(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.drunkardRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with the drunkards increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with the drunkards decreased by " + amount + "!");
@@ -153,7 +155,7 @@ public class InkExternalFunctions
 
     private void AlterCivilianRelations(int amount)
     {
-        //TODO: Attach to the relationship framework!
+        relations.civilianRelations += amount;
 
         if (amount > 0) Debug.Log("The player should have their reputation with civilians increased by " + amount + "!");
         else Debug.Log("The player should have their reputation with civilians decreased by " + amount + "!");
