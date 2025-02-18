@@ -1625,6 +1625,7 @@ MonoBehaviour:
   map: {fileID: 0}
   InSceneMap: {fileID: 0}
   OutSceneMap: {fileID: 0}
+  newGame: 0
   relations: {fileID: 0}
   scoretext: {fileID: 0}
   talkerint: 0
@@ -1687,7 +1688,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   combatJSONs:
   - {fileID: 4900000, guid: 28f2b1ec1be5e354ebb3a3c754963f52, type: 3}
-  eventJSONs: []
+  eventJSONs:
+  - {fileID: 4900000, guid: 37add2761b3552e4182804e9ee0e3a1a, type: 3}
+  - {fileID: 4900000, guid: b2d777a86c02bd94587b0484ca960803, type: 3}
   negotiationJSONs:
   - {fileID: 4900000, guid: 4966043bd71467f4bbe4186b53d9d376, type: 3}
 --- !u!1 &920089624
