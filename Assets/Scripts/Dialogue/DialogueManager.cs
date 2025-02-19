@@ -26,11 +26,12 @@ public class DialogueManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != this)
         {
-            Debug.LogWarning("Found more than one Dialogue Manager instance in the scene!");
+            Debug.LogWarning("Found more than one Dialogue Manager instance in the scene! Removing this one!");
+            Destroy(this);
         }
-        instance = this;
+        else instance = this;
 
         externalFunctions = new InkExternalFunctions();
     }

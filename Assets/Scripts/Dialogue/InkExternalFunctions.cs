@@ -67,105 +67,105 @@ public class InkExternalFunctions
     #region Functions that Add or Subtract from Player Resources
     private void AddCash(int amount)
     {
-        // relations.cash += amount;
+        RelationshipsFramework.GetInstance().cash += amount;
 
-        if (amount > 0) Debug.Log("The player should have their Cash increased by " + amount + "!");
-        else Debug.Log("The player should have their Cash decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's Cash stash increased by " + amount + "!");
+        else Debug.Log("The player's Cash stash decreased by " + amount + "!");
     }
 
     private void AddBooze(int amount)
     {
-        // relations.booze += amount;
+        RelationshipsFramework.GetInstance().booze += amount;
 
-        if (amount > 0) Debug.Log("The player should have their Booze increased by " + amount + "!");
-        else Debug.Log("The player should have their Booze decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's stockpile of Booze increased by " + amount + "!");
+        else Debug.Log("The player's stockpile of Booze decreased by " + amount + "!");
     }
 
     private void AddScore(int amount)
     {
-        // relations.score += amount;
+        RelationshipsFramework.GetInstance().score += amount;
 
-        if (amount > 0) Debug.Log("The player should have their Score increased by " + amount + "!");
-        else Debug.Log("The player should have their Score decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's Score increased by " + amount + "!");
+        else Debug.Log("The player's Score decreased by " + amount + "!");
     }
 
     private void AddTires(int amount)
     {
-        // relations.tires += amount;
+        RelationshipsFramework.GetInstance().tires += amount;
 
-        if (amount > 0) Debug.Log("The player should have their Tires increased by " + amount + "!");
-        else Debug.Log("The player should have their Tires decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's number of Tires increased by " + amount + "!");
+        else Debug.Log("The player's number of Tires decreased by " + amount + "!");
     }
 
     private void AddPaneling(int amount)
     {
-        // relations.paneling += amount;
+        RelationshipsFramework.GetInstance().paneling += amount;
         
-        if (amount > 0) Debug.Log("The player should have their Paneling increased by " + amount + "!");
-        else Debug.Log("The player should have their Paneling decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's number of Paneling increased by " + amount + "!");
+        else Debug.Log("The player's'Paneling number of decreased by " + amount + "!");
     }
     #endregion
 
     #region Functions that Increase or Decrease Faction Relations
     private void AlterCopRelations(int amount)
     {
-        // relations.copRelations += amount;
+        RelationshipsFramework.GetInstance().copRelations += amount;
 
-        if (amount > 0) Debug.Log("The player should have their reputation with the cops increased by " + amount + "!");
-        else Debug.Log("The player should have their reputation with the cops decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's reputation with the cops increased by " + amount + "!");
+        else Debug.Log("The player's reputation with the cops decreased by " + amount + "!");
     }
 
     private void AlterRussianMobRelations(int amount)
     {
-        // relations.russianMobRelations += amount;
+        RelationshipsFramework.GetInstance().russianMobRelations += amount;
 
-        if (amount > 0) Debug.Log("The player should have their reputation with the Russian mob increased by " + amount + "!");
-        else Debug.Log("The player should have their reputation with the Russian mob decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's reputation with the Russian mob increased by " + amount + "!");
+        else Debug.Log("The player's reputation with the Russian mob decreased by " + amount + "!");
     }
 
     private void AlterNorwegianMobRelations(int amount)
     {
-        // relations.norwegianMobRelations += amount;
+        RelationshipsFramework.GetInstance().norwegianMobRelations += amount;
 
-        if (amount > 0) Debug.Log("The player should have their reputation with the Norwegian mob increased by " + amount + "!");
-        else Debug.Log("The player should have their reputation with the Norwegian mob decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's reputation with the Norwegian mob increased by " + amount + "!");
+        else Debug.Log("The player's reputation with the Norwegian mob decreased by " + amount + "!");
     }
 
     private void AlterSicilianMobRelations(int amount)
     {
-        // relations.sicilianMobRelations += amount;
+        RelationshipsFramework.GetInstance().sicilianMobRelations += amount;
 
-        if (amount > 0) Debug.Log("The player should have their reputation with the Sicilian mob increased by " + amount + "!");
-        else Debug.Log("The player should have their reputation with the Sicilian mob decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's reputation with the Sicilian mob increased by " + amount + "!");
+        else Debug.Log("The player's reputation with the Sicilian mob decreased by " + amount + "!");
     }
 
     private void AlterProhibitionistRelations(int amount)
     {
-        // relations.prohibitionistsRelations += amount;
+        RelationshipsFramework.GetInstance().prohibitionistsRelations += amount;
 
-        if (amount > 0) Debug.Log("The player should have their reputation with the prohibitionists increased by " + amount + "!");
-        else Debug.Log("The player should have their reputation with the prohibitionists decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's reputation with the prohibitionists increased by " + amount + "!");
+        else Debug.Log("The player's reputation with the prohibitionists decreased by " + amount + "!");
     }
 
     private void AlterDrunkardRelations(int amount)
     {
-        // relations.drunkardRelations += amount;
+        RelationshipsFramework.GetInstance().drunkardRelations += amount;
 
-        if (amount > 0) Debug.Log("The player should have their reputation with the drunkards increased by " + amount + "!");
-        else Debug.Log("The player should have their reputation with the drunkards decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's reputation with the drunkards increased by " + amount + "!");
+        else Debug.Log("The player's reputation withthe drunkards decreased by " + amount + "!");
     }
 
     private void AlterCivilianRelations(int amount)
     {
-        // relations.civilianRelations += amount;
+        RelationshipsFramework.GetInstance().civilianRelations += amount;
 
-        if (amount > 0) Debug.Log("The player should have their reputation with civilians increased by " + amount + "!");
-        else Debug.Log("The player should have their reputation with civilians decreased by " + amount + "!");
+        if (amount > 0) Debug.Log("The player's reputation with civilians increased by " + amount + "!");
+        else Debug.Log("The player's reputation with civilians decreased by " + amount + "!");
     }
     #endregion
 
     private void FullPartyHeal(int amount)
     {
-        Debug.Log("All player characters should be healed by " + amount + " HP!");
+        Debug.Log("All player characters healed by " + amount + " HP!");
     }
 }
