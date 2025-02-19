@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     ScrollingBackground bg;
 
     public bool newGame;
+    public bool carIsMoving;
 
     TalkerDatabase TalkDatabase;
     public RelationshipsFramework relations;
