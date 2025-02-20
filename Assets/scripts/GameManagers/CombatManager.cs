@@ -40,6 +40,15 @@ public class CombatManager : MonoBehaviour
     float zoomOutSize = 10f;
     float zoomSpeed = 2f;
 
+    [SerializeField]
+    Vector2[] EnemySpawnPoints = new Vector2[]
+    {
+        new Vector2( 5.5f, -2.5f ),
+        new Vector2( 9, -2 ),
+        new Vector2( 12.5f, -2.5f ),
+        new Vector2( 16, -2 ),
+        new Vector2( 2, -2 ),
+    };
 
     // Method to start combat and initialize variables
     public void OnEnable()
@@ -288,5 +297,26 @@ public class CombatManager : MonoBehaviour
 
         Debug.Log("Combat Ended.");
         // Handle the end of combat (e.g., show results, transition to the next scene, etc.)
+    }
+
+    public EnemyInstance[] GenerateRandomCombat()
+    {
+        EnemyInstance[] Enemies = new EnemyInstance[Random.Range(1,5)];
+        
+        for (int i = 0; i < Enemies.Length; i++)
+        {
+            // Pick a random non-boss enemy type and allocate it to Enemies[i]!
+        }
+        return null;
+    }
+
+    public void StartCombat(EnemyInstance[] Enemies)
+    {
+        for (int i = 0; i < Enemies.Length; i++)
+        {
+            // Initialize the enemy's visuals and data!
+            // Have enemy spawn at EnemySpawnPositions[i]!
+        }
+        return;
     }
 }
