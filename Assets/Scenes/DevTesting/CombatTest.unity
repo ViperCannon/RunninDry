@@ -2230,7 +2230,7 @@ Transform:
   m_GameObject: {fileID: 552468108}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.5, y: -2, z: 0}
+  m_LocalPosition: {x: -9, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5787,7 +5787,7 @@ Transform:
   m_GameObject: {fileID: 1635955547}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.5, y: -2.5, z: 0}
+  m_LocalPosition: {x: -4.5, y: -2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7412,6 +7412,22 @@ PrefabInstance:
       propertyPath: combatCanvas
       value: 
       objectReference: {fileID: 1285873251}
+    - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
+      propertyPath: Allies.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
+      propertyPath: Allies.Array.data[0]
+      value: 
+      objectReference: {fileID: 1635955548}
+    - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
+      propertyPath: Allies.Array.data[1]
+      value: 
+      objectReference: {fileID: 552468109}
+    - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
+      propertyPath: Allies.Array.data[2]
+      value: 
+      objectReference: {fileID: 1820573220}
     - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
       propertyPath: enemies.Array.data[0]
       value: 

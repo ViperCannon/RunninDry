@@ -21,7 +21,7 @@ public class GenericDamageEffect : ScriptableObject, ICardEffect
             target.TakeDamage(totalDamage);
         }   
         else
-            foreach(EnemyInstance enemy in cManager.enemies)
+            foreach(EnemyInstance enemy in cManager.Enemies)
             {
                 if (enemy != null)
                 {
