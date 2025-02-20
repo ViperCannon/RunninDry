@@ -12,14 +12,14 @@ public class GenericRandomDamageEffect : ScriptableObject, ICardEffect
         {
             while(newTarget == target)
             {
-                newTarget = cManager.enemies[Random.Range(0, cManager.enemies.Count)];
+                newTarget = cManager.Enemies[Random.Range(0, cManager.Enemies.Count)];
             }
         }
         else
         {
             while (newTarget == target)
             {
-                newTarget = cManager.players[Random.Range(0, cManager.players.Count)];
+                newTarget = cManager.Allies[Random.Range(0, cManager.Allies.Count)];
             }
         }
 

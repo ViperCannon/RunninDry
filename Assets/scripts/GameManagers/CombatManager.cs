@@ -11,6 +11,29 @@ public class CombatManager : MonoBehaviour
         EnemyTurn
     }
 
+    [Header("Combat Participant Instances")]
+    [SerializeField] List<AllyInstance> Allies;
+    [SerializeField] List<EnemyInstance> Enemies;
+
+    [Header("Combat Participant Spawn Points")]
+    [SerializeField]
+    Vector2[] PlayerSpawnPoints = new Vector2[]
+    {
+        new Vector2( -4.5f, -2.5f ),
+        new Vector2( -9, -2 ),
+        new Vector2( -13.5f, -2.5f )
+    };
+    [SerializeField]
+    Vector2[] EnemySpawnPoints = new Vector2[]
+    {
+        new Vector2( 5.5f, -2.5f ),
+        new Vector2( 9, -2 ),
+        new Vector2( 12.5f, -2.5f ),
+        new Vector2( 16, -2 ),
+        new Vector2( 2, -2 ),
+    };
+
+    [Header("Misc. Other Properties")]
     [SerializeField]
     CombatPhase currentPhase;
 
@@ -28,9 +51,6 @@ public class CombatManager : MonoBehaviour
 
     public HandManager handManager;
 
-    public List<AllyInstance> players;
-    public List<EnemyInstance> enemies;
-
     public int capsRefreshLimit;
     public int currentCaps;
 
@@ -39,16 +59,6 @@ public class CombatManager : MonoBehaviour
     float zoomInSize = 5f;
     float zoomOutSize = 10f;
     float zoomSpeed = 2f;
-
-    [SerializeField]
-    Vector2[] EnemySpawnPoints = new Vector2[]
-    {
-        new Vector2( 5.5f, -2.5f ),
-        new Vector2( 9, -2 ),
-        new Vector2( 12.5f, -2.5f ),
-        new Vector2( 16, -2 ),
-        new Vector2( 2, -2 ),
-    };
 
     // Method to start combat and initialize variables
     public void OnEnable()
@@ -64,14 +74,14 @@ public class CombatManager : MonoBehaviour
         }
 
         /*
-        if(enemies.Count > 0)
+        if(Enemies.Count > 0)
         {
-            enemies.Clear();
+            Enemies.Clear();
         }
 
         foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            enemies.Add(enemy.GetComponent<EnemyInstance>());
+            Enemies.Add(enemy.GetComponent<EnemyInstance>());
         }
         */
 
@@ -86,7 +96,7 @@ public class CombatManager : MonoBehaviour
         currentCaps = 0;
         capsRefreshLimit = 0;
 
-        foreach(AllyInstance p in players)
+        foreach(AllyInstance p in Allies)
         {
             if (p != null)
             {
@@ -95,7 +105,7 @@ public class CombatManager : MonoBehaviour
             }          
         }
 
-        foreach (EnemyInstance e in enemies)
+        foreach (EnemyInstance e in Enemies)
         {
             if(e != null)
             {
@@ -152,7 +162,7 @@ public class CombatManager : MonoBehaviour
             {
                 Debug.Log("Start Enemy Turn.");
 
-                // Handle enemies' turn actions
+                // Handle Enemies' turn actions
                 yield return StartCoroutine(HandleEnemyTurn());
                 if (!IsCombatOver())
                 {
@@ -191,7 +201,7 @@ public class CombatManager : MonoBehaviour
     // Method to handle enemy turns
     IEnumerator HandleEnemyTurn()
     {
-        foreach (EnemyInstance e in enemies)
+        foreach (EnemyInstance e in Enemies)
         {
             if(e != null && e.gameObject.activeSelf)
             {
@@ -237,7 +247,7 @@ public class CombatManager : MonoBehaviour
     {
         bool over = false;
 
-        foreach(AllyInstance p in players)
+        foreach(AllyInstance p in Allies)
         {
             if (p != null && p.isDowned)
             {
@@ -252,7 +262,7 @@ public class CombatManager : MonoBehaviour
 
         if (!over)
         {
-            foreach (EnemyInstance e in enemies)
+            foreach (EnemyInstance e in Enemies)
             {
                 if (e == null || (e != null && !e.gameObject.activeSelf))
                 {
@@ -266,7 +276,7 @@ public class CombatManager : MonoBehaviour
             }
         }
 
-        // Check if the game has ended (all enemies defeated or all players dead)
+        // Check if the game has ended (all Enemies defeated or all PlayerAllyInstances dead)
         return over;
     }
 
@@ -278,7 +288,7 @@ public class CombatManager : MonoBehaviour
             child.gameObject.SetActive(false);
         }
 
-        foreach (AllyInstance p in players)
+        foreach (AllyInstance p in Allies)
         {
             if (p != null)
             {
@@ -301,20 +311,27 @@ public class CombatManager : MonoBehaviour
 
     public EnemyInstance[] GenerateRandomCombat()
     {
-        EnemyInstance[] Enemies = new EnemyInstance[Random.Range(1,5)];
+        EnemyInstance[] E = new EnemyInstance[Random.Range(1,5)];
         
-        for (int i = 0; i < Enemies.Length; i++)
+        for (int i = 0; i < E.Length; i++)
         {
             // Pick a random non-boss enemy type and allocate it to Enemies[i]!
         }
         return null;
     }
 
-    public void StartCombat(EnemyInstance[] Enemies)
+    public void StartCombat(EnemyInstance[] E)
     {
-        for (int i = 0; i < Enemies.Length; i++)
+        for (int i = 0; i < E.Length; i++)
         {
             // Initialize the enemy's visuals and data!
+
+            if (Enemies[i] = null)
+            {
+                Enemies.Add(E[i]);
+            } 
+            else Enemies[i] = E[i];
+
             // Have enemy spawn at EnemySpawnPositions[i]!
         }
         return;
