@@ -54,6 +54,7 @@ public class CombatManager : MonoBehaviour
             child.gameObject.SetActive(true);
         }
 
+        /*
         if(enemies.Count > 0)
         {
             enemies.Clear();
@@ -63,6 +64,7 @@ public class CombatManager : MonoBehaviour
         {
             enemies.Add(enemy.GetComponent<EnemyInstance>());
         }
+        */
 
         deckManager.inCombat = true;
         deckManager.PopulateDecks();
