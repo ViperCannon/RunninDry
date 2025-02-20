@@ -12,8 +12,8 @@ public class CombatManager : MonoBehaviour
     }
 
     [Header("Combat Participant Instances")]
-    [SerializeField] List<AllyInstance> Allies;
-    [SerializeField] List<EnemyInstance> Enemies;
+    public List<AllyInstance> Allies;
+    public List<EnemyInstance> Enemies;
 
     [Header("Combat Participant Spawn Points")]
     [SerializeField]
