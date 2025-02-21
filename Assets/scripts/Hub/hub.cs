@@ -10,7 +10,7 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     RelationshipsFramework relationshipframework;
     //add more objects as items get added
     public List<string> hubPurchases = new List<string>();
-
+    public GameObject chairs1;
 
     void Start()
     {
@@ -21,6 +21,16 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         for (int i = 0; i < hubPurchases.Count; i++)
         {
             GameObject.Find(hubPurchases[i]).SetActive(false);
+
+            switch (hubPurchases[i]+"1")
+            {
+                case "Chairs1":
+                    chairs1.SetActive(true);
+                    break;
+                default:
+                    Debug.Log(hubPurchases[i]+"1");
+                    break;
+            }
         }
     }
 
@@ -34,6 +44,16 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         //this is where any additional effects we want to have happen would happen
         hubPurchases.Add(item);
         dataManager.SaveGame();
+
+        switch (item)
+        {
+            case "Chairs":
+                chairs1.SetActive(true);
+                break;
+            default:
+                Debug.Log(item);
+                break;
+        }
     }
 
     public void LoadData(GameData data)
