@@ -35,6 +35,10 @@ public class CombatManager : MonoBehaviour
 
     [Header("Misc. Other Properties")]
     [SerializeField]
+    EnemyInstance[] enemyTypes;
+
+    [Header("Misc. Other Properties")]
+    [SerializeField]
     CombatPhase currentPhase;
 
     [SerializeField]
@@ -309,31 +313,49 @@ public class CombatManager : MonoBehaviour
         // Handle the end of combat (e.g., show results, transition to the next scene, etc.)
     }
 
-    public EnemyInstance[] GenerateRandomCombat()
+    public void GenerateRandomCombat()
     {
-        EnemyInstance[] E = new EnemyInstance[Random.Range(1,5)];
+        Enemies.Clear();
         
-        for (int i = 0; i < E.Length; i++)
+        for (int i = 0; i < Random.Range(1, 5); i++)
         {
-            // Pick a random non-boss enemy type and allocate it to Enemies[i]!
+            // Pick a random non-boss enemy type! 
+            EnemyInstance newEnemyInstance = enemyTypes[Random.Range(0, enemyTypes.Length)];
+
+            // Allocate the new enemy it to Enemies!
+            Enemies.Add(newEnemyInstance);
         }
-        return null;
     }
 
-    public void StartCombat(EnemyInstance[] E)
+    public void GenerateSetCombat(EnemyInstance[] E)
     {
-        for (int i = 0; i < E.Length; i++)
+        Enemies.Clear();
+
+        foreach (EnemyInstance enemy in E)
         {
-            // Initialize the enemy's visuals and data!
+            Enemies.Add(enemy);
+        }
+    }
 
-            if (Enemies[i] = null)
-            {
-                Enemies.Add(E[i]);
-            } 
-            else Enemies[i] = E[i];
+    public void StartCombat()
+    {
 
+        for (int i = 0; i < Allies.Count; i++)
+        {
+            // Have ally spawn at EnemySpawnPositions[i]!
+            GameObject currentAlly = Instantiate(GetCharacterPrefab(Allies[i].AllyName) as GameObject, PlayerSpawnPoints[i], new Quaternion());
+        }
+        
+        for (int i = 0; i < Enemies.Count; i++)
+        {
             // Have enemy spawn at EnemySpawnPositions[i]!
+            GameObject currentEnemy = Instantiate(GetCharacterPrefab(Enemies[i].EnemyName) as GameObject, EnemySpawnPoints[i], new Quaternion());
         }
         return;
+    }
+
+    private GameObject GetCharacterPrefab(string characterName)
+    {
+        return Resources.Load<GameObject>("CharacterPrefabs/" + characterName);
     }
 }
