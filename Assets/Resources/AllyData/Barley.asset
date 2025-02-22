@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560cde297885a0c4ea09f22529d64e34, type: 3}
   m_Name: Barley
   m_EditorClassIdentifier: 
+  AllyName: Barley
   baseMaxHealth: 12
-  caps: 3

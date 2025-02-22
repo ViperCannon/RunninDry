@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 560cde297885a0c4ea09f22529d64e34, type: 3}
   m_Name: Pixie
   m_EditorClassIdentifier: 
+  AllyName: Pixie
   baseMaxHealth: 20
-  caps: 2
