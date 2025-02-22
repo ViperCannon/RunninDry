@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
 {
@@ -11,6 +12,10 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     //add more objects as items get added
     public List<string> hubPurchases = new List<string>();
     public GameObject chairs1;
+
+    Ray ray;
+    RaycastHit hit;
+    
 
     void Start()
     {
@@ -75,8 +80,18 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         }
     }
 
+    public void continuebutton()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+
     void Update()
     {
-        
+        /*ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if(Physics.Raycast(ray, out hit))
+        {
+            print (hit.collider.name);
+        }*/
     }
 }

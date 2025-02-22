@@ -29,6 +29,11 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler
         }
     }
 
+    public void OnMouseOver()
+    {
+        Debug.Log(this.name);
+    }
+
     // Update is called once per frame
     void Update()
     {
