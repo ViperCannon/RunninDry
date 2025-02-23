@@ -369,6 +369,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: 274c57c750d2ba84584fe1cba521c865, type: 2}
+  EnemyName: 
   attacks: []
 --- !u!1 &47975032
 GameObject:
@@ -512,6 +513,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: 274c57c750d2ba84584fe1cba521c865, type: 2}
+  EnemyName: 
   attacks: []
 --- !u!4 &85058317
 Transform:
@@ -3152,6 +3154,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: c788b9818e6bc444aa8a4724817f682c, type: 2}
+  EnemyName: 
   attacks: []
 --- !u!1 &320145666
 GameObject:
@@ -4576,6 +4579,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: 274c57c750d2ba84584fe1cba521c865, type: 2}
+  EnemyName: 
   attacks: []
 --- !u!4 &484171098
 Transform:
@@ -6160,6 +6164,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: 274c57c750d2ba84584fe1cba521c865, type: 2}
+  EnemyName: 
   attacks: []
 --- !u!4 &632514653
 Transform:
@@ -7640,6 +7645,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: 274c57c750d2ba84584fe1cba521c865, type: 2}
+  EnemyName: 
   attacks: []
 --- !u!1 &734642839
 GameObject:
@@ -8887,6 +8893,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: 274c57c750d2ba84584fe1cba521c865, type: 2}
+  EnemyName: 
   attacks: []
 --- !u!4 &855801775
 Transform:
@@ -9042,6 +9049,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: 274c57c750d2ba84584fe1cba521c865, type: 2}
+  EnemyName: 
   attacks: []
 --- !u!1 &879029985
 GameObject:
@@ -10495,6 +10503,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: 768bd7968b95d3d4f92bf5ad8a080bee, type: 2}
+  AllyName: 
   caps: 2
 --- !u!4 &1009868449
 Transform:
@@ -14219,7 +14228,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -219145165104364648, guid: b05df2dab604f54498b73d0020497203, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 2d3618bd6ba763c4d9b0fa52bd972463, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4590dab5d4b0da44698d2b3d65fb13d1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -14387,6 +14396,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: 274c57c750d2ba84584fe1cba521c865, type: 2}
+  EnemyName: 
   attacks: []
 --- !u!4 &1401287022
 Transform:
@@ -14520,6 +14530,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: 5c76b5156608d794d85695880182c484, type: 2}
+  AllyName: 
   caps: 2
 --- !u!4 &1415724738
 Transform:
@@ -15143,6 +15154,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: dc43672dffb2eea4ebd1d0c3f620133a, type: 2}
+  AllyName: 
   caps: 3
 --- !u!4 &1494120753
 Transform:
@@ -18219,6 +18231,7 @@ MonoBehaviour:
   activeBuffs: []
   activeDebuffs: []
   baseData: {fileID: 11400000, guid: 274c57c750d2ba84584fe1cba521c865, type: 2}
+  EnemyName: 
   attacks: []
 --- !u!1 &1775907505
 GameObject:
