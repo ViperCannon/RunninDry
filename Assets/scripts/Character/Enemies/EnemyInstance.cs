@@ -7,13 +7,11 @@ public class EnemyInstance : CharacterInstance
 {
     [SerializeField]
     EnemyData baseData;
-    public string EnemyName;
 
     public Card[] attacks;
 
    void Start()
     {
-        EnemyName = baseData.enemyName;
         maxHealth = baseData.baseMaxHealth;
         currentHealth = maxHealth;
     }
