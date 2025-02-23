@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewAlly", menuName = "Character/Ally")]
 public class AllyData : ScriptableObject
 {
-    public string allyName;
+    public string AllyName;
     public int baseMaxHealth;
 }

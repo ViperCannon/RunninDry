@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SpeakeasyStreet;
+using System.Linq;
 
 public class CombatManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class CombatManager : MonoBehaviour
         PlayerTurn,
         EnemyTurn
     }
+
+    [Header("Combat Participant Data")]
+    public List<AllyData> AlliesData;
+    public List<EnemyData> EnemiesData;
 
     [Header("Combat Participant Instances")]
     public List<AllyInstance> Allies;
@@ -35,7 +40,7 @@ public class CombatManager : MonoBehaviour
 
     [Header("Misc. Other Properties")]
     [SerializeField]
-    EnemyInstance[] enemyTypes;
+    List<EnemyData> enemyTypes;
 
     [Header("Misc. Other Properties")]
     [SerializeField]
@@ -76,6 +81,8 @@ public class CombatManager : MonoBehaviour
         {
             child.gameObject.SetActive(true);
         }
+
+        SpawnCombatants();
 
         /*
         if(Enemies.Count > 0)
@@ -284,7 +291,7 @@ public class CombatManager : MonoBehaviour
         return over;
     }
 
-    void EndCombat()
+    public void EndCombat()
     {
 
         foreach (Transform child in combatCanvas.transform)
@@ -297,6 +304,14 @@ public class CombatManager : MonoBehaviour
             if (p != null)
             {
                 p.gameObject.SetActive(false);
+            }
+        }
+
+        foreach (EnemyInstance e in Enemies)
+        {
+            if (e != null)
+            {
+                e.gameObject.SetActive(false);
             }
         }
 
@@ -320,36 +335,52 @@ public class CombatManager : MonoBehaviour
         for (int i = 0; i < Random.Range(1, 5); i++)
         {
             // Pick a random non-boss enemy type! 
-            EnemyInstance newEnemyInstance = enemyTypes[Random.Range(0, enemyTypes.Length)];
+            EnemyData currentEnemy = enemyTypes[Random.Range(0, enemyTypes.Count)];
 
             // Allocate the new enemy it to Enemies!
-            Enemies.Add(newEnemyInstance);
+            EnemiesData.Add(currentEnemy);
         }
     }
 
-    public void GenerateSetCombat(EnemyInstance[] E)
+    public void GenerateSetCombat(EnemyData[] E)
     {
+        EnemiesData.Clear();
+
+        foreach (EnemyData enemy in E)
+        {
+            EnemiesData.Add(enemy);
+        }
+    }
+
+    public void SpawnCombatants()
+    {
+        
+        if (!Allies.Any())
+        {
+            Debug.Log("Populating the ally list and spawning them!");
+            for (int i = 0; i < AlliesData.Count; i++)
+            {
+                GameObject currentAlly = Instantiate(GetCharacterPrefab(AlliesData[i].AllyName) as GameObject, PlayerSpawnPoints[i], new Quaternion());
+                Allies.Add(currentAlly.GetComponent<AllyInstance>());
+
+            }
+        }
+        else
+        {
+            Debug.Log("Ally list is already populated! Setting allies to active!");
+            foreach (AllyInstance Ally in Allies)
+            {
+                Ally.gameObject.SetActive(true);
+            }
+        }
+
         Enemies.Clear();
 
-        foreach (EnemyInstance enemy in E)
-        {
-            Enemies.Add(enemy);
-        }
-    }
-
-    public void StartCombat()
-    {
-
-        for (int i = 0; i < Allies.Count; i++)
-        {
-            // Have ally spawn at EnemySpawnPositions[i]!
-            GameObject currentAlly = Instantiate(GetCharacterPrefab(Allies[i].AllyName) as GameObject, PlayerSpawnPoints[i], new Quaternion());
-        }
-        
+        Debug.Log("Populating the enemy list and spawning them!");
         for (int i = 0; i < Enemies.Count; i++)
         {
-            // Have enemy spawn at EnemySpawnPositions[i]!
-            GameObject currentEnemy = Instantiate(GetCharacterPrefab(Enemies[i].EnemyName) as GameObject, EnemySpawnPoints[i], new Quaternion());
+            GameObject currentEnemy = Instantiate(GetCharacterPrefab(EnemiesData[i].EnemyName) as GameObject, EnemySpawnPoints[i], new Quaternion());
+            Enemies.Add(currentEnemy.GetComponent<EnemyInstance>());
         }
         return;
     }
