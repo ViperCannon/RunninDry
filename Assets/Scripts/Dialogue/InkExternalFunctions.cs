@@ -54,8 +54,12 @@ public class InkExternalFunctions
 
     private void StartCombat()
     {
-        //TODO: Once the combat initialization system is finished, make it so this function can call upon it!
-        Debug.Log("Combat should begin here, but it's not ready yet so this will have to do!");
+        // THE BELOW LINE IS TEMPORARY JUST TO MAKE SURE THE ENEMY LIST IS ALWAYS POPULATED BEFORE COMBAT IS INITIATED
+        // WHILE I WORK ON FURTHER IMPLEMENTATION OF SET ENCOUNTERS! - David
+        CombatManager.GetInstance().GenerateRandomCombat();
+
+        // This is NOT temporary though! This stays! - Also David
+        CombatManager.GetInstance().gameObject.SetActive(true);
     }
 
     private void StartNegotiation()

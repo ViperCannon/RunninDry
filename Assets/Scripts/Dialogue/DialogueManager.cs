@@ -58,7 +58,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         // Handle continuing to the next line of dialogue if the submit button has been pressed!
-        if (currentStory.currentChoices.Count == 0 && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
+        if (currentStory.currentChoices.Count == 0 && (Input.GetMouseButtonDown(0)))
         {
             ContinueStory();
         }
@@ -130,13 +130,6 @@ public class DialogueManager : MonoBehaviour
         {
             choices[i].SetActive(false);
         }
-    }
-
-    private IEnumerator SelectFirstChoice()
-    {
-        EventSystem.current.SetSelectedGameObject(null);
-        yield return new WaitForEndOfFrame();
-        EventSystem.current.SetSelectedGameObject(choices[0]);
     }
 
     public void MakeChoice(int choiceIndex)
