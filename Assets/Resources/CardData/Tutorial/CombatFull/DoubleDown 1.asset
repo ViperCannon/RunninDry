@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: DoubleDown 1
   m_EditorClassIdentifier: 
   cardName: Double Down
+  cardArt: {fileID: 21300000, guid: 5a18961a4059ad2469f97bf3755f95a7, type: 3}
   cost: 2
   drawAmount: 0
   cardDescription: 'Deals {damage} melee damage to a random target
@@ -31,5 +32,4 @@ MonoBehaviour:
   turnDuration: 0
   chanceEffect: 0
   subTypes: 01000000
-  validTargets: 01000000
-  cardArt: {fileID: 21300000, guid: 5a18961a4059ad2469f97bf3755f95a7, type: 3}
+  validTargets: 0100000002000000
