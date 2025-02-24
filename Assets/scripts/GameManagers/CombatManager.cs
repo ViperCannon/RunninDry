@@ -320,7 +320,10 @@ public class CombatManager : MonoBehaviour
 
         deckManager.inCombat = false;
 
-        gameManager.endEncounter();
+        if(gameManager != null)
+        {
+            gameManager.endEncounter();
+        } 
 
         StartCoroutine(ZoomCamera(zoomInSize));
 
@@ -377,7 +380,7 @@ public class CombatManager : MonoBehaviour
         Enemies.Clear();
 
         Debug.Log("Populating the enemy list and spawning them!");
-        for (int i = 0; i < Enemies.Count; i++)
+        for (int i = 0; i < EnemiesData.Count; i++)
         {
             GameObject currentEnemy = Instantiate(GetCharacterPrefab(EnemiesData[i].EnemyName) as GameObject, EnemySpawnPoints[i], new Quaternion());
             Enemies.Add(currentEnemy.GetComponent<EnemyInstance>());

@@ -8,6 +8,8 @@ public class GenericRandomDamageEffect : ScriptableObject, ICardEffect
     {
         CharacterInstance newTarget = target;
 
+        Debug.Log(cardInstance.cardData.validTargets[0].ToString());
+
         if (cardInstance.cardData.validTargets.Contains(CombatCard.CardTarget.Enemy))
         {
             while(newTarget == target)

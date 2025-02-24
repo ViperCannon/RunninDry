@@ -2635,6 +2635,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
+      propertyPath: EnemiesData.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
       propertyPath: AlliesData.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 5c76b5156608d794d85695880182c484, type: 2}
@@ -2646,6 +2650,18 @@ PrefabInstance:
       propertyPath: AlliesData.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: dc43672dffb2eea4ebd1d0c3f620133a, type: 2}
+    - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
+      propertyPath: EnemiesData.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b00aa9a3909fef34c9f92cfdd7665f3a, type: 2}
+    - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
+      propertyPath: EnemiesData.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b00aa9a3909fef34c9f92cfdd7665f3a, type: 2}
+    - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
+      propertyPath: EnemiesData.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: b00aa9a3909fef34c9f92cfdd7665f3a, type: 2}
     - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
       propertyPath: EnemySpawnPoints.Array.size
       value: 5

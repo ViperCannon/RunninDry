@@ -15,6 +15,7 @@ TagManager:
   - cardlist
   - Background
   - GameManager
+  - HealthBar
   layers:
   - Default
   - TransparentFX

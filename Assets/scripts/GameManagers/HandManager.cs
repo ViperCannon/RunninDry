@@ -157,6 +157,19 @@ public class HandManager : MonoBehaviour
     {
         CombatCard cardData = cardDisplay.cardData;
 
+        if (cardDisplay.character == null)
+        {
+            AllyInstance[] allies = FindObjectsOfType<AllyInstance>();
+
+            foreach (AllyInstance ally in allies)
+            {
+                if (cardData.character.ToString() == ally.gameObject.name)
+                {
+                    cardDisplay.character = ally.gameObject;
+                }
+            }
+        }
+
         //resolve card effect (need to add logic if player is downed.)
         if (cardData.cost <= combatManager.currentCaps && ((target != null && !target.isDowned) || cardData.IsAOE() || cardData.validTargets[0] == CombatCard.CardTarget.Random || cardData.validTargets[0] == CombatCard.CardTarget.Generic))
         {
