@@ -6,6 +6,8 @@ using System.Linq;
 
 public class CombatManager : MonoBehaviour
 {
+    private static CombatManager instance;
+
     public enum CombatPhase
     {
         PlayerTurn,
@@ -68,6 +70,21 @@ public class CombatManager : MonoBehaviour
     float zoomInSize = 5f;
     float zoomOutSize = 10f;
     float zoomSpeed = 2f;
+
+    void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Debug.LogWarning("Found more than one Combat Manager instance in the scene! Removing this one!");
+            Destroy(this);
+        }
+        else instance = this;
+    }
+
+    public static CombatManager GetInstance()
+    {
+        return instance;
+    }
 
     // Method to start combat and initialize variables
     public void OnEnable()
