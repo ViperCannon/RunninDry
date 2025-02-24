@@ -2,6 +2,8 @@ EXTERNAL AddBooze(int amount)
 EXTERNAL AlterDrunkardRelations(int amount)
 EXTERNAL AlterCivilianRelations(int amount)
 
+EXTERNAL StartCombat()
+
 -> main
 
 === main ===
@@ -9,9 +11,8 @@ A group of disheveled looking men and women approach your car. Their clothes are
 
 + [Sock it to 'em!]
     ~ AlterDrunkardRelations(-5)
-    // START A COMBAT ENCOUNTER WITH TWO CIVILIANS AND TWO DRUNKS
     They don't look so tough. You can take them. [-5 Drunk Rep, Begin a combat encounter with two civilians and two drunks.]
-    
+    ~ StartCombat()
  
 + [Give them a bottle.]
     ~ AddBooze(-1)

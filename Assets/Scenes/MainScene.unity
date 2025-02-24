@@ -14542,8 +14542,7 @@ PrefabInstance:
       propertyPath: optionbuttons
       value: 
       objectReference: {fileID: 2050476393}
-    m_RemovedComponents:
-    - {fileID: 5998117970647157962, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
