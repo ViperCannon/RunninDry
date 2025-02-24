@@ -30,7 +30,7 @@ public class CombatCardDisplay : CardDisplay
 
             foreach(AllyInstance ally in allies)
             {
-                if(cardData.character.ToString() == ally.gameObject.name)
+                if(cardData.character.ToString() + "(Clone)" == ally.gameObject.name)
                 {
                     character = ally.gameObject;
                 }
