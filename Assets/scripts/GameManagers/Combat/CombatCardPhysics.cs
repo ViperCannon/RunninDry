@@ -58,6 +58,8 @@ public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler,
     {
         CombatCardDisplay cardDisplay = GetComponent<CombatCardDisplay>();
 
+        Debug.Log(cardDisplay.character.name);
+
         if (transform.localPosition.y >= yThreshold - 0.01f || currentTarget != null)
         {
 
