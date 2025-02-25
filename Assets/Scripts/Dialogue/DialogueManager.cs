@@ -72,6 +72,7 @@ public class DialogueManager : MonoBehaviour
 
     public void OpenDialogue(TextAsset inkJSON)
     {
+        Debug.Log("Opening the dialogue box and starting the current Dialogue Story!");
         currentStory = new Story(inkJSON.text);
         externalFunctions.Bind(currentStory);
 
@@ -94,19 +95,25 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("The current Dialogue Story has no more to it! Closing the dialogue now!");
+            Debug.Log("The current Dialogue Story has no more to it!");
             CloseDialogue();
         }
     }
 
     public void CloseDialogue()
     {
+        Debug.Log("Closing the dialogue box!");
         externalFunctions.Unbind(currentStory);
 
         DialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.gameObject.SetActive(false);
         dialogueText.text = "";
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.EndEncounter();
+        }
     }
 
     private void DisplayChoices()

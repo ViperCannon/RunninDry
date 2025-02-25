@@ -5,7 +5,7 @@ public class EventStart : MonoBehaviour
     public GameManager gameManager;
     public void onClick()
     {
-        gameManager.endEncounter();
+        gameManager.EndEncounter();
 
         gameManager.relations.cash += 20;
         gameManager.cash.text = gameManager.relations.cash.ToString();

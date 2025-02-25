@@ -20,16 +20,12 @@ public class GameManager : MonoBehaviour
         } 
     }
 
-    [SerializeField]
-    MusicController mController;
-
     public GameObject car;
     public GameObject inSceneCar;
     public GameObject outSceneCar;
     public GameObject map;
     public GameObject inSceneMap;
     public GameObject outSceneMap;
-    ScrollingBackground bg;
 
     public bool newGame;
     bool wheelsSpinning = false;
@@ -38,34 +34,31 @@ public class GameManager : MonoBehaviour
     bool mapMovingIn = false;
     bool mapMovingOut = false;
 
-    TalkerDatabase TalkDatabase;
     public RelationshipsFramework relations;
     public TMP_Text scoretext;
-    public int talkerint;
-    public string talkertype;
     public ScrollingBackground ScrollingBackground;
     public GameObject continuebutton;
     public GameObject scorecanvas;
     public GameObject maincanvas;
-    public GameObject combatManager;
-    [Header("Stats")]
+
+    [Header("Player Stats")]
     public TMP_Text cash;
     public TMP_Text tires;
     public TMP_Text paneling;
     public TMP_Text booze;
-    [SerializeField]
-    float waitTime;
+
+    [SerializeField] float waitTime;
+
+    [Header("OUTDATED - REMOVE ALL REFERENCES SO WE CAN DELETE THEM")]
+    public int talkerint;
+    public string talkertype;
 
     // Start is called before the first frame update
     void Start()
     {
-        TalkDatabase = gameObject.GetComponent<TalkerDatabase>();
         if (GameObject.FindWithTag("Map") != null) //perhaps edit this section to include more Null exceptions
         {
             relations = gameObject.GetComponent<RelationshipsFramework>();
-
-            bg = GameObject.FindWithTag("Background").GetComponent<ScrollingBackground>();
-
             cash.text = relations.cash.ToString();
             tires.text = relations.tires.ToString();
             paneling.text = relations.paneling.ToString();
@@ -85,8 +78,6 @@ public class GameManager : MonoBehaviour
                 WheelsSpin();
             }
 
-            Debug.Log("Car is Moving In");
-
             car.transform.position = Vector3.Lerp(car.transform.position, inSceneCar.transform.position, 2f * Time.deltaTime);
         }
         else
@@ -103,8 +94,6 @@ public class GameManager : MonoBehaviour
                 WheelsSpin();
             }
 
-            Debug.Log("Car is Moving Out");
-
             car.transform.position = Vector3.Lerp(car.transform.position, outSceneCar.transform.position, 2f * Time.deltaTime);
         }
         else
@@ -119,8 +108,6 @@ public class GameManager : MonoBehaviour
 
         if (mapMovingIn && Vector3.Distance(map.transform.position, inSceneMap.transform.position) > 0.1f)
         {
-            Debug.Log("Map is Moving In");
-
             map.transform.position = Vector3.Lerp(map.transform.position, inSceneMap.transform.position, 2f * Time.deltaTime);
         }
         else
@@ -131,9 +118,6 @@ public class GameManager : MonoBehaviour
         if (mapMovingOut && Vector3.Distance(map.transform.position, outSceneMap.transform.position) > 0.1f)
         {
             mapMovingIn = false;
-
-            Debug.Log("Map is Moving Out");
-
             map.transform.position = Vector3.Lerp(map.transform.position, outSceneMap.transform.position, 2f * Time.deltaTime);
         }
         else
@@ -147,13 +131,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Encounter(string type)
-    {
-        talkertype = type;
-        TalkDatabase.Encounter(type);
-    }
-
-    public void scorescreen()
+    public void DisplayScoreScreen()
     {
         ScrollingBackground.isScrolling = false;
         scorecanvas.SetActive(true);
@@ -163,11 +141,12 @@ public class GameManager : MonoBehaviour
         //scoretext.text = "Cash: " + relations.cash.ToString() + " Booze: " + relations.booze.ToString() + " Tires: " + relations.tires.ToString() + " Paneling: " + relations.paneling.ToString();
     }
 
-    public void mainmenu()
+    public void LoadMainMenu()
     {
         SceneManager.LoadScene(0);
     }
 
+    #region Car Move In/Out Functions
     public void CarMoveIn()
     {
         WheelsSpin();
@@ -176,9 +155,12 @@ public class GameManager : MonoBehaviour
 
     public void CarMoveOut()
     {
+        WheelsStop();
         carMovingOut = true;
     }
+    #endregion
 
+    #region Map Move In/Out Functions
     public void MapMoveIn()
     {
         mapMovingIn = true;
@@ -188,7 +170,9 @@ public class GameManager : MonoBehaviour
     {
         mapMovingOut = true;
     }
+    #endregion
 
+    #region Wheel Spinning Enabled/Disabled Functions
     public void WheelsSpin()
     {
         wheelsSpinning = true;
@@ -198,22 +182,13 @@ public class GameManager : MonoBehaviour
     {
         wheelsSpinning = false;
     }
+    #endregion
 
-    public void endEncounter()
+    public void EndEncounter()
     {
-        cash.text = relations.cash.ToString();
-        tires.text = relations.tires.ToString();
-        paneling.text = relations.paneling.ToString();
-        booze.text = relations.booze.ToString();
-        //if talkdatabase.choiceint == 1 2 3 or 4 &&
-        //do thing. may need to copy and paste the talkdatabase option 1-4 code here.
-        //continuebutton.SetActive(false);
-        StartCoroutine(endingEncounter());
-       /* for (int i = 0; i < TalkDatabase.optionbuttons.transform.childCount; i++)
-        {
-            TalkDatabase.optionbuttons.transform.GetChild(i).gameObject.SetActive(false);
-        }*/
-        //TalkDatabase.textbox.SetActive(false);
+        MapMoveIn();
+        CarMoveIn();
+
         print(relations.copRelations);
         print(relations.civilianRelations);
         print(relations.drunkardRelations);
@@ -221,23 +196,5 @@ public class GameManager : MonoBehaviour
         print(relations.russianMobRelations);
         print(relations.norwegianMobRelations);
         print(relations.sicilianMobRelations);
-    }
-
-    IEnumerator endingEncounter()
-    {
-        //TalkDatabase.text.text = TalkDatabase.responsetext;
-        //yield return new WaitForSeconds(5);
-        TalkDatabase.textbox.SetActive(false);
-        //TalkDatabase.text = TalkDatabase.Getresponse();
-        
-        //overworld.SetTrigger("fadein");
-        //car.SetTrigger("start");
-
-        bg.isScrolling = true;
-        //mController.UpdateMusic("");
-        yield return new WaitForSeconds(waitTime);
-
-        StopCoroutine(endingEncounter());
-        yield return null;
     }
 }

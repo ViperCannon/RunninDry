@@ -65,9 +65,9 @@ public class CombatManager : MonoBehaviour
 
     public Card lastPlayedCard;
 
-    float zoomInSize = 5f;
-    float zoomOutSize = 10f;
-    float zoomSpeed = 2f;
+    private float zoomInSize = 5f;
+    private float zoomOutSize = 10f;
+    private float zoomSpeed = 2f;
 
     void Awake()
     {
@@ -340,17 +340,17 @@ public class CombatManager : MonoBehaviour
 
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.CarMoveIn();
-
             deckManager.inCombat = false;
-
-            GameManager.Instance.endEncounter();
+            GameManager.Instance.EndEncounter();
+            GameManager.Instance.ScrollingBackground.isScrolling = true;
         } 
 
         StartCoroutine(ZoomCamera(zoomInSize));
 
         Debug.Log("Combat Ended.");
+
         // Handle the end of combat (e.g., show results, transition to the next scene, etc.)
+        
     }
 
     public void GenerateRandomCombat()

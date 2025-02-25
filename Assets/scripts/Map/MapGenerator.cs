@@ -14,9 +14,6 @@ public class MapGenerator : MonoBehaviour
     const int MAP_WIDTH = 5;
     const int PATHS = 5; 
     const int FLOORS = 12; //13th node is boss
-
-    [SerializeField]
-    GameObject gameManager;
     
     [SerializeField]
     GameObject[] nodeVariants;
@@ -35,9 +32,6 @@ public class MapGenerator : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameObject.FindWithTag("GameManager");
-        
-
         if (!tutorial)
         {
             GenerateMap();

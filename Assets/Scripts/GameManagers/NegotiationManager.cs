@@ -37,7 +37,7 @@ public class NegotiationManager : MonoBehaviour
         deckManager.inNegotiation = false;
         handManager.DiscardHand();
         combatCanvas.transform.GetChild(0).gameObject.SetActive(false);
-        gameManager.endEncounter();
+        gameManager.EndEncounter();
 
         Debug.Log("Negotiation Ended.");
         gameObject.SetActive(false);
