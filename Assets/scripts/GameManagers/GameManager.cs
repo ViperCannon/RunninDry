@@ -124,11 +124,6 @@ public class GameManager : MonoBehaviour
         {
             mapMovingOut = false;
         }
-
-        if (wheelsSpinning)
-        {
-
-        }
     }
 
     public void DisplayScoreScreen()
@@ -188,6 +183,7 @@ public class GameManager : MonoBehaviour
     {
         MapMoveIn();
         CarMoveIn();
+        ScrollingBackground.isScrolling = true;
 
         print(relations.copRelations);
         print(relations.civilianRelations);
