@@ -1021,7 +1021,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &209781611
 RectTransform:
@@ -3825,7 +3825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5744731937720294998, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
       propertyPath: capsHolder
@@ -3876,6 +3876,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
+      propertyPath: enemyTypes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
       propertyPath: players.Array.data[0]
       value: 
       objectReference: {fileID: 0}
@@ -3899,6 +3903,10 @@ PrefabInstance:
       propertyPath: AlliesData.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: dc43672dffb2eea4ebd1d0c3f620133a, type: 2}
+    - target: {fileID: 7758973976320950516, guid: 55acba7e34dea5b49afab46cdd1aa4f4, type: 3}
+      propertyPath: enemyTypes.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b00aa9a3909fef34c9f92cfdd7665f3a, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7346,7 +7354,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1996845273
 RectTransform:
