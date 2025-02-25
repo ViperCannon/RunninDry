@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3078379666164350544}
   - component: {fileID: 5876931198854666681}
   - component: {fileID: 8684965860373665175}
+  - component: {fileID: 7297005153251634078}
+  - component: {fileID: 2570986725819595509}
   m_Layer: 5
   m_Name: GameManager
   m_TagString: Untagged
@@ -51,13 +53,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mController: {fileID: 0}
   car: {fileID: 0}
-  InSceneCar: {fileID: 0}
-  OutSceneCar: {fileID: 0}
+  inSceneCar: {fileID: 0}
+  outSceneCar: {fileID: 0}
   map: {fileID: 0}
-  InSceneMap: {fileID: 0}
-  OutSceneMap: {fileID: 0}
+  inSceneMap: {fileID: 0}
+  outSceneMap: {fileID: 0}
   newGame: 0
-  carIsMoving: 0
   relations: {fileID: 0}
   scoretext: {fileID: 0}
   talkerint: 0
@@ -96,3 +97,33 @@ MonoBehaviour:
   booze: 0
   tires: 0
   score: 0
+--- !u!114 &7297005153251634078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300347504289847704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ac9974eba2f49479b3b657c36f8e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePanel: {fileID: 0}
+  dialogueText: {fileID: 0}
+  choices: []
+--- !u!114 &2570986725819595509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300347504289847704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c4f576a1b450a4ea7e2c365134ae03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  combatJSONs: []
+  eventJSONs: []
+  negotiationJSONs: []
