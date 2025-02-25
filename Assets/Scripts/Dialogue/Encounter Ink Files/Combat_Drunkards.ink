@@ -11,13 +11,13 @@ A group of disheveled looking men and women approach your car. Their clothes are
 
 + [Sock it to 'em!]
     ~ AlterDrunkardRelations(-5)
-    They don't look so tough. You can take them. [-5 Drunk Rep, Begin a combat encounter with two civilians and two drunks.]
+    They don't look so tough. You can take them.
     ~ StartCombat()
  
 + [Give them a bottle.]
     ~ AddBooze(-1)
     ~ AlterDrunkardRelations(10)
     ~ AlterCivilianRelations(5)
-    Might as well not attract too much attention. [-1 Booze, +10 Drunk Rep, +5 Civ Rep]
-
-- -> END
+    Might as well not attract too much attention.
+    
+--> END

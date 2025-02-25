@@ -55,6 +55,8 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     CapsHolder capsHolder;
 
+    public bool inCombat;
+
     bool firstLoad = true;
     bool hasEndedTurn = false;
 
@@ -105,18 +107,7 @@ public class CombatManager : MonoBehaviour
 
             SpawnCombatants();
 
-            /*
-            if(Enemies.Count > 0)
-            {
-                Enemies.Clear();
-            }
-
-            foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-            {
-                Enemies.Add(enemy.GetComponent<EnemyInstance>());
-            }
-            */
-
+            inCombat = true;
             deckManager.inCombat = true;
             deckManager.PopulateDecks();
             deckManager.UpdateCounters();
@@ -340,9 +331,9 @@ public class CombatManager : MonoBehaviour
 
         if (GameManager.Instance != null)
         {
+            inCombat = false;
             deckManager.inCombat = false;
             GameManager.Instance.EndEncounter();
-            GameManager.Instance.ScrollingBackground.isScrolling = true;
         } 
 
         StartCoroutine(ZoomCamera(zoomInSize));

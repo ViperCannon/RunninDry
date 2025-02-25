@@ -51,10 +51,16 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        
         // No need to update anything if the dialogue prompt is closed!
         if (!DialogueIsPlaying)
         {
             return;
+        }
+
+        if (dialogueText.text == "")
+        {
+            CloseDialogue();
         }
 
         // Handle continuing to the next line of dialogue if the submit button has been pressed!
@@ -110,8 +116,9 @@ public class DialogueManager : MonoBehaviour
         dialogueText.gameObject.SetActive(false);
         dialogueText.text = "";
 
-        if (GameManager.Instance != null)
+        if (!CombatManager.GetInstance().inCombat)
         {
+            Debug.Log("THIS IS BEING ACCESSED!");
             GameManager.Instance.EndEncounter();
         }
     }
