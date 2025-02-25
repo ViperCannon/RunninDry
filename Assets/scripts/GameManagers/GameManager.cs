@@ -24,15 +24,19 @@ public class GameManager : MonoBehaviour
     MusicController mController;
 
     public GameObject car;
-    public GameObject InSceneCar;
-    public GameObject OutSceneCar;
+    public GameObject inSceneCar;
+    public GameObject outSceneCar;
     public GameObject map;
-    public GameObject InSceneMap;
-    public GameObject OutSceneMap;
+    public GameObject inSceneMap;
+    public GameObject outSceneMap;
     ScrollingBackground bg;
 
     public bool newGame;
-    public bool carIsMoving;
+    bool wheelsSpinning = false;
+    bool carMovingIn = false;
+    bool carMovingOut = false;
+    bool mapMovingIn = false;
+    bool mapMovingOut = false;
 
     TalkerDatabase TalkDatabase;
     public RelationshipsFramework relations;
@@ -59,7 +63,7 @@ public class GameManager : MonoBehaviour
         if (GameObject.FindWithTag("Map") != null) //perhaps edit this section to include more Null exceptions
         {
             relations = gameObject.GetComponent<RelationshipsFramework>();
-            
+
             bg = GameObject.FindWithTag("Background").GetComponent<ScrollingBackground>();
 
             cash.text = relations.cash.ToString();
@@ -67,7 +71,78 @@ public class GameManager : MonoBehaviour
             paneling.text = relations.paneling.ToString();
             booze.text = relations.booze.ToString();
         }
+
+        MapMoveIn();
+        CarMoveIn();
     }
+
+    private void FixedUpdate()
+    {
+        if (carMovingIn && Vector3.Distance(car.transform.position, inSceneCar.transform.position) > 0.1f)
+        {
+            if (!wheelsSpinning)
+            {
+                WheelsSpin();
+            }
+
+            Debug.Log("Car is Moving In");
+
+            car.transform.position = Vector3.Lerp(car.transform.position, inSceneCar.transform.position, 2f * Time.deltaTime);
+        }
+        else
+        {
+            carMovingIn = false;
+        }
+        
+        if (carMovingOut && Vector3.Distance(car.transform.position, outSceneCar.transform.position) > 0.1f)
+        {
+            if (!wheelsSpinning)
+            {
+                WheelsSpin();
+            }
+
+            Debug.Log("Car is Moving Out");
+
+            car.transform.position = Vector3.Lerp(car.transform.position, outSceneCar.transform.position, 2f * Time.deltaTime);
+        }
+        else
+        { 
+            if (carMovingOut)
+            {
+                WheelsStop();
+            }
+
+            carMovingOut = false;
+        }
+
+        if (mapMovingIn && Vector3.Distance(map.transform.position, inSceneMap.transform.position) > 0.1f)
+        {
+            Debug.Log("Map is Moving In");
+
+            map.transform.position = Vector3.Lerp(map.transform.position, inSceneMap.transform.position, 2f * Time.deltaTime);
+        }
+        else
+        {
+            mapMovingIn = false;
+        }
+        
+        if (mapMovingOut && Vector3.Distance(map.transform.position, outSceneMap.transform.position) > 0.1f)
+        {
+            Debug.Log("Map is Moving Out");
+
+            map.transform.position = Vector3.Lerp(map.transform.position, outSceneMap.transform.position, 2f * Time.deltaTime);
+        }
+        else
+        {
+            mapMovingOut = false;
+        }
+
+        if (wheelsSpinning)
+        {
+
+        }
+    }
+
     public void Encounter(string type)
     {
         talkertype = type;
@@ -89,24 +164,34 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    private void CarMoveIn()
+    public void CarMoveIn()
     {
-
+        carMovingIn = true;
     }
 
-    private void CarMoveOut()
+    public void CarMoveOut()
     {
-
+        carMovingOut = true;
     }
 
-    private void MapMoveIn()
+    public void MapMoveIn()
     {
-
+        mapMovingIn = true;
     }
 
-    private void MapMoveOut()
+    public void MapMoveOut()
     {
+        mapMovingOut = true;
+    }
 
+    public void WheelsSpin()
+    {
+        wheelsSpinning = true;
+    }
+
+    public void WheelsStop()
+    {
+        wheelsSpinning = false;
     }
 
     public void endEncounter()

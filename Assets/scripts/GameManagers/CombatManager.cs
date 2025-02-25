@@ -51,8 +51,6 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     DeckManager deckManager;
     [SerializeField]
-    GameManager gameManager;
-    [SerializeField]
     Canvas combatCanvas;
     [SerializeField]
     CapsHolder capsHolder;
@@ -89,11 +87,11 @@ public class CombatManager : MonoBehaviour
     // Method to start combat and initialize variables
     public void OnEnable()
     {
-        car = GameObject.FindWithTag("car");
-
-        if(car != null)
-            car.SetActive(false);
-
+       if (GameManager.Instance != null)
+        {
+            GameManager.Instance.CarMoveOut();
+        }
+        
         foreach(Transform child in combatCanvas.transform)
         {
             child.gameObject.SetActive(true);
@@ -332,14 +330,13 @@ public class CombatManager : MonoBehaviour
             }
         }
 
-        if (car != null)
-            car.SetActive(true);
-
-        deckManager.inCombat = false;
-
-        if(gameManager != null)
+        if (GameManager.Instance != null)
         {
-            gameManager.endEncounter();
+            GameManager.Instance.CarMoveIn();
+
+            deckManager.inCombat = false;
+
+            GameManager.Instance.endEncounter();
         } 
 
         StartCoroutine(ZoomCamera(zoomInSize));

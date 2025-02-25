@@ -50,9 +50,9 @@ public class NodeButtonFunction : MonoBehaviour
     }
     IEnumerator StopCar()
     {
-        carParent.SetTrigger("stop");
+        GameManager.Instance.CarMoveOut();
         bg.isScrolling = false;
-        map.SetTrigger("fadeout");
+        GameManager.Instance.MapMoveOut();
         yield return null;
     }
     public void StartPulse()
