@@ -14,7 +14,7 @@ public class EncounterGenerator : MonoBehaviour
 
     private TextAsset currentEncounter;
 
-    public void PlayCurrentEncounter()
+    public void PlayCurrentDialogue()
     {
         if (DialogueManager.GetInstance().DialogueIsPlaying)
         {
@@ -24,7 +24,7 @@ public class EncounterGenerator : MonoBehaviour
         DialogueManager.GetInstance().OpenDialogue(currentEncounter);
     }
 
-    public void SetNewCombat()
+    public void SetNewCombatDialogue()
     {
         if (DialogueManager.GetInstance().DialogueIsPlaying)
         {
@@ -37,10 +37,10 @@ public class EncounterGenerator : MonoBehaviour
             return;
         }
         currentEncounter = combatJSONs[Random.Range(0, combatJSONs.Length)];
-        PlayCurrentEncounter();
+        PlayCurrentDialogue();
     }
 
-    public void SetNewEvent()
+    public void SetNewEventDialogue()
     {
         if (DialogueManager.GetInstance().DialogueIsPlaying)
         {
@@ -53,10 +53,10 @@ public class EncounterGenerator : MonoBehaviour
             return;
         }
         currentEncounter = eventJSONs[Random.Range(0, eventJSONs.Length)];
-        PlayCurrentEncounter();
+        PlayCurrentDialogue();
     }
 
-    public void SetNewNegotiation()
+    public void SetNewNegotiationDialogue()
     {
         if (DialogueManager.GetInstance().DialogueIsPlaying)
         {
@@ -69,6 +69,6 @@ public class EncounterGenerator : MonoBehaviour
             return;
         }
         currentEncounter = negotiationJSONs[Random.Range(0, negotiationJSONs.Length)];
-        PlayCurrentEncounter();
+        PlayCurrentDialogue();
     }
 }
