@@ -10898,6 +10898,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599743742}
   m_CullTransparentMesh: 1
+--- !u!1 &1609145012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1535695181060697301, guid: ac49e2e75118732439c7567513a5702c, type: 3}
+  m_PrefabInstance: {fileID: 1158148698}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1619396976
 GameObject:
   m_ObjectHideFlags: 0
@@ -12544,6 +12549,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884614657}
   m_CullTransparentMesh: 1
+--- !u!1 &1917504928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4249800866361645420, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
+  m_PrefabInstance: {fileID: 4623229182416701295}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1930935918
 GameObject:
   m_ObjectHideFlags: 0
@@ -14463,6 +14473,14 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: car
+      value: 
+      objectReference: {fileID: 1609145012}
+    - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: map
+      value: 
+      objectReference: {fileID: 1917504928}
+    - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
       propertyPath: cash
       value: 
       objectReference: {fileID: 930014243}
@@ -14487,9 +14505,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1945406145}
     - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: InSceneCar
+      value: 
+      objectReference: {fileID: 1084319132}
+    - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: InSceneMap
+      value: 
+      objectReference: {fileID: 917941133}
+    - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: inSceneCar
+      value: 
+      objectReference: {fileID: 1084319132}
+    - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: inSceneMap
+      value: 
+      objectReference: {fileID: 917941133}
+    - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
       propertyPath: maincanvas
       value: 
       objectReference: {fileID: 1996845269}
+    - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: OutSceneCar
+      value: 
+      objectReference: {fileID: 1957432604}
+    - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: OutSceneMap
+      value: 
+      objectReference: {fileID: 585537056}
+    - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: outSceneCar
+      value: 
+      objectReference: {fileID: 1957432604}
+    - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: outSceneMap
+      value: 
+      objectReference: {fileID: 585537056}
     - target: {fileID: 5876931198854666681, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
       propertyPath: scorecanvas
       value: 
@@ -14677,23 +14727,31 @@ PrefabInstance:
     - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
       propertyPath: nodeVariants.Array.data[0]
       value: 
-      objectReference: {fileID: 2012093214751530629, guid: 2d5923ff85619e940b5750f69d53595a, type: 3}
+      objectReference: {fileID: 3479921448943363096, guid: 334a08da7f81cb44fb55e620f748e648, type: 3}
     - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
       propertyPath: nodeVariants.Array.data[1]
       value: 
-      objectReference: {fileID: 5062829170192040255, guid: a83f839680a3196489fe9c2bf8e160f0, type: 3}
+      objectReference: {fileID: 696524466319918679, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
+    - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
+      propertyPath: nodeVariants.Array.data[2]
+      value: 
+      objectReference: {fileID: 3049571336813118388, guid: 5ca2ad0f0802f414ea2cc25c8e0c8046, type: 3}
     - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
       propertyPath: nodeVariants.Array.data[3]
       value: 
-      objectReference: {fileID: 2558851654807583353, guid: 20463d51e93ff1d4eb0152d437180648, type: 3}
+      objectReference: {fileID: 9103365936338523882, guid: 03c94bbbc2a3535478325a44b49af23d, type: 3}
     - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
       propertyPath: nodeVariants.Array.data[4]
       value: 
-      objectReference: {fileID: 8990119166705847401, guid: 2c3a5cb063717eb4d91bb05d25515bee, type: 3}
+      objectReference: {fileID: 7798363189250386153, guid: ebbaa56664a5bf74fb80a40d82b4225a, type: 3}
     - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
       propertyPath: nodeVariants.Array.data[5]
       value: 
-      objectReference: {fileID: 6187805063690675593, guid: e95b86554c014884a941a3b3c408b000, type: 3}
+      objectReference: {fileID: 184688036244281721, guid: 41662139106cc04498a28c0607931a26, type: 3}
+    - target: {fileID: 5847135604103159447, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
+      propertyPath: nodeVariants.Array.data[6]
+      value: 
+      objectReference: {fileID: 5839156039162332000, guid: cd406612751b34d42bf2522b3cdbde36, type: 3}
     - target: {fileID: 8983113072633781156, guid: 4b37f9e4fd5e8ab4c8376a1d2acc462b, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
