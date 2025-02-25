@@ -170,6 +170,7 @@ public class GameManager : MonoBehaviour
 
     public void CarMoveIn()
     {
+        WheelsSpin();
         carMovingIn = true;
     }
 
