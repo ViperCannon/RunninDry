@@ -12,7 +12,7 @@ public class TutorialCombatScript : MonoBehaviour
     void Start()
     {
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        combatManager = gamemanager.combatManager;
+        combatManager = CombatManager.GetInstance().gameObject;
     }
 
     public void loadAssets()

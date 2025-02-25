@@ -5,6 +5,6 @@ public class EndGame : MonoBehaviour
     public GameManager gameManager;
     public void onClick()
     {
-        gameManager.mainmenu();
+        gameManager.LoadMainMenu();
     }
 }

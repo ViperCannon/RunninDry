@@ -5,7 +5,7 @@ public class Continue : MonoBehaviour
     public GameManager gameManager;
     public void onClick()
     {
-        gameManager.endEncounter();
+        gameManager.EndEncounter();
 
         transform.parent.parent.gameObject.SetActive(false);
     }
