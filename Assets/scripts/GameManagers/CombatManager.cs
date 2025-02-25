@@ -55,7 +55,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     CapsHolder capsHolder;
 
-    GameObject car;
+    bool firstLoad = true;
     bool hasEndedTurn = false;
 
     public HandManager handManager;
@@ -77,6 +77,10 @@ public class CombatManager : MonoBehaviour
             Destroy(this);
         }
         else instance = this;
+
+        firstLoad = false;
+
+        gameObject.SetActive(false);
     }
 
     public static CombatManager GetInstance()
@@ -87,62 +91,66 @@ public class CombatManager : MonoBehaviour
     // Method to start combat and initialize variables
     public void OnEnable()
     {
-       if (GameManager.Instance != null)
+        if (!firstLoad)
         {
-            GameManager.Instance.CarMoveOut();
-        }
-        
-        foreach(Transform child in combatCanvas.transform)
-        {
-            child.gameObject.SetActive(true);
-        }
-
-        SpawnCombatants();
-
-        /*
-        if(Enemies.Count > 0)
-        {
-            Enemies.Clear();
-        }
-
-        foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
-        {
-            Enemies.Add(enemy.GetComponent<EnemyInstance>());
-        }
-        */
-
-        deckManager.inCombat = true;
-        deckManager.PopulateDecks();
-        deckManager.UpdateCounters();
-
-        Debug.Log("Combat Instance Started");
-
-        currentPhase = CombatPhase.PlayerTurn;
-
-        currentCaps = 0;
-        capsRefreshLimit = 0;
-
-        foreach(AllyInstance p in Allies)
-        {
-            if (p != null)
+            if (GameManager.Instance != null)
             {
-                p.gameObject.SetActive(true);
-                capsRefreshLimit += p.caps;
-            }          
-        }
-
-        foreach (EnemyInstance e in Enemies)
-        {
-            if(e != null)
-            {
-                e.gameObject.SetActive(true);
+                GameManager.Instance.CarMoveOut();
             }
-            
+
+            foreach (Transform child in combatCanvas.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+
+            SpawnCombatants();
+
+            /*
+            if(Enemies.Count > 0)
+            {
+                Enemies.Clear();
+            }
+
+            foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                Enemies.Add(enemy.GetComponent<EnemyInstance>());
+            }
+            */
+
+            deckManager.inCombat = true;
+            deckManager.PopulateDecks();
+            deckManager.UpdateCounters();
+
+            Debug.Log("Combat Instance Started");
+
+            currentPhase = CombatPhase.PlayerTurn;
+
+            currentCaps = 0;
+            capsRefreshLimit = 0;
+
+            foreach (AllyInstance p in Allies)
+            {
+                if (p != null)
+                {
+                    p.gameObject.SetActive(true);
+                    capsRefreshLimit += p.caps;
+                }
+            }
+
+            foreach (EnemyInstance e in Enemies)
+            {
+                if (e != null)
+                {
+                    e.gameObject.SetActive(true);
+                }
+
+            }
+
+            StartCoroutine(ZoomCamera(zoomOutSize));
+
+            StartCoroutine(HandleCombatTurns());
         }
-
-        StartCoroutine(ZoomCamera(zoomOutSize));
-
-        StartCoroutine(HandleCombatTurns());
+       
     }
 
     IEnumerator ZoomCamera(float targetSize)
