@@ -14,9 +14,6 @@ public class NodeButtonFunction : MonoBehaviour
     public Animator carParent;
     public Animator map;
 
-    [SerializeField]
-    EncounterGenerator encounterGenerator;
-
     float currentRatio = 1;
     float growthSpeed = 0.15f;
     float upperBound = 1.1f;
