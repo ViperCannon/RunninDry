@@ -552,9 +552,25 @@ public class MapGenerator : MonoBehaviour
             }
         }
 
-        
-
         //go into encounter
+        switch (crew.GetNodeType())
+        {
+            case NodeType.Combat:
+                EncounterGenerator.GetInstance().SetNewCombatDialogue();
+                break;
+
+            case NodeType.Negotiation:
+                EncounterGenerator.GetInstance().SetNewNegotiationDialogue();
+                break;
+
+            case NodeType.Event:
+                EncounterGenerator.GetInstance().SetNewEventDialogue();
+                break;
+
+            default:
+                Debug.Log("This Node Type doesn't have implemented functionality yet!");
+                break;
+        }
 
         crew.Complete();
     }

@@ -86,6 +86,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (currentStory.canContinue)
         {
+            Debug.Log("Continuing the current Dialogue Story!");
             // Set text for the current dialogue line.
             dialogueText.text = currentStory.Continue();
             // Display choices for this line if any exist.
@@ -93,6 +94,7 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("The current Dialogue Story has no more to it! Closing the dialogue now!");
             CloseDialogue();
         }
     }

@@ -205,7 +205,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2357585259026812688}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
         m_MethodName: MakeChoice
         m_Mode: 3
@@ -1961,7 +1961,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2357585259026812688}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
         m_MethodName: MakeChoice
         m_Mode: 3
@@ -5578,7 +5578,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2357585259026812688}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
         m_MethodName: MakeChoice
         m_Mode: 3
@@ -7820,7 +7820,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2357585259026812688}
         m_TargetAssemblyTypeName: DialogueManager, Assembly-CSharp
         m_MethodName: MakeChoice
         m_Mode: 3
@@ -7916,6 +7916,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: eventJSONs.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: combatJSONs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: eventJSONs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4900000, guid: b2d777a86c02bd94587b0484ca960803, type: 3}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: eventJSONs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4900000, guid: 0a4a7aef0213bf641a0903d6ddd36872, type: 3}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: eventJSONs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4900000, guid: 91987a04778104448bc5d2058c8839d4, type: 3}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: eventJSONs.Array.data[3]
+      value: 
+      objectReference: {fileID: 4900000, guid: 67786efc46ae04b4ea97c85519c68c56, type: 3}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: eventJSONs.Array.data[4]
+      value: 
+      objectReference: {fileID: 4900000, guid: 8b458689293d28d46ade89ea47f41e8f, type: 3}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: eventJSONs.Array.data[5]
+      value: 
+      objectReference: {fileID: 4900000, guid: 37add2761b3552e4182804e9ee0e3a1a, type: 3}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: combatJSONs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4900000, guid: 28f2b1ec1be5e354ebb3a3c754963f52, type: 3}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: negotiationJSONs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: negotiationJSONs.Array.data[0]
+      value: 
+      objectReference: {fileID: 4900000, guid: 5592ca3fabc33fe45bfbf587a4604426, type: 3}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: negotiationJSONs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4900000, guid: 4966043bd71467f4bbe4186b53d9d376, type: 3}
+    - target: {fileID: 2570986725819595509, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+      propertyPath: negotiationJSONs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4900000, guid: 6e7f8d52afcfffa43a5af7dca304a1c2, type: 3}
     - target: {fileID: 3078379666164350544, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8160,6 +8212,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1542855114}
   m_SourcePrefab: {fileID: 100100000, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+--- !u!114 &2357585259026812688 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7297005153251634078, guid: 8c8ffe55cadf3f34f94eb6a10fbd782c, type: 3}
+  m_PrefabInstance: {fileID: 2357585259026812687}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 245963568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ac9974eba2f49479b3b657c36f8e56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4623229182416701295
 PrefabInstance:
   m_ObjectHideFlags: 0
