@@ -96,6 +96,8 @@ public class GameManager : MonoBehaviour
         
         if (carMovingOut && Vector3.Distance(car.transform.position, outSceneCar.transform.position) > 0.1f)
         {
+            carMovingIn = false;
+
             if (!wheelsSpinning)
             {
                 WheelsSpin();
@@ -128,6 +130,8 @@ public class GameManager : MonoBehaviour
         
         if (mapMovingOut && Vector3.Distance(map.transform.position, outSceneMap.transform.position) > 0.1f)
         {
+            mapMovingIn = false;
+
             Debug.Log("Map is Moving Out");
 
             map.transform.position = Vector3.Lerp(map.transform.position, outSceneMap.transform.position, 2f * Time.deltaTime);
