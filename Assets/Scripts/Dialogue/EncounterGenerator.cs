@@ -60,7 +60,7 @@ public class EncounterGenerator : MonoBehaviour
     {
         if (DialogueManager.GetInstance().DialogueIsPlaying)
         {
-            Debug.LogWarning("Cannot set a new negotiation encounter cannot be set because the dialogue box is open!");
+            Debug.LogWarning("Cannot set a new negotiation encounter because the dialogue box is open!");
             return;
         }
         if (negotiationJSONs.Length == 0)
