@@ -71,7 +71,7 @@ public class CombatManager : MonoBehaviour
     [SerializeField]
     CapsHolder capsHolder;
 
-    public bool inCombat;
+    public bool inCombat = false;
 
     bool firstLoad = true;
     bool hasEndedTurn = false;

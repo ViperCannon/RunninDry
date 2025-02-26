@@ -125,6 +125,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        cash.text = relations.cash.ToString();
+        tires.text = relations.tires.ToString();
+        paneling.text = relations.paneling.ToString();
+        booze.text = relations.booze.ToString();
+    }
+
     public void DisplayScoreScreen()
     {
         ScrollingBackground.isScrolling = false;

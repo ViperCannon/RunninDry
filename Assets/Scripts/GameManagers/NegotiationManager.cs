@@ -33,7 +33,10 @@ public class NegotiationManager : MonoBehaviour
     [SerializeField]
     GameObject fail;
 
+    public bool inNegotiation = false;
+
     bool firstLoad = true;
+
     int diplomacyDifficulty = 12;
     int intimidationDifficulty = 12;
     int briberyDifficulty = 12;
@@ -44,6 +47,8 @@ public class NegotiationManager : MonoBehaviour
 
     private void OnEnable()
     {
+        inNegotiation = true;
+        
         if(gameManager == null)
         {
             gameManager = GameManager.Instance;
@@ -102,6 +107,8 @@ public class NegotiationManager : MonoBehaviour
 
     public void EndNegotiation()
     {
+        inNegotiation = false;
+        
         deckManager.inNegotiation = false;
         handManager.DiscardHand();
         deckManager.gameObject.GetComponentInParent<Transform>().gameObject.SetActive(false);

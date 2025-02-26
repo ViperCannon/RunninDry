@@ -9,7 +9,7 @@ public class InkExternalFunctions
     public void Bind(Story story)
     {
         story.BindExternalFunction("StartCombat", () => StartCombat());
-        story.BindExternalFunction("StartNegotiation", () => StartNegotiation());
+        story.BindExternalFunction("StartNegotiation", (int d, int i, int b) => StartNegotiation(d, i, b));
 
         // Resource Functions
         story.BindExternalFunction("AddCash", (int amount) => AddCash(amount));
@@ -62,10 +62,13 @@ public class InkExternalFunctions
         CombatManager.Instance.gameObject.SetActive(true);
     }
 
-    private void StartNegotiation()
+    private void StartNegotiation(int d, int i, int b)
     {
-        //TODO: Once the negotiation system is finished, make it so this function can call upon it!
-        Debug.Log("Negotiation should begin here, but it's not ready yet so this will have to do!");
+        NegotiationManager.Instance.SetDiplomacyDifficulty(d);
+        NegotiationManager.Instance.SetIntimidationDifficulty(i);
+        NegotiationManager.Instance.SetBriberyDifficulty(b);
+
+        NegotiationManager.Instance.gameObject.SetActive(true);
     }
 
     #region Functions that Add or Subtract from Player Resources
@@ -170,6 +173,10 @@ public class InkExternalFunctions
 
     private void FullPartyHeal(int amount)
     {
+        foreach (AllyInstance partyMember in CombatManager.Instance.Allies)
+        {
+            partyMember.Heal(amount);
+        }
         Debug.Log("All player characters healed by " + amount + " HP!");
     }
 }

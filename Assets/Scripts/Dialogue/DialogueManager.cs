@@ -64,7 +64,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         // Handle continuing to the next line of dialogue if the submit button has been pressed!
-        if (currentStory.currentChoices.Count == 0 && (Input.GetMouseButtonDown(0)))
+        if (currentStory.currentChoices.Count == 0 && !NegotiationManager.Instance.inNegotiation && (Input.GetMouseButtonDown(0)))
         {
             ContinueStory();
         }
