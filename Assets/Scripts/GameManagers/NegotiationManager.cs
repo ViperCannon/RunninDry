@@ -116,7 +116,7 @@ public class NegotiationManager : MonoBehaviour
         
         deckManager.inNegotiation = false;
         handManager.DiscardHand();
-        deckManager.gameObject.GetComponentInParent<Transform>().gameObject.SetActive(false);
+        deckSystem.SetActive(false);
 
         Debug.Log("Negotiation Ended.");
         gameObject.SetActive(false);
