@@ -157,6 +157,11 @@ public class DialogueManager : MonoBehaviour
         ContinueStory();
     }
 
+    public void UpdateInkDialogueVariable(string name, Ink.Runtime.Object value)
+    {
+        dialogueVariables.UpdateVariableState(name, value);
+    }
+
     private void OnDestroy()
     {
         externalFunctions.Unbind(currentStory);

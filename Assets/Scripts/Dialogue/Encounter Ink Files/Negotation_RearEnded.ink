@@ -24,12 +24,11 @@ As you stop at an intersection, you feel a slight bump and hear a clang of metal
     ~ StartCombat()
     -> END
     
-    = success
+    === success ===
     The man cools off, apologizes, and returns to his vehicle. -> DONE
     
-    = failure
+    === failure === 
     ~ AddPaneling(-1)
     Your words only piss him off further, and he elbows one of your car windows in.
- 
     
 - -> END

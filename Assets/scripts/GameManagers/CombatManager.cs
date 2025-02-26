@@ -87,7 +87,7 @@ public class CombatManager : MonoBehaviour
     private float zoomOutSize = 10f;
     private float zoomSpeed = 2f;
 
-    // Method to start combat and initialize variables
+    // Method to start combat and initialize Variables
     public void OnEnable()
     {
         if (!firstLoad)

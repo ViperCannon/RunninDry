@@ -5,16 +5,16 @@ using Ink.Runtime;
 
 public class InkDialogueVariables
 {
-    private Dictionary<string, Ink.Runtime.Object> variables;
-    
+    public Dictionary<string, Ink.Runtime.Object> Variables { get; private set; }
+
     public InkDialogueVariables(Story story)
     {
-        variables = new Dictionary<string, Ink.Runtime.Object>();
+        Variables = new Dictionary<string, Ink.Runtime.Object>();
 
         foreach (string name in story.variablesState)
         {
             Ink.Runtime.Object value = story.variablesState.GetVariableWithName(name);
-            variables.Add(name, value);
+            Variables.Add(name, value);
             Debug.Log("Initialized Global Dialogue Variable: " + name + " = " + value);
         }
     }
@@ -32,19 +32,19 @@ public class InkDialogueVariables
 
     public void UpdateVariableState(string name, Ink.Runtime.Object value)
     {
-        // Only maintain variables initialized from the globals ink file.
-        if (!variables.ContainsKey(name))
+        // Only maintain Variables initialized from the globals ink file.
+        if (!Variables.ContainsKey(name))
         {
             return;
         }
 
-        variables[name] = value;
+        Variables[name] = value;
         Debug.Log("Updated Dialogue Variable: " + name + " = " + value);
     }
 
     private void SyncVariablesToStory(Story story)
     {
-        foreach (KeyValuePair<string, Ink.Runtime.Object> variable in variables)
+        foreach (KeyValuePair<string, Ink.Runtime.Object> variable in Variables)
         {
             story.variablesState.SetGlobal(variable.Key, variable.Value);
         }

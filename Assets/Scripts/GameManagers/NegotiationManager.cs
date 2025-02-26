@@ -1,3 +1,4 @@
+using Ink.Runtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,7 +35,6 @@ public class NegotiationManager : MonoBehaviour
     GameObject fail;
 
     public bool inNegotiation = false;
-    public bool negotiationSuccess;
 
     bool firstLoad = true;
 
@@ -99,12 +99,14 @@ public class NegotiationManager : MonoBehaviour
 
     public void Success()
     {
-        negotiationSuccess = true;
+        Debug.Log("Negotiation Succeeded!");
+        DialogueManager.GetInstance().UpdateInkDialogueVariable("negotiationSuccess", (Ink.Runtime.Object) new BoolValue(true));
         success.SetActive(true);
     }
     public void Fail()
     {
-        negotiationSuccess = false;
+        Debug.Log("Negotiation Failed!");
+        DialogueManager.GetInstance().UpdateInkDialogueVariable("negotiationSuccess", (Ink.Runtime.Object)new BoolValue(false));
         fail.SetActive(true);
     }
 
