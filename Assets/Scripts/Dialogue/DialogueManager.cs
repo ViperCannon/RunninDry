@@ -118,7 +118,6 @@ public class DialogueManager : MonoBehaviour
 
         if (!CombatManager.Instance.inCombat)
         {
-            Debug.Log("THIS IS BEING ACCESSED!");
             GameManager.Instance.EndEncounter();
         }
     }

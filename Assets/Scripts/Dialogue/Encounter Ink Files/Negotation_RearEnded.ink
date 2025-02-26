@@ -19,6 +19,11 @@ As you stop at an intersection, you feel a slight bump and hear a clang of metal
         - false: -> failure
     }
     
++ [Give him something to REALLY complain about.]
+    As you get out of your car and draw your weapons, the man pauses then launches himself at you.
+    ~ StartCombat()
+    -> END
+    
     = success
     The man cools off, apologizes, and returns to his vehicle. -> DONE
     
@@ -26,8 +31,5 @@ As you stop at an intersection, you feel a slight bump and hear a clang of metal
     ~ AddPaneling(-1)
     Your words only piss him off further, and he elbows one of your car windows in.
  
-+ [Give him something to REALLY complain about.]
-    As you get out of your car and draw your weapons, the man pauses then launches himself at you.
-    ~ StartCombat()
     
 - -> END
