@@ -326,6 +326,8 @@ public class CombatManager : MonoBehaviour
             }
         }
 
+        EnemiesData.Clear();
+
         if (GameManager.Instance != null)
         {
             inCombat = false;

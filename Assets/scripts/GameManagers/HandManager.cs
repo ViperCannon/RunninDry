@@ -46,7 +46,7 @@ public class HandManager : MonoBehaviour
         //deckManager.PopulateDecks();
         //deckManager.UpdateCounters();
 
-        if(combatManager == null)
+        if(combatManager != null)
         {
             cardResolver = combatManager.GetComponent<CardEffectResolver>();
 

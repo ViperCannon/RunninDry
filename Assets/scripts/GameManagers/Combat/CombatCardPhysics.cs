@@ -126,14 +126,11 @@ public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler,
 
     void UpdateTargetUnderMouse(PointerEventData eventData)
     {
-        // Create a ray from the mouse cursor
         Ray ray = Camera.main.ScreenPointToRay(eventData.position);
-        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);  // Use Physics2D.Raycast for 2D colliders
+        RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
 
-        // Cast the ray and check if it hits anything
         if (hit.collider != null)
         {
-            // Update the target if the ray hits a valid object
             currentTarget = hit.collider.gameObject.transform.parent.gameObject;
 
             if (currentTarget != null)
@@ -144,7 +141,6 @@ public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler,
         }
         else
         {
-            // If no target is hit, reset the current target
             currentTarget = null;
         }
     }

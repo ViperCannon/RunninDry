@@ -29,10 +29,10 @@ public class GameManager : MonoBehaviour
 
     public bool newGame;
     bool wheelsSpinning = false;
-    bool carMovingIn = false;
-    bool carMovingOut = false;
-    bool mapMovingIn = false;
-    bool mapMovingOut = false;
+    public bool carMovingIn = false;
+    public bool carMovingOut = false;
+    public bool mapMovingIn = false;
+    public bool mapMovingOut = false;
 
     RelationshipsFramework relations;
     public TMP_Text scoretext;
@@ -86,8 +86,6 @@ public class GameManager : MonoBehaviour
         
         if (carMovingOut && Vector3.Distance(car.transform.position, outSceneCar.transform.position) > 0.1f)
         {
-            carMovingIn = false;
-
             if (!wheelsSpinning)
             {
                 WheelsSpin();
@@ -116,7 +114,6 @@ public class GameManager : MonoBehaviour
         
         if (mapMovingOut && Vector3.Distance(map.transform.position, outSceneMap.transform.position) > 0.1f)
         {
-            mapMovingIn = false;
             map.transform.position = Vector3.Lerp(map.transform.position, outSceneMap.transform.position, 2f * Time.deltaTime);
         }
         else
@@ -153,12 +150,14 @@ public class GameManager : MonoBehaviour
     {
         WheelsSpin();
         carMovingIn = true;
+        carMovingOut = false;
     }
 
     public void CarMoveOut()
     {
         WheelsStop();
         carMovingOut = true;
+        carMovingIn = false;
     }
     #endregion
 
@@ -166,11 +165,13 @@ public class GameManager : MonoBehaviour
     public void MapMoveIn()
     {
         mapMovingIn = true;
+        mapMovingOut = false;
     }
 
     public void MapMoveOut()
     {
         mapMovingOut = true;
+        mapMovingIn = false;
     }
     #endregion
 
