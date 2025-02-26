@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8abe69e6c7c385a4ebe07a5d6910b502, type: 3}
-  m_Name: SicilianElite
+  m_Name: Drunk
   m_EditorClassIdentifier: 
-  EnemyName: SicillianElite
-  baseMaxHealth: 100
+  EnemyName: Drunkard
+  baseMaxHealth: 15

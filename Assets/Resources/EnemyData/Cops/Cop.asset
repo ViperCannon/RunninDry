@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Cop
   m_EditorClassIdentifier: 
   EnemyName: Cop
-  baseMaxHealth: 20
+  baseMaxHealth: 25
