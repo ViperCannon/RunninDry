@@ -23,6 +23,7 @@ public class DialogueManager : MonoBehaviour
     private TextMeshProUGUI[] choicesText;
 
     private InkExternalFunctions externalFunctions;
+    private InkDialogueVariables dialogueVariables;
 
     void Awake()
     {
@@ -81,6 +82,8 @@ public class DialogueManager : MonoBehaviour
         Debug.Log("Opening the dialogue box and starting the current Dialogue Story!");
         currentStory = new Story(inkJSON.text);
         externalFunctions.Bind(currentStory);
+        dialogueVariables = new InkDialogueVariables(currentStory);
+        dialogueVariables.SyncVariablesAndStartListening(currentStory);
 
         DialogueIsPlaying = true;
         dialoguePanel.SetActive(true);
@@ -110,6 +113,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("Closing the dialogue box!");
         externalFunctions.Unbind(currentStory);
+        dialogueVariables.StopListening(currentStory);
 
         DialogueIsPlaying = false;
         dialoguePanel.SetActive(false);

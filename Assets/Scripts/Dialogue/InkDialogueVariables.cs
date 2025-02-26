@@ -21,21 +21,32 @@ public class InkDialogueVariables
 
     public void SyncVariablesAndStartListening(Story story)
     {
-
+        SyncVariablesToStory(story);
+        story.variablesState.variableChangedEvent += UpdateVariableState;
     }
 
     public void StopListening(Story story)
     {
-
+        story.variablesState.variableChangedEvent -= UpdateVariableState;
     }
 
-    public void SyncVariablesAndStartListening(string name, Ink.Runtime.Object value)
+    public void UpdateVariableState(string name, Ink.Runtime.Object value)
     {
+        // Only maintain variables initialized from the globals ink file.
+        if (!variables.ContainsKey(name))
+        {
+            return;
+        }
 
+        variables[name] = value;
+        Debug.Log("Updated Dialogue Variable: " + name + " = " + value);
     }
 
     private void SyncVariablesToStory(Story story)
     {
-
+        foreach (KeyValuePair<string, Ink.Runtime.Object> variable in variables)
+        {
+            story.variablesState.SetGlobal(variable.Key, variable.Value);
+        }
     }
 }
