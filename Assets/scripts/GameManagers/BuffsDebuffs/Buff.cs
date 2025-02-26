@@ -7,12 +7,12 @@ public abstract class Buff : ScriptableObject, ICardEffect
     public float intensity;
     public CharacterInstance target;
 
-    public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
+    public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
 
     }
 
-    public void ResolveEffect(NegotiationCardDisplay cardInstance, NegotiationManager nManager)
+    public void ResolveEffect(NegotiationCardDisplay cardInstance)
     {
 
     }

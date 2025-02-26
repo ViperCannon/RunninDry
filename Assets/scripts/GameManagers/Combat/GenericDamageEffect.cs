@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New GenericDamageEffect", menuName = "GenericDamageEffect")]
 public class GenericDamageEffect : ScriptableObject, ICardEffect
 {
-    public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target, CombatManager cManager)
+    public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target)
     {
         int totalDamage = 0;
 
@@ -21,7 +21,7 @@ public class GenericDamageEffect : ScriptableObject, ICardEffect
             target.TakeDamage(totalDamage);
         }   
         else
-            foreach(EnemyInstance enemy in cManager.Enemies)
+            foreach(EnemyInstance enemy in CombatManager.Instance.Enemies)
             {
                 if (enemy != null)
                 {
@@ -33,7 +33,7 @@ public class GenericDamageEffect : ScriptableObject, ICardEffect
         
     }
 
-    public void ResolveEffect(NegotiationCardDisplay cardInstance, NegotiationManager nManager)
+    public void ResolveEffect(NegotiationCardDisplay cardInstance)
     {
         
     }

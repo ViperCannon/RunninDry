@@ -19,7 +19,7 @@ public class Inspired : Buff
         target = character;
     }
 
-    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
         Inspired existingInspired = null;
 

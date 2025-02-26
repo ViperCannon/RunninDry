@@ -28,7 +28,7 @@ public class Stun : Debuff
         target = character;
     }
 
-    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
         Stun existingStun = null;
 

@@ -5,14 +5,12 @@ using SpeakeasyStreet;
 
 public class HandManager : MonoBehaviour
 {
-    [SerializeField]
     CombatManager combatManager;
-    [SerializeField]
     NegotiationManager negotiationManager;
-    [SerializeField]
     GameManager gameManager;
-    [SerializeField]
+
     CardEffectResolver cardResolver;
+
     [SerializeField]
     GameObject combatCardPrefab;
     [SerializeField]
@@ -41,11 +39,17 @@ public class HandManager : MonoBehaviour
 
     void Start()
     {
+        combatManager = CombatManager.Instance;
+        negotiationManager = NegotiationManager.Instance;
+        gameManager = GameManager.Instance;
+
         //deckManager.PopulateDecks();
-       // deckManager.UpdateCounters();
+        //deckManager.UpdateCounters();
 
         if(combatManager == null)
         {
+            cardResolver = combatManager.GetComponent<CardEffectResolver>();
+
             AttemptDraw(initialDraw);
         }   
     }
@@ -190,11 +194,12 @@ public class HandManager : MonoBehaviour
 
     public bool PlayCard(NegotiationCardDisplay cardDisplay)
     {
+
         //check bribery cost, otherwise card always plays
-        if(cardDisplay.cardData.cost <= gameManager.relations.cash)
+        if(cardDisplay.cardData.cost <= RelationshipsFramework.Instance.cash)
         {
-            gameManager.relations.cash -= cardDisplay.cardData.cost;
-            gameManager.cash.text = gameManager.relations.cash.ToString();
+            RelationshipsFramework.Instance.cash -= cardDisplay.cardData.cost;
+            gameManager.cash.text = RelationshipsFramework.Instance.cash.ToString();
             negotiationManager.GetComponent<CardEffectResolver>().ResolveCardEffects(cardDisplay, null);
             
             return true;

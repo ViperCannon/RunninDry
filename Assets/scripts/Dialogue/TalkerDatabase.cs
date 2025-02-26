@@ -150,7 +150,6 @@ public class TalkerDatabase : MonoBehaviour
     public void GetResponse(int choicenumber)
     {
         text.text = responsetext;
-        manager.continuebutton.SetActive(true);
         choiceint = choicenumber;
     }
 

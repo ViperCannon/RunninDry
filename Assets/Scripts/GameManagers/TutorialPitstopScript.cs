@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TutorialPitstopScript : MonoBehaviour
 {
+    /*
     GameManager gamemanager;
     string encounterType = "Pitstop";
     // Start is called before the first frame update
@@ -12,7 +13,7 @@ public class TutorialPitstopScript : MonoBehaviour
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    /*public void loadAssets()
+    public void loadAssets()
     {
         gamemanager.talkerint = RandomNumber.generatedNumber;
         gamemanager.encounter(encounterType);

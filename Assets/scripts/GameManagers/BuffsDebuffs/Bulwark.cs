@@ -19,7 +19,7 @@ public class Bulwark : Buff
         target = character;
     }
 
-    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
         Bulwark existingBulwark = null;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TutorialMysteryScript : MonoBehaviour
 {
+    /*
     GameManager gamemanager;
     string encounterType = "Mystery";
     // Start is called before the first frame update
@@ -12,7 +13,7 @@ public class TutorialMysteryScript : MonoBehaviour
         gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    /*public void loadAssets()
+    public void loadAssets()
     {
         gamemanager.talkerint = RandomNumber.generatedNumber;
         gamemanager.encounter(encounterType);

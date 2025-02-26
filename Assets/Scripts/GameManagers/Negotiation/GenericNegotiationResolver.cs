@@ -3,12 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New GenericNegotiationEffect", menuName = "GenericNegotiationEffect")]
 public class GenericNegotiationResolver : ScriptableObject, ICardEffect
 {
-    public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target, CombatManager cManager)
+    public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target)
     {
 
     }
-    public void ResolveEffect(NegotiationCardDisplay cardInstance, NegotiationManager nManager)
+    public void ResolveEffect(NegotiationCardDisplay cardInstance)
     {
+        NegotiationManager nManager = NegotiationManager.Instance;
+
         int numOfDice = cardInstance.cardData.numberOfDice;
         int sidedDice = cardInstance.cardData.sidedDice;
         int modifier = cardInstance.cardData.diceModifier;
@@ -31,7 +33,7 @@ public class GenericNegotiationResolver : ScriptableObject, ICardEffect
                 }
                 else
                 {
-                    if(result + modifier > 12)
+                    if(result + modifier > nManager.GetDiplomacyDifficulty())
                     {
                         nManager.Success();
                         nManager.EndNegotiation();
@@ -57,7 +59,7 @@ public class GenericNegotiationResolver : ScriptableObject, ICardEffect
                 }
                 else
                 {
-                    if (result + modifier > 12)
+                    if (result + modifier > nManager.GetIntimidationDifficulty())
                     {
                         nManager.Success();
                         nManager.EndNegotiation();
@@ -83,7 +85,7 @@ public class GenericNegotiationResolver : ScriptableObject, ICardEffect
                 }
                 else
                 {
-                    if (result + modifier > 12)
+                    if (result + modifier > nManager.GetBriberyDifficulty())
                     {
                         nManager.Success();
                         nManager.EndNegotiation();

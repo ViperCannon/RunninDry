@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TutorialCombatScript : MonoBehaviour
 {
+    /*
     GameManager gamemanager;
     public GameObject combatManager;
     string encounterType = "Combat";
@@ -11,13 +12,13 @@ public class TutorialCombatScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gamemanager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        combatManager = CombatManager.GetInstance().gameObject;
+        gamemanager = GameManager.Instance;
+        combatManager = CombatManager.Instance.gameObject;
     }
 
     public void loadAssets()
     {
-        /*if (RandomNumber.generatedNumber == 1 || RandomNumber.generatedNumber == 2)
+        if (RandomNumber.generatedNumber == 1 || RandomNumber.generatedNumber == 2)
         {
             gamemanager.talkerint = 1;
         }
@@ -38,8 +39,8 @@ public class TutorialCombatScript : MonoBehaviour
         else if (RandomNumber.generatedNumber >= 4)
         {
             gamemanager.Cassets2.SetActive(true);
-        }*/
+        }
 
         combatManager.SetActive(true);
-    }
+    }*/
 }

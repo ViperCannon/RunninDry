@@ -6,7 +6,23 @@ using System.Linq;
 
 public class CombatManager : MonoBehaviour
 {
-    private static CombatManager instance;
+    public static CombatManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+
+        firstLoad = false;
+
+        gameObject.SetActive(false);
+    }
 
     public enum CombatPhase
     {
@@ -70,25 +86,6 @@ public class CombatManager : MonoBehaviour
     private float zoomInSize = 5f;
     private float zoomOutSize = 10f;
     private float zoomSpeed = 2f;
-
-    void Awake()
-    {
-        if (instance != null && instance != this)
-        {
-            Debug.LogWarning("Found more than one Combat Manager instance in the scene! Removing this one!");
-            Destroy(this);
-        }
-        else instance = this;
-
-        firstLoad = false;
-
-        gameObject.SetActive(false);
-    }
-
-    public static CombatManager GetInstance()
-    {
-        return instance;
-    }
 
     // Method to start combat and initialize variables
     public void OnEnable()

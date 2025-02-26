@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TutorialNegotiationScript : MonoBehaviour
 {
-    GameManager gamemanager;
+/*
     [SerializeField]
     GameObject assets1;
     [SerializeField]
@@ -34,7 +34,7 @@ public class TutorialNegotiationScript : MonoBehaviour
         }
     }
 
-   /* public void loadAssets()
+    public void loadAssets()
     {
         if (RandomNumber.generatedNumber == 1 || RandomNumber.generatedNumber == 2)
         {

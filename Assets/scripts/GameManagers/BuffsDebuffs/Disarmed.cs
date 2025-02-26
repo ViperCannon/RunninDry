@@ -19,7 +19,7 @@ public class Disarmed : Debuff
         target = character;
     }
 
-    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
         Disarmed existingDisarmed = null;
 

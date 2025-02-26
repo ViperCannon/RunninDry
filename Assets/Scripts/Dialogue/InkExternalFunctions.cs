@@ -56,10 +56,10 @@ public class InkExternalFunctions
     {
         // THE BELOW LINE IS TEMPORARY JUST TO MAKE SURE THE ENEMY LIST IS ALWAYS POPULATED BEFORE COMBAT IS INITIATED
         // WHILE I WORK ON FURTHER IMPLEMENTATION OF SET ENCOUNTERS! - David
-        CombatManager.GetInstance().GenerateRandomCombat();
+        CombatManager.Instance.GenerateRandomCombat();
 
         // This is NOT temporary though! This stays! - Also David
-        CombatManager.GetInstance().gameObject.SetActive(true);
+        CombatManager.Instance.gameObject.SetActive(true);
     }
 
     private void StartNegotiation()
@@ -71,7 +71,7 @@ public class InkExternalFunctions
     #region Functions that Add or Subtract from Player Resources
     private void AddCash(int amount)
     {
-        RelationshipsFramework.GetInstance().cash += amount;
+        RelationshipsFramework.Instance.cash += amount;
 
         if (amount > 0) Debug.Log("The player's Cash stash increased by " + amount + "!");
         else Debug.Log("The player's Cash stash decreased by " + amount + "!");
@@ -79,7 +79,7 @@ public class InkExternalFunctions
 
     private void AddBooze(int amount)
     {
-        RelationshipsFramework.GetInstance().booze += amount;
+        RelationshipsFramework.Instance.booze += amount;
 
         if (amount > 0) Debug.Log("The player's stockpile of Booze increased by " + amount + "!");
         else Debug.Log("The player's stockpile of Booze decreased by " + amount + "!");
@@ -87,7 +87,7 @@ public class InkExternalFunctions
 
     private void AddScore(int amount)
     {
-        RelationshipsFramework.GetInstance().score += amount;
+        RelationshipsFramework.Instance.score += amount;
 
         if (amount > 0) Debug.Log("The player's Score increased by " + amount + "!");
         else Debug.Log("The player's Score decreased by " + amount + "!");
@@ -95,7 +95,7 @@ public class InkExternalFunctions
 
     private void AddTires(int amount)
     {
-        RelationshipsFramework.GetInstance().tires += amount;
+        RelationshipsFramework.Instance.tires += amount;
 
         if (amount > 0) Debug.Log("The player's number of Tires increased by " + amount + "!");
         else Debug.Log("The player's number of Tires decreased by " + amount + "!");
@@ -103,7 +103,7 @@ public class InkExternalFunctions
 
     private void AddPaneling(int amount)
     {
-        RelationshipsFramework.GetInstance().paneling += amount;
+        RelationshipsFramework.Instance.paneling += amount;
         
         if (amount > 0) Debug.Log("The player's number of Paneling increased by " + amount + "!");
         else Debug.Log("The player's'Paneling number of decreased by " + amount + "!");
@@ -113,7 +113,7 @@ public class InkExternalFunctions
     #region Functions that Increase or Decrease Faction Relations
     private void AlterCopRelations(int amount)
     {
-        RelationshipsFramework.GetInstance().copRelations += amount;
+        RelationshipsFramework.Instance.copRelations += amount;
 
         if (amount > 0) Debug.Log("The player's reputation with the cops increased by " + amount + "!");
         else Debug.Log("The player's reputation with the cops decreased by " + amount + "!");
@@ -121,7 +121,7 @@ public class InkExternalFunctions
 
     private void AlterRussianMobRelations(int amount)
     {
-        RelationshipsFramework.GetInstance().russianMobRelations += amount;
+        RelationshipsFramework.Instance.russianMobRelations += amount;
 
         if (amount > 0) Debug.Log("The player's reputation with the Russian mob increased by " + amount + "!");
         else Debug.Log("The player's reputation with the Russian mob decreased by " + amount + "!");
@@ -129,7 +129,7 @@ public class InkExternalFunctions
 
     private void AlterNorwegianMobRelations(int amount)
     {
-        RelationshipsFramework.GetInstance().norwegianMobRelations += amount;
+        RelationshipsFramework.Instance.norwegianMobRelations += amount;
 
         if (amount > 0) Debug.Log("The player's reputation with the Norwegian mob increased by " + amount + "!");
         else Debug.Log("The player's reputation with the Norwegian mob decreased by " + amount + "!");
@@ -137,7 +137,7 @@ public class InkExternalFunctions
 
     private void AlterSicilianMobRelations(int amount)
     {
-        RelationshipsFramework.GetInstance().sicilianMobRelations += amount;
+        RelationshipsFramework.Instance.sicilianMobRelations += amount;
 
         if (amount > 0) Debug.Log("The player's reputation with the Sicilian mob increased by " + amount + "!");
         else Debug.Log("The player's reputation with the Sicilian mob decreased by " + amount + "!");
@@ -145,7 +145,7 @@ public class InkExternalFunctions
 
     private void AlterProhibitionistRelations(int amount)
     {
-        RelationshipsFramework.GetInstance().prohibitionistsRelations += amount;
+        RelationshipsFramework.Instance.prohibitionistsRelations += amount;
 
         if (amount > 0) Debug.Log("The player's reputation with the prohibitionists increased by " + amount + "!");
         else Debug.Log("The player's reputation with the prohibitionists decreased by " + amount + "!");
@@ -153,7 +153,7 @@ public class InkExternalFunctions
 
     private void AlterDrunkardRelations(int amount)
     {
-        RelationshipsFramework.GetInstance().drunkardRelations += amount;
+        RelationshipsFramework.Instance.drunkardRelations += amount;
 
         if (amount > 0) Debug.Log("The player's reputation with the drunkards increased by " + amount + "!");
         else Debug.Log("The player's reputation withthe drunkards decreased by " + amount + "!");
@@ -161,7 +161,7 @@ public class InkExternalFunctions
 
     private void AlterCivilianRelations(int amount)
     {
-        RelationshipsFramework.GetInstance().civilianRelations += amount;
+        RelationshipsFramework.Instance.civilianRelations += amount;
 
         if (amount > 0) Debug.Log("The player's reputation with civilians increased by " + amount + "!");
         else Debug.Log("The player's reputation with civilians decreased by " + amount + "!");

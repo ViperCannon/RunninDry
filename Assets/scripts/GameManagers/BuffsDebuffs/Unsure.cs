@@ -19,7 +19,7 @@ public class Unsure : Debuff
         target = character;
     }
 
-    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
         Unsure existingUnsure = null;
 

@@ -34,10 +34,9 @@ public class GameManager : MonoBehaviour
     bool mapMovingIn = false;
     bool mapMovingOut = false;
 
-    public RelationshipsFramework relations;
+    RelationshipsFramework relations;
     public TMP_Text scoretext;
     public ScrollingBackground ScrollingBackground;
-    public GameObject continuebutton;
     public GameObject scorecanvas;
     public GameObject maincanvas;
 
@@ -58,7 +57,7 @@ public class GameManager : MonoBehaviour
     {
         if (GameObject.FindWithTag("Map") != null) //perhaps edit this section to include more Null exceptions
         {
-            relations = gameObject.GetComponent<RelationshipsFramework>();
+            relations = RelationshipsFramework.Instance;
             cash.text = relations.cash.ToString();
             tires.text = relations.tires.ToString();
             paneling.text = relations.paneling.ToString();

@@ -116,7 +116,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.gameObject.SetActive(false);
         dialogueText.text = "";
 
-        if (!CombatManager.GetInstance().inCombat)
+        if (!CombatManager.Instance.inCombat)
         {
             Debug.Log("THIS IS BEING ACCESSED!");
             GameManager.Instance.EndEncounter();

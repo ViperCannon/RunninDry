@@ -7,8 +7,8 @@ public class EventStart : MonoBehaviour
     {
         gameManager.EndEncounter();
 
-        gameManager.relations.cash += 20;
-        gameManager.cash.text = gameManager.relations.cash.ToString();
+        RelationshipsFramework.Instance.cash += 20;
+        gameManager.cash.text = RelationshipsFramework.Instance.cash.ToString();
 
         transform.parent.parent.gameObject.SetActive(false);
     }

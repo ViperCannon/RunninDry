@@ -4,8 +4,9 @@ using UnityEngine;
 public class GenericRandomDamageEffect : ScriptableObject, ICardEffect
 {
     //random target aside from the one specified. If target is null, then just a random target.
-    public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target, CombatManager cManager)
+    public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target)
     {
+        CombatManager cManager = CombatManager.Instance;
         CharacterInstance newTarget = target;
 
         Debug.Log(cardInstance.cardData.validTargets[0].ToString());
@@ -30,7 +31,7 @@ public class GenericRandomDamageEffect : ScriptableObject, ICardEffect
         newTarget.TakeDamage(totalDamage);     
     }
 
-    public void ResolveEffect(NegotiationCardDisplay cardInstance, NegotiationManager nManager)
+    public void ResolveEffect(NegotiationCardDisplay cardInstance)
     {
 
     }

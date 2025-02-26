@@ -19,7 +19,7 @@ public class PissedOff : Buff
         target = character;
     }
 
-    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character, CombatManager cManager)
+    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
         PissedOff existingPissedOff = null;
 

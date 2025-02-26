@@ -19,11 +19,6 @@ public class RelationshipsFramework : MonoBehaviour, IDataPersistence
         }
     }
 
-    public static RelationshipsFramework GetInstance()
-    {
-        return Instance;
-    }
-
     public int copRelations;
     public int russianMobRelations;
     public int norwegianMobRelations;
