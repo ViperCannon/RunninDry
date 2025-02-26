@@ -4,6 +4,8 @@ EXTERNAL StartCombat()
 
 EXTERNAL StartNegotiation(int d, int i, int b)
 
+VAR negotiationSuccess = false
+
 -> main
 
 === main ===
@@ -12,16 +14,20 @@ As you stop at an intersection, you feel a slight bump and hear a clang of metal
 + [Defuse the situation.]
     ~ StartNegotiation(14, 8, 10)
     Negotiation time!
-    The negotiation has concluded!
-    // NEGOTIATION: P/I/B 14/8/10
-        // ON SUCCESS:
-            // "The man cools off, apologizes, and returns ot his vehicle."
-        // ON FAIL:
-            // ~ AddPaneling(-1)
-            // "Your words only piss him off further, and he elbows one of your car windows in."
+    { negotiationSuccess :
+        - true: -> success
+        - false: -> failure
+    }
+    
+    = success
+    The man cools off, apologizes, and returns to his vehicle. -> DONE
+    
+    = failure
+    ~ AddPaneling(-1)
+    Your words only piss him off further, and he elbows one of your car windows in.
  
 + [Give him something to REALLY complain about.]
     As you get out of your car and draw your weapons, the man pauses then launches himself at you.
-    // START A COMBAT ENCOUNTER WITH TWO CIVILIANS AND TWO DRUNKS
-
+    ~ StartCombat()
+    
 - -> END

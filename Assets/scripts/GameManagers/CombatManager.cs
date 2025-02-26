@@ -56,7 +56,7 @@ public class CombatManager : MonoBehaviour
         new Vector2( 2, -2 ),
     };
 
-    [Header("Misc. Other Properties")]
+    [Header("List of Generic Enemy Types")]
     [SerializeField]
     List<EnemyData> enemyTypes;
 
