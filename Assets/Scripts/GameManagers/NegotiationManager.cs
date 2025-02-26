@@ -34,6 +34,7 @@ public class NegotiationManager : MonoBehaviour
     GameObject fail;
 
     public bool inNegotiation = false;
+    public bool negotiationSuccess;
 
     bool firstLoad = true;
 
@@ -98,10 +99,12 @@ public class NegotiationManager : MonoBehaviour
 
     public void Success()
     {
+        negotiationSuccess = true;
         success.SetActive(true);
     }
     public void Fail()
     {
+        negotiationSuccess = false;
         fail.SetActive(true);
     }
 
@@ -112,7 +115,6 @@ public class NegotiationManager : MonoBehaviour
         deckManager.inNegotiation = false;
         handManager.DiscardHand();
         deckManager.gameObject.GetComponentInParent<Transform>().gameObject.SetActive(false);
-        //gameManager.EndEncounter();
 
         Debug.Log("Negotiation Ended.");
         gameObject.SetActive(false);
