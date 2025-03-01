@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class Upgrade : MonoBehaviour, IPointerDownHandler
 {
     public int cost;
-
+    public GameObject upgradedItem;
     RelationshipsFramework relationshipframework;
     Hub hub;
 
@@ -22,10 +22,18 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler
         Debug.Log("Click");
         if (relationshipframework.cash >= cost)
         {
-            relationshipframework.cash -= cost;
-            hub.purchasedUpgrade(this.name);
-            //add to a list of purchased upgrades to remember if this is destroyed
-            Destroy(this.gameObject);
+            if (upgradedItem != null)
+            {
+                relationshipframework.cash -= cost;
+                hub.purchasedUpgrade(this.name);
+                //add to a list of purchased upgrades to remember if this is destroyed
+                upgradedItem.SetActive(true);
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                Debug.Log("There's no upgrade for this item!");
+            }
         }
     }
 
