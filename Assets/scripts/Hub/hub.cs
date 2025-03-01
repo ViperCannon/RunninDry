@@ -12,6 +12,10 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     //add more objects as items get added
     public List<string> hubPurchases = new List<string>();
     public GameObject chairs1;
+    public GameObject rug1;
+    public GameObject bar1;
+    public GameObject wall1;
+    public GameObject stock1;
 
     Ray ray;
     RaycastHit hit;
@@ -31,6 +35,18 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
             {
                 case "Chairs1":
                     chairs1.SetActive(true);
+                    break;
+                case "Comforts1":
+                    rug1.SetActive(true);
+                    break;
+                case "Bar1":
+                    bar1.SetActive(true);
+                    break;
+                case "Wall1":
+                    wall1.SetActive(true);
+                    break;
+                case "Stock1":
+                    stock1.SetActive(true);
                     break;
                 default:
                     Debug.Log(hubPurchases[i]+"1");
@@ -54,6 +70,18 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         {
             case "Chairs":
                 chairs1.SetActive(true);
+                break;
+            case "Comforts":
+                rug1.SetActive(true);
+                break;
+            case "Bar":
+                bar1.SetActive(true);
+                break;
+            case "Wall":
+                wall1.SetActive(true);
+                break;
+            case "Stock":
+                stock1.SetActive(true);
                 break;
             default:
                 Debug.Log(item);
