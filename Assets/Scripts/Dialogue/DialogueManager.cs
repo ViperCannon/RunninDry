@@ -160,6 +160,7 @@ public class DialogueManager : MonoBehaviour
     public void UpdateInkDialogueVariable(string name, Ink.Runtime.Object value)
     {
         dialogueVariables.UpdateVariableState(name, value);
+        dialogueVariables.SyncSingleVariableToStory(currentStory, KeyValuePair.Create(name, value));
     }
 
     private void OnDestroy()

@@ -28,7 +28,6 @@ public class GenericNegotiationResolver : ScriptableObject, ICardEffect
                     //resolve crit effects
 
                     nManager.Success();
-                    nManager.EndNegotiation();
 
                 }
                 else
@@ -36,12 +35,10 @@ public class GenericNegotiationResolver : ScriptableObject, ICardEffect
                     if(result + modifier > nManager.GetDiplomacyDifficulty())
                     {
                         nManager.Success();
-                        nManager.EndNegotiation();
                     }
                     else
                     {
                         nManager.Fail();
-                        nManager.EndNegotiation();
                     }
                 }
 
@@ -54,7 +51,6 @@ public class GenericNegotiationResolver : ScriptableObject, ICardEffect
                     //resolve crit effects
 
                     nManager.Success();
-                    nManager.EndNegotiation();
 
                 }
                 else
@@ -62,12 +58,10 @@ public class GenericNegotiationResolver : ScriptableObject, ICardEffect
                     if (result + modifier > nManager.GetIntimidationDifficulty())
                     {
                         nManager.Success();
-                        nManager.EndNegotiation();
                     }
                     else
                     {
                         nManager.Fail();
-                        nManager.EndNegotiation();
                     }
                 }
 
@@ -80,7 +74,6 @@ public class GenericNegotiationResolver : ScriptableObject, ICardEffect
                     //resolve crit effects
 
                     nManager.Success();
-                    nManager.EndNegotiation();
 
                 }
                 else
@@ -88,12 +81,10 @@ public class GenericNegotiationResolver : ScriptableObject, ICardEffect
                     if (result + modifier > nManager.GetBriberyDifficulty())
                     {
                         nManager.Success();
-                        nManager.EndNegotiation();
                     }
                     else
                     {
                         nManager.Fail();
-                        nManager.EndNegotiation();
                     }
                 }
 

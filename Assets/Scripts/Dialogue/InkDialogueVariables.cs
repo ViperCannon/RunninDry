@@ -42,6 +42,11 @@ public class InkDialogueVariables
         Debug.Log("Updated Dialogue Variable: " + name + " = " + value);
     }
 
+    public void SyncSingleVariableToStory(Story story, KeyValuePair<string, Ink.Runtime.Object> variable)
+    {
+            story.variablesState.SetGlobal(variable.Key, variable.Value);
+    }
+
     private void SyncVariablesToStory(Story story)
     {
         foreach (KeyValuePair<string, Ink.Runtime.Object> variable in Variables)
