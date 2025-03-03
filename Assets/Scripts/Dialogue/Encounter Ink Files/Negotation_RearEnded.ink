@@ -14,10 +14,7 @@ As you stop at an intersection, you feel a slight bump and hear a clang of metal
 + [Defuse the situation.]
     ~ StartNegotiation(14, 8, 10)
     Negotiation time!
-    { negotiationSuccess :
-        - true: -> success
-        - false: -> failure
-    }
+    { negotiationSuccess: -> success | -> failure }
     
 + [Give him something to REALLY complain about.]
     As you get out of your car and draw your weapons, the man pauses then launches himself at you.

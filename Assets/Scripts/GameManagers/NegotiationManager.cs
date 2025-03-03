@@ -106,7 +106,7 @@ public class NegotiationManager : MonoBehaviour
     public void Fail()
     {
         Debug.Log("Negotiation Failed!");
-        DialogueManager.GetInstance().UpdateInkDialogueVariable("negotiationSuccess", (Ink.Runtime.Object)new BoolValue(false));
+        DialogueManager.GetInstance().UpdateInkDialogueVariable("negotiationSuccess", (Ink.Runtime.Object) new BoolValue(false));
         fail.SetActive(true);
     }
 
