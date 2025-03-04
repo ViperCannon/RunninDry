@@ -13,6 +13,8 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField] private TextAsset[] negotiationJSONs;
     [Tooltip("List of Event Encounter Ink JSONs")]
     [SerializeField] private TextAsset[] eventJSONs;
+    [Tooltip("List of Pit Stop Encounter Ink JSONs")]
+    [SerializeField] private TextAsset[] pitStopJSONs;
 
     private TextAsset currentEncounter;
 
@@ -88,6 +90,22 @@ public class EncounterGenerator : MonoBehaviour
             return;
         }
         currentEncounter = eventJSONs[Random.Range(0, eventJSONs.Length)];
+        PlayCurrentDialogue();
+    }
+
+    public void SetNewPitStopDialogue()
+    {
+        if (DialogueManager.GetInstance().DialogueIsPlaying)
+        {
+            Debug.LogWarning("Cannot set a new pit stop encounter because the dialogue box is open!");
+            return;
+        }
+        if (pitStopJSONs.Length == 0)
+        {
+            Debug.LogWarning("Cannot set a pit stop encounter because the pit stop encounter list is empty!");
+            return;
+        }
+        currentEncounter = eventJSONs[Random.Range(0, pitStopJSONs.Length)];
         PlayCurrentDialogue();
     }
 }

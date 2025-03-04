@@ -561,6 +561,10 @@ public class MapGenerator : MonoBehaviour
                 EncounterGenerator.GetInstance().SetNewEventDialogue();
                 break;
 
+            case NodeType.Pitstop:
+                EncounterGenerator.GetInstance().SetNewPitStopDialogue();
+                break;
+
             default:
                 Debug.Log("This Node Type doesn't have implemented functionality yet!");
                 GameManager.Instance.EndEncounter();
