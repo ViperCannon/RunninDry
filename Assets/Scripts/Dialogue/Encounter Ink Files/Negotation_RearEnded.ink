@@ -1,7 +1,6 @@
 EXTERNAL AddPaneling(int amount)
 
 EXTERNAL StartCombat()
-
 EXTERNAL StartNegotiation(int d, int i, int b)
 
 VAR negotiationSuccess = false
