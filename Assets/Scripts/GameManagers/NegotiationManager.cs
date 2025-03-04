@@ -19,6 +19,9 @@ public class NegotiationManager : MonoBehaviour
         }
 
         firstLoad = false;
+
+        SfxAudioSource = GameObject.Find("SFX").GetComponent<AudioSource>();
+
         SuccessJingle = Resources.Load<AudioClip>("SFX/NegotiationSuccess");
         FailJingle = Resources.Load<AudioClip>("SFX/NegotiationRollFail");
 
@@ -36,8 +39,7 @@ public class NegotiationManager : MonoBehaviour
     [SerializeField]
     GameObject fail;
 
-    [SerializeField]
-    AudioSource AudioSource;
+    AudioSource SfxAudioSource;
     
     AudioClip SuccessJingle;
     AudioClip FailJingle;
@@ -108,14 +110,14 @@ public class NegotiationManager : MonoBehaviour
     public void Success()
     {
         DialogueManager.GetInstance().UpdateInkDialogueVariable("negotiationSuccess", (Ink.Runtime.Object) new BoolValue(true));
-        AudioSource.PlayOneShot(SuccessJingle);
+        SfxAudioSource.PlayOneShot(SuccessJingle);
         success.SetActive(true);
         EndNegotiation();
     }
     public void Fail()
     {
         DialogueManager.GetInstance().UpdateInkDialogueVariable("negotiationSuccess", (Ink.Runtime.Object) new BoolValue(false));
-        AudioSource.PlayOneShot(FailJingle);
+        SfxAudioSource.PlayOneShot(FailJingle);
         fail.SetActive(true);
         EndNegotiation();
     }

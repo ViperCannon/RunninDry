@@ -19,6 +19,9 @@ public class CombatManager : MonoBehaviour
             Instance = this;
         }
 
+        SfxAudioSource = GameObject.Find("SFX").GetComponent<AudioSource>();
+        CombatStartSfx = Resources.Load<AudioClip>("SFX/FightStartBell");
+
         firstLoad = false;
 
         gameObject.SetActive(false);
@@ -70,6 +73,9 @@ public class CombatManager : MonoBehaviour
     Canvas combatCanvas;
     [SerializeField]
     CapsHolder capsHolder;
+
+    AudioSource SfxAudioSource;
+    AudioClip CombatStartSfx;
 
     public bool inCombat = false;
 
@@ -134,11 +140,10 @@ public class CombatManager : MonoBehaviour
 
             }
 
+            SfxAudioSource.PlayOneShot(CombatStartSfx);
             StartCoroutine(ZoomCamera(zoomOutSize));
-
             StartCoroutine(HandleCombatTurns());
-        }
-       
+        } 
     }
 
     IEnumerator ZoomCamera(float targetSize)
