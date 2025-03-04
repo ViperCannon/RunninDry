@@ -566,8 +566,8 @@ public class MapGenerator : MonoBehaviour
                 break;
 
             default:
+                EncounterGenerator.GetInstance().SetBlankDialogue();
                 Debug.Log("This Node Type doesn't have implemented functionality yet!");
-                GameManager.Instance.EndEncounter();
                 break;
         }
 

@@ -15,6 +15,8 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField] private TextAsset[] eventJSONs;
     [Tooltip("List of Pit Stop Encounter Ink JSONs")]
     [SerializeField] private TextAsset[] pitStopJSONs;
+    [Tooltip("Blank Encounter Ink JSONs")]
+    [SerializeField] private TextAsset blankJSON;
 
     private TextAsset currentEncounter;
 
@@ -106,6 +108,22 @@ public class EncounterGenerator : MonoBehaviour
             return;
         }
         currentEncounter = eventJSONs[Random.Range(0, pitStopJSONs.Length)];
+        PlayCurrentDialogue();
+    }
+
+    public void SetBlankDialogue()
+    {
+        if (DialogueManager.GetInstance().DialogueIsPlaying)
+        {
+            Debug.LogWarning("Cannot set a new blank encounter because the dialogue box is open!");
+            return;
+        }
+        if (blankJSON == null)
+        {
+            Debug.LogWarning("Cannot set a blank encounter because the blank encounter JSON hasn't been initialized!");
+            return;
+        }
+        currentEncounter = blankJSON;
         PlayCurrentDialogue();
     }
 }
