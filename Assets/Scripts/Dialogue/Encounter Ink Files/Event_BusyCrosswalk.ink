@@ -9,7 +9,6 @@ As you reach a crosswalk, a crowd of civilians cross... and cross... and cross. 
 + [Beep at 'em.]
     ~ AlterCivilianRelations(-2)
     Startled, some of the passersby drop their bags. Some people...
-    
  
 + [Inch forward.]
     You slowly inch forward into the stream of people and they flow around you like water. Within a couple seconds, you're on the other side of the strange deluge. How bizarre...
