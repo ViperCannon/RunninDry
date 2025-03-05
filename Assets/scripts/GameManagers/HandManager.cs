@@ -48,7 +48,7 @@ public class HandManager : MonoBehaviour
 
         if(combatManager != null)
         {
-            cardResolver = combatManager.GetComponent<CardEffectResolver>();
+            cardResolver = CardEffectResolver.Instance;
 
             AttemptDraw(initialDraw);
         }   

@@ -14,7 +14,12 @@ public class EnemyInstance : CharacterInstance
     const float MAX_HEALTHBAR_SIZE = 7.2f;
     GameObject healthBar;
 
-    public Card[] attacks;
+    public List<CombatCard> actions;
+
+    [SerializeField]
+    CombatCard currentAction;
+    [SerializeField]
+    CharacterInstance currentTarget;
 
    void Start()
     {
@@ -39,7 +44,8 @@ public class EnemyInstance : CharacterInstance
 
     public void PerformAction()
     {
-
+        Debug.Log("Enemy attack registered");
+        CardEffectResolver.Instance.ResolveEnemyEffect(currentAction, currentTarget);
     }
 
     public override void TakeDamage(int damage)
@@ -84,5 +90,88 @@ public class EnemyInstance : CharacterInstance
         Vector3 newScale = new Vector3(MAX_HEALTHBAR_SIZE * temp, 0.8f, 1f);
 
         healthBar.transform.localScale = newScale;
+    }
+
+    public void SetRandomAction()
+    {
+        currentAction = actions[Random.Range(0, actions.Count)];
+    }
+
+    public void SetAction(int i)
+    {
+        if (i < 0 || i >= actions.Count)
+        {
+            currentAction = null;
+        }
+        else
+        {
+            currentAction = actions[i];
+        }
+    }
+
+    public CombatCard GetCurrentAction()
+    {
+        return currentAction;
+    }
+
+    public void SetRandomTarget()
+    {
+        if (!currentAction.IsAOE() && currentAction.validTargets[0] != CombatCard.CardTarget.Self) //Must be a single target action in this case
+        {
+            int index;
+            CharacterInstance temp = null;
+
+            if (currentAction.validTargets[0] == CombatCard.CardTarget.Player)
+            {
+                index = Random.Range(0, 3);
+
+                while (temp == null)
+                {
+                    if (!CombatManager.Instance.Allies[index].isDowned)
+                    {
+                        temp = CombatManager.Instance.Allies[index];
+                    }
+                }
+
+                currentTarget = temp;
+            }
+            else
+            {
+                index = Random.Range(0, CombatManager.Instance.Enemies.Count);
+
+                while (temp == null)
+                {
+                    if (CombatManager.Instance.Enemies[index] != null)
+                    {
+                        temp = CombatManager.Instance.Enemies[index];
+                    }
+                }
+
+                currentTarget = temp;
+            }
+        }
+        else if (currentAction.validTargets[0] == CombatCard.CardTarget.Self)
+        {
+            currentTarget = this;
+        }
+        else //AOE don't need a specified target
+        {
+            currentTarget = null;
+        }
+    }
+
+    public void SetTarget(CharacterInstance target)
+    {
+        currentTarget = target;
+    }
+
+    public CharacterInstance GetTarget()
+    {
+       return currentTarget;
+    }
+
+    public void UpdateEnemyIntent()
+    {
+        //change visual indicators of what the enemy is doing this turn and who they are targeting if applicable
     }
 }

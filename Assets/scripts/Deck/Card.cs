@@ -26,5 +26,18 @@ namespace SpeakeasyStreet
             }
             return effects;
         }
+
+        public List<IEnemyEffect> GetEnemyEffects()
+        {
+            List<IEnemyEffect> effects = new List<IEnemyEffect>();
+            foreach (var effect in cardEffects)
+            {
+                if (effect is IEnemyEffect cardEffect)
+                {
+                    effects.Add(cardEffect);
+                }
+            }
+            return effects;
+        }
     }
 }

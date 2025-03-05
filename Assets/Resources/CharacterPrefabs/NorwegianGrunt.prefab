@@ -186,7 +186,8 @@ MonoBehaviour:
   - {fileID: 1583453306627897778}
   - {fileID: 6694164188353983966}
   - {fileID: 1059593744799002957}
-  attacks: []
+  actions:
+  - {fileID: 11400000, guid: 333c0d663795eb545a7bedc0a925be2c, type: 2}
 --- !u!1 &8483584876381573562
 GameObject:
   m_ObjectHideFlags: 0

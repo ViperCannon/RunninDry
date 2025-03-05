@@ -273,7 +273,8 @@ MonoBehaviour:
   - {fileID: 6947133286668162035}
   - {fileID: 5832720891173006651}
   - {fileID: 6889730226002976729}
-  attacks: []
+  actions:
+  - {fileID: 11400000, guid: 2e5231cebf752144495f9bf11752d7f7, type: 2}
 --- !u!1001 &2457355515051380034
 PrefabInstance:
   m_ObjectHideFlags: 0

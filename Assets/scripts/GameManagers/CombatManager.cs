@@ -207,6 +207,16 @@ public class CombatManager : MonoBehaviour
     {
         hasEndedTurn = false;
 
+        foreach(EnemyInstance e in Enemies)
+        {
+            if (e != null && e.gameObject.activeSelf)
+            {
+                e.SetRandomAction();
+                e.SetRandomTarget();
+                e.UpdateEnemyIntent();
+            }
+        }
+
         yield return new WaitForEndOfFrame();
 
         Debug.Log(capsRefreshLimit - currentCaps);
@@ -232,8 +242,15 @@ public class CombatManager : MonoBehaviour
         {
             if(e != null && e.gameObject.activeSelf)
             {
+                Debug.Log("Enemy attacking!");
                 e.PerformAction(); // Let each enemy perform its action
-                yield return new WaitForSeconds(1f); // Wait for a short period between actions
+                yield return new WaitForSeconds(.5f);
+
+                e.SetTarget(null);
+                e.SetAction(-1);
+                e.UpdateEnemyIntent();
+
+                yield return new WaitForSeconds(.5f); // Wait for a short period between actions
             }     
         }
     }

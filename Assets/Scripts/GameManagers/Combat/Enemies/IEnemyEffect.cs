@@ -1,4 +1,4 @@
 public interface IEnemyEffect
 {
-    void ResolveEffect(CharacterInstance target);
+    void ResolveEffect(CombatCard action, CharacterInstance target);
 }

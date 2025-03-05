@@ -148,7 +148,8 @@ MonoBehaviour:
   sprites:
   - {fileID: 6129038983476899606}
   - {fileID: 2878912825543805698}
-  attacks: []
+  actions:
+  - {fileID: 11400000, guid: 894dbbc344ce455448316efa0034670c, type: 2}
 --- !u!1 &1727170354382082203
 GameObject:
   m_ObjectHideFlags: 0
