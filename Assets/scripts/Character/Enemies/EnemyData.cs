@@ -8,4 +8,6 @@ public class EnemyData : ScriptableObject
 {
     public string EnemyName;
     public int baseMaxHealth;
+
+    public List<IEnemyEffect> attacks;
 }

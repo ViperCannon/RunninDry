@@ -21,6 +21,7 @@ public class GenericDamageEffect : ScriptableObject, ICardEffect
             target.TakeDamage(totalDamage);
         }   
         else
+        {
             foreach(EnemyInstance enemy in CombatManager.Instance.Enemies)
             {
                 if (enemy != null)
@@ -29,8 +30,7 @@ public class GenericDamageEffect : ScriptableObject, ICardEffect
                 }
                     
             }
-
-        
+        }
     }
 
     public void ResolveEffect(NegotiationCardDisplay cardInstance)

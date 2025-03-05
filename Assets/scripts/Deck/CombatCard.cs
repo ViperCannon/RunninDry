@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using SpeakeasyStreet;
 
 [CreateAssetMenu(fileName = "New CombatCard", menuName = "CombatCard")]
@@ -49,7 +48,7 @@ public class CombatCard : Card
 
     public bool IsAOE()
     {
-        if (validTargets.Contains(CombatCard.CardTarget.AllEnemies) || validTargets.Contains(CombatCard.CardTarget.AllPlayers) || validTargets.Contains(CombatCard.CardTarget.AllCharacters))
+        if (validTargets.Contains(CardTarget.AllEnemies) || validTargets.Contains(CardTarget.AllPlayers) || validTargets.Contains(CardTarget.AllCharacters))
         {
             return true;
         }
@@ -59,7 +58,7 @@ public class CombatCard : Card
 
     public bool IsSelfInclusive()
     {
-        if (validTargets.Contains(CombatCard.CardTarget.Player) && validTargets.Contains(CombatCard.CardTarget.Self))
+        if (validTargets.Contains(CardTarget.Player) && validTargets.Contains(CardTarget.Self))
         {
             return true;
         }
