@@ -54,4 +54,12 @@ public class CombatCardDisplay : CardDisplay
 
         descText.text = cardData.cardDescription;
     }
+
+    private void Update()
+    {
+        if(character != null && character.GetComponent<AllyInstance>().isDowned)
+        {
+
+        }
+    }
 }
