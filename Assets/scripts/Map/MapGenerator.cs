@@ -565,6 +565,18 @@ public class MapGenerator : MonoBehaviour
                 EncounterGenerator.GetInstance().SetNewPitStopDialogue();
                 break;
 
+            case NodeType.Shop:
+                EncounterGenerator.GetInstance().SetNewShopDialogue();
+                break;
+
+            case NodeType.Miniboss:
+                EncounterGenerator.GetInstance().SetNewEliteDialogue();
+                break;
+
+            case NodeType.Boss:
+                EncounterGenerator.GetInstance().SetNewBossDialogue();
+                break;
+
             default:
                 EncounterGenerator.GetInstance().SetBlankDialogue();
                 Debug.Log("This Node Type doesn't have implemented functionality yet!");

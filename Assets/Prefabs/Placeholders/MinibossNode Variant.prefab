@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 362363947133314039, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 362363947133314039, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
@@ -23,7 +23,7 @@ PrefabInstance:
     - target: {fileID: 362363947133314039, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 7276109829030061943}
+      objectReference: {fileID: 7443203493046476604}
     - target: {fileID: 362363947133314039, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 362363947133314039, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: generateNumber
+      value: Click
       objectReference: {fileID: 0}
     - target: {fileID: 362363947133314039, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 362363947133314039, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: randomnumber, Assembly-CSharp
+      value: NodeButtonFunction, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 362363947133314039, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -189,14 +189,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
---- !u!114 &7276109829030061943 stripped
+--- !u!114 &7443203493046476604 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1756635481143411375, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2004858140718103268, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
   m_PrefabInstance: {fileID: 8978275499569980888}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1105a5603ede294fb49e503a80746fe, type: 3}
+  m_Script: {fileID: 11500000, guid: b66ca1e093e5eb5499416d7e1f768f66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -13,8 +13,14 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField] private TextAsset[] negotiationJSONs;
     [Tooltip("List of Event Encounter Ink JSONs")]
     [SerializeField] private TextAsset[] eventJSONs;
+    [Tooltip("List of Event Encounter Ink JSONs")]
+    [SerializeField] private TextAsset[] shopJSONs;
     [Tooltip("List of Pit Stop Encounter Ink JSONs")]
     [SerializeField] private TextAsset[] pitStopJSONs;
+    [Tooltip("List of Pit Stop Encounter Ink JSONs")]
+    [SerializeField] private TextAsset[] eliteJSONs;
+    [Tooltip("List of Pit Stop Encounter Ink JSONs")]
+    [SerializeField] private TextAsset[] bossJSONs;
     [Tooltip("Blank Encounter Ink JSONs")]
     [SerializeField] private TextAsset blankJSON;
 
@@ -95,6 +101,22 @@ public class EncounterGenerator : MonoBehaviour
         PlayCurrentDialogue();
     }
 
+    public void SetNewShopDialogue()
+    {
+        if (DialogueManager.GetInstance().DialogueIsPlaying)
+        {
+            Debug.LogWarning("Cannot set a new shop encounter because the dialogue box is open!");
+            return;
+        }
+        if (shopJSONs.Length == 0)
+        {
+            Debug.LogWarning("Cannot set a new shop encounter because the shop encounter list is empty!");
+            return;
+        }
+        currentEncounter = shopJSONs[Random.Range(0, shopJSONs.Length)];
+        PlayCurrentDialogue();
+    }
+
     public void SetNewPitStopDialogue()
     {
         if (DialogueManager.GetInstance().DialogueIsPlaying)
@@ -107,8 +129,41 @@ public class EncounterGenerator : MonoBehaviour
             Debug.LogWarning("Cannot set a pit stop encounter because the pit stop encounter list is empty!");
             return;
         }
-        currentEncounter = eventJSONs[Random.Range(0, pitStopJSONs.Length)];
+        currentEncounter = pitStopJSONs[Random.Range(0, pitStopJSONs.Length)];
         PlayCurrentDialogue();
+    }
+
+    public void SetNewEliteDialogue()
+    {
+        if (DialogueManager.GetInstance().DialogueIsPlaying)
+        {
+            Debug.LogWarning("Cannot set a new elite encounter because the dialogue box is open!");
+            return;
+        }
+        if (eliteJSONs.Length == 0)
+        {
+            Debug.LogWarning("Cannot set a elite encounter because the elite encounter list is empty!");
+            return;
+        }
+        currentEncounter = eliteJSONs[Random.Range(0, eliteJSONs.Length)];
+        PlayCurrentDialogue();
+    }
+
+    public void SetNewBossDialogue()
+    {
+        if (DialogueManager.GetInstance().DialogueIsPlaying)
+        {
+            Debug.LogWarning("Cannot set a new boss encounter because the dialogue box is open!");
+            return;
+        }
+        if (bossJSONs.Length == 0)
+        {
+            Debug.LogWarning("Cannot set a boss encounter because the boss encounter list is empty!");
+            return;
+        }
+        currentEncounter = bossJSONs[Random.Range(0, bossJSONs.Length)];
+        PlayCurrentDialogue();
+        GameManager.Instance.atBoss = true;
     }
 
     public void SetBlankDialogue()
@@ -125,5 +180,10 @@ public class EncounterGenerator : MonoBehaviour
         }
         currentEncounter = blankJSON;
         PlayCurrentDialogue();
+    }
+
+    public void TutorialDialogue()
+    {
+
     }
 }

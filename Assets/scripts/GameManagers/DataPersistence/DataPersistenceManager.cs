@@ -60,7 +60,11 @@ public class DataPersistenceManager : MonoBehaviour
         if (this.gameData == null)
         {
             Debug.Log("No data was found.");
-            title.CanContinue(false);
+            if(title != null)
+            {
+                title.CanContinue(false);
+            }
+            
             NewGame();
         }
         //pushed load data to other scripts

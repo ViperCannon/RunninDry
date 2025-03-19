@@ -61,7 +61,11 @@ public class CombatManager : MonoBehaviour
 
     [Header("List of Generic Enemy Types")]
     [SerializeField]
-    List<EnemyData> enemyTypes;
+    List<EnemyData> gruntTypes;
+    [SerializeField]
+    List<EnemyData> eliteTypes;
+    [SerializeField]
+    List<EnemyData> bossTypes;
 
     [Header("Misc. Other Properties")]
     [SerializeField]
@@ -129,11 +133,6 @@ public class CombatManager : MonoBehaviour
             {
                 if (p != null)
                 {
-                    if (p.isDowned)
-                    {
-                        p.Heal((int)(p.maxHealth * 0.3f));
-                    }
-
                     p.gameObject.SetActive(true);
                     capsRefreshLimit += p.caps;
                 }
@@ -253,8 +252,19 @@ public class CombatManager : MonoBehaviour
             if(e != null && e.gameObject.activeSelf)
             {
                 Debug.Log("Enemy attacking!");
+
+                if (e.GetTarget().isDowned)
+                {
+                    e.SetRandomTarget();
+                }
+
                 e.PerformAction(); // Let each enemy perform its action
                 yield return new WaitForSeconds(.5f);
+
+                if (IsCombatOver())
+                {
+                    yield break;
+                }
 
                 e.SetTarget(null);
                 e.SetAction(-1);
@@ -300,6 +310,7 @@ public class CombatManager : MonoBehaviour
     bool IsCombatOver()
     {
         bool over = false;
+        teamWiped = true;
 
         foreach(AllyInstance p in Allies)
         {
@@ -307,10 +318,6 @@ public class CombatManager : MonoBehaviour
             {
                 teamWiped = false;
                 break;
-            }
-            else
-            {
-                teamWiped = true;
             }
         }
 
@@ -321,16 +328,14 @@ public class CombatManager : MonoBehaviour
 
         if (!over)
         {
+            enemiesWiped = true;
+
             foreach (EnemyInstance e in Enemies)
             {
                 if (e != null && e.gameObject.activeSelf)
                 {
                     enemiesWiped = false;
                     break;
-                }
-                else
-                {
-                    enemiesWiped = true;
                 }
             }
 
@@ -347,6 +352,11 @@ public class CombatManager : MonoBehaviour
     public void EndCombat()
     {
 
+        if (GameManager.Instance.atBoss)
+        {
+            GameManager.Instance.LoadHub();
+        }
+
         foreach (Transform child in combatCanvas.transform)
         {
             child.gameObject.SetActive(false);
@@ -357,6 +367,11 @@ public class CombatManager : MonoBehaviour
             if (p != null)
             {
                 p.gameObject.SetActive(false);
+
+                if (p.isDowned)
+                {
+                    p.Heal((int)(p.maxHealth * 0.4f));
+                }
             }
         }
 
@@ -404,11 +419,37 @@ public class CombatManager : MonoBehaviour
         for (int i = 0; i < Random.Range(1, 5); i++)
         {
             // Pick a random non-boss enemy type! 
-            EnemyData currentEnemy = enemyTypes[Random.Range(0, enemyTypes.Count)];
+            EnemyData currentEnemy = gruntTypes[Random.Range(0, gruntTypes.Count)];
 
             // Allocate the new enemy it to Enemies!
             EnemiesData.Add(currentEnemy);
         }
+    }
+
+    public void GenerateRandomElite()
+    {
+        Enemies.Clear();
+
+        for (int i = 0; i < Random.Range(1, 2); i++)
+        {
+            // Pick a random non-boss enemy type! 
+            EnemyData currentEnemy = eliteTypes[Random.Range(0, eliteTypes.Count)];
+
+            // Allocate the new enemy it to Enemies!
+            EnemiesData.Add(currentEnemy);
+        }
+    }
+
+    public void GenerateRandomBoss()
+    {
+        Enemies.Clear();
+
+        // Pick a random non-boss enemy type! 
+        EnemyData currentEnemy = bossTypes[Random.Range(0, bossTypes.Count)];
+
+        // Allocate the new enemy it to Enemies!
+        EnemiesData.Add(currentEnemy);
+
     }
 
     public void GenerateSetCombat(EnemyData[] E)

@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject outSceneMap;
 
     public bool newGame;
+    public bool atBoss = false;
     public float mapSpeed = 6f;
     bool wheelsSpinning = false;
     bool carMovingIn = false;
@@ -148,6 +149,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadHub()
     {
+        atBoss = false;
         SceneManager.LoadScene(1);
     }
 

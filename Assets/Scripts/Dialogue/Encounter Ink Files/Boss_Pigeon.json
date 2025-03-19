@@ -1,0 +1,1 @@
+﻿{"inkVersion":21,"root":[[{"->":"main"},["done",{"#f":5,"#n":"g-0"}],null],"done",{"main":[["^Oh, what in god's name is that???!","\n","ev","str","^Start Prayin","/str","/ev",{"*":".^.c-0","flg":4},{"c-0":["\n","ev",{"x()":"StartBossCombat"},"pop","/ev","\n",{"->":".^.^.g-0"},{"#f":5}],"g-0":["end",{"#f":5}]}],{"#f":1}],"#f":1}],"listDefs":{}}

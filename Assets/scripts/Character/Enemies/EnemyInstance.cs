@@ -131,6 +131,10 @@ public class EnemyInstance : CharacterInstance
                     {
                         temp = CombatManager.Instance.Allies[index];
                     }
+                    else
+                    {
+                        index = Random.Range(0, 3);
+                    }
                 }
 
                 currentTarget = temp;

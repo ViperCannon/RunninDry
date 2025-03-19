@@ -62,6 +62,26 @@ public class InkExternalFunctions
         CombatManager.Instance.gameObject.SetActive(true);
     }
 
+    private void StartEliteCombat()
+    {
+        // THE BELOW LINE IS TEMPORARY JUST TO MAKE SURE THE ENEMY LIST IS ALWAYS POPULATED BEFORE COMBAT IS INITIATED
+        // WHILE I WORK ON FURTHER IMPLEMENTATION OF SET ENCOUNTERS! - David
+        CombatManager.Instance.GenerateRandomElite();
+
+        // This is NOT temporary though! This stays! - Also David
+        CombatManager.Instance.gameObject.SetActive(true);
+    }
+
+    private void StartBossCombat()
+    {
+        // THE BELOW LINE IS TEMPORARY JUST TO MAKE SURE THE ENEMY LIST IS ALWAYS POPULATED BEFORE COMBAT IS INITIATED
+        // WHILE I WORK ON FURTHER IMPLEMENTATION OF SET ENCOUNTERS! - David
+        CombatManager.Instance.GenerateRandomBoss();
+
+        // This is NOT temporary though! This stays! - Also David
+        CombatManager.Instance.gameObject.SetActive(true);
+    }
+
     private void StartNegotiation(int d, int i, int b)
     {
         NegotiationManager.Instance.SetDiplomacyDifficulty(d);
@@ -76,6 +96,11 @@ public class InkExternalFunctions
     {
         RelationshipsFramework.Instance.cash += amount;
 
+        if (RelationshipsFramework.Instance.cash < 0)
+        {
+            RelationshipsFramework.Instance.cash = 0;
+        }
+
         if (amount > 0) Debug.Log("The player's Cash stash increased by " + amount + "!");
         else Debug.Log("The player's Cash stash decreased by " + amount + "!");
     }
@@ -83,6 +108,11 @@ public class InkExternalFunctions
     private void AddBooze(int amount)
     {
         RelationshipsFramework.Instance.booze += amount;
+
+        if (RelationshipsFramework.Instance.booze < 0)
+        {
+            RelationshipsFramework.Instance.booze = 0;
+        }
 
         if (amount > 0) Debug.Log("The player's stockpile of Booze increased by " + amount + "!");
         else Debug.Log("The player's stockpile of Booze decreased by " + amount + "!");
@@ -99,6 +129,10 @@ public class InkExternalFunctions
     private void AddTires(int amount)
     {
         RelationshipsFramework.Instance.tires += amount;
+        if(RelationshipsFramework.Instance.tires < 0)
+        {
+            RelationshipsFramework.Instance.tires = 0;
+        }
 
         if (amount > 0) Debug.Log("The player's number of Tires increased by " + amount + "!");
         else Debug.Log("The player's number of Tires decreased by " + amount + "!");
