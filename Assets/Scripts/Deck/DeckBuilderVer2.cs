@@ -4,38 +4,49 @@ using UnityEngine;
 
 public class DeckBuilderVer2 : MonoBehaviour
 {
-    /* THIS ENTIRE IMPLEMENTATION IS TEMPORARY JUST TO ENSURE WE HAVE SOMETHING
-     * TO SHOWCASE AT THE PRESENTATION. THIS NEEDS A SERIOUS OVERHAUL.
-     */
+    public static DeckBuilderVer2 Instance { get; private set; }
 
     DeckSelectionManager selectionManager;
 
-    GameObject pixieCards;
-    GameObject baldwinCards;
-    GameObject barleyCards;
+    List<DeckBuilderCharacter> cardLists;
+    DeckBuilderCharacter currentCardList;
 
     // Start is called before the first frame update
     void Start()
     {
         selectionManager = GameObject.Find("DeckSelectionHandler").GetComponent<DeckSelectionManager>();
-
-        pixieCards = GameObject.Find("pixiecards");
-        baldwinCards = GameObject.Find("baldwincards");
-        barleyCards = GameObject.Find("barleycards");
+        SetCharacterCardList(0);
     }
 
-    public void SetPixieCards()
+    public void SetCharacterCardList(int index)
     {
-
+        if (!IsCardListIndexValid(index)) return;
+        currentCardList = cardLists[index];
     }
 
-    public void SetBaldwinCards()
+    bool IsCardListIndexValid(int index)
     {
+        // Check if the card list has been properly populated.
+        if (cardLists == null || cardLists.Count == 0)
+        {
+            Debug.Log("The card list array has not been populated!");
+            return false;
+        }
 
-    }
+        // Check if the given index is within the bounds of the list.
+        if (index < 0 || index >= cardLists.Count)
+        {
+            Debug.Log("Invalid index detected! Index must be between 0 and " + cardLists.Count + ", but was " + index + ".");
+            return false;
+        }
 
-    public void SetBarleyCards()
-    {
+        // Check if the card list at the given index has been initialized.
+        if (cardLists[index] == null)
+        {
+            Debug.Log("The card list at this index has not been initialized!");
+            return false;
+        }
 
+        return true;
     }
 }
