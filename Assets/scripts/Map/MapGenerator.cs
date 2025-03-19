@@ -28,7 +28,7 @@ public class MapGenerator : MonoBehaviour
     Node start;
     Node crew;
 
-    public bool tutorial = true;
+    public static bool tutorial = false;
 
     private void Start()
     {

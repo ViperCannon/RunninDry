@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TitleScreen : MonoBehaviour
 {
-    public int sceneID;
-
     public GameObject mainCanvas;
     public GameObject creditsCanvas;
     public GameObject optionsCanvas;
+    public Button continueButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,15 +17,11 @@ public class TitleScreen : MonoBehaviour
         mainCanvas.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void onStart()
     {
-        SceneManager.LoadScene(sceneID);
+        MapGenerator.tutorial = true;
+
+        SceneManager.LoadScene(3);
     }
     public void OnQuit()
     {
@@ -52,5 +47,10 @@ public class TitleScreen : MonoBehaviour
     {
         creditsCanvas.SetActive(false);
         mainCanvas.SetActive(true);
+    }
+
+    public void CanContinue(bool hasData)
+    {
+        continueButton.interactable = hasData;
     }
 }

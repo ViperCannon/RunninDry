@@ -17,6 +17,8 @@ public class DataPersistenceManager : MonoBehaviour
 
     private FileDataHandler dataHandler;
 
+    public TitleScreen title;
+
     public static DataPersistenceManager Instance { get; private set; }
 
     
@@ -25,6 +27,7 @@ public class DataPersistenceManager : MonoBehaviour
         if (Instance != null)
         {
             Debug.Log("Found more than one Data persistence Manager");
+            Destroy(this);
         }
         else
         {
@@ -57,6 +60,7 @@ public class DataPersistenceManager : MonoBehaviour
         if (this.gameData == null)
         {
             Debug.Log("No data was found.");
+            title.CanContinue(false);
             NewGame();
         }
         //pushed load data to other scripts
