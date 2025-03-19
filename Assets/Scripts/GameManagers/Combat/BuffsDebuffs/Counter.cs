@@ -1,19 +1,18 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New PissedOff", menuName = "PissedOff")]
-public class PissedOff : Buff
+public class Counter : Buff
 {
-    public PissedOff()
+    public Counter()
     {
-        buffName = "PissedOff";
+        buffName = "Counter";
         turnDuration = 0;
         intensity = 0;
         target = null;
     }
 
-    public PissedOff(CharacterInstance character, int initTurnDuration)
+    public Counter(CharacterInstance character, int initTurnDuration)
     {
-        buffName = "PissedOff";
+        buffName = "Counter";
         turnDuration = initTurnDuration;
         intensity = 0;
         target = character;
@@ -21,24 +20,24 @@ public class PissedOff : Buff
 
     new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
-        PissedOff existingPissedOff = null;
+        Counter existingCounter = null;
 
         foreach (Buff buff in character.activeBuffs)
         {
-            if (buff is PissedOff pissedOff)
+            if (buff is Counter counter)
             {
-                existingPissedOff = pissedOff;
+                existingCounter = counter;
                 break;
             }
         }
 
-        if (existingPissedOff != null)
+        if (existingCounter != null)
         {
-            existingPissedOff.AddStacks(cardInstance.cardData.turnDuration);
+            existingCounter.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyBuff(new PissedOff(character, cardInstance.cardData.turnDuration));
+            character.ApplyBuff(new Counter(character, cardInstance.cardData.turnDuration));
         }
     }
 

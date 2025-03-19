@@ -1,7 +1,6 @@
 using UnityEngine;
 using SpeakeasyStreet;
 
-[CreateAssetMenu(fileName = "New Stun", menuName = "Stun")]
 public class Stun : Debuff
 {
     public Stun()

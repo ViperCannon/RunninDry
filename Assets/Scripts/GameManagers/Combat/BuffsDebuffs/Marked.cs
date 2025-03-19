@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Marked", menuName = "Marked")]
 public class Marked : Debuff
 {
     public Marked()

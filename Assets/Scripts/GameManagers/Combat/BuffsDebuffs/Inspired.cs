@@ -1,6 +1,6 @@
+using System.Linq;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Inspired", menuName = "Inspired")]
 public class Inspired : Buff
 {
     public Inspired()
@@ -21,16 +21,7 @@ public class Inspired : Buff
 
     new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
-        Inspired existingInspired = null;
-
-        foreach (Buff buff in character.activeBuffs)
-        {
-            if (buff is Inspired inspired)
-            {
-                existingInspired = inspired;
-                break;
-            }
-        }
+        Inspired existingInspired = GetExistingBuff(character);
 
         if (existingInspired != null)
         {
@@ -40,6 +31,25 @@ public class Inspired : Buff
         {
             character.ApplyBuff(new Inspired(character, cardInstance.cardData.turnDuration));
         }
+    }
+
+    new public void ResolveEffect(CombatCard action, CharacterInstance character)
+    {
+        Inspired existingInspired = GetExistingBuff(character);
+
+        if (existingInspired != null)
+        {
+            existingInspired.AddStacks(action.turnDuration);
+        }
+        else
+        {
+            target.ApplyBuff(new Inspired(character, action.turnDuration));
+        }
+    }
+
+    Inspired GetExistingBuff(CharacterInstance character)
+    {
+        return character.activeBuffs.OfType<Inspired>().FirstOrDefault();
     }
 
     public override void UpdateEffect()

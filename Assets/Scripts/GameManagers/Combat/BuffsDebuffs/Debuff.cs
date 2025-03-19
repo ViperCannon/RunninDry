@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Debuff : ScriptableObject, ICardEffect
+public abstract class Debuff : IBuffEffect
 {
     public string debuffName;
     public int turnDuration;
@@ -8,6 +8,11 @@ public abstract class Debuff : ScriptableObject, ICardEffect
     public CharacterInstance target;
 
     public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
+    {
+
+    }
+
+    public void ResolveEffect(CombatCard action, CharacterInstance target)
     {
 
     }

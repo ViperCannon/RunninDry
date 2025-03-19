@@ -1,19 +1,18 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Bulwark", menuName = "Bulwark")]
-public class Bulwark : Buff
+public class PissedOff : Buff
 {
-    public Bulwark()
+    public PissedOff()
     {
-        buffName = "Bulwark";
+        buffName = "PissedOff";
         turnDuration = 0;
         intensity = 0;
         target = null;
     }
 
-    public Bulwark(CharacterInstance character, int initTurnDuration)
+    public PissedOff(CharacterInstance character, int initTurnDuration)
     {
-        buffName = "Bulwark";
+        buffName = "PissedOff";
         turnDuration = initTurnDuration;
         intensity = 0;
         target = character;
@@ -21,24 +20,24 @@ public class Bulwark : Buff
 
     new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
-        Bulwark existingBulwark = null;
+        PissedOff existingPissedOff = null;
 
         foreach (Buff buff in character.activeBuffs)
         {
-            if (buff is Bulwark bulwark)
+            if (buff is PissedOff pissedOff)
             {
-                existingBulwark = bulwark;
+                existingPissedOff = pissedOff;
                 break;
             }
         }
 
-        if (existingBulwark != null)
+        if (existingPissedOff != null)
         {
-            existingBulwark.AddStacks(cardInstance.cardData.turnDuration);
+            existingPissedOff.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyBuff(new Bulwark(character, cardInstance.cardData.turnDuration));
+            character.ApplyBuff(new PissedOff(character, cardInstance.cardData.turnDuration));
         }
     }
 

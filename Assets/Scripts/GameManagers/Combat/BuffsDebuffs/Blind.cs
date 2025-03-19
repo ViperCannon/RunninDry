@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using SpeakeasyStreet;
 
-[CreateAssetMenu(fileName = "New Blind", menuName = "Blind")]
 public class Blind : Debuff
 {
     public Blind()

@@ -1,19 +1,18 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Disarmed", menuName = "Disarmed")]
-public class Disarmed : Debuff
+public class Bleed : Debuff
 {
-    public Disarmed()
+    public Bleed()
     {
-        debuffName = "Disarmed";
+        debuffName = "Bleed";
         turnDuration = 0;
         intensity = 0;
         target = null;
     }
 
-    public Disarmed(CharacterInstance character, int initTurnDuration)
+    public Bleed(CharacterInstance character, int initTurnDuration)
     {
-        debuffName = "Disarmed";
+        debuffName = "Bleed";
         turnDuration = initTurnDuration;
         intensity = 0;
         target = character;
@@ -21,32 +20,32 @@ public class Disarmed : Debuff
 
     new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
-        Disarmed existingDisarmed = null;
+        Bleed existingBleed = null;
 
         foreach (Debuff debuff in character.activeDebuffs)
         {
-            if (debuff is Disarmed disarmed)
+            if (debuff is Bleed bleed)
             {
-                existingDisarmed = disarmed;
+                existingBleed = bleed;
                 break;
             }
         }
 
-        if (existingDisarmed != null)
+        if (existingBleed != null)
         {
-            existingDisarmed.AddStacks(cardInstance.cardData.turnDuration);
+            existingBleed.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyDebuff(new Disarmed(character, cardInstance.cardData.turnDuration));
+            character.ApplyDebuff(new Bleed(character, cardInstance.cardData.turnDuration));
         }
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+       target.TakeDamage(turnDuration--);
 
-        if (turnDuration <= 0)
+        if(turnDuration <= 0)
         {
             target.RemoveDebuff(this);
         }

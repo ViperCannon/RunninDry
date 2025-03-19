@@ -1,19 +1,18 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Counter", menuName = "Counter")]
-public class Counter : Buff
+public class Unsure : Debuff
 {
-    public Counter()
+    public Unsure()
     {
-        buffName = "Counter";
+        debuffName = "Unsure";
         turnDuration = 0;
         intensity = 0;
         target = null;
     }
 
-    public Counter(CharacterInstance character, int initTurnDuration)
+    public Unsure(CharacterInstance character, int initTurnDuration)
     {
-        buffName = "Counter";
+        debuffName = "Unsure";
         turnDuration = initTurnDuration;
         intensity = 0;
         target = character;
@@ -21,24 +20,24 @@ public class Counter : Buff
 
     new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
-        Counter existingCounter = null;
+        Unsure existingUnsure = null;
 
-        foreach (Buff buff in character.activeBuffs)
+        foreach (Debuff debuff in character.activeDebuffs)
         {
-            if (buff is Counter counter)
+            if (debuff is Unsure unsure)
             {
-                existingCounter = counter;
+                existingUnsure = unsure;
                 break;
             }
         }
 
-        if (existingCounter != null)
+        if (existingUnsure != null)
         {
-            existingCounter.AddStacks(cardInstance.cardData.turnDuration);
+            existingUnsure.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyBuff(new Counter(character, cardInstance.cardData.turnDuration));
+            character.ApplyDebuff(new Unsure(character, cardInstance.cardData.turnDuration));
         }
     }
 
@@ -48,7 +47,7 @@ public class Counter : Buff
 
         if (turnDuration <= 0)
         {
-            target.RemoveBuff(this);
+            target.RemoveDebuff(this);
         }
     }
 

@@ -1,19 +1,20 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Resilient", menuName = "Resilient")]
-public class Resilient : Buff
+public class Protected : Buff
 {
-    public Resilient()
+
+    //Bodyguard Baldwin effect
+    public Protected()
     {
-        buffName = "Resilient";
+        buffName = "Protected";
         turnDuration = 0;
         intensity = 0;
         target = null;
     }
 
-    public Resilient(CharacterInstance character, int initTurnDuration)
+    public Protected(CharacterInstance character, int initTurnDuration)
     {
-        buffName = "Resilient";
+        buffName = "Protected";
         turnDuration = initTurnDuration;
         intensity = 0;
         target = character;
@@ -21,24 +22,24 @@ public class Resilient : Buff
 
     new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
-        Resilient existingResilient = null;
+        Protected existingProtected = null;
 
         foreach (Buff buff in character.activeBuffs)
         {
-            if (buff is Resilient resilient)
+            if (buff is Protected protect)
             {
-                existingResilient = resilient;
+                existingProtected = protect;
                 break;
             }
         }
 
-        if (existingResilient != null)
+        if (existingProtected != null)
         {
-            existingResilient.AddStacks(cardInstance.cardData.turnDuration);
+            existingProtected.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyBuff(new Resilient(character, cardInstance.cardData.turnDuration));
+            character.ApplyBuff(new Protected(character, cardInstance.cardData.turnDuration));
         }
     }
 

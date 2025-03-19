@@ -1,19 +1,18 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Unsure", menuName = "Unsure")]
-public class Unsure : Debuff
+public class Resilient : Buff
 {
-    public Unsure()
+    public Resilient()
     {
-        debuffName = "Unsure";
+        buffName = "Resilient";
         turnDuration = 0;
         intensity = 0;
         target = null;
     }
 
-    public Unsure(CharacterInstance character, int initTurnDuration)
+    public Resilient(CharacterInstance character, int initTurnDuration)
     {
-        debuffName = "Unsure";
+        buffName = "Resilient";
         turnDuration = initTurnDuration;
         intensity = 0;
         target = character;
@@ -21,24 +20,24 @@ public class Unsure : Debuff
 
     new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
-        Unsure existingUnsure = null;
+        Resilient existingResilient = null;
 
-        foreach (Debuff debuff in character.activeDebuffs)
+        foreach (Buff buff in character.activeBuffs)
         {
-            if (debuff is Unsure unsure)
+            if (buff is Resilient resilient)
             {
-                existingUnsure = unsure;
+                existingResilient = resilient;
                 break;
             }
         }
 
-        if (existingUnsure != null)
+        if (existingResilient != null)
         {
-            existingUnsure.AddStacks(cardInstance.cardData.turnDuration);
+            existingResilient.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyDebuff(new Unsure(character, cardInstance.cardData.turnDuration));
+            character.ApplyBuff(new Resilient(character, cardInstance.cardData.turnDuration));
         }
     }
 
@@ -48,7 +47,7 @@ public class Unsure : Debuff
 
         if (turnDuration <= 0)
         {
-            target.RemoveDebuff(this);
+            target.RemoveBuff(this);
         }
     }
 

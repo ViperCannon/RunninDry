@@ -1,19 +1,18 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Protected", menuName = "Protected")]
-public class Protected : Buff
+public class Bulwark : Buff
 {
-    public Protected()
+    public Bulwark()
     {
-        buffName = "Protected";
+        buffName = "Bulwark";
         turnDuration = 0;
         intensity = 0;
         target = null;
     }
 
-    public Protected(CharacterInstance character, int initTurnDuration)
+    public Bulwark(CharacterInstance character, int initTurnDuration)
     {
-        buffName = "Protected";
+        buffName = "Bulwark";
         turnDuration = initTurnDuration;
         intensity = 0;
         target = character;
@@ -21,24 +20,24 @@ public class Protected : Buff
 
     new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
     {
-        Protected existingProtected = null;
+        Bulwark existingBulwark = null;
 
         foreach (Buff buff in character.activeBuffs)
         {
-            if (buff is Protected protect)
+            if (buff is Bulwark bulwark)
             {
-                existingProtected = protect;
+                existingBulwark = bulwark;
                 break;
             }
         }
 
-        if (existingProtected != null)
+        if (existingBulwark != null)
         {
-            existingProtected.AddStacks(cardInstance.cardData.turnDuration);
+            existingBulwark.AddStacks(cardInstance.cardData.turnDuration);
         }
         else
         {
-            character.ApplyBuff(new Protected(character, cardInstance.cardData.turnDuration));
+            character.ApplyBuff(new Bulwark(character, cardInstance.cardData.turnDuration));
         }
     }
 
