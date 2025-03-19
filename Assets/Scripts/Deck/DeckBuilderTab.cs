@@ -34,7 +34,7 @@ public class DeckBuilderTab : MonoBehaviour
         {
             if (tab != this)
             {
-                tab.ChangeButtonColor(new Color(0.7f, 0.7f, 0.7f));
+                tab.ChangeButtonColor(new Color32(180, 180, 180, 255));
             }
         }
     }
