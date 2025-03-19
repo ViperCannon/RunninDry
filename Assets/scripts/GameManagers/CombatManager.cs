@@ -93,6 +93,9 @@ public class CombatManager : MonoBehaviour
     private float zoomOutSize = 10f;
     private float zoomSpeed = 2f;
 
+    private bool teamWiped = false;
+    private bool enemiesWiped = false;
+
     // Method to start combat and initialize Variables
     public void OnEnable()
     {
@@ -126,10 +129,17 @@ public class CombatManager : MonoBehaviour
             {
                 if (p != null)
                 {
+                    if (p.isDowned)
+                    {
+                        p.Heal((int)(p.maxHealth * 0.3f));
+                    }
+
                     p.gameObject.SetActive(true);
                     capsRefreshLimit += p.caps;
                 }
             }
+
+            teamWiped = false;
 
             foreach (EnemyInstance e in Enemies)
             {
@@ -293,30 +303,40 @@ public class CombatManager : MonoBehaviour
 
         foreach(AllyInstance p in Allies)
         {
-            if (p != null && p.isDowned)
+            if (p != null && !p.isDowned)
             {
-                over = true;
+                teamWiped = false;
+                break;
             }
             else
             {
-                over = false;
-                break;
+                teamWiped = true;
             }
+        }
+
+        if (teamWiped)
+        {
+            over = true;
         }
 
         if (!over)
         {
             foreach (EnemyInstance e in Enemies)
             {
-                if (e == null || (e != null && !e.gameObject.activeSelf))
+                if (e != null && e.gameObject.activeSelf)
                 {
-                    over = true;
+                    enemiesWiped = false;
+                    break;
                 }
                 else
                 {
-                    over = false;
-                    break;
+                    enemiesWiped = true;
                 }
+            }
+
+            if (enemiesWiped)
+            {
+                over = true;
             }
         }
 
@@ -362,7 +382,19 @@ public class CombatManager : MonoBehaviour
         Debug.Log("Combat Ended.");
 
         // Handle the end of combat (e.g., show results, transition to the next scene, etc.)
-        
+
+
+        if (teamWiped)
+        {
+            RelationshipsFramework.Instance.booze--;
+        }
+
+        if(RelationshipsFramework.Instance.booze <= 0)
+        {
+            //Game Over, kick back to hub
+
+            GameManager.Instance.LoadHub();
+        }
     }
 
     public void GenerateRandomCombat()

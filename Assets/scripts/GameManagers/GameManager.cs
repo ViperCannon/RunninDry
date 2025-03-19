@@ -146,6 +146,11 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void LoadHub()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     #region Car Move In/Out Functions
     public void CarMoveIn()
     {

@@ -34,11 +34,8 @@ public class CharacterInstance : MonoBehaviour, IDataPersistence
 
     public void Heal(int amount)
     {
-        currentHealth += amount;
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
+        TakeDamage(amount * -1);
+
         // Trigger health change events here
     }
 

@@ -10,6 +10,7 @@ public class AllyInstance : CharacterInstance
 
     const float MAX_HEALTHBAR_SIZE = 7.2f;
     GameObject healthBar;
+    PolygonCollider2D col;
 
     public int caps;
 
@@ -17,7 +18,9 @@ public class AllyInstance : CharacterInstance
     {
         maxHealth = baseData.baseMaxHealth;
         currentHealth = maxHealth;
-        
+
+        col = GetComponentInChildren<PolygonCollider2D>();
+
         foreach (Transform child in transform)
         {
             if(child.CompareTag("HealthBar"))
@@ -37,15 +40,18 @@ public class AllyInstance : CharacterInstance
         {
             currentHealth = 0;
             isDowned = true;
+            col.enabled = false;
         }
         else if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
             isDowned = false;
+            col.enabled = true;
         }
         else
         {
             isDowned = false;
+            col.enabled = true;
         }
 
         UpdateHealthBar();
