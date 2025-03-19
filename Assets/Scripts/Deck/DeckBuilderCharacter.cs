@@ -63,6 +63,7 @@ public class DeckBuilderCharacter : ScriptableObject
             if (card.name == cardName)
             {
                 card.quantity -= 1;
+
                 if (card.quantity < 1)
                 {
                     selectedCards.Remove(card);
