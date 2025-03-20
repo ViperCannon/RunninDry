@@ -13,16 +13,18 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField] private TextAsset[] negotiationJSONs;
     [Tooltip("List of Event Encounter Ink JSONs")]
     [SerializeField] private TextAsset[] eventJSONs;
-    [Tooltip("List of Event Encounter Ink JSONs")]
+    [Tooltip("List of Shop Encounter Ink JSONs")]
     [SerializeField] private TextAsset[] shopJSONs;
     [Tooltip("List of Pit Stop Encounter Ink JSONs")]
     [SerializeField] private TextAsset[] pitStopJSONs;
-    [Tooltip("List of Pit Stop Encounter Ink JSONs")]
+    [Tooltip("List of Elite Encounter Ink JSONs")]
     [SerializeField] private TextAsset[] eliteJSONs;
-    [Tooltip("List of Pit Stop Encounter Ink JSONs")]
+    [Tooltip("List of Boss Encounter Ink JSONs")]
     [SerializeField] private TextAsset[] bossJSONs;
     [Tooltip("Blank Encounter Ink JSONs")]
     [SerializeField] private TextAsset blankJSON;
+    [Tooltip("List of Tutorial Ink JSONs")]
+    [SerializeField] private TextAsset tutorialJSON;
 
     private TextAsset currentEncounter;
 
@@ -182,8 +184,9 @@ public class EncounterGenerator : MonoBehaviour
         PlayCurrentDialogue();
     }
 
-    public void TutorialDialogue()
+    public void SetTutorialDialogue()
     {
-
+        currentEncounter = tutorialJSON;
+        PlayCurrentDialogue();       
     }
 }

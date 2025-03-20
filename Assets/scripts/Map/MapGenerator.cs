@@ -476,8 +476,11 @@ public class MapGenerator : MonoBehaviour
         start.SetGameNode(Instantiate(nodeVariants[1], new Vector3(0f, -675f, 0f), Quaternion.identity));
         start.GetGameNode().transform.SetParent(content.transform, false);
 
-        bossNode.SetGameNode(boss);
-        bossNode.GetGameNode().transform.SetParent(content.transform, false);
+        if(!tutorial)
+        {
+            bossNode.SetGameNode(boss);
+            bossNode.GetGameNode().transform.SetParent(content.transform, false);
+        } 
 
         for (int y = 0; y < FLOORS; y++)
         {
@@ -593,8 +596,15 @@ public class MapGenerator : MonoBehaviour
 
         if (crew.GetNextNodes().Count == 0)
         {
-            bossNode.Activate();
-            GameManager.Instance.beforeBoss = true;
+            if (!tutorial)
+            {
+                bossNode.Activate();
+                GameManager.Instance.beforeBoss = true;
+            }
+            else
+            {
+                GameManager.Instance.atBoss = true;
+            }
         }
  
     }

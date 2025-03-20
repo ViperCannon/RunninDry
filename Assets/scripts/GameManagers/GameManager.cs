@@ -67,8 +67,26 @@ public class GameManager : MonoBehaviour
             booze.text = relations.booze.ToString();
         }
 
-        MapMoveIn();
-        CarMoveIn();
+        if(!MapGenerator.tutorial)
+        {
+            MapMoveIn();
+            CarMoveIn();
+        }
+        else
+        {
+            MapMoveOut();
+            CarMoveOut();
+
+            Debug.Log("start tutorial");
+            StartCoroutine(TutorialStart());
+        }   
+    }
+
+    IEnumerator TutorialStart()
+    {
+        yield return new WaitForEndOfFrame();
+
+        EncounterGenerator.GetInstance().SetTutorialDialogue();
     }
 
     private void FixedUpdate()
@@ -203,10 +221,6 @@ public class GameManager : MonoBehaviour
 
     public void EndEncounter()
     {
-        MapMoveIn();
-        CarMoveIn();
-        ScrollingBackground.isScrolling = true;
-
         print(relations.copRelations);
         print(relations.civilianRelations);
         print(relations.drunkardRelations);
@@ -214,5 +228,16 @@ public class GameManager : MonoBehaviour
         print(relations.russianMobRelations);
         print(relations.norwegianMobRelations);
         print(relations.sicilianMobRelations);
+
+        if (atBoss)
+        {
+            LoadHub();
+        }
+        else
+        {
+            MapMoveIn();
+            CarMoveIn();
+            ScrollingBackground.isScrolling = true;
+        }
     }
 }

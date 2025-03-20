@@ -110,7 +110,8 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
 
     public void continuebutton()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(3);
     }
 
 
