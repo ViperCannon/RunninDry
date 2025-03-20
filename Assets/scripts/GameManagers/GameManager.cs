@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public GameObject outSceneMap;
 
     public bool newGame;
+    public bool beforeBoss = false;
     public bool atBoss = false;
     public float mapSpeed = 6f;
     bool wheelsSpinning = false;

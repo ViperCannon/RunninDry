@@ -24,9 +24,13 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     GameObject line;
 
+    [SerializeField]
+    GameObject boss;
+
     Node[][] mapData;
     Node start;
     Node crew;
+    Node bossNode;
 
     public static bool tutorial = false;
 
@@ -46,6 +50,9 @@ public class MapGenerator : MonoBehaviour
     {
         ClearMap();
         start = new Node();
+
+        bossNode = new Node();
+
         crew = start;
         mapData = GenerateInitialGrid();
         CreatePaths();
@@ -469,6 +476,9 @@ public class MapGenerator : MonoBehaviour
         start.SetGameNode(Instantiate(nodeVariants[1], new Vector3(0f, -675f, 0f), Quaternion.identity));
         start.GetGameNode().transform.SetParent(content.transform, false);
 
+        bossNode.SetGameNode(boss);
+        bossNode.GetGameNode().transform.SetParent(content.transform, false);
+
         for (int y = 0; y < FLOORS; y++)
         {
             float yPos = Y_START + (Y_DIST * y);
@@ -532,7 +542,7 @@ public class MapGenerator : MonoBehaviour
     public void SelectNode(GameObject next)
     {
         next.GetComponentInChildren<Button>().enabled = false;
-        
+
         foreach (Node n in crew.GetNextNodes())
         {
             if (n.GetGameNode() != next)
@@ -573,10 +583,6 @@ public class MapGenerator : MonoBehaviour
                 EncounterGenerator.GetInstance().SetNewEliteDialogue();
                 break;
 
-            case NodeType.Boss:
-                EncounterGenerator.GetInstance().SetNewBossDialogue();
-                break;
-
             default:
                 EncounterGenerator.GetInstance().SetBlankDialogue();
                 Debug.Log("This Node Type doesn't have implemented functionality yet!");
@@ -584,5 +590,12 @@ public class MapGenerator : MonoBehaviour
         }
 
         crew.Complete();
+
+        if (crew.GetNextNodes().Count == 0)
+        {
+            bossNode.Activate();
+            GameManager.Instance.beforeBoss = true;
+        }
+ 
     }
 }

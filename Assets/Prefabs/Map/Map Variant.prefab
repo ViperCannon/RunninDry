@@ -24,6 +24,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 2114693301713463099, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4532993754195006956}
+    - target: {fileID: 2114693301713463099, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Click
+      objectReference: {fileID: 0}
     - target: {fileID: 3672418299035439614, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
       propertyPath: m_SizeDelta.y
       value: 303.3984
@@ -32,6 +40,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 303.3985
       objectReference: {fileID: 0}
+    - target: {fileID: 7800364853184443731, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 3211153782029740383}
     - target: {fileID: 7800364853184443731, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
       propertyPath: tutorial
       value: 1
@@ -158,6 +170,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5257967447065721047}
   m_SourcePrefab: {fileID: 100100000, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
+--- !u!1 &3211153782029740383 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1293952572458222235, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
+  m_PrefabInstance: {fileID: 4424017369758411716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4249800866361645420 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 549182988214710952, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
@@ -175,6 +192,17 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4532993754195006956 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 255906481461804584, guid: 89d9f82d091230642945fdf18c384f96, type: 3}
+  m_PrefabInstance: {fileID: 4424017369758411716}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3211153782029740383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b66ca1e093e5eb5499416d7e1f768f66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6799442814866107664 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7149813420415944404, guid: 89d9f82d091230642945fdf18c384f96, type: 3}

@@ -357,6 +357,11 @@ public class CombatManager : MonoBehaviour
             GameManager.Instance.LoadHub();
         }
 
+        if (GameManager.Instance.beforeBoss)
+        {
+            GameManager.Instance.atBoss = true;
+        }
+
         foreach (Transform child in combatCanvas.transform)
         {
             child.gameObject.SetActive(false);

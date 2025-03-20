@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 1416262685824548014}
   m_Layer: 0
   m_Name: PigeonBoss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -9,6 +9,8 @@ public class InkExternalFunctions
     public void Bind(Story story)
     {
         story.BindExternalFunction("StartCombat", () => StartCombat());
+        story.BindExternalFunction("StartEliteCombat", () => StartEliteCombat());
+        story.BindExternalFunction("StartBossCombat", () => StartBossCombat());
         story.BindExternalFunction("StartNegotiation", (int d, int i, int b) => StartNegotiation(d, i, b));
 
         // Resource Functions
@@ -33,6 +35,8 @@ public class InkExternalFunctions
     public void Unbind(Story story)
     {
         story.UnbindExternalFunction("StartCombat");
+        story.UnbindExternalFunction("StartEliteCombat");
+        story.UnbindExternalFunction("StartBossCombat");
         story.UnbindExternalFunction("StartNegotiation");
 
         story.UnbindExternalFunction("AddCash");
