@@ -22,6 +22,11 @@ public class NegotiationCardPhysics : MonoBehaviour, IPointerEnterHandler, IPoin
     {
         canvas = GetComponentInParent<Canvas>();
         handManager = transform.parent.parent.GetComponentInChildren<HandManager>();
+
+        if (handManager == null)
+        {
+            Debug.LogError("HandManager not found!");
+        }
     }
 
     private void ResetCardPosition()
@@ -66,7 +71,19 @@ public class NegotiationCardPhysics : MonoBehaviour, IPointerEnterHandler, IPoin
         if (eventData.button != PointerEventData.InputButton.Left)
             return;
 
-        if (!handManager.PlayCard(GetComponent<NegotiationCardDisplay>()))
+        if (gameObject.GetComponent<NegotiationCardDisplay>() == null)
+        {
+            Debug.Log("No NegotiationCardDisplay");
+        }
+
+        Debug.Log("Prefab Component CardData dice count: " + gameObject.GetComponent<NegotiationCardDisplay>().cardData.numberOfDice);
+
+        foreach (var component in gameObject.GetComponents<Component>())
+        {
+            Debug.Log("Component: " + component.GetType().Name);
+        }
+
+        if (!handManager.PlayCard(gameObject.GetComponent<NegotiationCardDisplay>()))
         {
             Debug.Log("Not enough cash!");
         }

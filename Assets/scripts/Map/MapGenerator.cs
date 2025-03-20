@@ -604,6 +604,7 @@ public class MapGenerator : MonoBehaviour
             else
             {
                 GameManager.Instance.atBoss = true;
+                tutorial = false;
             }
         }
  

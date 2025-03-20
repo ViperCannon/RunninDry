@@ -50,7 +50,7 @@ public class HandManager : MonoBehaviour
         {
             cardResolver = CardEffectResolver.Instance;
 
-            AttemptDraw(initialDraw);
+            //AttemptDraw(initialDraw);
         }   
     }
 
@@ -194,9 +194,36 @@ public class HandManager : MonoBehaviour
 
     public bool PlayCard(NegotiationCardDisplay cardDisplay)
     {
+        Debug.Log("playing");
+
+        if(RelationshipsFramework.Instance == null)
+        {
+            Debug.Log("relations missing");
+        }
+        else if(gameManager == null)
+        {
+            Debug.Log("gameManager missing");
+        }
+        else if(negotiationManager == null)
+        {
+            Debug.Log("negotiation missing");
+        }
+        else if(negotiationManager.GetComponent<CardEffectResolver>() == null) 
+        {
+            Debug.Log("cardEffectResolver missing");
+        }
+        else if(cardDisplay == null)
+        {
+            Debug.Log("card missing");
+        }
+
+        foreach (var component in negotiationManager.GetComponents<Component>())
+        {
+            Debug.Log("NegotiationManager Component: " + component.GetType().Name);
+        }
 
         //check bribery cost, otherwise card always plays
-        if(cardDisplay.cardData.cost <= RelationshipsFramework.Instance.cash)
+        if (cardDisplay.cardData.cost <= RelationshipsFramework.Instance.cash)
         {
             RelationshipsFramework.Instance.cash -= cardDisplay.cardData.cost;
             gameManager.cash.text = RelationshipsFramework.Instance.cash.ToString();
