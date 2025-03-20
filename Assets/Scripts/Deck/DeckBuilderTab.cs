@@ -17,7 +17,7 @@ public class DeckBuilderTab : MonoBehaviour
         buttonVisual = GetComponent<Image>();
 
         tabLabel = transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
-        tabLabel.text = character.characterName;
+        tabLabel.text = character.CharacterName;
     }
 
     public void SelectTab()

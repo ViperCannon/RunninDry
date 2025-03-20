@@ -8,65 +8,70 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "DeckBuilderCharacter")]
 public class DeckBuilderCharacter : ScriptableObject
 {
-    protected class SelectedCard
+    public class SelectedCard
     {
-        public string name;
+        public Card cardData;
+        public string cardName;
         public int quantity;
 
-        public SelectedCard(string name, int quantity)
+        public SelectedCard(Card data, int quantity)
         {
-            this.name = name;
+            this.cardData = data;
+            this.cardName = data.cardName;
             this.quantity = quantity;
         }
     }
 
     [Tooltip("The name of the character represented by this object.")]
-    [SerializeField] public string characterName { get; private set; }
+    public string CharacterName { get; private set; }
 
-    [Tooltip("The name of the character represented by this object.")]
+    [Tooltip("The list of negotiation cards tied to this character.")]
     [SerializeField] List<NegotiationCard> negotiationCards;
-    [Tooltip("The name of the character represented by this object.")]
+    [Tooltip("The list of combat cards tied to this character.")]
     [SerializeField] List<CombatCard> combatCards;
 
-    List<SelectedCard> selectedCards;
+    //The list of all cards selected by this character; stores their name, the card's data, and quantity selected.
+    public List<SelectedCard> SelectedCardsEntries { get; private set; }
 
-    public void SelectCard (string cardName)
+    // Adds a card to the list of Selected Cards.
+    public void SelectCard (Card c)
     {
-        if (SumCards() >= 10)
+        if (SumTotalCards() >= 10)
         {
-            Debug.Log(characterName + " already has 10 cards selected and cannot select any more!");
+            Debug.Log(CharacterName + " already has 10 cards selected and cannot select any more!");
             return;
         }
 
-        foreach (SelectedCard card in selectedCards)
+        foreach (SelectedCard card in SelectedCardsEntries)
         {
-            if (card.name == cardName)
+            if (card.cardName == c.cardName)
             {
                 card.quantity += 1;
                 return;
             }
         }
 
-        selectedCards.Add(new SelectedCard(cardName, 1));
+        SelectedCardsEntries.Add(new SelectedCard(c, 1));
     }
 
-    public void DeselectCard(string cardName)
+    // Removes a card from the list of Selected Cards.
+    public void DeselectCard(Card c)
     {
-        if (SumCards() <= 0)
+        if (SumTotalCards() <= 0)
         {
-            Debug.Log(characterName + " has no cards selected to deselect!");
+            Debug.Log(CharacterName + " has no cards selected to deselect!");
             return;
         }
 
-        foreach (SelectedCard card in selectedCards)
+        foreach (SelectedCard card in SelectedCardsEntries)
         {
-            if (card.name == cardName)
+            if (card.cardName == c.cardName)
             {
                 card.quantity -= 1;
 
                 if (card.quantity < 1)
                 {
-                    selectedCards.Remove(card);
+                    SelectedCardsEntries.Remove(card);
                 }
                 
                 return;
@@ -74,9 +79,45 @@ public class DeckBuilderCharacter : ScriptableObject
         }
     }
 
-     int SumCards()
+     int SumTotalCards()
     {
         int sum = 0;
+
+        foreach (SelectedCard card in SelectedCardsEntries)
+        {
+            sum += card.quantity;
+        }
+
         return sum;
-    } 
+    }
+
+    int SumNegotiationCards()
+    {
+        int sum = 0;
+
+        foreach (SelectedCard card in SelectedCardsEntries)
+        {
+            /* if (???)
+            {
+                sum += card.quantity;
+            } */
+        }
+
+        return sum;
+    }
+
+    int SumCombatCards()
+    {
+        int sum = 0;
+
+        foreach (SelectedCard card in SelectedCardsEntries)
+        {
+            /* if (???)
+            {
+                sum += card.quantity;
+            } */
+        }
+
+        return sum;
+    }
 }
