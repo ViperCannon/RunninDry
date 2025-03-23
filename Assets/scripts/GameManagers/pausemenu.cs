@@ -16,6 +16,7 @@ public class PauseMenu : MonoBehaviour
         mainCanvas.SetActive(false);
     }
 
+
     // Update is called once per frame
     void Update()
     {

@@ -1,8 +1,10 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
-public class AudioSlider : MonoBehaviour
+public class MusicSlider : MonoBehaviour
 {
     [SerializeField]
     private AudioMixer audioMixer;
@@ -13,9 +15,9 @@ public class AudioSlider : MonoBehaviour
     private void Start()
     {
         pausemenu = GameObject.Find("Pausemenu").GetComponent<PauseMenu>();
-        if (!PlayerPrefs.HasKey("masterVolume"))
+        if (!PlayerPrefs.HasKey("musicVolume"))
         {
-            PlayerPrefs.SetFloat("masterVolume", 1);
+            PlayerPrefs.SetFloat("musicVolume", 1);
         }
         else
         {
@@ -25,7 +27,7 @@ public class AudioSlider : MonoBehaviour
 
     private void Load()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("masterVolume");
+        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
     }
     public void changevolume()
     {
@@ -35,7 +37,7 @@ public class AudioSlider : MonoBehaviour
 
     private void Save()
     {
-        PlayerPrefs.SetFloat("masterVolume", volumeSlider.value);
+        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
     }
 
     public void onChangeSlider()
