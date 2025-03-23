@@ -9,7 +9,7 @@ public class DeckBuilderTab : MonoBehaviour
 
     Image buttonVisual;
 
-    [SerializeField] DeckBuilderCharacter character;
+    public DeckBuilderCharacter Character { get; private set; }
     TextMeshProUGUI tabLabel;
 
     void Start()
@@ -17,7 +17,7 @@ public class DeckBuilderTab : MonoBehaviour
         buttonVisual = GetComponent<Image>();
 
         tabLabel = transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
-        tabLabel.text = character.CharacterName;
+        tabLabel.text = Character.CharacterName;
     }
 
     public void SelectTab()
@@ -27,7 +27,7 @@ public class DeckBuilderTab : MonoBehaviour
         DeselectOtherTabs();
 
         // Change the Active Card List
-        DeckBuilderVer2.Instance.SetCharacterCardList(0);
+        DeckBuilderVer2.Instance.SetSelectedCharacter(Character);
     }
 
     void DeselectOtherTabs()

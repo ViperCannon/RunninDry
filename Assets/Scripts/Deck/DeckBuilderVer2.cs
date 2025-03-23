@@ -8,45 +8,37 @@ public class DeckBuilderVer2 : MonoBehaviour
 
     DeckSelectionManager selectionManager;
 
-    List<DeckBuilderCharacter> cardLists;
-    DeckBuilderCharacter currentCardList;
+    List<DeckBuilderTab> Tabs;
+    DeckBuilderCharacter SelectedCharacter;
 
     // Start is called before the first frame update
     void Start()
     {
+        //Initialize Selection Manager
         selectionManager = GameObject.Find("DeckSelectionHandler").GetComponent<DeckSelectionManager>();
-        SetCharacterCardList(0);
+
+        //Initialize Tab List and Selected Character
+        foreach (DeckBuilderTab tab in Object.FindObjectsOfType<DeckBuilderTab>())
+        {
+            Tabs.Add(tab);
+        }
+        SelectedCharacter = Tabs[0].Character;
     }
 
-    public void SetCharacterCardList(int index)
+    public void SetSelectedCharacter(DeckBuilderCharacter newCharacter)
     {
-        if (!IsCardListIndexValid(index)) return;
-        currentCardList = cardLists[index];
-    }
-
-    bool IsCardListIndexValid(int index)
-    {
-        // Check if the card list has been properly populated.
-        if (cardLists == null || cardLists.Count == 0)
+        if (newCharacter == null)
         {
-            Debug.Log("The card list array has not been populated!");
-            return false;
+            Debug.Log("The character file given is null!");
+            return;
         }
 
-        // Check if the given index is within the bounds of the list.
-        if (index < 0 || index >= cardLists.Count)
+        if (newCharacter == SelectedCharacter)
         {
-            Debug.Log("Invalid index detected! Index must be between 0 and " + cardLists.Count + ", but was " + index + ".");
-            return false;
+            Debug.Log("The character file given is the same as the current selected character!");
+            return;
         }
 
-        // Check if the card list at the given index has been initialized.
-        if (cardLists[index] == null)
-        {
-            Debug.Log("The card list at this index has not been initialized!");
-            return false;
-        }
-
-        return true;
+        SelectedCharacter = newCharacter;
     }
 }
