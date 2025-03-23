@@ -34,7 +34,28 @@ public class DeckBuilderCharacter : ScriptableObject
     public List<SelectedCard> SelectedCardsEntries { get; private set; }
 
     // Adds a card to the list of Selected Cards.
-    public void SelectCard (Card c)
+    public void SelectCard (NegotiationCard c)
+    {
+        if (SumTotalCards() >= 10)
+        {
+            Debug.Log(CharacterName + " already has 10 cards selected and cannot select any more!");
+            return;
+        }
+
+        foreach (SelectedCard card in SelectedCardsEntries)
+        {
+            if (card.cardName == c.cardName)
+            {
+                card.quantity += 1;
+                return;
+            }
+        }
+
+        SelectedCardsEntries.Add(new SelectedCard(c, 1));
+    }
+
+    // Adds a card to the list of Selected Cards.
+    public void SelectCard(CombatCard c)
     {
         if (SumTotalCards() >= 10)
         {
@@ -79,7 +100,7 @@ public class DeckBuilderCharacter : ScriptableObject
         }
     }
 
-     int SumTotalCards()
+     private int SumTotalCards()
     {
         int sum = 0;
 
@@ -91,33 +112,56 @@ public class DeckBuilderCharacter : ScriptableObject
         return sum;
     }
 
-    int SumNegotiationCards()
+    private int SumNegotiationCards()
     {
         int sum = 0;
 
         foreach (SelectedCard card in SelectedCardsEntries)
         {
-            /* if (???)
+            if (card.cardData.GetType() == typeof(NegotiationCard))
             {
                 sum += card.quantity;
-            } */
+            }
         }
 
         return sum;
     }
 
-    int SumCombatCards()
+    private int SumCombatCards()
     {
         int sum = 0;
 
         foreach (SelectedCard card in SelectedCardsEntries)
         {
-            /* if (???)
+            if (card.cardData.GetType() == typeof(CombatCard))
             {
                 sum += card.quantity;
-            } */
+            }
         }
 
         return sum;
+    }
+
+    public bool IsSelectedCardListValid()
+    {
+        if (SumTotalCards() != 10)
+        {
+            Debug.Log("There should be exactly 10 total cards in the deck! There are currently " + SumTotalCards());
+            return false;
+        }
+
+        if (SumNegotiationCards() < 2)
+        {
+            Debug.Log("There should be at least two Negotiation cards in the deck! There are currently " + SumNegotiationCards());
+            return false;
+        }
+
+        if (SumCombatCards() < 2)
+        {
+            Debug.Log("There should be at least two Combat cards in the deck! There are currently " + SumCombatCards());
+            return false;
+        }
+
+        return true;
     }
 }
