@@ -32,7 +32,7 @@ public class DeckBuilderCharacter : ScriptableObject
     [Tooltip("The list of combat cards tied to this character.")]
     [SerializeField] List<CombatCard> combatCards;
 
-    //The list of all cards selected by this character; stores their name, the card's data, and quantity selected.
+    //The list of all Cards selected by this character; stores their name, the card's data, and quantity selected.
     public List<SelectedCard> SelectedCardsEntries { get; private set; }
 
     // Adds a card to the list of Selected Cards.

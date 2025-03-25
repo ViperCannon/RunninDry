@@ -4,26 +4,26 @@ using SpeakeasyStreet;
 
 public class Deck
 {
-    List<Card> cards;
+    public List<Card> Cards { get; private set; }
 
     public Deck()
     {
-        cards = new List<Card>();
+        Cards = new List<Card>();
     }
 
     public Deck(List<Card> initCards)
     {
-        cards = new List<Card>();
+        Cards = new List<Card>();
 
         for (int i = 0; i < initCards.Count; i++)
         {
-            cards.Add(initCards[i]);
+            Cards.Add(initCards[i]);
         }
     }
 
     public List<Card> Get()
     {
-        return cards;
+        return Cards;
     }
 
     public void Set(List<Card> newCards)
@@ -32,7 +32,7 @@ public class Deck
 
         for (int i = 0; i < newCards.Count; i++)
         {
-            cards.Add(newCards[i]);
+            Cards.Add(newCards[i]);
         }
     }
 
@@ -42,43 +42,43 @@ public class Deck
 
         for (int i = 0; i < newCards.Length; i++)
         {
-            cards.Add(newCards[i]);
+            Cards.Add(newCards[i]);
         }
     }
 
     public void Add(Card card)
     {
-        cards.Add(card);
+        Cards.Add(card);
     }
 
     public void Insert(int index, Card card)
     {
-        if(index >= cards.Count)
+        if(index >= Cards.Count)
         {
-            cards.Add(card);
+            Cards.Add(card);
         }
         else
         {
-            cards.Insert(index, card);
+            Cards.Insert(index, card);
         }
     }
 
     public bool Remove(Card card)
     {
-        return cards.Remove(card);
+        return Cards.Remove(card);
     }
 
     public Card Remove(int index)
     {
-        Card temp = cards[index];
-        cards.RemoveAt(index);
+        Card temp = Cards[index];
+        Cards.RemoveAt(index);
 
         return temp;
     }
 
     public int Size()
     {
-        return cards.Count;
+        return Cards.Count;
     }
 
     public bool IsEmpty()
@@ -88,12 +88,10 @@ public class Deck
 
     public void Shuffle()
     {
-        for(int i = 0; i < cards.Count - 1; i++)
+        for(int i = 0; i < Cards.Count - 1; i++)
         {
-            int rng = Random.Range(i, cards.Count);
-            Card temp = cards[i];
-            cards[i] = cards[rng];
-            cards[rng] = temp;
+            int rng = Random.Range(i, Cards.Count);
+            (Cards[i], Cards[rng]) = (Cards[rng], Cards[i]);
         }
     }
 
@@ -104,6 +102,6 @@ public class Deck
 
     public void Clear()
     {
-        cards.Clear();
+        Cards.Clear();
     }
 }

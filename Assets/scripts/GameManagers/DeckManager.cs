@@ -26,12 +26,12 @@ public class DeckManager : MonoBehaviour
 
     public void PopulateDecks()
     {
-        // Load cards for negotiation deck
+        // Load Cards for negotiation deck
         Card[] negotiationCards = Resources.LoadAll<NegotiationCard>("CardData/Tutorial/NegotiationFull");
 
         negotiationMaster.Set(negotiationCards);
 
-        // Load cards for combat deck
+        // Load Cards for combat deck
         Card[] combatCards = Resources.LoadAll<CombatCard>("CardData/Tutorial/CombatFull");
 
         combatMaster.Set(combatCards);

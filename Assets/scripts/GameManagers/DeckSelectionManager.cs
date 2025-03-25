@@ -10,17 +10,17 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
 {
     public float spacing;
     [Header("Total Cards")]
-    public List<string> TotalNegotiationCards = new List<string>();
-    public List<string> TotalCombatCards = new List<string>();
-    public List<string> Pixiecards = new List<string>();
-    public List<string> Baldwincards = new List<string>();
-    public List<string> Barleycards = new List<string>();
-    public List<string> NPixiecards = new List<string>();
-    public List<string> CPixiecards = new List<string>();
-    public List<string> NBaldwincards = new List<string>();
-    public List<string> CBaldwincards = new List<string>();
-    public List<string> NBarleycards = new List<string>();
-    public List<string> CBarleycards = new List<string>();
+    public List<string> TotalNegotiationCards = new();
+    public List<string> TotalCombatCards = new();
+    public List<string> Pixiecards = new();
+    public List<string> Baldwincards = new();
+    public List<string> Barleycards = new();
+    public List<string> NPixiecards = new();
+    public List<string> CPixiecards = new();
+    public List<string> NBaldwincards = new();
+    public List<string> CBaldwincards = new();
+    public List<string> NBarleycards = new();
+    public List<string> CBarleycards = new();
     public GameObject maxcardsbutton;
     public GameObject deckCard;
     public GameObject negotiationPosition;
@@ -30,22 +30,17 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
     public RawImage barleysignature;
     public RawImage baldwinsignature;
     
-    // Start is called before the first frame update
     void Start()
     {
         Object.DontDestroyOnLoad(this);
     }
-    public void nextScene(int sceneID)
+
+    public void NextScene(int sceneID)
     {
         SceneManager.LoadScene(sceneID);
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-    public void removeCard(string cardname, string deckname)
+    public void RemoveCard(string cardname, string deckname)
     {
         GameObject[] gos = GameObject.FindGameObjectsWithTag("cardlist");
         foreach (GameObject go in gos)
@@ -75,14 +70,14 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
             for (int i = 0; CPixiecards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = CPixiecards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = CPixiecards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * i, 0);
             }
 
             for (int i = 0; NPixiecards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NPixiecards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = NPixiecards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * i, 0);
             }
             pixiesignature.gameObject.SetActive(false);
@@ -101,14 +96,14 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
             for (int i = 0; CBarleycards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = CBarleycards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = CBarleycards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * i, 0);
             }
 
             for (int i = 0; NBarleycards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NBarleycards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = NBarleycards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * i, 0);
             }
             barleysignature.gameObject.SetActive(false);
@@ -127,38 +122,38 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
             for (int i = 0; CBaldwincards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = CBaldwincards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = CBaldwincards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * i, 0);
             }
 
             for (int i = 0; NBaldwincards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = NBaldwincards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = NBaldwincards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * i, 0);
             }
             baldwinsignature.gameObject.SetActive(false);
         }
-        //cards.Clear();
+        //Cards.Clear();
         
         
-        /*for (int i = 0; cards.Count-1 >= i; i++)
+        /*for (int i = 0; Cards.Count-1 >= i; i++)
         {
             GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
-            newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cards.ToArray()[i];
+            newCard.gameObject.GetComponentInChildren<TMP_Text>().text = Cards.ToArray()[i];
             newCard.transform.position = newCard.transform.position + new Vector3(0, 75 * i, 0);
         }*/
         maxcardsbutton.SetActive(false);
     }
 
-    void maxcards()
+    void MaxCards()
     {
         if (NPixiecards.Count >= 1 && CPixiecards.Count >= 1)
         {
             maxcardsbutton.SetActive(true);
         }
     }
-    public void negotiationcardSelected(string cardname, string deckname)
+    public void NegotiationCardSelected(string cardname, string deckname)
     {
         TotalNegotiationCards.Add(cardname);
         if (deckname == "Pixie")
@@ -166,7 +161,7 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
             if (Pixiecards.Count < 10)
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.GetComponentInChildren<TMP_Text>().text = cardname;
                 newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * NPixiecards.Count, 0);
                 Pixiecards.Add(cardname);
                 NPixiecards.Add(cardname);
@@ -182,7 +177,7 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
             if (Baldwincards.Count < 10)
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.GetComponentInChildren<TMP_Text>().text = cardname;
                 newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * NBaldwincards.Count, 0);
                 Baldwincards.Add(cardname);
                 NBaldwincards.Add(cardname);
@@ -198,7 +193,7 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
             if (Barleycards.Count < 10)
             {
                 GameObject newCard = Instantiate(deckCard, negotiationPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.GetComponentInChildren<TMP_Text>().text = cardname;
                 newCard.transform.position = newCard.transform.position + new Vector3(0, spacing * NBarleycards.Count, 0);
                 Barleycards.Add(cardname);
                 NBarleycards.Add(cardname);
@@ -211,10 +206,10 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
         }
         if (Pixiecards.Count >= 10 && Barleycards.Count >= 10 && Baldwincards.Count >= 10)
         {
-            maxcards();
+            MaxCards();
         }
     }
-    public void combatcardSelected(string cardname, string deckname)
+    public void CombatCardSelected(string cardname, string deckname)
     {
         TotalCombatCards.Add(cardname);
         if (deckname == "Pixie")
@@ -222,7 +217,7 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
             if (Pixiecards.Count < 10)
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.GetComponentInChildren<TMP_Text>().text = cardname;
                 newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * CPixiecards.Count, 0);
                 Pixiecards.Add(cardname);
                 CPixiecards.Add(cardname);
@@ -238,7 +233,7 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
             if (Barleycards.Count < 10)
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.GetComponentInChildren<TMP_Text>().text = cardname;
                 newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * CBarleycards.Count, 0);
                 Barleycards.Add(cardname);
                 CBarleycards.Add(cardname);
@@ -254,7 +249,7 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
             if (Baldwincards.Count < 10)
             {
                 GameObject newCard = Instantiate(deckCard, combatPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = cardname;
+                newCard.GetComponentInChildren<TMP_Text>().text = cardname;
                 newCard.transform.position = newCard.transform.position - new Vector3(0, spacing * CBaldwincards.Count, 0);
                 Baldwincards.Add(cardname);
                 CBaldwincards.Add(cardname);
@@ -267,11 +262,11 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
         }
         if (Pixiecards.Count >= 10 && Barleycards.Count >= 10 && Baldwincards.Count >= 10)
         {
-            maxcards();
+            MaxCards();
         }
     }
 
-    public void checksignatures(string character)
+    public void CheckSignatures(string character)
     {
         if (character == "Pixie")
         {

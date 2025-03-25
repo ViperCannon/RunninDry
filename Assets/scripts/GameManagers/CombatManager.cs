@@ -232,7 +232,7 @@ public class CombatManager : MonoBehaviour
 
         UpdateCaps(capsRefreshLimit - currentCaps);
 
-        // Handle player actions (drawing cards, playing cards, etc.)
+        // Handle player actions (drawing Cards, playing Cards, etc.)
         handManager.AttemptDraw(6);
 
         while (!hasEndedTurn && !IsCombatOver())

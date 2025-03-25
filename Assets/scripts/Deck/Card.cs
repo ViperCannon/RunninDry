@@ -16,7 +16,7 @@ namespace SpeakeasyStreet
 
         public List<ICardEffect> GetCardEffects()
         {
-            List<ICardEffect> effects = new List<ICardEffect>();
+            List<ICardEffect> effects = new();
             foreach (var effect in cardEffects)
             {
                 if (effect is ICardEffect cardEffect)
@@ -29,7 +29,7 @@ namespace SpeakeasyStreet
 
         public List<IEnemyEffect> GetEnemyEffects()
         {
-            List<IEnemyEffect> effects = new List<IEnemyEffect>();
+            List<IEnemyEffect> effects = new();
             foreach (var effect in cardEffects)
             {
                 if (effect is IEnemyEffect cardEffect)

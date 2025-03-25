@@ -5,7 +5,7 @@ public class GenericDrawEffect : ScriptableObject, ICardEffect
 {
     public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target)
     {
-        if (cardInstance.cardData.subTypes.Contains(CombatCard.CombatSubType.Unload)) //unload (X-cost) cards
+        if (cardInstance.cardData.subTypes.Contains(CombatCard.CombatSubType.Unload)) //unload (X-cost) Cards
         {
             CombatManager.Instance.handManager.AttemptDraw(cardInstance.unload);
         }

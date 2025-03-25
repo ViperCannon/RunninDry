@@ -52,7 +52,7 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
             }
             ChangeCardList(selectionManager.currentDeck);
             Debug.Log("Clicked: " + eventData.pointerCurrentRaycast.gameObject.name);
-            selectionManager.checksignatures(this.gameObject.name);
+            selectionManager.CheckSignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "Baldwin")
         {
@@ -70,7 +70,7 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
                 GameObject.Find("filters").transform.Find("BCombat").gameObject.SetActive(false);
             }
             ChangeCardList(selectionManager.currentDeck);
-            selectionManager.checksignatures(this.gameObject.name);
+            selectionManager.CheckSignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "Barley")
         {
@@ -88,58 +88,58 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
                 GameObject.Find("filters").transform.Find("BCombat").gameObject.SetActive(true);
             }
             ChangeCardList(selectionManager.currentDeck);
-            selectionManager.checksignatures(this.gameObject.name);
+            selectionManager.CheckSignatures(this.gameObject.name);
         }
-        else if (this.gameObject.tag == "cardlist")
+        else if (this.gameObject.CompareTag("cardlist"))
         {
-            selectionManager.removeCard(this.gameObject.GetComponentInChildren<TMP_Text>().text, selectionManager.currentDeck);
+            selectionManager.RemoveCard(this.gameObject.GetComponentInChildren<TMP_Text>().text, selectionManager.currentDeck);
         }
 
-        if (this.gameObject.tag == "negotiation")
+        if (this.gameObject.CompareTag("negotiation"))
         {
-            selectionManager.negotiationcardSelected(this.gameObject.name, selectionManager.currentDeck);
+            selectionManager.NegotiationCardSelected(this.gameObject.name, selectionManager.currentDeck);
             Debug.Log(this.gameObject.name + " " + selectionManager.currentDeck);
         }
-        else if (this.gameObject.tag == "combat")
+        else if (this.gameObject.CompareTag("combat"))
         {
-            selectionManager.combatcardSelected(this.gameObject.name, selectionManager.currentDeck);
+            selectionManager.CombatCardSelected(this.gameObject.name, selectionManager.currentDeck);
         }
 
         if (this.gameObject.name == "PNegotiation")
         {
             pixieCards.transform.Find("Negotiation").gameObject.SetActive(true);
             pixieCards.transform.Find("Combat").gameObject.SetActive(false);
-            selectionManager.checksignatures(this.gameObject.name);
+            selectionManager.CheckSignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "PCombat")
         {
             pixieCards.transform.Find("Combat").gameObject.SetActive(true);
             pixieCards.transform.Find("Negotiation").gameObject.SetActive(false);
-            selectionManager.checksignatures(this.gameObject.name);
+            selectionManager.CheckSignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "BDCombat")
         {
             baldwinCards.transform.Find("Combat").gameObject.SetActive(true);
             baldwinCards.transform.Find("Negotiation").gameObject.SetActive(false);
-            selectionManager.checksignatures(this.gameObject.name);
+            selectionManager.CheckSignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "BDNegotiation")
         {
             baldwinCards.transform.Find("Negotiation").gameObject.SetActive(true);
             baldwinCards.transform.Find("Combat").gameObject.SetActive(false);
-            selectionManager.checksignatures(this.gameObject.name);
+            selectionManager.CheckSignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "BCombat")
         {
             barleyCards.transform.Find("Combat").gameObject.SetActive(true);
             barleyCards.transform.Find("Negotiation").gameObject.SetActive(false);
-            selectionManager.checksignatures(this.gameObject.name);
+            selectionManager.CheckSignatures(this.gameObject.name);
         }
         else if (this.gameObject.name == "BNegotiation")
         {
             barleyCards.transform.Find("Negotiation").gameObject.SetActive(true);
             barleyCards.transform.Find("Combat").gameObject.SetActive(false);
-            selectionManager.checksignatures(this.gameObject.name);
+            selectionManager.CheckSignatures(this.gameObject.name);
         }
     }
 
@@ -155,14 +155,14 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
             for (int i = 0; selectionManager.CPixiecards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(selectionManager.deckCard, selectionManager.combatPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = selectionManager.CPixiecards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = selectionManager.CPixiecards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * i, 0);
             }
 
             for (int i = 0; selectionManager.NPixiecards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(selectionManager.deckCard, selectionManager.negotiationPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = selectionManager.NPixiecards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = selectionManager.NPixiecards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * i, 0);
             }
         }
@@ -171,14 +171,14 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
             for (int i = 0; selectionManager.CBaldwincards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(selectionManager.deckCard, selectionManager.combatPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = selectionManager.CBaldwincards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = selectionManager.CBaldwincards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * i, 0);
             }
 
             for (int i = 0; selectionManager.NBaldwincards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(selectionManager.deckCard, selectionManager.negotiationPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = selectionManager.NBaldwincards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = selectionManager.NBaldwincards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * i, 0);
             }
         }
@@ -187,14 +187,14 @@ public class DeckBuilder : MonoBehaviour, IPointerDownHandler
             for (int i = 0; selectionManager.CBarleycards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(selectionManager.deckCard, selectionManager.combatPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = selectionManager.CBarleycards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = selectionManager.CBarleycards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position - new Vector3(0, 50 * i, 0);
             }
 
             for (int i = 0; selectionManager.NBarleycards.Count - 1 >= i; i++)
             {
                 GameObject newCard = Instantiate(selectionManager.deckCard, selectionManager.negotiationPosition.transform);
-                newCard.gameObject.GetComponentInChildren<TMP_Text>().text = selectionManager.NBarleycards.ToArray()[i];
+                newCard.GetComponentInChildren<TMP_Text>().text = selectionManager.NBarleycards.ToArray()[i];
                 newCard.transform.position = newCard.transform.position + new Vector3(0, 50 * i, 0);
             }
         }

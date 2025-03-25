@@ -8,7 +8,7 @@ public class NegotiationCardDisplay : CardDisplay
 
     public Image[] type;
 
-    public int cost; //mainly for bribery cards
+    public int cost; //mainly for bribery Cards
 
     public void UpdateCardDisplay()
     {

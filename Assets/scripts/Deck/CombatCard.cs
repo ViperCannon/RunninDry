@@ -30,7 +30,7 @@ public class CombatCard : Card
         Buff,
         Debuff,
         Heal,
-        Unload, //X cost cards that use up the remaining of the player's CAPs
+        Unload, //X cost Cards that use up the remaining of the player's CAPs
         Draw
     }
 
@@ -43,7 +43,7 @@ public class CombatCard : Card
         AllEnemies,
         AllPlayers,
         AllCharacters,
-        Generic //card doesnt target an enemy or character. Typically deck/hand manipulation cards
+        Generic //card doesnt target an enemy or character. Typically deck/hand manipulation Cards
     }
 
     public bool IsAOE()
