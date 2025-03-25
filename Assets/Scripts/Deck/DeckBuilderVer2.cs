@@ -12,10 +12,14 @@ public class DeckBuilderVer2 : MonoBehaviour
     public List<DeckBuilderTab> Tabs { get; private set; }
     public DeckBuilderCharacter SelectedCharacter { get; private set; }
 
-    // Start is called before the first frame update
     void Start()
     {
-        Object.DontDestroyOnLoad(this);
+        //Initialize Singleton Instance
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else Debug.Log("There are multiple instances of the DeckBuilderVer2 script in this scene!");
 
         //Initialize Tab List and Selected Character
         Tabs = new List<DeckBuilderTab>();
@@ -29,12 +33,6 @@ public class DeckBuilderVer2 : MonoBehaviour
 
     public void SetSelectedCharacter(DeckBuilderCharacter newCharacter)
     {
-        if (newCharacter == null)
-        {
-            Debug.Log("The character file given is null!");
-            return;
-        }
-
         if (newCharacter == SelectedCharacter)
         {
             Debug.Log("The character file given is the same as the current selected character!");

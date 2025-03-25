@@ -15,6 +15,13 @@ public class DeckBuilderReciept : MonoBehaviour
 
     void Start()
     {
+        //Initialize Singleton Instance
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else Debug.Log("There are multiple instances of the DeckBuilderReciept script in this scene!");
+
         // Initialize Text Fields
         GameObject cardListParent = GameObject.Find("CardList");
         foreach (Transform childTransform in cardListParent.transform)
@@ -44,6 +51,12 @@ public class DeckBuilderReciept : MonoBehaviour
 
     public void SetCharacter(DeckBuilderCharacter newCharacter)
     {
+        if (newCharacter == null)
+        {
+            Debug.Log("Cannot set to newCharacter because newCharacter is NULL!");
+            return;
+        }
+        
         // Set Card Names
         for (int i = 0; i < CardList.Count; i++)
         {

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class DeckBuilderTab : MonoBehaviour
 {
-
     Image buttonVisual;
 
     public DeckBuilderCharacter Character;
@@ -27,7 +26,8 @@ public class DeckBuilderTab : MonoBehaviour
         DeselectOtherTabs();
 
         // Change the Active Card List
-        DeckBuilderVer2.Instance.SetSelectedCharacter(Character);
+        if (DeckBuilderVer2.Instance != null) DeckBuilderVer2.Instance.SetSelectedCharacter(Character);
+        else Debug.Log("The DeckBuilder instance is null! Is there one in the scene?");
     }
 
     void DeselectOtherTabs()
