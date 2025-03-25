@@ -149,19 +149,19 @@ public class DeckBuilderCharacter : ScriptableObject
     {
         if (SumTotalCards() != 10)
         {
-            Debug.Log("There should be exactly 10 total cards in the deck! There are currently " + SumTotalCards());
+            Debug.Log(CharacterName + " should have exactly 10 total cards selected! There are currently " + SumTotalCards() + " selected.");
             return false;
         }
 
         if (SumNegotiationCards() < 2)
         {
-            Debug.Log("There should be at least two Negotiation cards in the deck! There are currently " + SumNegotiationCards());
+            Debug.Log(CharacterName + " should have at least 2 Negotiation cards selected! There are currently " + SumNegotiationCards() + " selected.");
             return false;
         }
 
         if (SumCombatCards() < 2)
         {
-            Debug.Log("There should be at least two Combat cards in the deck! There are currently " + SumCombatCards());
+            Debug.Log(CharacterName + " should have exactly 2 Combat cards selected! There are currently " + SumCombatCards() + " selected.");
             return false;
         }
 

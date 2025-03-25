@@ -27,7 +27,7 @@ public class DeckBuilderTab : MonoBehaviour
 
         // Change the active character to this tabs assigned character.
         if (DeckBuilderVer2.Instance != null) DeckBuilderVer2.Instance.SetSelectedCharacter(Character);
-        else Debug.Log("The DeckBuilder instance is NULL! Is there one in the scene?");
+        else Debug.LogWarning("The DeckBuilder instance is NULL! Is there one in the scene?");
     }
 
     void DeselectOtherTabs()

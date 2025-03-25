@@ -12,6 +12,9 @@ public class DeckBuilderVer2 : MonoBehaviour
     public static DeckBuilderVer2 Instance { get; private set; }
     public DeckBuilderCharacter SelectedCharacter { get; private set; }
 
+    // Character Tabs
+    public DeckBuilderTab[] Tabs { get; private set; }
+
     // Card Display Objects
     GameObject CardDisplayParent;
 
@@ -19,6 +22,7 @@ public class DeckBuilderVer2 : MonoBehaviour
     public List<TextMeshProUGUI> ReceiptCardList;
     public List<TextMeshProUGUI> ReceiptCardQuantities;
     Image signature;
+    GameObject ContinueButton;
 
     void Awake()
     {
@@ -29,9 +33,12 @@ public class DeckBuilderVer2 : MonoBehaviour
         }
         else
         {
-            Debug.Log("There are multiple instances of the DeckBuilderVer2 script in this scene! Removing the second.");
+            Debug.LogWarning("There are multiple instances of the DeckBuilderVer2 script in this scene! Removing the second.");
             Destroy(this);
         }
+
+        //Initialize Character Tabs List
+        Tabs = GameObject.FindObjectsOfType<DeckBuilderTab>();
 
         // Initialize Card Display Parent
         CardDisplayParent = GameObject.Find("CardDisplayPanel");
@@ -49,17 +56,16 @@ public class DeckBuilderVer2 : MonoBehaviour
             ReceiptCardQuantities.Add(childTransform.GetComponent<TextMeshProUGUI>());
         }
 
+        signature = GameObject.Find("Signature").GetComponent<Image>();
+        ContinueButton = GameObject.Find("ContinueButton");
+
         // Set all displays and text fields to EMPTY by default until they're populated.
         ClearCardDisplay();
         ClearReceiptFields();
-
-        signature = GameObject.Find("Signature").GetComponent<Image>();
     }
 
     void Start()
     {
-        signature.gameObject.SetActive(false);
-
         // Select the leftmost character tab.
         GameObject.Find("tab0Button").GetComponent<DeckBuilderTab>().SelectTab();
     }
@@ -92,7 +98,7 @@ public class DeckBuilderVer2 : MonoBehaviour
         // Check if Selected Character has a Selected Card List
         if (SelectedCharacter.SelectedCardsEntries == null)
         {
-            Debug.Log(SelectedCharacter.CharacterName + "'s selected card list is NULL! Initialize it!");
+            Debug.LogWarning(SelectedCharacter.CharacterName + "'s selected card list is NULL! Initialize it!");
             return;
         }
 
@@ -124,7 +130,8 @@ public class DeckBuilderVer2 : MonoBehaviour
             else ReceiptCardQuantities[i].text = SelectedCharacter.SelectedCardsEntries[i].quantity.ToString();
         }
 
-        CheckForSignature();
+        ToggleSignature();
+        ToggleContinueButton();
     }
 
     void ClearReceiptFields()
@@ -137,13 +144,17 @@ public class DeckBuilderVer2 : MonoBehaviour
         {
             tmp.text = "";
         }
+
+        ToggleSignature();
+        ToggleContinueButton();
     }
 
-    public void CheckForSignature()
+    public void ToggleSignature()
     {
-        if (SelectedCharacter != null)
+        if (SelectedCharacter == null)
         {
-            Debug.Log("There is currently no character loaded into the DeckBuilder!");
+            Debug.Log("There is currently no character loaded into the DeckBuilder! Hiding the signature graphic.");
+            signature.gameObject.SetActive(false);
             return;
         }
 
@@ -157,6 +168,19 @@ public class DeckBuilderVer2 : MonoBehaviour
             Debug.Log(SelectedCharacter.CharacterName + "'s selected card list does not fit the continue criteria! Hiding the signature graphic.");
             signature.gameObject.SetActive(false);
         }
+    }
+
+    public void ToggleContinueButton()
+    {
+        foreach(DeckBuilderTab tab in Tabs)
+        {
+            if (!tab.Character.IsSelectedCardListValid()) {
+                Debug.Log("At least one character's selected card list does not fit the continue criteria! Hiding the Continue button.");
+                ContinueButton.SetActive(false);
+                return;
+            }
+        }
+        ContinueButton.SetActive(true);
     }
 
     public void NextScene(int sceneID)
