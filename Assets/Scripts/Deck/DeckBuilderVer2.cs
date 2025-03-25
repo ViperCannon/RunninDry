@@ -10,8 +10,6 @@ using UnityEngine.UI;
 public class DeckBuilderVer2 : MonoBehaviour
 {
     public static DeckBuilderVer2 Instance { get; private set; }
-
-    public List<DeckBuilderTab> Tabs { get; private set; }
     public DeckBuilderCharacter SelectedCharacter { get; private set; }
 
     public List<TextMeshProUGUI> ReceiptCardList;
@@ -26,11 +24,11 @@ public class DeckBuilderVer2 : MonoBehaviour
         {
             Instance = this;
         }
-        else Debug.Log("There are multiple instances of the DeckBuilderVer2 script in this scene!");
-
-        //Initialize Tab List and Selected Character
-        Tabs = new List<DeckBuilderTab>();
-        foreach (DeckBuilderTab tab in Object.FindObjectsOfType<DeckBuilderTab>()) Tabs.Add(tab);
+        else
+        {
+            Debug.Log("There are multiple instances of the DeckBuilderVer2 script in this scene! Removing the second.");
+            Destroy(this);
+        }
 
         // Initialize Text Fields
         GameObject cardListParent = GameObject.Find("CardList");
@@ -53,7 +51,10 @@ public class DeckBuilderVer2 : MonoBehaviour
 
     void Start()
     {
-        Tabs.Last().SelectTab();
+        signature.gameObject.SetActive(false);
+
+        // Select the leftmost character tab.
+        GameObject.Find("tab0Button").GetComponent<DeckBuilderTab>().SelectTab();
     }
 
     public void SetSelectedCharacter(DeckBuilderCharacter newCharacter)
@@ -76,14 +77,14 @@ public class DeckBuilderVer2 : MonoBehaviour
         // Check if Selected Character has a Selected Card List
         if (SelectedCharacter.SelectedCardsEntries == null)
         {
-            Debug.Log("This Character's selected card list is NULL! Initialize it!");
+            Debug.Log(SelectedCharacter.CharacterName + "'s selected card list is NULL! Initialize it!");
             return;
         }
 
         //Check if the Selected Character's Selected Card List has any entries.
         if (SelectedCharacter.SelectedCardsEntries.Count <= 0)
         {
-            Debug.Log("This Character's selected card list is EMPTY. This is fine, and no further action needs to be taken.");
+            Debug.Log(SelectedCharacter.CharacterName + "'s selected card list is EMPTY. This is fine, and no further action needs to be taken.");
             ClearReceiptFields();
             return;
         }
@@ -107,6 +108,8 @@ public class DeckBuilderVer2 : MonoBehaviour
             }
             else ReceiptCardQuantities[i].text = SelectedCharacter.SelectedCardsEntries[i].quantity.ToString();
         }
+
+        CheckForSignature();
     }
 
     void ClearReceiptFields()
@@ -131,11 +134,13 @@ public class DeckBuilderVer2 : MonoBehaviour
 
         if (SelectedCharacter.IsSelectedCardListValid())
         {
+            Debug.Log(SelectedCharacter.CharacterName + "'s selected card list fits the continue criteria! Revealing the signature graphic.");
             signature.gameObject.SetActive(true);
         }
         else
         {
-            signature.gameObject.SetActive(true);
+            Debug.Log(SelectedCharacter.CharacterName + "'s selected card list does not fit the continue criteria! Hiding the signature graphic.");
+            signature.gameObject.SetActive(false);
         }
     }
 
