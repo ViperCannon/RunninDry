@@ -33,7 +33,7 @@ public class DeckBuilderCharacter : ScriptableObject
     [SerializeField] List<CombatCard> combatCards;
 
     //The list of all Cards selected by this character; stores their name, the card's data, and quantity selected.
-    public List<SelectedCard> SelectedCardsEntries { get; private set; }
+    public List<SelectedCard> SelectedCardsEntries { get; private set; } = new List<SelectedCard>();
 
     // Adds a card to the list of Selected Cards.
     public void SelectCard (NegotiationCard c)
@@ -70,13 +70,11 @@ public class DeckBuilderCharacter : ScriptableObject
             if (card.cardName == c.cardName)
             {
                 card.quantity += 1;
-                DeckBuilderReciept.Instance.UpdateReciept();
                 return;
             }
         }
 
         SelectedCardsEntries.Add(new SelectedCard(c, 1));
-        DeckBuilderReciept.Instance.UpdateReciept();
     }
 
     // Removes a card from the list of Selected Cards.
@@ -97,7 +95,6 @@ public class DeckBuilderCharacter : ScriptableObject
                 if (card.quantity < 1)
                 {
                     SelectedCardsEntries.Remove(card);
-                    DeckBuilderReciept.Instance.UpdateReciept();
                     return;
                 }
                 

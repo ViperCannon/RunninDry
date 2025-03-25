@@ -11,7 +11,7 @@ public class DeckBuilderTab : MonoBehaviour
     public DeckBuilderCharacter Character;
     TextMeshProUGUI tabLabel;
 
-    void Start()
+    void Awake()
     {
         buttonVisual = GetComponent<Image>();
 
@@ -21,13 +21,13 @@ public class DeckBuilderTab : MonoBehaviour
 
     public void SelectTab()
     {
-        // Visual Updates
+        // Visual Updates; Brightens this tab and darkens all others.
         ChangeButtonColor(Color.white);
         DeselectOtherTabs();
 
-        // Change the Active Card List
+        // Change the active character to this tabs assigned character.
         if (DeckBuilderVer2.Instance != null) DeckBuilderVer2.Instance.SetSelectedCharacter(Character);
-        else Debug.Log("The DeckBuilder instance is null! Is there one in the scene?");
+        else Debug.Log("The DeckBuilder instance is NULL! Is there one in the scene?");
     }
 
     void DeselectOtherTabs()

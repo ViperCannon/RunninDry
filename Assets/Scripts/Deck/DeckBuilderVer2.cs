@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,7 +13,12 @@ public class DeckBuilderVer2 : MonoBehaviour
     public List<DeckBuilderTab> Tabs { get; private set; }
     public DeckBuilderCharacter SelectedCharacter { get; private set; }
 
-    void Start()
+    public List<TextMeshProUGUI> ReceiptCardList;
+    public List<TextMeshProUGUI> ReceiptCardQuantities;
+
+    Image signature;
+
+    void Awake()
     {
         //Initialize Singleton Instance
         if (Instance == null)
@@ -23,12 +29,31 @@ public class DeckBuilderVer2 : MonoBehaviour
 
         //Initialize Tab List and Selected Character
         Tabs = new List<DeckBuilderTab>();
-        foreach (DeckBuilderTab tab in Object.FindObjectsOfType<DeckBuilderTab>())
+        foreach (DeckBuilderTab tab in Object.FindObjectsOfType<DeckBuilderTab>()) Tabs.Add(tab);
+
+        // Initialize Text Fields
+        GameObject cardListParent = GameObject.Find("CardList");
+        foreach (Transform childTransform in cardListParent.transform)
         {
-            Tabs.Add(tab);
+            ReceiptCardList.Add(childTransform.GetComponent<TextMeshProUGUI>());
         }
 
-        SetSelectedCharacter(Tabs.Last().Character);
+        GameObject cardQuantitiesParent = GameObject.Find("CardQuantities");
+        foreach (Transform childTransform in cardQuantitiesParent.transform)
+        {
+            ReceiptCardQuantities.Add(childTransform.GetComponent<TextMeshProUGUI>());
+        }
+
+        // Set all text fields to default to start
+        foreach (TextMeshProUGUI tmp in ReceiptCardList) tmp.text = "";
+        foreach (TextMeshProUGUI tmp in ReceiptCardQuantities) tmp.text = "";
+
+        signature = GameObject.Find("Signature").GetComponent<Image>();
+    }
+
+    void Start()
+    {
+        Tabs.Last().SelectTab();
     }
 
     public void SetSelectedCharacter(DeckBuilderCharacter newCharacter)
@@ -40,7 +65,40 @@ public class DeckBuilderVer2 : MonoBehaviour
         }
 
         SelectedCharacter = newCharacter;
-        DeckBuilderReciept.Instance.SetCharacter(SelectedCharacter);
+        UpdateReceiptEntries();
+
+        // Set Character Signature in Receipt
+        signature.sprite = SelectedCharacter.CharacterSignature;
+    }
+
+    public void UpdateReceiptEntries()
+    {
+        // Check if Selected Character has card entries
+        if (SelectedCharacter.SelectedCardsEntries == null)
+        {
+            Debug.Log("This Character's selected card list is NULL! Initialize it!");
+            return;
+        }
+
+        // Set Card Names
+        for (int i = 0; i < ReceiptCardList.Count; i++)
+        {
+            if (SelectedCharacter.SelectedCardsEntries[i] == null)
+            {
+                ReceiptCardList[i].text = "";
+            }
+            else ReceiptCardList[i].text = SelectedCharacter.SelectedCardsEntries[i].cardName;
+        }
+
+        // Set Card Quantities
+        for (int i = 0; i < ReceiptCardQuantities.Count; i++)
+        {
+            if (SelectedCharacter.SelectedCardsEntries[i] == null)
+            {
+                ReceiptCardList[i].text = "";
+            }
+            else ReceiptCardQuantities[i].text = SelectedCharacter.SelectedCardsEntries[i].quantity.ToString();
+        }
     }
 
     public void CheckForSignature()
@@ -53,11 +111,11 @@ public class DeckBuilderVer2 : MonoBehaviour
 
         if (SelectedCharacter.IsSelectedCardListValid())
         {
-            // Display Character Signature
+            signature.gameObject.SetActive(true);
         }
         else
         {
-            // Hide Character Signature
+            signature.gameObject.SetActive(true);
         }
     }
 
