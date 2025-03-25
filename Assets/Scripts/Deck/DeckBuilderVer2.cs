@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -44,9 +45,8 @@ public class DeckBuilderVer2 : MonoBehaviour
             ReceiptCardQuantities.Add(childTransform.GetComponent<TextMeshProUGUI>());
         }
 
-        // Set all text fields to default to start
-        foreach (TextMeshProUGUI tmp in ReceiptCardList) tmp.text = "";
-        foreach (TextMeshProUGUI tmp in ReceiptCardQuantities) tmp.text = "";
+        // Set all text fields to EMPTY by default until they're populated.
+        ClearReceiptFields();
 
         signature = GameObject.Find("Signature").GetComponent<Image>();
     }
@@ -65,18 +65,26 @@ public class DeckBuilderVer2 : MonoBehaviour
         }
 
         SelectedCharacter = newCharacter;
-        UpdateReceiptEntries();
+        UpdateReceiptFields();
 
         // Set Character Signature in Receipt
         signature.sprite = SelectedCharacter.CharacterSignature;
     }
 
-    public void UpdateReceiptEntries()
+    public void UpdateReceiptFields()
     {
-        // Check if Selected Character has card entries
+        // Check if Selected Character has a Selected Card List
         if (SelectedCharacter.SelectedCardsEntries == null)
         {
             Debug.Log("This Character's selected card list is NULL! Initialize it!");
+            return;
+        }
+
+        //Check if the Selected Character's Selected Card List has any entries.
+        if (SelectedCharacter.SelectedCardsEntries.Count <= 0)
+        {
+            Debug.Log("This Character's selected card list is EMPTY. This is fine, and no further action needs to be taken.");
+            ClearReceiptFields();
             return;
         }
 
@@ -98,6 +106,18 @@ public class DeckBuilderVer2 : MonoBehaviour
                 ReceiptCardList[i].text = "";
             }
             else ReceiptCardQuantities[i].text = SelectedCharacter.SelectedCardsEntries[i].quantity.ToString();
+        }
+    }
+
+    void ClearReceiptFields()
+    {
+        foreach (TextMeshProUGUI tmp in ReceiptCardList)
+        {
+            tmp.text = "";
+        }
+        foreach (TextMeshProUGUI tmp in ReceiptCardQuantities)
+        {
+            tmp.text = "";
         }
     }
 
