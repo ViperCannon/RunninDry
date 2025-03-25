@@ -25,6 +25,8 @@ public class DeckBuilderCharacter : ScriptableObject
     [Tooltip("The name of the character represented by this object.")]
     public string CharacterName;
 
+    public Sprite CharacterSignature;
+
     [Tooltip("The list of negotiation cards tied to this character.")]
     [SerializeField] List<NegotiationCard> negotiationCards;
     [Tooltip("The list of combat cards tied to this character.")]
@@ -68,11 +70,13 @@ public class DeckBuilderCharacter : ScriptableObject
             if (card.cardName == c.cardName)
             {
                 card.quantity += 1;
+                DeckBuilderReciept.Instance.UpdateReciept();
                 return;
             }
         }
 
         SelectedCardsEntries.Add(new SelectedCard(c, 1));
+        DeckBuilderReciept.Instance.UpdateReciept();
     }
 
     // Removes a card from the list of Selected Cards.
@@ -93,6 +97,8 @@ public class DeckBuilderCharacter : ScriptableObject
                 if (card.quantity < 1)
                 {
                     SelectedCardsEntries.Remove(card);
+                    DeckBuilderReciept.Instance.UpdateReciept();
+                    return;
                 }
                 
                 return;

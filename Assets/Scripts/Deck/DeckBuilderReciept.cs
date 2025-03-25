@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DeckBuilderReciept : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class DeckBuilderReciept : MonoBehaviour
 
     public List<TextMeshProUGUI> CardList;
     public List<TextMeshProUGUI> CardQuantities;
+
+    Image signature;
 
     void Start()
     {
@@ -35,6 +38,8 @@ public class DeckBuilderReciept : MonoBehaviour
         {
             tmp.text = "";
         }
+
+        signature = GameObject.Find("Signature").GetComponent<Image>();
     }
 
     public void SetCharacter(DeckBuilderCharacter newCharacter)
@@ -57,6 +62,31 @@ public class DeckBuilderReciept : MonoBehaviour
                 CardList[i].text = "";
             }
             else CardQuantities[i].text = newCharacter.SelectedCardsEntries[i].quantity.ToString();
+        }
+
+        signature.sprite = newCharacter.CharacterSignature;
+    }
+
+    public void UpdateReciept()
+    {
+        // Set Card Names
+        for (int i = 0; i < CardList.Count; i++)
+        {
+            if (DeckBuilderVer2.Instance.SelectedCharacter.SelectedCardsEntries[i] == null)
+            {
+                CardList[i].text = "";
+            }
+            else CardList[i].text = DeckBuilderVer2.Instance.SelectedCharacter.SelectedCardsEntries[i].cardName;
+        }
+
+        // Set Card Quantities
+        for (int i = 0; i < CardQuantities.Count; i++)
+        {
+            if (DeckBuilderVer2.Instance.SelectedCharacter.SelectedCardsEntries[i] == null)
+            {
+                CardList[i].text = "";
+            }
+            else CardQuantities[i].text = DeckBuilderVer2.Instance.SelectedCharacter.SelectedCardsEntries[i].quantity.ToString();
         }
     }
 }

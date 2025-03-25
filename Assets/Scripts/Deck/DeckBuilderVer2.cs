@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DeckBuilderVer2 : MonoBehaviour
 {
     public static DeckBuilderVer2 Instance { get; private set; }
 
     public List<DeckBuilderTab> Tabs { get; private set; }
-    DeckBuilderCharacter SelectedCharacter;
+    public DeckBuilderCharacter SelectedCharacter { get; private set; }
 
     // Start is called before the first frame update
     void Start()
     {
+        Object.DontDestroyOnLoad(this);
+
         //Initialize Tab List and Selected Character
         Tabs = new List<DeckBuilderTab>();
         foreach (DeckBuilderTab tab in Object.FindObjectsOfType<DeckBuilderTab>())
@@ -19,7 +24,7 @@ public class DeckBuilderVer2 : MonoBehaviour
             Tabs.Add(tab);
         }
 
-        SelectedCharacter = Tabs[0].Character;
+        SetSelectedCharacter(Tabs.Last().Character);
     }
 
     public void SetSelectedCharacter(DeckBuilderCharacter newCharacter)
@@ -37,7 +42,7 @@ public class DeckBuilderVer2 : MonoBehaviour
         }
 
         SelectedCharacter = newCharacter;
-        DeckBuilderReciept.Instance.SetCharacter(newCharacter);
+        DeckBuilderReciept.Instance.SetCharacter(SelectedCharacter);
     }
 
     public void CheckForSignature()
@@ -56,5 +61,10 @@ public class DeckBuilderVer2 : MonoBehaviour
         {
             // Hide Character Signature
         }
+    }
+
+    public void NextScene(int sceneID)
+    {
+        SceneManager.LoadScene(sceneID);
     }
 }
