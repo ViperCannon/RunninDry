@@ -12,9 +12,12 @@ public class DeckBuilderVer2 : MonoBehaviour
     public static DeckBuilderVer2 Instance { get; private set; }
     public DeckBuilderCharacter SelectedCharacter { get; private set; }
 
+    // Card Display Objects
+    GameObject CardDisplayParent;
+
+    // Receipt Objects
     public List<TextMeshProUGUI> ReceiptCardList;
     public List<TextMeshProUGUI> ReceiptCardQuantities;
-
     Image signature;
 
     void Awake()
@@ -30,6 +33,9 @@ public class DeckBuilderVer2 : MonoBehaviour
             Destroy(this);
         }
 
+        // Initialize Card Display Parent
+        CardDisplayParent = GameObject.Find("CardDisplayPanel");
+
         // Initialize Text Fields
         GameObject cardListParent = GameObject.Find("CardList");
         foreach (Transform childTransform in cardListParent.transform)
@@ -43,7 +49,8 @@ public class DeckBuilderVer2 : MonoBehaviour
             ReceiptCardQuantities.Add(childTransform.GetComponent<TextMeshProUGUI>());
         }
 
-        // Set all text fields to EMPTY by default until they're populated.
+        // Set all displays and text fields to EMPTY by default until they're populated.
+        ClearCardDisplay();
         ClearReceiptFields();
 
         signature = GameObject.Find("Signature").GetComponent<Image>();
@@ -70,6 +77,14 @@ public class DeckBuilderVer2 : MonoBehaviour
 
         // Set Character Signature in Receipt
         signature.sprite = SelectedCharacter.CharacterSignature;
+    }
+
+    public void ClearCardDisplay()
+    {
+        foreach (Transform childTransform in CardDisplayParent.transform)
+        {
+            Destroy(childTransform.gameObject);
+        }
     }
 
     public void UpdateReceiptFields()
