@@ -7,17 +7,56 @@ public class DeckBuilderReciept : MonoBehaviour
 {
     public static DeckBuilderReciept Instance { get; private set; }
 
-    List<TextMeshProUGUI> CardList;
-    List<TextMeshProUGUI> CardQuantities;
+    public List<TextMeshProUGUI> CardList;
+    public List<TextMeshProUGUI> CardQuantities;
 
     void Start()
     {
-        CardList = new List<TextMeshProUGUI>(); //TEMP JUST SO I CAN PUSH WITH NO COMPILATION ERRORS AND GO EAT DINNER
-        CardQuantities = new List<TextMeshProUGUI>(); //TEMP JUST SO I CAN PUSH WITH NO COMPILATION ERRORS AND GO EAT DINNER
+        // Initialize Text Fields
+        GameObject cardListParent = GameObject.Find("CardList");
+        foreach (Transform childTransform in cardListParent.transform)
+        {
+            CardList.Add(childTransform.GetComponent<TextMeshProUGUI>());
+        }
+
+        GameObject cardQuantitiesParent = GameObject.Find("CardQuantities");
+        foreach (Transform childTransform in cardQuantitiesParent.transform)
+        {
+            CardQuantities.Add(childTransform.GetComponent<TextMeshProUGUI>());
+        }
+
+        // Set all text fields to default to start
+        foreach (TextMeshProUGUI tmp in CardList)
+        {
+            tmp.text = "";
+        }
+
+        foreach (TextMeshProUGUI tmp in CardQuantities)
+        {
+            tmp.text = "";
+        }
     }
 
-    void Update()
+    public void SetCharacter(DeckBuilderCharacter newCharacter)
     {
-        
+        // Set Card Names
+        for (int i = 0; i < CardList.Count; i++)
+        {
+            if (newCharacter.SelectedCardsEntries[i] == null)
+            {
+                CardList[i].text = "";
+            }
+            else CardList[i].text = newCharacter.SelectedCardsEntries[i].cardName;
+        }
+
+        // Set Card Quantities
+        for (int i = 0; i < CardQuantities.Count; i++)
+        {
+            if (newCharacter.SelectedCardsEntries[i] == null)
+            {
+                CardList[i].text = "";
+            }
+            else CardQuantities[i].text = newCharacter.SelectedCardsEntries[i].quantity.ToString();
+        }
     }
 }

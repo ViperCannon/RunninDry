@@ -9,7 +9,7 @@ public class DeckBuilderTab : MonoBehaviour
 
     Image buttonVisual;
 
-    public DeckBuilderCharacter Character { get; private set; }
+    public DeckBuilderCharacter Character;
     TextMeshProUGUI tabLabel;
 
     void Start()

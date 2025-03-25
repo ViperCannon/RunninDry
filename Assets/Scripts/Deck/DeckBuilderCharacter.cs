@@ -23,7 +23,7 @@ public class DeckBuilderCharacter : ScriptableObject
     }
 
     [Tooltip("The name of the character represented by this object.")]
-    public string CharacterName { get; private set; }
+    public string CharacterName;
 
     [Tooltip("The list of negotiation cards tied to this character.")]
     [SerializeField] List<NegotiationCard> negotiationCards;
