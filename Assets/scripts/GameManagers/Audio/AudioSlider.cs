@@ -12,7 +12,10 @@ public class AudioSlider : MonoBehaviour
 
     private void Start()
     {
-        pausemenu = GameObject.Find("Pausemenu").GetComponent<PauseMenu>();
+        if (GameObject.Find("PauseMenu") != null)
+        {
+            pausemenu = GameObject.Find("Pausemenu").GetComponent<PauseMenu>();
+        }
         if (!PlayerPrefs.HasKey("masterVolume"))
         {
             PlayerPrefs.SetFloat("masterVolume", 1);
