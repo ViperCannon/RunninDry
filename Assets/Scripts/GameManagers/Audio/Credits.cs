@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MusicSwap : MonoBehaviour
+public class Credits : MonoBehaviour
 {
     [SerializeField]
     AudioSource musicPlayer;
-
+    [SerializeField]
+    AudioClip creditsMusic;
+    AudioClip titlemusic;
     float musicTime = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         musicPlayer.time = musicTime;
+        titlemusic = musicPlayer.clip;
     }
 
 
@@ -21,20 +24,26 @@ public class MusicSwap : MonoBehaviour
     {
         /*if (Input.GetKeyDown(KeyCode.KeypadEnter))
         {
-            SwapMusic("Morning","FirstLevel_Negotiation_Updated");
+            SwapMusic("Morning", "FirstLevel_Negotiation_Updated");
         }
         if (Input.GetKeyDown(KeyCode.Keypad0))
         {
             SwapMusic("Morning", "FirstLevel_Normal_Updated");
         }*/
     }
-
-    public void SwapMusic(string file, string clipName)
+    
+    public void titleMusic()
     {
-        musicTime = musicPlayer.time;
-        musicPlayer.clip = Resources.Load<AudioClip>("Music/"+ file + "/" + clipName);
+        musicPlayer.clip = titlemusic;
         musicPlayer.time = musicTime;
         musicPlayer.Play();
     }
 
+    public void SwapMusic()
+    {
+        musicTime = musicPlayer.time;
+        musicPlayer.clip = creditsMusic;
+        //musicPlayer.time = musicTime;
+        musicPlayer.Play();
+    }
 }
