@@ -93,7 +93,6 @@ public class DeckBuilderVer2 : MonoBehaviour
 
     public void DisplayAllCards()
     {
-        // Clear the current card display before repopulation.
         ClearCardDisplay();
 
         // Populate the display cards using SelectedCharacter.negotiationCards and SelectedCharacter.combatCards.
@@ -101,18 +100,24 @@ public class DeckBuilderVer2 : MonoBehaviour
 
     public void DisplayNegotiationCards()
     {
-        // Clear the current card display before repopulation.
         ClearCardDisplay();
 
         // Populate the display cards using SelectedCharacter.negotiationCards.
+        foreach (NegotiationCard card in SelectedCharacter.negotiationCards)
+        {
+            // TODO - Figure out how to spawn a card that is clickable to add it to the card list.
+        }
     }
 
     public void DisplayCombatCards()
     {
-        // Clear the current card display before repopulation.
         ClearCardDisplay();
 
         // Populate the display cards using SelectedCharacter.combatCards.
+        foreach (CombatCard card in SelectedCharacter.combatCards)
+        {
+            // TODO - Figure out how to spawn a card that is clickable to add it to the card list.
+        }
     }
     #endregion
 

@@ -28,9 +28,9 @@ public class DeckBuilderCharacter : ScriptableObject
     public Sprite CharacterSignature;
 
     [Tooltip("The list of negotiation cards tied to this character.")]
-    [SerializeField] List<NegotiationCard> negotiationCards;
+    public List<NegotiationCard> negotiationCards;
     [Tooltip("The list of combat cards tied to this character.")]
-    [SerializeField] List<CombatCard> combatCards;
+    public List<CombatCard> combatCards;
 
     //The list of all Cards selected by this character; stores their name, the card's data, and quantity selected.
     public List<SelectedCard> SelectedCardsEntries { get; private set; } = new List<SelectedCard>();
