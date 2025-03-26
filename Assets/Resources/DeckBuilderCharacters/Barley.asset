@@ -14,5 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Barley
   CharacterSignature: {fileID: 21300000, guid: 9f03da104d365e74daeca3410b010aec, type: 3}
-  negotiationCards: []
-  combatCards: []
+  negotiationCards:
+  - {fileID: 11400000, guid: 2591c87f2ec3eda40a382de85de1e7a2, type: 2}
+  - {fileID: 11400000, guid: 8ea470974f164d74891131d0d69ae6ea, type: 2}
+  - {fileID: 11400000, guid: 8d6a805edb06ade458a5ae66fb3de42e, type: 2}
+  - {fileID: 11400000, guid: 5f31d9c93058e094c8317336348ad382, type: 2}
+  - {fileID: 11400000, guid: 57e7d638b52c04944b03fe67735edc8c, type: 2}
+  combatCards:
+  - {fileID: 11400000, guid: 1998e34980ca2c44990271766c55ef2a, type: 2}
+  - {fileID: 11400000, guid: f21f5d2ce90345f4e93f41e253c24bee, type: 2}
+  - {fileID: 11400000, guid: 8f9b31b8fe8e6d14db19abedfc092ab8, type: 2}
+  - {fileID: 11400000, guid: 9dda41ebac2136d478c63e406d78f1cd, type: 2}
+  - {fileID: 11400000, guid: 90dee785bc4a30443958ee3d475d059a, type: 2}
+  - {fileID: 11400000, guid: eb8dd2ea8efc27a4f9a73dc49d3d86fa, type: 2}
+  - {fileID: 11400000, guid: 2251b15aa15fe5d46b03330d03d8a234, type: 2}
+  - {fileID: 11400000, guid: 2cbcba4298b52374bb19f45b5d40ddc7, type: 2}

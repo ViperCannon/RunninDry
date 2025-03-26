@@ -14,5 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Baldwin
   CharacterSignature: {fileID: 21300000, guid: 183d68fe6a4cc4444a30722f868ceeb6, type: 3}
-  negotiationCards: []
-  combatCards: []
+  negotiationCards:
+  - {fileID: 11400000, guid: 3a90306e6bfff2a449243aa49f315601, type: 2}
+  - {fileID: 11400000, guid: 7fef5486cdf4d124ca14a8c34200cb70, type: 2}
+  - {fileID: 11400000, guid: b1e8e7552fff8e8468b439b90e9c1fb9, type: 2}
+  - {fileID: 11400000, guid: d68e5ee3a5ccfbc42a98d9db0f9d314d, type: 2}
+  combatCards:
+  - {fileID: 11400000, guid: 66f67c3c89184d24983c0bb4addd4bbb, type: 2}
+  - {fileID: 11400000, guid: ee340da62bcfd2043bac15da8b798c19, type: 2}
+  - {fileID: 11400000, guid: 1570e87e6856a2c43bb530c6420589d9, type: 2}
+  - {fileID: 11400000, guid: 19494655220d17e4e9613c9ed5eb832f, type: 2}
+  - {fileID: 11400000, guid: 97b276bb60892b54790d597643a59514, type: 2}
+  - {fileID: 11400000, guid: 8ce566583a6b81149a243124c9ea9242, type: 2}
+  - {fileID: 11400000, guid: 4d8a5949e60580a42bf5e465789c13ac, type: 2}
+  - {fileID: 11400000, guid: 6acdbfc36a6700b478bca6fa66a08c9d, type: 2}
