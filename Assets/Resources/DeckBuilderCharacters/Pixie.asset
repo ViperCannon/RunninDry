@@ -14,5 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterName: Pixie
   CharacterSignature: {fileID: 21300000, guid: 657e4831506a3244b8d56f7ea956bdba, type: 3}
-  negotiationCards: []
-  combatCards: []
+  negotiationCards:
+  - {fileID: 11400000, guid: bae6f61038ffe444d8c748a3326e5533, type: 2}
+  - {fileID: 11400000, guid: b645a600247cd6a4b8481459b69da96e, type: 2}
+  - {fileID: 11400000, guid: 0788663a1df55b248b41c333fd1a9c38, type: 2}
+  - {fileID: 11400000, guid: 0f13c550ebcbd7b44ad67ddcc3bd8f7a, type: 2}
+  - {fileID: 11400000, guid: 0a61f8dc0a63f46428be8eed3cfcd314, type: 2}
+  - {fileID: 11400000, guid: 15e8e8fdaf15d6d41bf9531c7f33424d, type: 2}
+  - {fileID: 11400000, guid: c39a0fdd137f4a541be49cc5f43f7538, type: 2}
+  - {fileID: 11400000, guid: 6282a0552d28af24881c6b1063bd0b95, type: 2}
+  - {fileID: 11400000, guid: dab0cfd0352c93741b934c2146541d7b, type: 2}
+  combatCards:
+  - {fileID: 11400000, guid: 1bbf81aba29e3e64aa743dcab46d6214, type: 2}
+  - {fileID: 11400000, guid: 52a8f70aac719ef479333962648fae3e, type: 2}
+  - {fileID: 11400000, guid: 672ed51a7323c8c468bde735518a9c63, type: 2}
+  - {fileID: 11400000, guid: d6689d56eec4afa45a1e6163ae723ae2, type: 2}
+  - {fileID: 11400000, guid: e6afa4d4cd4937c41b3ad2600d33d264, type: 2}
+  - {fileID: 11400000, guid: fa6229851499fe9448f7701a113a3125, type: 2}
+  - {fileID: 11400000, guid: 33abc42504629f74ea7b398c8f529a98, type: 2}
+  - {fileID: 11400000, guid: 26b7cb9a091cc4644b45e06f6a81b436, type: 2}

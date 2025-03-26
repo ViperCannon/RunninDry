@@ -8,7 +8,7 @@ public class DeckBuilderFilters : MonoBehaviour
     public static DeckBuilderFilters Instance { get; private set; }
 
     // 0 = No Filter/Show All Cards, 1 = Negotiation Cards, 2 = Combat Cards
-    int currentFilter = 0;
+    public int CurrentFilter { get; private set; } = 0;
 
     Button NegotiationFilterButton;
     Button CombatFilterButton;
@@ -34,15 +34,10 @@ public class DeckBuilderFilters : MonoBehaviour
 
     public void SetFilter(int n)
     {
-        if (currentFilter == n)
-        {
-            Debug.Log("The filter being switched to is the same as the one already set!");
-            return;
-        }
+        if (CurrentFilter == n) CurrentFilter = 0;
+        else CurrentFilter = n;
 
-        currentFilter = n;
-
-        switch (currentFilter)
+        switch (CurrentFilter)
         {
             case 0:
                 SetColor(NegotiationFilterButton.image, Color.white);
@@ -67,7 +62,6 @@ public class DeckBuilderFilters : MonoBehaviour
                 
                 DeckBuilderVer2.Instance.DisplayCombatCards();
                 break;
-
         }
     }
 

@@ -18,6 +18,9 @@ public class DeckBuilderVer2 : MonoBehaviour
     // Card Display Objects
     GameObject CardDisplayParent;
 
+    [SerializeField] GameObject NegotiationCardPrefabVariant;
+    [SerializeField] GameObject CombatCardPrefabVariant;
+
     // Receipt Objects
     public List<TextMeshProUGUI> ReceiptCardList;
     public List<TextMeshProUGUI> ReceiptCardQuantities;
@@ -79,6 +82,20 @@ public class DeckBuilderVer2 : MonoBehaviour
 
         // Set Character Signature in Receipt
         signature.sprite = SelectedCharacter.CharacterSignature;
+
+        switch (DeckBuilderFilters.Instance.CurrentFilter) {
+            case 0:
+                DisplayAllCards();
+                break;
+
+            case 1:
+                DisplayNegotiationCards();
+                break;
+
+            case 2:
+                DisplayCombatCards();
+                break;
+        }
     }
 
     #region Card Display Functions
@@ -95,17 +112,31 @@ public class DeckBuilderVer2 : MonoBehaviour
     {
         ClearCardDisplay();
 
+        Debug.Log("Populating the Card Display with ALL of " + SelectedCharacter.CharacterName + "'s cards!");
         // Populate the display cards using SelectedCharacter.negotiationCards and SelectedCharacter.combatCards.
+        foreach (NegotiationCard card in SelectedCharacter.negotiationCards)
+        {
+            GameObject temp = Instantiate(NegotiationCardPrefabVariant, CardDisplayParent.transform);
+            temp.GetComponent<NegotiationCardDisplay>().cardData = card;
+        }
+
+        foreach (CombatCard card in SelectedCharacter.combatCards)
+        {
+            GameObject temp = Instantiate(CombatCardPrefabVariant, CardDisplayParent.transform);
+            temp.GetComponent<CombatCardDisplay>().cardData = card;
+        }
     }
 
     public void DisplayNegotiationCards()
     {
         ClearCardDisplay();
 
+        Debug.Log("Populating the Card Display with " + SelectedCharacter.CharacterName + "'s Negotioation Cards!");
         // Populate the display cards using SelectedCharacter.negotiationCards.
         foreach (NegotiationCard card in SelectedCharacter.negotiationCards)
         {
-            // TODO - Figure out how to spawn a card that is clickable to add it to the card list.
+            GameObject temp = Instantiate(NegotiationCardPrefabVariant, CardDisplayParent.transform);
+            temp.GetComponent<NegotiationCardDisplay>().cardData = card;
         }
     }
 
@@ -113,10 +144,12 @@ public class DeckBuilderVer2 : MonoBehaviour
     {
         ClearCardDisplay();
 
+        Debug.Log("Populating the Card Display with " + SelectedCharacter.CharacterName + "'s Combat Cards!");
         // Populate the display cards using SelectedCharacter.combatCards.
         foreach (CombatCard card in SelectedCharacter.combatCards)
         {
-            // TODO - Figure out how to spawn a card that is clickable to add it to the card list.
+            GameObject temp = Instantiate(CombatCardPrefabVariant, CardDisplayParent.transform);
+            temp.GetComponent<CombatCardDisplay>().cardData = card;
         }
     }
     #endregion
@@ -203,6 +236,10 @@ public class DeckBuilderVer2 : MonoBehaviour
         foreach(DeckBuilderTab tab in Tabs)
         {
             if (!tab.Character.IsSelectedCardListValid()) {
+                if (!ContinueButton.activeSelf)
+                {
+                    return;
+                }
                 Debug.Log("At least one character's selected card list does not fit the continue criteria! Hiding the Continue button.");
                 ContinueButton.SetActive(false);
                 return;
