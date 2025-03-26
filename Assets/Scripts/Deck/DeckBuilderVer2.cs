@@ -58,10 +58,6 @@ public class DeckBuilderVer2 : MonoBehaviour
 
         signature = GameObject.Find("Signature").GetComponent<Image>();
         ContinueButton = GameObject.Find("ContinueButton");
-
-        // Set all displays and text fields to EMPTY by default until they're populated.
-        ClearCardDisplay();
-        ClearReceiptFields();
     }
 
     void Start()
@@ -85,14 +81,42 @@ public class DeckBuilderVer2 : MonoBehaviour
         signature.sprite = SelectedCharacter.CharacterSignature;
     }
 
+    #region Card Display Functions
     public void ClearCardDisplay()
     {
         foreach (Transform childTransform in CardDisplayParent.transform)
         {
             Destroy(childTransform.gameObject);
         }
+        Debug.Log("Card Display Cleared!");
     }
 
+    public void DisplayAllCards()
+    {
+        // Clear the current card display before repopulation.
+        ClearCardDisplay();
+
+        // Populate the display cards using SelectedCharacter.negotiationCards and SelectedCharacter.combatCards.
+    }
+
+    public void DisplayNegotiationCards()
+    {
+        // Clear the current card display before repopulation.
+        ClearCardDisplay();
+
+        // Populate the display cards using SelectedCharacter.negotiationCards.
+    }
+
+    public void DisplayCombatCards()
+    {
+        // Clear the current card display before repopulation.
+        ClearCardDisplay();
+
+        // Populate the display cards using SelectedCharacter.combatCards.
+    }
+    #endregion
+
+    #region Receipt Field Functions
     public void UpdateReceiptFields()
     {
         // Check if Selected Character has a Selected Card List
@@ -105,7 +129,6 @@ public class DeckBuilderVer2 : MonoBehaviour
         //Check if the Selected Character's Selected Card List has any entries.
         if (SelectedCharacter.SelectedCardsEntries.Count <= 0)
         {
-            Debug.Log(SelectedCharacter.CharacterName + "'s selected card list is EMPTY. This is fine, and no further action needs to be taken.");
             ClearReceiptFields();
             return;
         }
@@ -148,7 +171,9 @@ public class DeckBuilderVer2 : MonoBehaviour
         ToggleSignature();
         ToggleContinueButton();
     }
+    #endregion
 
+    #region Toggle Element Visibilty Functions
     public void ToggleSignature()
     {
         if (SelectedCharacter == null)
@@ -160,12 +185,10 @@ public class DeckBuilderVer2 : MonoBehaviour
 
         if (SelectedCharacter.IsSelectedCardListValid())
         {
-            Debug.Log(SelectedCharacter.CharacterName + "'s selected card list fits the continue criteria! Revealing the signature graphic.");
             signature.gameObject.SetActive(true);
         }
         else
         {
-            Debug.Log(SelectedCharacter.CharacterName + "'s selected card list does not fit the continue criteria! Hiding the signature graphic.");
             signature.gameObject.SetActive(false);
         }
     }
@@ -182,6 +205,7 @@ public class DeckBuilderVer2 : MonoBehaviour
         }
         ContinueButton.SetActive(true);
     }
+    #endregion
 
     public void NextScene(int sceneID)
     {
