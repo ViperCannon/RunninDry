@@ -295,6 +295,92 @@ public class DeckSelectionManager : MonoBehaviour, IDataPersistence
         }
     }
 
+    //beginnings of card display to help out with logic. Feel free to change as you see fit, but want to hopefully provide a good basis
+
+    public GameObject cardDisplayPanel;
+    public GameObject combatCardPrefabVariant;
+    public GameObject negotiationCardPrefabVariant;
+
+    public void PrepCardDisplay(string characterName, bool displayCombat)
+    {
+        characterName = characterName.ToLower();
+
+        if(displayCombat)
+        {
+            switch (characterName)
+            {
+                case "pixie":
+
+                    DisplayCombatCards(Resources.LoadAll<NegotiationCard>("CardData/Combat/Pixie"));
+
+                    break;
+
+                case "baldwin":
+
+                    DisplayCombatCards(Resources.LoadAll<NegotiationCard>("CardData/Combat/Baldwin"));
+
+                    break;
+
+                case "barley":
+
+                    DisplayCombatCards(Resources.LoadAll<NegotiationCard>("CardData/Combat/Barley"));
+
+                    break;
+            }
+        }
+        else
+        {
+            switch (characterName)
+            {
+                case "pixie":
+
+                    DisplayNegotiationCards(Resources.LoadAll<NegotiationCard>("CardData/Negotiation/Pixie"));
+
+                    break;
+
+                case "baldwin":
+
+                    DisplayNegotiationCards(Resources.LoadAll<NegotiationCard>("CardData/Negotiation/Baldwin"));
+
+                    break;
+
+                case "barley":
+
+                    DisplayNegotiationCards(Resources.LoadAll<NegotiationCard>("CardData/Negotiation/Barley"));
+
+                    break;
+            }
+        }
+    }
+
+    public void DisplayCombatCards(Card[] cards)
+    {
+        foreach(CombatCard c in cards)
+        {
+            GameObject temp = Instantiate(combatCardPrefabVariant, cardDisplayPanel.transform);
+
+            temp.GetComponent<CombatCardDisplay>().cardData = c;
+        }     
+    }
+
+    public void DisplayNegotiationCards(Card[] cards)
+    {
+        foreach (NegotiationCard n in cards)
+        {
+            GameObject temp = Instantiate(negotiationCardPrefabVariant, cardDisplayPanel.transform);
+
+            temp.GetComponent<NegotiationCardDisplay>().cardData = n;
+        }
+    }
+
+    public void ClearCardDisplay()
+    {
+        foreach(Transform child in cardDisplayPanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     public void LoadData(GameData data)
     {
         TotalCombatCards = data.TotalCombatCards;

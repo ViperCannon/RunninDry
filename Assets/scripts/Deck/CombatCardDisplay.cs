@@ -24,7 +24,7 @@ public class CombatCardDisplay : CardDisplay
         currentHeal = cardData.heal;
         currentSelfHeal = cardData.secondaryHeal;
 
-        if (character == null)
+        if (CombatManager.Instance.inCombat && character == null)
         {
             AllyInstance[] allies = FindObjectsOfType<AllyInstance>();
 
