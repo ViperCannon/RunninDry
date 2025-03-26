@@ -36,6 +36,27 @@ public class DeckBuilderCharacter : ScriptableObject
     public List<SelectedCard> SelectedCardsEntries { get; private set; } = new List<SelectedCard>();
 
     // Adds a card to the list of Selected Cards.
+    public void SelectCard(Card c)
+    {
+        if (SumTotalCards() >= 10)
+        {
+            Debug.Log(CharacterName + " already has 10 cards selected and cannot select any more!");
+            return;
+        }
+
+        foreach (SelectedCard card in SelectedCardsEntries)
+        {
+            if (card.cardName == c.cardName)
+            {
+                card.quantity += 1;
+                return;
+            }
+        }
+
+        SelectedCardsEntries.Add(new SelectedCard(c, 1));
+    }
+
+    // Adds a card to the list of Selected Cards.
     public void SelectCard (NegotiationCard c)
     {
         if (SumTotalCards() >= 10)
@@ -78,7 +99,7 @@ public class DeckBuilderCharacter : ScriptableObject
     }
 
     // Removes a card from the list of Selected Cards.
-    public void DeselectCard(Card c)
+    public void DeselectCard(string cName)
     {
         if (SumTotalCards() <= 0)
         {
@@ -88,7 +109,7 @@ public class DeckBuilderCharacter : ScriptableObject
 
         foreach (SelectedCard card in SelectedCardsEntries)
         {
-            if (card.cardName == c.cardName)
+            if (card.cardName == cName)
             {
                 card.quantity -= 1;
 
