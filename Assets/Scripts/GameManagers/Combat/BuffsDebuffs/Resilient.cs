@@ -41,6 +41,29 @@ public class Resilient : Buff
         }
     }
 
+    new public void ResolveEffect(CombatCard action, CharacterInstance character)
+    {
+        Resilient existingResilient = null;
+
+        foreach (Buff buff in character.activeBuffs)
+        {
+            if (buff is Resilient resilient)
+            {
+                existingResilient = resilient;
+                break;
+            }
+        }
+
+        if (existingResilient != null)
+        {
+            existingResilient.AddStacks(action.turnDuration);
+        }
+        else
+        {
+            character.ApplyBuff(new Resilient(character, action.turnDuration));
+        }
+    }
+
     public override void UpdateEffect()
     {
         turnDuration--;

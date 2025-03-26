@@ -41,6 +41,29 @@ public class PissedOff : Buff
         }
     }
 
+    new public void ResolveEffect(CombatCard action, CharacterInstance character)
+    {
+        PissedOff existingPissedOff = null;
+
+        foreach (Buff buff in character.activeBuffs)
+        {
+            if (buff is PissedOff pissedOff)
+            {
+                existingPissedOff = pissedOff;
+                break;
+            }
+        }
+
+        if (existingPissedOff != null)
+        {
+            existingPissedOff.AddStacks(action.turnDuration);
+        }
+        else
+        {
+            character.ApplyBuff(new PissedOff(character, action.turnDuration));
+        }
+    }
+
     public override void UpdateEffect()
     {
         turnDuration--;

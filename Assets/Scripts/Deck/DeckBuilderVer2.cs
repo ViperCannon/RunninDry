@@ -118,12 +118,14 @@ public class DeckBuilderVer2 : MonoBehaviour
         {
             GameObject temp = Instantiate(NegotiationCardPrefabVariant, CardDisplayParent.transform);
             temp.GetComponent<NegotiationCardDisplay>().cardData = card;
+            temp.GetComponent<NegotiationCardDisplay>().UpdateCardDisplay();
         }
 
         foreach (CombatCard card in SelectedCharacter.combatCards)
         {
             GameObject temp = Instantiate(CombatCardPrefabVariant, CardDisplayParent.transform);
             temp.GetComponent<CombatCardDisplay>().cardData = card;
+            temp.GetComponent<NegotiationCardDisplay>().UpdateCardDisplay();
         }
     }
 
