@@ -35,7 +35,7 @@ public class DeckBuilderCharacter : ScriptableObject
     //The list of all Cards selected by this character; stores their name, the card's data, and quantity selected.
     public List<SelectedCard> SelectedCardsEntries { get; private set; } = new List<SelectedCard>();
 
-    // Adds a card to the list of Selected Cards.
+    // Adds a card to the list of Selected Cards. Works if c is of type Card, NegotiationCard, or CombatCard.
     public void SelectCard(Card c)
     {
         if (SumTotalCards() >= 10)
@@ -49,53 +49,15 @@ public class DeckBuilderCharacter : ScriptableObject
             if (card.cardName == c.cardName)
             {
                 card.quantity += 1;
+                DeckBuilderVer2.Instance.UpdateReceiptFields();
+                Debug.Log(c.cardName + " added to the selected list!");
                 return;
             }
         }
 
         SelectedCardsEntries.Add(new SelectedCard(c, 1));
-    }
-
-    // Adds a card to the list of Selected Cards.
-    public void SelectCard (NegotiationCard c)
-    {
-        if (SumTotalCards() >= 10)
-        {
-            Debug.Log(CharacterName + " already has 10 cards selected and cannot select any more!");
-            return;
-        }
-
-        foreach (SelectedCard card in SelectedCardsEntries)
-        {
-            if (card.cardName == c.cardName)
-            {
-                card.quantity += 1;
-                return;
-            }
-        }
-
-        SelectedCardsEntries.Add(new SelectedCard(c, 1));
-    }
-
-    // Adds a card to the list of Selected Cards.
-    public void SelectCard(CombatCard c)
-    {
-        if (SumTotalCards() >= 10)
-        {
-            Debug.Log(CharacterName + " already has 10 cards selected and cannot select any more!");
-            return;
-        }
-
-        foreach (SelectedCard card in SelectedCardsEntries)
-        {
-            if (card.cardName == c.cardName)
-            {
-                card.quantity += 1;
-                return;
-            }
-        }
-
-        SelectedCardsEntries.Add(new SelectedCard(c, 1));
+        DeckBuilderVer2.Instance.UpdateReceiptFields();
+        Debug.Log(c.cardName + " added to the selected list!");
     }
 
     // Removes a card from the list of Selected Cards.

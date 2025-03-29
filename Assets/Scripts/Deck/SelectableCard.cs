@@ -8,7 +8,7 @@ public class SelectableCard : MonoBehaviour, IPointerDownHandler
 {
     Card cardData;
 
-    void Awake()
+    void Start()
     {
         if (GetComponent<NegotiationCardDisplay>() != null)
         {

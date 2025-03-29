@@ -176,7 +176,7 @@ public class DeckBuilderVer2 : MonoBehaviour
         }
 
         // Set Card Names
-        for (int i = 0; i < ReceiptCardList.Count; i++)
+        for (int i = 0; i < SelectedCharacter.SelectedCardsEntries.Count; i++)
         {
             if (SelectedCharacter.SelectedCardsEntries[i] == null)
             {
@@ -186,7 +186,7 @@ public class DeckBuilderVer2 : MonoBehaviour
         }
 
         // Set Card Quantities
-        for (int i = 0; i < ReceiptCardQuantities.Count; i++)
+        for (int i = 0; i < SelectedCharacter.SelectedCardsEntries.Count; i++)
         {
             if (SelectedCharacter.SelectedCardsEntries[i] == null)
             {
