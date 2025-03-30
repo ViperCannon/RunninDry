@@ -50,7 +50,7 @@ public class DeckBuilderCharacter : ScriptableObject
             {
                 card.quantity += 1;
                 DeckBuilderVer2.Instance.UpdateReceiptFields();
-                Debug.Log(c.cardName + " added to the selected list!");
+                Debug.Log(c.cardName + " updated in the selected list!");
                 return;
             }
         }
