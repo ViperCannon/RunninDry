@@ -161,7 +161,10 @@ public class DeckBuilderVer2 : MonoBehaviour
     #region Receipt Field Functions
     public void UpdateReceiptFields()
     {
-        // Check if Selected Character has a Selected Card List
+        // Clear Fields to prevent potential visual bugs.
+        ClearReceiptFields();
+
+        // Check if Selected Character has a Selected Card List.
         if (SelectedCharacter.SelectedCardsEntries == null)
         {
             Debug.LogWarning(SelectedCharacter.CharacterName + "'s selected card list is NULL! Initialize it!");
@@ -171,7 +174,6 @@ public class DeckBuilderVer2 : MonoBehaviour
         //Check if the Selected Character's Selected Card List has any entries.
         if (SelectedCharacter.SelectedCardsEntries.Count <= 0)
         {
-            ClearReceiptFields();
             return;
         }
 

@@ -69,18 +69,22 @@ public class DeckBuilderCharacter : ScriptableObject
             return;
         }
 
-        foreach (SelectedCard card in SelectedCardsEntries)
+        foreach (SelectedCard c in SelectedCardsEntries)
         {
-            if (card.cardName == cName)
+            if (c.cardName == cName)
             {
-                card.quantity -= 1;
+                c.quantity -= 1;
 
-                if (card.quantity < 1)
+                if (c.quantity < 1)
                 {
-                    SelectedCardsEntries.Remove(card);
+                    SelectedCardsEntries.Remove(c);
+                    DeckBuilderVer2.Instance.UpdateReceiptFields();
+                    Debug.Log(c.cardName + " removed from the selected list!");
                     return;
                 }
-                
+
+                DeckBuilderVer2.Instance.UpdateReceiptFields();
+                Debug.Log(c.cardName + " updated in the selected list!");
                 return;
             }
         }
