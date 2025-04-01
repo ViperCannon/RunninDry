@@ -177,24 +177,27 @@ public class DeckBuilderVer2 : MonoBehaviour
             return;
         }
 
-        // Set Card Names
-        for (int i = 0; i < SelectedCharacter.SelectedCardsEntries.Count; i++)
-        {
-            if (SelectedCharacter.SelectedCardsEntries[i] == null)
-            {
-                ReceiptCardList[i].text = "";
-            }
-            else ReceiptCardList[i].text = SelectedCharacter.SelectedCardsEntries[i].cardName;
-        }
+        // Set Card Names/Quantities
+        int CombatIndex = 0;
+        int NegotiationIndex = ReceiptCardList.Count - 1;
 
-        // Set Card Quantities
-        for (int i = 0; i < SelectedCharacter.SelectedCardsEntries.Count; i++)
+        foreach (DeckBuilderCharacter.SelectedCard card in SelectedCharacter.SelectedCardsEntries)
         {
-            if (SelectedCharacter.SelectedCardsEntries[i] == null)
+            if (card.cardData.GetType() == typeof(CombatCard))
             {
-                ReceiptCardList[i].text = "";
+                ReceiptCardList[CombatIndex].text = card.cardName;
+                ReceiptCardQuantities[CombatIndex].text = card.quantity.ToString();
+
+                CombatIndex++;
             }
-            else ReceiptCardQuantities[i].text = SelectedCharacter.SelectedCardsEntries[i].quantity.ToString();
+
+            if (card.cardData.GetType() == typeof(NegotiationCard))
+            {
+                ReceiptCardList[NegotiationIndex].text = card.cardName;
+                ReceiptCardQuantities[NegotiationIndex].text = card.quantity.ToString();
+
+                NegotiationIndex--;
+            }
         }
 
         ToggleSignature();
