@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Map;
 
 [System.Serializable]
 
@@ -39,6 +40,11 @@ public class GameData
 
     public int sceneInt;
 
+    public bool savedMap;
+    public Node[][] mapData;
+    public Node crew;
+    public Node bossNode;
+
     public GameData()
     {
         this.cash = 40;
@@ -72,5 +78,10 @@ public class GameData
         CBaldwincards = new List<string>();
         NBarleycards = new List<string>();
         CBarleycards = new List<string>();
-}
+
+        savedMap = false;
+        crew = new Node();
+        bossNode = new Node();
+        mapData = new Node[0][];
+    }
 }

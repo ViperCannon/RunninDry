@@ -7,11 +7,14 @@ public class PauseMenu : MonoBehaviour
 {
     public int sceneID;
 
+    public DataPersistenceManager datamanager;
+
     public GameObject mainCanvas;
     public GameObject optionsCanvas;
     // Start is called before the first frame update
     void Start()
     {
+        datamanager = GameObject.Find("DataPersistenceManager").GetComponent<DataPersistenceManager>();
         optionsCanvas.SetActive(false);
         mainCanvas.SetActive(false);
     }
@@ -38,6 +41,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Onleave()
     {
+        datamanager.SaveGame();
         SceneManager.LoadScene(sceneID);
     }
     public void OptionsOpen()
