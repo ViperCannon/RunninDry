@@ -252,20 +252,12 @@ public class MapGenerator : MonoBehaviour
                 
                 case 2:
                 case 4:
+                case 9:
 
                     mapData[i][2].AddPrevNode(mapData[i - 1][2]);
                     mapData[i - 1][2].AddNextNode(mapData[i][2]);
 
                     mapData[i][2].SetNodeType(NodeType.Combat);
-
-                    break;
-
-                case 3:
-
-                    mapData[i][2].AddPrevNode(mapData[i - 1][2]);
-                    mapData[i - 1][2].AddNextNode(mapData[i][2]);
-
-                    mapData[i][2].SetNodeType(NodeType.Blank);
 
                     break;
 
@@ -279,6 +271,7 @@ public class MapGenerator : MonoBehaviour
 
                     break;
 
+                case 3:
                 case 6:
 
                     mapData[i][2].AddPrevNode(mapData[i - 1][2]);
@@ -294,15 +287,6 @@ public class MapGenerator : MonoBehaviour
                     mapData[i - 1][2].AddNextNode(mapData[i][2]);
 
                     mapData[i][2].SetNodeType(NodeType.Shop);
-
-                    break;
-
-                case 9:
-
-                    mapData[i][2].AddPrevNode(mapData[i - 1][2]);
-                    mapData[i - 1][2].AddNextNode(mapData[i][2]);
-
-                    mapData[i][2].SetNodeType(NodeType.Mystery);
 
                     break;
             }
