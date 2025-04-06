@@ -22,30 +22,30 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            onPause();
+            OnPause();
         }
     }
-    void onPause()
+    void OnPause()
     {
         Time.timeScale = 0.0f;
         mainCanvas.SetActive(true);
     }
 
-    public void onResume()
+    public void OnResume()
     {
         Time.timeScale = 1.0f;
         mainCanvas.SetActive(false);
     }
-    public void onleave()
+    public void Onleave()
     {
         SceneManager.LoadScene(sceneID);
     }
-    public void optionsOpen()
+    public void OptionsOpen()
     {
         mainCanvas.SetActive(false);
         optionsCanvas.SetActive(true);
     }
-    public void optionsClose()
+    public void OptionsClose()
     {
         optionsCanvas.SetActive(false);
         mainCanvas.SetActive(true);
