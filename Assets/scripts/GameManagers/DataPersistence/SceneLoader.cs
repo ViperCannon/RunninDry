@@ -12,9 +12,9 @@ public class SceneLoader : MonoBehaviour, IDataPersistence
         sceneInt = data.sceneInt;
     }
 
-    public void LoadScene()
+    public void LoadScene (int sceneID)
     {
-        SceneManager.LoadScene(sceneInt);
+        SceneManager.LoadScene(sceneID);
     }
 
     public void SceneSave()

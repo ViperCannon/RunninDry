@@ -40,10 +40,10 @@ public class GameData
 
     public int sceneInt;
 
-    public bool savedMap;
+    /*public bool savedMap;
     public Node[][] mapData;
     public Node crew;
-    public Node bossNode;
+    public Node bossNode;*/
 
     public GameData()
     {
@@ -78,10 +78,5 @@ public class GameData
         CBaldwincards = new List<string>();
         NBarleycards = new List<string>();
         CBarleycards = new List<string>();
-
-        savedMap = false;
-        crew = new Node();
-        bossNode = new Node();
-        mapData = new Node[0][];
     }
 }

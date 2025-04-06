@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Map;
 
-public class MapGenerator : MonoBehaviour, IDataPersistence
+public class MapGenerator : MonoBehaviour
 {
     const float X_START = -200f;
     const float Y_START = -575f;
@@ -35,25 +35,6 @@ public class MapGenerator : MonoBehaviour, IDataPersistence
     bool savedMap = false;
 
     public static bool tutorial = false;
-
-    public void LoadData(GameData data)
-    {
-        if (savedMap)
-        {
-            mapData = data.mapData;
-            crew = data.crew;
-            bossNode = data.bossNode;
-            savedMap = data.savedMap;
-        }
-    }
-
-    public void SaveData(ref GameData data)
-    {
-        data.mapData = mapData;
-        data.crew = crew;
-        data.bossNode = bossNode;
-        data.savedMap = true;
-    }
 
     private void Start()
     {
