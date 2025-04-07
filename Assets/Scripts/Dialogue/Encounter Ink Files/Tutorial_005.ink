@@ -1,0 +1,1 @@
+Now, sometimes the situations ye find yerself in could have a whole host of options. This could lead to a negotiation, a scuffle, or maybe even some son of a gun lobbin' a brick through yer windshield... Happened t'me once. No one can predict everything here in the big city, so ye gotta stay on yer toes!

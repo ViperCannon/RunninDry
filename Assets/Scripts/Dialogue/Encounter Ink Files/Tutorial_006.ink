@@ -1,0 +1,1 @@
+Well, them's the ropes fer now! Fer the rest of this run, ye'll be on yer own. Good luck, and don't git killed right away.
