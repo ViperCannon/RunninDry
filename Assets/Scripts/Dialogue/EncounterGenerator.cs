@@ -27,6 +27,7 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField] private TextAsset[] tutorialJSONs;
 
     private TextAsset currentEncounter;
+    private int tutorialEncounterIndex;
 
     public static EncounterGenerator GetInstance()
     {
@@ -184,9 +185,11 @@ public class EncounterGenerator : MonoBehaviour
         PlayCurrentDialogue();
     }
 
-    public void SetTutorialDialogue(int i)
+    public void SetTutorialDialogue()
     {
-        currentEncounter = tutorialJSONs[i];
-        PlayCurrentDialogue();       
+        currentEncounter = tutorialJSONs[tutorialEncounterIndex];
+        PlayCurrentDialogue();
+
+        tutorialEncounterIndex++;
     }
 }
