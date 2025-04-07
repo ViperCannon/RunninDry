@@ -24,7 +24,7 @@ public class EncounterGenerator : MonoBehaviour
     [Tooltip("Blank Encounter Ink JSONs")]
     [SerializeField] private TextAsset blankJSON;
     [Tooltip("List of Tutorial Ink JSONs")]
-    [SerializeField] private TextAsset tutorialJSON;
+    [SerializeField] private TextAsset[] tutorialJSONs;
 
     private TextAsset currentEncounter;
 
@@ -184,9 +184,9 @@ public class EncounterGenerator : MonoBehaviour
         PlayCurrentDialogue();
     }
 
-    public void SetTutorialDialogue()
+    public void SetTutorialDialogue(int i)
     {
-        currentEncounter = tutorialJSON;
+        currentEncounter = tutorialJSONs[i];
         PlayCurrentDialogue();       
     }
 }
