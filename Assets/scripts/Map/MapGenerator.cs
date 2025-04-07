@@ -588,6 +588,10 @@ public class MapGenerator : MonoBehaviour
                 EncounterGenerator.GetInstance().SetNewEliteDialogue();
                 break;
 
+            case NodeType.Tutorial:
+                EncounterGenerator.GetInstance().SetTutorialDialogue();
+                break;
+
             default:
                 EncounterGenerator.GetInstance().SetBlankDialogue();
                 Debug.Log("This Node Type doesn't have implemented functionality yet!");
@@ -605,6 +609,7 @@ public class MapGenerator : MonoBehaviour
             }
             else
             {
+                EncounterGenerator.GetInstance().SetTutorialDialogue();
                 GameManager.Instance.atBoss = true;
                 tutorial = false;
             }

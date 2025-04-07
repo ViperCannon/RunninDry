@@ -15,7 +15,8 @@ namespace Map
         Shop,
         Pitstop,
         Miniboss,
-        Boss
+        Boss,
+        Tutorial
     }
 
     public class Node
