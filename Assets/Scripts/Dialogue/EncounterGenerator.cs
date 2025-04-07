@@ -21,13 +21,13 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField] private TextAsset[] eliteJSONs;
     [Tooltip("List of Boss Encounter Ink JSONs")]
     [SerializeField] private TextAsset[] bossJSONs;
-    [Tooltip("Blank Encounter Ink JSONs")]
+    [Tooltip("Blank Encounter Ink JSON")]
     [SerializeField] private TextAsset blankJSON;
     [Tooltip("List of Tutorial Ink JSONs")]
     [SerializeField] private TextAsset[] tutorialJSONs;
 
     private TextAsset currentEncounter;
-    private int tutorialEncounterIndex;
+    private int tutorialEncounterIndex = 0;
 
     public static EncounterGenerator GetInstance()
     {
@@ -187,6 +187,11 @@ public class EncounterGenerator : MonoBehaviour
 
     public void SetTutorialDialogue()
     {
+        if (tutorialEncounterIndex < 0 || tutorialEncounterIndex >= tutorialJSONs.Length)
+        {
+            Debug.LogWarning("This index is out of bounds!");
+            return;
+        }
         currentEncounter = tutorialJSONs[tutorialEncounterIndex];
         PlayCurrentDialogue();
 
