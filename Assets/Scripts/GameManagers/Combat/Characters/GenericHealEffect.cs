@@ -5,7 +5,7 @@ public class GenericHealEffect : ScriptableObject, ICardEffect
 {
     public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target)
     {
-        int totalHeal = cardInstance.currentHeal;
+        int totalHeal = int.Parse(cardInstance.currentHeal);
 
         target.Heal(totalHeal);
     }

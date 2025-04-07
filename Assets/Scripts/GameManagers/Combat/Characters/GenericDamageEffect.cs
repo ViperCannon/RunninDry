@@ -9,11 +9,11 @@ public class GenericDamageEffect : ScriptableObject, ICardEffect
 
         if(cardInstance.unload < 0)
         {
-            totalDamage = cardInstance.currentDamage;
+            totalDamage = int.Parse(cardInstance.currentDamage);
         }
         else
         {
-            totalDamage = cardInstance.currentDamage * cardInstance.unload;
+            totalDamage = int.Parse(cardInstance.currentDamage) * cardInstance.unload;
         }
         
         if(target != null)
@@ -27,8 +27,7 @@ public class GenericDamageEffect : ScriptableObject, ICardEffect
                 if (enemy != null)
                 {
                     enemy.TakeDamage(totalDamage);   
-                }
-                    
+                }            
             }
         }
     }

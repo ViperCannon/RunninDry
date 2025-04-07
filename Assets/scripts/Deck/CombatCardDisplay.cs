@@ -10,19 +10,23 @@ public class CombatCardDisplay : CardDisplay
 
     public Image[] cost;
 
-    public int currentDamage;
-    public int currentSelfDamage;
-    public int currentHeal;
-    public int currentSelfHeal;
+    public string currentDamage;
+    public string currentSecondaryDamage;
+    public string currentSelfDamage;
+    public string currentHeal;
+    public string currentSelfHeal;
 
     public int unload = -1; //used to keep track of how many caps an unload card uses. Default to -1 if card is not an unload card.
 
+    string newDesc;
+
     public void UpdateCardDisplay()
     {
-        currentDamage = cardData.damage;
-        currentSelfDamage = cardData.selfDamage;
-        currentHeal = cardData.heal;
-        currentSelfHeal = cardData.secondaryHeal;
+        currentDamage = (cardData.damage).ToString();
+        currentSecondaryDamage = (cardData.secondaryDamage).ToString();
+        currentSelfDamage = (cardData.selfDamage).ToString();
+        currentHeal = (cardData.heal).ToString();
+        currentSelfHeal = (cardData.secondaryHeal).ToString();
 
         if (CombatManager.Instance != null && CombatManager.Instance.inCombat && character == null)
         {
@@ -52,7 +56,16 @@ public class CombatCardDisplay : CardDisplay
             cost[cardData.cost].gameObject.SetActive(true);
         }
 
-        descText.text = cardData.cardDescription;
+        newDesc = cardData.cardDescription;
+
+        newDesc = newDesc.Replace("{damage}", currentDamage);
+        newDesc = newDesc.Replace("{secondaryDamage}", currentSecondaryDamage);
+        newDesc = newDesc.Replace("{selfDamage}", currentSelfDamage);
+        newDesc = newDesc.Replace("{heal}", currentHeal);
+        newDesc = newDesc.Replace("{selfHeal}", currentSelfHeal);
+
+
+        descText.text = newDesc;
     }
 
 }

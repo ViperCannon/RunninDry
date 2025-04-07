@@ -26,7 +26,7 @@ public class GenericRandomDamageEffect : ScriptableObject, ICardEffect
             }
         }
 
-        int totalDamage = cardInstance.currentDamage; //account for target's buff/debuffs in future
+        int totalDamage = int.Parse(cardInstance.currentDamage); //account for target's buff/debuffs in future
 
         newTarget.TakeDamage(totalDamage);     
     }

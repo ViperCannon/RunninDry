@@ -6,7 +6,7 @@ public class GenericSelfHealEffect : ScriptableObject, ICardEffect
     public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance target)
     {
 
-        int totalHeal = cardInstance.currentSelfHeal;
+        int totalHeal = int.Parse(cardInstance.currentSelfHeal);
 
         cardInstance.character.GetComponent<AllyInstance>().Heal(totalHeal);
     }
