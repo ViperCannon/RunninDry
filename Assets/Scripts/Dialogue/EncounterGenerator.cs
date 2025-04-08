@@ -27,7 +27,6 @@ public class EncounterGenerator : MonoBehaviour
     [SerializeField] private TextAsset[] tutorialJSONs;
 
     private TextAsset currentEncounter;
-    private int tutorialEncounterIndex = 0;
 
     public static EncounterGenerator GetInstance()
     {
@@ -48,21 +47,11 @@ public class EncounterGenerator : MonoBehaviour
 
     public void PlayCurrentDialogue()
     {
-        if (DialogueManager.GetInstance().DialogueIsPlaying)
-        {
-            Debug.LogWarning("The dialogue box is already open!");
-            return;
-        }
         DialogueManager.GetInstance().OpenDialogue(currentEncounter);
     }
 
     public void SetNewCombatDialogue()
     {
-        if (DialogueManager.GetInstance().DialogueIsPlaying)
-        {
-            Debug.LogWarning("Cannot set a new combat encounter because the dialogue box is open!");
-            return;
-        }
         if (combatJSONs.Length == 0)
         {
             Debug.LogWarning("Cannot set a new combat encounter because the combat encounter list is empty!");
@@ -74,11 +63,6 @@ public class EncounterGenerator : MonoBehaviour
 
     public void SetNewNegotiationDialogue()
     {
-        if (DialogueManager.GetInstance().DialogueIsPlaying)
-        {
-            Debug.LogWarning("Cannot set a new negotiation encounter because the dialogue box is open!");
-            return;
-        }
         if (negotiationJSONs.Length == 0)
         {
             Debug.LogWarning("Cannot set a new negotiation encounter because the negotiation encounter list is empty!");
@@ -90,11 +74,6 @@ public class EncounterGenerator : MonoBehaviour
 
     public void SetNewEventDialogue()
     {
-        if (DialogueManager.GetInstance().DialogueIsPlaying)
-        {
-            Debug.LogWarning("Cannot set a new event encounter because the dialogue box is open!");
-            return;
-        }
         if (eventJSONs.Length == 0)
         {
             Debug.LogWarning("Cannot set a new event encounter because the event encounter list is empty!");
@@ -106,11 +85,6 @@ public class EncounterGenerator : MonoBehaviour
 
     public void SetNewShopDialogue()
     {
-        if (DialogueManager.GetInstance().DialogueIsPlaying)
-        {
-            Debug.LogWarning("Cannot set a new shop encounter because the dialogue box is open!");
-            return;
-        }
         if (shopJSONs.Length == 0)
         {
             Debug.LogWarning("Cannot set a new shop encounter because the shop encounter list is empty!");
@@ -122,11 +96,6 @@ public class EncounterGenerator : MonoBehaviour
 
     public void SetNewPitStopDialogue()
     {
-        if (DialogueManager.GetInstance().DialogueIsPlaying)
-        {
-            Debug.LogWarning("Cannot set a new pit stop encounter because the dialogue box is open!");
-            return;
-        }
         if (pitStopJSONs.Length == 0)
         {
             Debug.LogWarning("Cannot set a pit stop encounter because the pit stop encounter list is empty!");
@@ -138,11 +107,6 @@ public class EncounterGenerator : MonoBehaviour
 
     public void SetNewEliteDialogue()
     {
-        if (DialogueManager.GetInstance().DialogueIsPlaying)
-        {
-            Debug.LogWarning("Cannot set a new elite encounter because the dialogue box is open!");
-            return;
-        }
         if (eliteJSONs.Length == 0)
         {
             Debug.LogWarning("Cannot set a elite encounter because the elite encounter list is empty!");
@@ -154,11 +118,6 @@ public class EncounterGenerator : MonoBehaviour
 
     public void SetNewBossDialogue()
     {
-        if (DialogueManager.GetInstance().DialogueIsPlaying)
-        {
-            Debug.LogWarning("Cannot set a new boss encounter because the dialogue box is open!");
-            return;
-        }
         if (bossJSONs.Length == 0)
         {
             Debug.LogWarning("Cannot set a boss encounter because the boss encounter list is empty!");
@@ -171,11 +130,6 @@ public class EncounterGenerator : MonoBehaviour
 
     public void SetBlankDialogue()
     {
-        if (DialogueManager.GetInstance().DialogueIsPlaying)
-        {
-            Debug.LogWarning("Cannot set a new blank encounter because the dialogue box is open!");
-            return;
-        }
         if (blankJSON == null)
         {
             Debug.LogWarning("Cannot set a blank encounter because the blank encounter JSON hasn't been initialized!");
@@ -185,16 +139,14 @@ public class EncounterGenerator : MonoBehaviour
         PlayCurrentDialogue();
     }
 
-    public void SetTutorialDialogue()
+    public void SetTutorialDialogue(int i)
     {
-        if (tutorialEncounterIndex < 0 || tutorialEncounterIndex >= tutorialJSONs.Length)
+        if (i < 0 || i >= tutorialJSONs.Length)
         {
             Debug.LogWarning("This index is out of bounds!");
             return;
         }
-        currentEncounter = tutorialJSONs[tutorialEncounterIndex];
+        currentEncounter = tutorialJSONs[i];
         PlayCurrentDialogue();
-
-        tutorialEncounterIndex++;
     }
 }

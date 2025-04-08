@@ -16,7 +16,6 @@ namespace Map
         Pitstop,
         Miniboss,
         Boss,
-        Tutorial
     }
 
     public class Node
@@ -177,7 +176,7 @@ namespace Map
 
         public void Activate()
         {
-            if(nodeButton != null)
+            if (nodeButton != null)
             {
                 nodeButton.interactable = true;
                 if(nodeType != NodeType.Boss)

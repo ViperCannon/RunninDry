@@ -62,7 +62,7 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("AlterCivilianRelations");
 
         story.UnbindExternalFunction("NewCombat");
-        story.UnbindExternalFunction("NewNegotation");
+        story.UnbindExternalFunction("NewNegotiation");
         story.UnbindExternalFunction("NewEvent");
         story.UnbindExternalFunction("NewShop");
         story.UnbindExternalFunction("NewPitStop");

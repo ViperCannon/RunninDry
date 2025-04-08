@@ -1,1 +1,1 @@
-Well, them's the ropes fer now! Fer the rest of this run, ye'll be on yer own. Good luck, and don't git killed right away.
+Now, this here shop is where ye can buy nifty items that'll help ye keep on goin' on these streets. make sure ye don't just buy all willy-nilly and keep yer cash up, tho'! It'll be impoirtant later.

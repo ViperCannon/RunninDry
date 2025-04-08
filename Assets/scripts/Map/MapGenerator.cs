@@ -36,25 +36,30 @@ public class MapGenerator : MonoBehaviour
 
     public static bool tutorial = false;
 
+    public static bool firstNegotiation = false;
+    public static bool firstCombat = false;
+    public static bool firstEvent = false;
+    public static bool firstPitStop = false;
+    public static bool firstShop = false;
+
+
     private void Start()
     {
         //create paths then create map
         //do generate map function crew and mapdata = previous save
-        if (!savedMap)
-        {
-            if (!tutorial)
-            {
-                GenerateMap();
-            }
-            else
-            {
-                GenerateTutorial();
-            }
-        }
-        else
+        if (savedMap)
         {
             LoadMap();
+            return;
         }
+
+        if (tutorial)
+        {
+            GenerateTutorial();
+            return;
+        }
+
+        GenerateMap();
     }
 
     public void LoadMap()
@@ -565,34 +570,75 @@ public class MapGenerator : MonoBehaviour
         switch (crew.GetNodeType())
         {
             case NodeType.Combat:
+
+                if (tutorial && firstCombat)
+                {
+                    EncounterGenerator.GetInstance().SetTutorialDialogue(2);
+                    firstCombat = false;
+                    break;
+                } 
+
                 EncounterGenerator.GetInstance().SetNewCombatDialogue();
                 break;
 
             case NodeType.Negotiation:
+                
+                if (tutorial && firstNegotiation)
+                {
+                    EncounterGenerator.GetInstance().SetTutorialDialogue(1);
+                    firstNegotiation = false;
+                    break;
+                }
+
                 EncounterGenerator.GetInstance().SetNewNegotiationDialogue();
                 break;
 
             case NodeType.Event:
+                
+                
+                if (tutorial && firstEvent)
+                {
+                    EncounterGenerator.GetInstance().SetTutorialDialogue(4);
+                    firstEvent = false;
+                    break;
+                }
+
                 EncounterGenerator.GetInstance().SetNewEventDialogue();
                 break;
 
             case NodeType.Pitstop:
+
+                
+                if (tutorial && firstPitStop)
+                {
+                    EncounterGenerator.GetInstance().SetTutorialDialogue(3);
+                    firstPitStop = false;
+                    break;
+                }
+
                 EncounterGenerator.GetInstance().SetNewPitStopDialogue();
                 break;
 
             case NodeType.Shop:
+
+                
+                if (tutorial && firstShop)
+                {
+                    EncounterGenerator.GetInstance().SetTutorialDialogue(5);
+                    firstShop = false;
+                    break;
+                }
+
                 EncounterGenerator.GetInstance().SetNewShopDialogue();
                 break;
 
             case NodeType.Miniboss:
+
                 EncounterGenerator.GetInstance().SetNewEliteDialogue();
                 break;
 
-            case NodeType.Tutorial:
-                EncounterGenerator.GetInstance().SetTutorialDialogue();
-                break;
-
             default:
+
                 EncounterGenerator.GetInstance().SetBlankDialogue();
                 Debug.Log("This Node Type doesn't have implemented functionality yet!");
                 break;
@@ -609,7 +655,7 @@ public class MapGenerator : MonoBehaviour
             }
             else
             {
-                EncounterGenerator.GetInstance().SetTutorialDialogue();
+                EncounterGenerator.GetInstance().SetTutorialDialogue(6);
                 GameManager.Instance.atBoss = true;
                 tutorial = false;
             }

@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        EncounterGenerator.GetInstance().SetTutorialDialogue();
+        EncounterGenerator.GetInstance().SetTutorialDialogue(0);
     }
 
     private void FixedUpdate()

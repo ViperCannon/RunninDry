@@ -20,8 +20,13 @@ public class TitleScreen : MonoBehaviour
     public void onStart()
     {
         MapGenerator.tutorial = true;
+        MapGenerator.firstNegotiation = true;
+        MapGenerator.firstCombat = true;
+        MapGenerator.firstEvent = true;
+        MapGenerator.firstPitStop = true;
+        MapGenerator.firstShop = true;
 
-        SceneManager.LoadScene(3);
+    SceneManager.LoadScene(3);
     }
     public void OnQuit()
     {
