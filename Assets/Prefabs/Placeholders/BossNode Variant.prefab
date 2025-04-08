@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossNode Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2004858140718103268, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6285186647748342761, guid: 7b6bd1285a7db73479070bc83ef0dcfe, type: 3}
       propertyPath: m_Sprite
       value: 

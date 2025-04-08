@@ -86,6 +86,9 @@ public class MapGenerator : MonoBehaviour
     {
         ClearMap();
         start = new Node();
+
+        bossNode = new Node();
+
         crew = start;
         mapData = GenerateTutorialGrid();
         CreateTutorial();
@@ -648,18 +651,8 @@ public class MapGenerator : MonoBehaviour
 
         if (crew.GetNextNodes().Count == 0)
         {
-            if (!tutorial)
-            {
                 bossNode.Activate();
                 GameManager.Instance.beforeBoss = true;
-            }
-            else
-            {
-                EncounterGenerator.GetInstance().SetTutorialDialogue(6);
-                GameManager.Instance.atBoss = true;
-                tutorial = false;
-            }
         }
- 
     }
 }

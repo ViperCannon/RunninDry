@@ -6,6 +6,21 @@ using SpeakeasyStreet;
 
 public class DeckManager : MonoBehaviour
 {
+    public static DeckManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject.transform.parent.gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this.gameObject.transform.parent.gameObject);
+        }
+    }
+
     [SerializeField]
     HandManager handManager;
 
@@ -16,7 +31,11 @@ public class DeckManager : MonoBehaviour
 
     Deck negotiationMaster = new Deck();
     Deck combatMaster = new Deck();
+    NegotiationCard[] negotiationCards;
+    CombatCard[] combatCards;
 
+    public Dictionary<NegotiationCard, int> negotiationSelection = new();
+    public Dictionary<CombatCard, int> combatSelection = new();
     public Deck negotiationDeck = new Deck();
     public Deck combatDeck = new Deck();
     public Deck discardPile = new Deck();
@@ -26,15 +45,61 @@ public class DeckManager : MonoBehaviour
 
     public void PopulateDecks()
     {
-        // Load Cards for negotiation deck
-        Card[] negotiationCards = Resources.LoadAll<NegotiationCard>("CardData/Tutorial/NegotiationFull");
+        if (MapGenerator.tutorial)
+        {
+            // Load Cards for negotiation deck
+            negotiationCards = Resources.LoadAll<NegotiationCard>("CardData/Tutorial/NegotiationFull");
 
-        negotiationMaster.Set(negotiationCards);
+            negotiationMaster.Set(negotiationCards);
 
-        // Load Cards for combat deck
-        Card[] combatCards = Resources.LoadAll<CombatCard>("CardData/Tutorial/CombatFull");
+            // Load Cards for combat deck
+            combatCards = Resources.LoadAll<CombatCard>("CardData/Tutorial/CombatFull");
 
-        combatMaster.Set(combatCards);
+            combatMaster.Set(combatCards);          
+        }
+        else
+        {
+            int nSize = 0;
+            int cSize = 0;
+            int index = 0;
+
+            foreach (KeyValuePair<NegotiationCard, int> n in negotiationSelection)
+            {
+                nSize += n.Value;
+            }
+
+            foreach (KeyValuePair<CombatCard, int> c in combatSelection)
+            {
+                cSize += c.Value;
+            }
+
+            negotiationCards = new NegotiationCard[nSize];
+            combatCards = new CombatCard[cSize];
+
+            foreach (KeyValuePair<NegotiationCard, int> n in negotiationSelection)
+            {
+                for(int i= 0; i < n.Value; i++)
+                {
+                    negotiationCards[index] = n.Key;
+                    index++;
+                }
+            }
+
+            
+            negotiationMaster.Set(negotiationCards);
+            index = 0;
+
+            foreach (KeyValuePair<CombatCard, int> c in combatSelection)
+            {
+                for (int i = 0; i < c.Value; i++)
+                {
+                    combatCards[index] = c.Key;
+                    index++;
+                }
+            }
+
+            combatMaster.Set(combatCards);
+        }
 
         Refresh();
     }
@@ -117,5 +182,13 @@ public class DeckManager : MonoBehaviour
         combatDeck.Shuffle();
 
         discardPile.Clear();
+    }
+
+    public void Reset()
+    {
+        negotiationMaster.Clear();
+        combatMaster.Clear();
+
+        Refresh();
     }
 }

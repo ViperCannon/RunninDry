@@ -13,9 +13,19 @@ public class BossNodeButtonFunction : MonoBehaviour
 
     public void OnClick()
     {
-        EncounterGenerator.GetInstance().SetNewBossDialogue();
-        StartCoroutine(StopCar());
-        GameManager.Instance.atBoss = true;
+        if (!MapGenerator.tutorial)
+        {
+            EncounterGenerator.GetInstance().SetNewBossDialogue();
+            StartCoroutine(StopCar());
+            GameManager.Instance.atBoss = true;
+        }
+        else
+        {
+
+            StartCoroutine(StopCar());
+            MapGenerator.tutorial = false;
+        }
+        
     }
     IEnumerator StopCar()
     {

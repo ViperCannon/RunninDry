@@ -231,6 +231,7 @@ public class GameManager : MonoBehaviour
 
         if (atBoss)
         {
+            DeckManager.Instance.Reset();
             LoadHub();
         }
         else
