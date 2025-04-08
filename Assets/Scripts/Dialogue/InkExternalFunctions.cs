@@ -29,6 +29,14 @@ public class InkExternalFunctions
         story.BindExternalFunction("AlterDrunkardRelations", (int amount) => AlterDrunkardRelations(amount));
         story.BindExternalFunction("AlterCivilianRelations", (int amount) => AlterCivilianRelations(amount));
 
+        story.BindExternalFunction("NewCombat", () => NewCombat());
+        story.BindExternalFunction("NewNegotiation", () => NewNegotiation());
+        story.BindExternalFunction("NewEvent", () => NewEvent());
+        story.BindExternalFunction("NewShop", () => NewShop());
+        story.BindExternalFunction("NewPitStop", () => NewPitStop());
+        story.BindExternalFunction("NewElite", () => NewElite());
+        story.BindExternalFunction("NewBoss", () => NewBoss());
+
         story.BindExternalFunction("FullPartyHeal", (int amount) => FullPartyHeal(amount));
     }
 
@@ -53,7 +61,17 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("AlterDrunkardRelations");
         story.UnbindExternalFunction("AlterCivilianRelations");
 
+        story.UnbindExternalFunction("NewCombat");
+        story.UnbindExternalFunction("NewNegotation");
+        story.UnbindExternalFunction("NewEvent");
+        story.UnbindExternalFunction("NewShop");
+        story.UnbindExternalFunction("NewPitStop");
+        story.UnbindExternalFunction("NewElite");
+        story.UnbindExternalFunction("NewBoss");
+
         story.UnbindExternalFunction("FullPartyHeal");
+
+        
     }
 
     private void StartCombat()
@@ -209,6 +227,42 @@ public class InkExternalFunctions
     }
     #endregion
 
+    #region Functions that Call for Encounter Generation
+        private void NewCombat()
+        {
+            EncounterGenerator.GetInstance().SetNewCombatDialogue();
+        }
+
+        private void NewNegotiation()
+        {
+            EncounterGenerator.GetInstance().SetNewNegotiationDialogue();
+        }
+
+        private void NewEvent()
+        {
+            EncounterGenerator.GetInstance().SetNewEventDialogue();
+        }
+
+        private void NewShop()
+        {
+            EncounterGenerator.GetInstance().SetNewShopDialogue();
+        }
+
+        private void NewPitStop()
+        {
+            EncounterGenerator.GetInstance().SetNewPitStopDialogue();
+        }
+
+        private void NewElite()
+        {
+            EncounterGenerator.GetInstance().SetNewEliteDialogue();
+        }
+        private void NewBoss()
+        {
+            EncounterGenerator.GetInstance().SetNewBossDialogue();
+        }
+
+        #endregion
     private void FullPartyHeal(int amount)
     {
         foreach (AllyInstance partyMember in CombatManager.Instance.Allies)
@@ -217,4 +271,6 @@ public class InkExternalFunctions
         }
         Debug.Log("All player characters healed by " + amount + " HP!");
     }
+
+    
 }
