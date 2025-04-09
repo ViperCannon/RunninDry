@@ -35,17 +35,9 @@ public class DeckBuilderCharacter : ScriptableObject
     //The list of all Cards selected by this character; stores their name, the card's data, and quantity selected.
     public List<SelectedCard> SelectedCardsEntries { get; private set; } = new List<SelectedCard>();
 
-    //cleaner reference to DeckManager Instance
-    DeckManager deck;
-
     // Adds a card to the list of Selected Cards. Works if c is of type Card, NegotiationCard, or CombatCard.
     public void SelectCard(Card c)
     {
-        if(deck == null)
-        {
-            deck = DeckManager.Instance;
-        }
-
         if (SumTotalCards() >= 10)
         {
             Debug.Log(CharacterName + " already has 10 cards selected and cannot select any more!");
@@ -68,24 +60,24 @@ public class DeckBuilderCharacter : ScriptableObject
         
         if(c.GetType() == typeof(CombatCard))
         {
-            if (deck.combatSelection.ContainsKey((CombatCard)c))
+            if (DeckManager.combatSelection.ContainsKey((CombatCard)c))
             {
-                deck.combatSelection[(CombatCard)c] += 1;
+                DeckManager.combatSelection[(CombatCard)c] += 1;
             }
             else
             {
-                deck.combatSelection.Add((CombatCard)c, 1);
+                DeckManager.combatSelection.Add((CombatCard)c, 1);
             }
         }
         else
         {
-            if (deck.negotiationSelection.ContainsKey((NegotiationCard)c))
+            if (DeckManager.negotiationSelection.ContainsKey((NegotiationCard)c))
             {
-                deck.negotiationSelection[(NegotiationCard)c] += 1;
+                DeckManager.negotiationSelection[(NegotiationCard)c] += 1;
             }
             else
             {
-                deck.negotiationSelection.Add((NegotiationCard)c, 1);
+                DeckManager.negotiationSelection.Add((NegotiationCard)c, 1);
             }
         }
 
@@ -107,24 +99,20 @@ public class DeckBuilderCharacter : ScriptableObject
             {
                 if (c.cardData.GetType() == typeof(CombatCard))
                 {
-                    if (deck.combatSelection[(CombatCard)c.cardData] <= 1)
+                    DeckManager.combatSelection[(CombatCard)c.cardData] -= 1;
+
+                    if (DeckManager.combatSelection[(CombatCard)c.cardData] < 1)
                     {
-                        deck.combatSelection.Remove((CombatCard)c.cardData);
-                    }
-                    else
-                    {
-                        deck.combatSelection[(CombatCard)c.cardData] -= 1;
+                        DeckManager.combatSelection.Remove((CombatCard)c.cardData);
                     }
                 }
                 else
                 {
-                    if (deck.negotiationSelection[(NegotiationCard)c.cardData] <= 1)
+                    DeckManager.negotiationSelection[(NegotiationCard)c.cardData] -= 1;
+
+                    if (DeckManager.negotiationSelection[(NegotiationCard)c.cardData] < 1)
                     {
-                        deck.negotiationSelection.Remove((NegotiationCard)c.cardData);
-                    }
-                    else
-                    {
-                        deck.negotiationSelection[(NegotiationCard)c.cardData] -= 1;
+                        DeckManager.negotiationSelection.Remove((NegotiationCard)c.cardData);
                     }
                 }
 

@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour
     public GameObject inSceneMap;
     public GameObject outSceneMap;
 
+    public DeckManager deck;
+
     public bool newGame;
     public bool beforeBoss = false;
     public bool atBoss = false;
@@ -50,10 +52,6 @@ public class GameManager : MonoBehaviour
     public TMP_Text booze;
 
     [SerializeField] float waitTime;
-
-    [Header("OUTDATED - REMOVE ALL REFERENCES SO WE CAN DELETE THEM")]
-    public int talkerint;
-    public string talkertype;
 
     // Start is called before the first frame update
     void Start()
@@ -231,7 +229,7 @@ public class GameManager : MonoBehaviour
 
         if (atBoss)
         {
-            DeckManager.Instance.Reset();
+            deck.Reset();
             LoadHub();
         }
         else

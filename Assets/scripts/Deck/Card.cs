@@ -12,6 +12,7 @@ namespace SpeakeasyStreet
         [TextArea] 
         public string cardDescription;
         public List<ScriptableObject> cardEffects;
+        public List<Object> cardBuffs;
         public bool unlocked;
 
         public List<ICardEffect> GetCardEffects()
@@ -20,6 +21,19 @@ namespace SpeakeasyStreet
             foreach (var effect in cardEffects)
             {
                 if (effect is ICardEffect cardEffect)
+                {
+                    effects.Add(cardEffect);
+                }
+            }
+            return effects;
+        }
+
+        public List<IBuffEffect> GetBuffEffects()
+        {
+            List<IBuffEffect> effects = new();
+            foreach (var effect in cardBuffs)
+            {
+                if (effect is IBuffEffect cardEffect)
                 {
                     effects.Add(cardEffect);
                 }

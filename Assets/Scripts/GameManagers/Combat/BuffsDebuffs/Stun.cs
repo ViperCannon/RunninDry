@@ -46,7 +46,24 @@ public class Stun : Debuff
         }
         else
         {
-            character.ApplyDebuff(new Stun(character, cardInstance.cardData.turnDuration));
+            if (cardInstance.cardData.chanceEffect > 0 )
+            {
+                int chance = Random.Range(1, 101);
+
+                if(chance > cardInstance.cardData.chanceEffect)
+                {
+                    character.ApplyDebuff(new Stun(character, cardInstance.cardData.turnDuration));
+                }
+                else
+                {
+                    Debug.Log("Stun chance failed!");
+                }
+            }
+            else
+            {
+                character.ApplyDebuff(new Stun(character, cardInstance.cardData.turnDuration));
+            }
+            
         }
     }
 

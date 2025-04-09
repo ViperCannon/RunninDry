@@ -38,7 +38,7 @@ public class PissedOff : Buff
         else
         {
             character.ApplyBuff(new PissedOff(character, cardInstance.cardData.turnDuration));
-        }
+        }      
     }
 
     new public void ResolveEffect(CombatCard action, CharacterInstance character)

@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: DeflectMissiles
   m_EditorClassIdentifier: 
   cardName: Deflect Missles
+  cardArt: {fileID: 21300000, guid: 47f40b6b8fb3b6840b7ee4d9bd688e43, type: 3}
   cost: 2
   drawAmount: 0
   cardDescription: Barley gains Counter for two turns
-  cardEffects:
-  - {fileID: 11400000, guid: baeadf86b4c9322409488b5793e293c2, type: 2}
+  cardEffects: []
+  cardBuffs:
+  - {fileID: 11500000, guid: 0e1874373abed484fabb4453ac7160d5, type: 3}
   unlocked: 1
   character: 2
   damage: 0
@@ -29,4 +31,3 @@ MonoBehaviour:
   chanceEffect: 0
   subTypes: 02000000
   validTargets: 00000000
-  cardArt: {fileID: 21300000, guid: 47f40b6b8fb3b6840b7ee4d9bd688e43, type: 3}

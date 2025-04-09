@@ -21,7 +21,7 @@ public class CharacterInstance : MonoBehaviour, IDataPersistence
 
     private void Start()
     {
-        combatManager = FindObjectOfType<CombatManager>();
+        combatManager = CombatManager.Instance;
 
         activeBuffs = new List<Buff>();
         activeDebuffs = new List<Debuff>();

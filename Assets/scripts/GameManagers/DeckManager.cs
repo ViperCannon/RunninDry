@@ -6,21 +6,6 @@ using SpeakeasyStreet;
 
 public class DeckManager : MonoBehaviour
 {
-    public static DeckManager Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this.gameObject.transform.parent.gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject.transform.parent.gameObject);
-        }
-    }
-
     [SerializeField]
     HandManager handManager;
 
@@ -34,8 +19,8 @@ public class DeckManager : MonoBehaviour
     NegotiationCard[] negotiationCards;
     CombatCard[] combatCards;
 
-    public Dictionary<NegotiationCard, int> negotiationSelection = new();
-    public Dictionary<CombatCard, int> combatSelection = new();
+    public static Dictionary<NegotiationCard, int> negotiationSelection = new();
+    public static Dictionary<CombatCard, int> combatSelection = new();
     public Deck negotiationDeck = new Deck();
     public Deck combatDeck = new Deck();
     public Deck discardPile = new Deck();

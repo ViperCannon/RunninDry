@@ -2,7 +2,6 @@ using UnityEngine;
 
 public abstract class Buff : IBuffEffect
 {
-    public BuffSO buffData;
     public string buffName;
     public int turnDuration;
     public float intensity;

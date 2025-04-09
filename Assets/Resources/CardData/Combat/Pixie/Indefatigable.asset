@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Indefatigable
   m_EditorClassIdentifier: 
   cardName: Indefatigable
+  cardArt: {fileID: 21300000, guid: 9fe7cb825fda6a647bc7dad71af43441, type: 3}
   cost: 3
   drawAmount: 0
   cardDescription: Gives another ally Resilient for two turns
-  cardEffects:
-  - {fileID: 11400000, guid: 3ffd972ecea4c75408334f8e87ae1d18, type: 2}
+  cardEffects: []
+  cardBuffs:
+  - {fileID: 11500000, guid: 275b416ea1897fd43b70d8942a42b647, type: 3}
   unlocked: 0
   character: 0
   damage: 0
@@ -29,4 +31,3 @@ MonoBehaviour:
   chanceEffect: 0
   subTypes: 02000000
   validTargets: 03000000
-  cardArt: {fileID: 21300000, guid: 9fe7cb825fda6a647bc7dad71af43441, type: 3}
