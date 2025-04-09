@@ -651,8 +651,8 @@ public class MapGenerator : MonoBehaviour
 
         if (crew.GetNextNodes().Count == 0)
         {
-                bossNode.Activate();
-                GameManager.Instance.beforeBoss = true;
+            bossNode.Activate();
+            GameManager.Instance.beforeBoss = true;
         }
     }
 }

@@ -122,6 +122,12 @@ public class DialogueManager : MonoBehaviour
         {
             GameManager.Instance.EndEncounter();
         }
+
+        if (GameManager.Instance.beforeBoss && MapGenerator.tutorial)
+        {
+            MapGenerator.tutorial = false;
+            GameManager.Instance.LoadHub();
+        }
     }
 
     private void DisplayChoices()
