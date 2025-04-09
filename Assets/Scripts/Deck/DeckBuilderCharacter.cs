@@ -50,6 +50,16 @@ public class DeckBuilderCharacter : ScriptableObject
             {
                 card.quantity += 1;
                 DeckBuilderVer2.Instance.UpdateReceiptFields();
+
+                if (c.GetType() == typeof(CombatCard))
+                {
+                    DeckManager.combatSelection[(CombatCard)c] += 1;
+                }
+                else
+                {
+                    DeckManager.negotiationSelection[(NegotiationCard)c] += 1;
+                }
+
                 Debug.Log(c.cardName + " updated in the selected list!");
                 return;
             }
@@ -60,25 +70,11 @@ public class DeckBuilderCharacter : ScriptableObject
         
         if(c.GetType() == typeof(CombatCard))
         {
-            if (DeckManager.combatSelection.ContainsKey((CombatCard)c))
-            {
-                DeckManager.combatSelection[(CombatCard)c] += 1;
-            }
-            else
-            {
-                DeckManager.combatSelection.Add((CombatCard)c, 1);
-            }
+            DeckManager.combatSelection.Add((CombatCard)c, 1);
         }
         else
         {
-            if (DeckManager.negotiationSelection.ContainsKey((NegotiationCard)c))
-            {
-                DeckManager.negotiationSelection[(NegotiationCard)c] += 1;
-            }
-            else
-            {
-                DeckManager.negotiationSelection.Add((NegotiationCard)c, 1);
-            }
+            DeckManager.negotiationSelection.Add((NegotiationCard)c, 1);
         }
 
         Debug.Log(c.cardName + " added to the selected list!");
