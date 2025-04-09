@@ -49,6 +49,13 @@ public class RelationshipsFramework : MonoBehaviour, IDataPersistence
         this.civilianRelations = data.civilianRelations;
     }
 
+    public void NewRun()
+    {
+        paneling = 3;
+        tires = 3;
+        booze = 8;
+    }
+
     public void SaveData(ref GameData data)
     {
         data.cash = this.cash;

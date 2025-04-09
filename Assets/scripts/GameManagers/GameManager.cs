@@ -182,6 +182,8 @@ public class GameManager : MonoBehaviour
     {
         relations.cash += relations.booze * 4;
         relations.booze = 0;
+        relations.paneling = 3;
+        relations.tires = 3;
         DataSave();
         atBoss = false;
         SceneManager.LoadScene(1);

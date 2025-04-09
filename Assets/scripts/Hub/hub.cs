@@ -111,6 +111,7 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     public void continuebutton()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        GameObject.Find("DataPersistenceManager").GetComponent<DataPersistenceManager>().SaveGame();
         SceneManager.LoadScene(2);
     }
 
