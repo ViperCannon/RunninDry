@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
     bool mapMovingIn = false;
     bool mapMovingOut = false;
 
+    DataPersistenceManager persistenceManager;
     RelationshipsFramework relations;
     public TMP_Text scoretext;
     public ScrollingBackground ScrollingBackground;
@@ -63,6 +64,11 @@ public class GameManager : MonoBehaviour
             tires.text = relations.tires.ToString();
             paneling.text = relations.paneling.ToString();
             booze.text = relations.booze.ToString();
+        }
+
+        if (GameObject.Find("DataPersistenceManager") != null)
+        {
+            persistenceManager = GameObject.Find("DataPersistenceManager").GetComponent<DataPersistenceManager>();
         }
 
         if(!MapGenerator.tutorial)
@@ -164,8 +170,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void DataSave()
+    {
+        if (persistenceManager != null)
+        {
+            persistenceManager.SaveGame();
+        }
+    }
+
     public void LoadHub()
     {
+        relations.cash += relations.booze * 4;
+        relations.booze = 0;
+        DataSave();
         atBoss = false;
         SceneManager.LoadScene(1);
     }
@@ -227,9 +244,13 @@ public class GameManager : MonoBehaviour
         print(relations.norwegianMobRelations);
         print(relations.sicilianMobRelations);
 
+        DataSave();
+
         if (atBoss)
         {
             deck.Reset();
+            relations.cash += relations.booze * 4;
+            relations.booze = 0;
             LoadHub();
         }
         else
