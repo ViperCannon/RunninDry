@@ -28,6 +28,10 @@ public class DeckManager : MonoBehaviour
     public bool inCombat = false;
     public bool inNegotiation = false;
 
+    public AudioSource audioSource;
+    public AudioClip[] cardDrawSounds;
+    public AudioClip[] cardDiscardSounds;
+
     public void PopulateDecks()
     {
         if (MapGenerator.tutorial)
@@ -104,6 +108,7 @@ public class DeckManager : MonoBehaviour
                 discardPile.Clear();
                 combatDeck.Shuffle();
 
+                audioSource.PlayOneShot(cardDrawSounds[Random.Range(0, cardDrawSounds.Length - 1)]);
                 return combatDeck.Remove(0);
             }
             else
@@ -124,10 +129,12 @@ public class DeckManager : MonoBehaviour
                 discardPile.Clear();
                 negotiationDeck.Shuffle();
 
+                audioSource.PlayOneShot(cardDrawSounds[Random.Range(0, cardDrawSounds.Length - 1)]);
                 return negotiationDeck.Remove(0);
             }
             else
             {
+                audioSource.PlayOneShot(cardDrawSounds[Random.Range(0, cardDrawSounds.Length - 1)]);
                 return negotiationDeck.Remove(0);
             }
         }
@@ -141,7 +148,9 @@ public class DeckManager : MonoBehaviour
     public void DiscardCard(Card card)
     {
         discardPile.Add(card);
+        audioSource.PlayOneShot(cardDiscardSounds[Random.Range(0, cardDiscardSounds.Length - 1)]);
         UpdateCounters();
+        
     }
 
     public void UpdateCounters()
