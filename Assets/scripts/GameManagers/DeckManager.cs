@@ -31,6 +31,7 @@ public class DeckManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip[] cardDrawSounds;
     public AudioClip[] cardDiscardSounds;
+    public AudioClip[] cardShuffleSounds;
 
     public void Awake()
     {
@@ -113,7 +114,7 @@ public class DeckManager : MonoBehaviour
                 discardPile.Clear();
                 combatDeck.Shuffle();
 
-                audioSource.PlayOneShot(cardDrawSounds[Random.Range(0, cardDrawSounds.Length - 1)]);
+                audioSource.PlayOneShot(cardDrawSounds[Random.Range(0, cardDrawSounds.Length)]);
                 return combatDeck.Remove(0);
             }
             else
@@ -134,12 +135,12 @@ public class DeckManager : MonoBehaviour
                 discardPile.Clear();
                 negotiationDeck.Shuffle();
 
-                audioSource.PlayOneShot(cardDrawSounds[Random.Range(0, cardDrawSounds.Length - 1)]);
+                audioSource.PlayOneShot(cardDrawSounds[Random.Range(0, cardDrawSounds.Length)]);
                 return negotiationDeck.Remove(0);
             }
             else
             {
-                audioSource.PlayOneShot(cardDrawSounds[Random.Range(0, cardDrawSounds.Length - 1)]);
+                audioSource.PlayOneShot(cardDrawSounds[Random.Range(0, cardDrawSounds.Length)]);
                 return negotiationDeck.Remove(0);
             }
         }
@@ -153,7 +154,7 @@ public class DeckManager : MonoBehaviour
     public void DiscardCard(Card card)
     {
         discardPile.Add(card);
-        audioSource.PlayOneShot(cardDiscardSounds[Random.Range(0, cardDiscardSounds.Length - 1)]);
+        audioSource.PlayOneShot(cardDiscardSounds[Random.Range(0, cardDiscardSounds.Length)]);
         UpdateCounters();
         
     }
@@ -170,6 +171,11 @@ public class DeckManager : MonoBehaviour
         }
         
         discardCounter.text = discardPile.Size().ToString();
+    }
+
+    public void PlayShuffleCardSound()
+    {
+        audioSource.PlayOneShot(cardShuffleSounds[Random.Range(0, cardShuffleSounds.Length)]);
     }
 
     public void Refresh()

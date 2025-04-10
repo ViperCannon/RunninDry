@@ -156,7 +156,7 @@ public class DeckBuilderVer2 : MonoBehaviour
     {
         ClearCardDisplay();
 
-        audioSource.PlayOneShot(sortCardSounds[Random.Range(0, sortCardSounds.Length - 1)]);
+        audioSource.PlayOneShot(sortCardSounds[Random.Range(0, sortCardSounds.Length)]);
 
         Debug.Log("Populating the Card Display with " + SelectedCharacter.CharacterName + "'s Combat Cards!");
         // Populate the display cards using SelectedCharacter.combatCards.
@@ -271,12 +271,12 @@ public class DeckBuilderVer2 : MonoBehaviour
 
     public void PlayAddCardSound() 
     {
-        audioSource.PlayOneShot(addCardSounds[Random.Range(0, addCardSounds.Length - 1)]);
+        audioSource.PlayOneShot(addCardSounds[Random.Range(0, addCardSounds.Length)]);
     }
 
     public void PlayRemoveCardSound()
     {
-        audioSource.PlayOneShot(removeCardSounds[Random.Range(0, removeCardSounds.Length - 1)]);
+        audioSource.PlayOneShot(removeCardSounds[Random.Range(0, removeCardSounds.Length)]);
     }
 
     public void NextScene(int sceneID)
