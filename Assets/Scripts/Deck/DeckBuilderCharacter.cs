@@ -44,6 +44,8 @@ public class DeckBuilderCharacter : ScriptableObject
             return;
         }
 
+        DeckBuilderVer2.Instance.PlayAddCardSound();
+
         foreach (SelectedCard card in SelectedCardsEntries)
         {
             if (card.cardName == c.cardName)
@@ -88,6 +90,8 @@ public class DeckBuilderCharacter : ScriptableObject
             Debug.Log(CharacterName + " has no cards selected to deselect!");
             return;
         }
+
+        DeckBuilderVer2.Instance.PlayRemoveCardSound();
 
         foreach (SelectedCard c in SelectedCardsEntries)
         {
