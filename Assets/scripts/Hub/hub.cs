@@ -17,6 +17,9 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     public GameObject wall1;
     public GameObject stock1;
 
+    public GameObject upgradeBoxes;
+    bool hideBoxes = false;
+
     Ray ray;
     RaycastHit hit;
     
@@ -91,12 +94,12 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
 
     public void LoadData(GameData data)
     {
-        hubPurchases = data.hubPurchases;
+        //hubPurchases = data.hubPurchases;
     }
 
     public void SaveData(ref GameData data)
     {
-        data.hubPurchases = hubPurchases;
+        //data.hubPurchases = hubPurchases;
     }
 
     private void AddPhysics2DRaycaster()
@@ -108,13 +111,31 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         }
     }
 
+    public void GameSave()
+    {
+        GameObject.Find("DataPersistenceManager").GetComponent<DataPersistenceManager>().SaveGame();
+    }
+
     public void continuebutton()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        GameObject.Find("DataPersistenceManager").GetComponent<DataPersistenceManager>().SaveGame();
+        GameSave();
         SceneManager.LoadScene(2);
     }
 
+    public void hideboxes()
+    {
+        if (!hideBoxes)
+        {
+            upgradeBoxes.SetActive(false);
+            hideBoxes = true;
+        }
+        else if (hideBoxes)
+        {
+            upgradeBoxes.SetActive(true);
+            hideBoxes = false;
+        }
+    }
 
     void Update()
     {

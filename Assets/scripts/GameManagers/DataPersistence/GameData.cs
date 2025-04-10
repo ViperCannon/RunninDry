@@ -20,7 +20,12 @@ public class GameData
     public List<string> CBarleycards;
 
 
-    public List<string> hubPurchases;
+    //public List<string> hubPurchases;
+    public int chairUpgrades;
+    public int comfortUpgrades;
+    public int barUpgrades;
+    public int wallUpgrades;
+    public int stockUpgrades;
 
     public List<Buff> activeBuffs;
     public List<Debuff> activeDebuffs;
@@ -63,7 +68,12 @@ public class GameData
         activeBuffs = new List<Buff>();
         activeDebuffs = new List<Debuff>();
 
-        hubPurchases = new List<string>();
+        //hubPurchases = new List<string>();
+        chairUpgrades = 0;
+        comfortUpgrades = 0;
+        barUpgrades = 0;
+        wallUpgrades = 0;
+        stockUpgrades = 0;
 
         this.sceneInt = 0;
 
