@@ -88,6 +88,7 @@ public class Deck
 
     public void Shuffle()
     {
+        GameManager.Instance.deck.PlayShuffleCardSound();
         for(int i = 0; i < Cards.Count - 1; i++)
         {
             int rng = Random.Range(i, Cards.Count);
