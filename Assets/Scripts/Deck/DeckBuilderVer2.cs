@@ -27,6 +27,11 @@ public class DeckBuilderVer2 : MonoBehaviour
     Image signature;
     GameObject ContinueButton;
 
+    public AudioSource audioSource;
+    public AudioClip[] addCardSounds;
+    public AudioClip[] removeCardSounds;
+    public AudioClip[] sortCardSounds;
+
     void Awake()
     {
         //Initialize Singleton Instance
@@ -61,6 +66,8 @@ public class DeckBuilderVer2 : MonoBehaviour
 
         signature = GameObject.Find("Signature").GetComponent<Image>();
         ContinueButton = GameObject.Find("ContinueButton");
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -133,6 +140,8 @@ public class DeckBuilderVer2 : MonoBehaviour
     {
         ClearCardDisplay();
 
+        audioSource.PlayOneShot(sortCardSounds[Random.Range(0, sortCardSounds.Length - 1)]);
+
         Debug.Log("Populating the Card Display with " + SelectedCharacter.CharacterName + "'s Negotioation Cards!");
         // Populate the display cards using SelectedCharacter.negotiationCards.
         foreach (NegotiationCard card in SelectedCharacter.negotiationCards)
@@ -146,6 +155,8 @@ public class DeckBuilderVer2 : MonoBehaviour
     public void DisplayCombatCards()
     {
         ClearCardDisplay();
+
+        audioSource.PlayOneShot(sortCardSounds[Random.Range(0, sortCardSounds.Length - 1)]);
 
         Debug.Log("Populating the Card Display with " + SelectedCharacter.CharacterName + "'s Combat Cards!");
         // Populate the display cards using SelectedCharacter.combatCards.
@@ -257,6 +268,16 @@ public class DeckBuilderVer2 : MonoBehaviour
         ContinueButton.SetActive(true);
     }
     #endregion
+
+    public void PlayAddCardSound() 
+    {
+        audioSource.PlayOneShot(addCardSounds[Random.Range(0, addCardSounds.Length - 1)]);
+    }
+
+    public void PlayRemoveCardSound()
+    {
+        audioSource.PlayOneShot(removeCardSounds[Random.Range(0, removeCardSounds.Length - 1)]);
+    }
 
     public void NextScene(int sceneID)
     {

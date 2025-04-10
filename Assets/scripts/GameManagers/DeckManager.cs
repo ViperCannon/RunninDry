@@ -32,6 +32,11 @@ public class DeckManager : MonoBehaviour
     public AudioClip[] cardDrawSounds;
     public AudioClip[] cardDiscardSounds;
 
+    public void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void PopulateDecks()
     {
         if (MapGenerator.tutorial)
