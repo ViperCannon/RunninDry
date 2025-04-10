@@ -8,19 +8,22 @@ using static UnityEditor.Progress;
 public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
 {
     public int cost;
+    public int initialCost;
     RelationshipsFramework relationshipframework;
     TMP_Text text;
     Hub hub;
     int upgradecount = 0;
+    public int maxUpgrades;
     // Start is called before the first frame update
     void Start()
     {
         relationshipframework = GameObject.Find("GameManager").GetComponent<RelationshipsFramework>();
         hub = GameObject.Find("Canvas").GetComponent<Hub>();
         text = this.gameObject.GetComponentInChildren<TMP_Text>();
-        cost = cost * (1 + upgradecount);
+        cost = initialCost * (1+upgradecount);
         updateCost();
-        if (upgradecount > 0)
+        checkMaxUpgrades();
+        if (upgradecount > 0 && this.name != "Wall")
         {
             GameObject.Find("Upgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(true);
         }
@@ -43,12 +46,24 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
             }
             upgradecount++;
             hub.GameSave();
-            //hub.purchasedUpgrade(this.name);
+            hub.purchasedUpgrade(this.name);
             //add to a list of purchased upgrades to remember if this is destroyed
             //Destroy(this.gameObject);
-            GameObject.Find("Upgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(true);
-            cost = cost * (1 + upgradecount);
+            if (this.name != "Wall")
+            {
+                GameObject.Find("Upgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(true);
+            }
+            cost += initialCost;
             updateCost();
+            checkMaxUpgrades();
+        }
+    }
+
+    public void checkMaxUpgrades()
+    {
+        if (upgradecount >= maxUpgrades)
+        {
+            this.gameObject.SetActive(false);
         }
     }
 
@@ -100,11 +115,6 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
                 
                 break;
         }
-    }
-
-    public void OnMouseOver()
-    {
-        Debug.Log(this.name);
     }
 
     // Update is called once per frame

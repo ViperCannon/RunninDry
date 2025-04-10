@@ -20,6 +20,8 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     public GameObject upgradeBoxes;
     bool hideBoxes = false;
 
+    int wallupgrade;
+
     Ray ray;
     RaycastHit hit;
     
@@ -30,7 +32,11 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         //may need to change GameManager to something else depending what holds the money variable
         dataManager = GameObject.Find("DataPersistenceManager").GetComponent<DataPersistenceManager>();
         relationshipframework = GameObject.Find("GameManager").GetComponent<RelationshipsFramework>();
-        for (int i = 0; i < hubPurchases.Count; i++)
+        if (wallupgrade > 0)
+        {
+            wall1.SetActive(true);
+        }
+        /*for (int i = 0; i < hubPurchases.Count; i++)
         {
             GameObject.Find(hubPurchases[i]).SetActive(false);
 
@@ -55,7 +61,7 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
                     Debug.Log(hubPurchases[i]+"1");
                     break;
             }
-        }
+        }*/
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -66,10 +72,15 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     public void purchasedUpgrade(string item)
     {
         //this is where any additional effects we want to have happen would happen
-        hubPurchases.Add(item);
-        dataManager.SaveGame();
+        //hubPurchases.Add(item);
+        //dataManager.SaveGame();
+        if (item == "Wall")
+        {
+            wall1.SetActive(true);
+        }
 
-        switch (item)
+
+        /*switch (item)
         {
             case "Chairs":
                 chairs1.SetActive(true);
@@ -89,11 +100,12 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
             default:
                 Debug.Log(item);
                 break;
-        }
+        }*/
     }
 
     public void LoadData(GameData data)
     {
+        wallupgrade = data.wallUpgrades;
         //hubPurchases = data.hubPurchases;
     }
 
