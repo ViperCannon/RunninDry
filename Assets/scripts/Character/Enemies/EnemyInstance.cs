@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SpeakeasyStreet;
+using TMPro;
 
 public class EnemyInstance : CharacterInstance
 {
@@ -13,6 +14,7 @@ public class EnemyInstance : CharacterInstance
 
     const float MAX_HEALTHBAR_SIZE = 7.2f;
     GameObject healthBar;
+    GameObject healthText;
 
     public List<CombatCard> actions;
 
@@ -35,6 +37,7 @@ public class EnemyInstance : CharacterInstance
             if (child.CompareTag("HealthBar"))
             {
                 healthBar = child.GetChild(0).gameObject;
+                healthText = child.GetChild(1).gameObject;
                 break;
             }
         }
@@ -72,6 +75,8 @@ public class EnemyInstance : CharacterInstance
 
     private void UpdateHealthBar()
     {
+        healthText.GetComponent<TextMeshPro>().text = currentHealth.ToString();
+
         float temp = (float)currentHealth / maxHealth;
 
         if (temp > 0.7f)

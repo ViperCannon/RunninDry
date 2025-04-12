@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour
         { 
             if (carMovingOut)
             {
+                ScrollingBackground.isScrolling = false;
                 WheelsStop();
             }
 
@@ -193,13 +194,13 @@ public class GameManager : MonoBehaviour
     public void CarMoveIn()
     {
         WheelsSpin();
+        ScrollingBackground.isScrolling = true;
         carMovingIn = true;
         carMovingOut = false;
     }
 
     public void CarMoveOut()
     {
-        WheelsStop();
         carMovingOut = true;
         carMovingIn = false;
     }
