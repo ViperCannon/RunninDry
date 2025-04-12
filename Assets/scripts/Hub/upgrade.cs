@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEditor.Progress;
+//using static UnityEditor.Progress;
 
 public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
 {

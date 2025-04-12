@@ -175,7 +175,7 @@ public class DeckManager : MonoBehaviour
 
     public void PlayShuffleCardSound()
     {
-        audioSource.PlayOneShot(cardShuffleSounds[Random.Range(0, cardShuffleSounds.Length)]);
+        audioSource.PlayOneShot(cardShuffleSounds[Random.Range(0, cardShuffleSounds.Length)], 0.15f);
     }
 
     public void Refresh()
