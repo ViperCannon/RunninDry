@@ -14,6 +14,11 @@ public class InkExternalFunctions
         story.BindExternalFunction("StartNegotiation", (int d, int i, int b) => StartNegotiation(d, i, b));
 
         // Resource Functions
+        story.BindExternalFunction("DoesPlayerHaveEnoughCash", (int amount) => DoesPlayerHaveEnoughCash(amount));
+        story.BindExternalFunction("DoesPlayerHaveEnoughBooze", (int amount) => DoesPlayerHaveEnoughBooze(amount));
+        story.BindExternalFunction("DoesPlayerHaveEnoughTires", (int amount) => DoesPlayerHaveEnoughTires(amount));
+        story.BindExternalFunction("DoesPlayerHaveEnoughPaneling", (int amount) => DoesPlayerHaveEnoughPaneling(amount));
+
         story.BindExternalFunction("AddCash", (int amount) => AddCash(amount));
         story.BindExternalFunction("AddBooze", (int amount) => AddBooze(amount));
         story.BindExternalFunction("AddScore", (int amount) => AddScore(amount));
@@ -46,6 +51,11 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("StartEliteCombat");
         story.UnbindExternalFunction("StartBossCombat");
         story.UnbindExternalFunction("StartNegotiation");
+
+        story.UnbindExternalFunction("DoesPlayerHaveEnoughCash");
+        story.UnbindExternalFunction("DoesPlayerHaveEnoughBooze");
+        story.UnbindExternalFunction("DoesPlayerHaveEnoughTires");
+        story.UnbindExternalFunction("DoesPlayerHaveEnoughPaneling");
 
         story.UnbindExternalFunction("AddCash");
         story.UnbindExternalFunction("AddBooze");
@@ -112,6 +122,28 @@ public class InkExternalFunctions
 
         NegotiationManager.Instance.gameObject.SetActive(true);
     }
+
+    #region Functions that Check Player Resources
+    public bool DoesPlayerHaveEnoughCash(int amount)
+    {
+        return RelationshipsFramework.Instance.cash >= amount;
+    }
+
+    public bool DoesPlayerHaveEnoughBooze(int amount)
+    {
+        return RelationshipsFramework.Instance.booze >= amount;
+    }
+
+    public bool DoesPlayerHaveEnoughTires(int amount)
+    {
+        return RelationshipsFramework.Instance.tires >= amount;
+    }
+
+    public bool DoesPlayerHaveEnoughPaneling(int amount)
+    {
+        return RelationshipsFramework.Instance.paneling >= amount;
+    }
+    #endregion
 
     #region Functions that Add or Subtract from Player Resources
     private void AddCash(int amount)
