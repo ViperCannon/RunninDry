@@ -33,6 +33,9 @@ public class DataPersistenceManager : MonoBehaviour
         {
             Instance = this;
         }
+        this.dataHandler = new FileDataHandler(Application.persistentDataPath, fileName);
+        this.dataPersistenceObjects = FindAllDataPersistenceObjects();
+        LoadGame();
     }
 
     private void Start()

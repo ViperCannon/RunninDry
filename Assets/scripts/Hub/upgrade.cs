@@ -17,9 +17,6 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
     // Start is called before the first frame update
     void Start()
     {
-        relationshipframework = GameObject.Find("GameManager").GetComponent<RelationshipsFramework>();
-        hub = GameObject.Find("Canvas").GetComponent<Hub>();
-        text = this.gameObject.GetComponentInChildren<TMP_Text>();
         cost = initialCost * (1+upgradecount);
         updateCost();
         checkMaxUpgrades();
@@ -27,6 +24,13 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
         {
             GameObject.Find("Upgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(true);
         }
+    }
+
+    void Awake()
+    {
+        relationshipframework = GameObject.Find("GameManager").GetComponent<RelationshipsFramework>();
+        hub = GameObject.Find("Canvas").GetComponent<Hub>();
+        text = this.gameObject.GetComponentInChildren<TMP_Text>();
     }
 
     public void updateCost()
@@ -120,6 +124,15 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
     // Update is called once per frame
     void Update()
     {
-        
+        /*relationshipframework = GameObject.Find("GameManager").GetComponent<RelationshipsFramework>();
+        hub = GameObject.Find("Canvas").GetComponent<Hub>();
+        text = this.gameObject.GetComponentInChildren<TMP_Text>();
+        cost = initialCost * (1 + upgradecount);
+        updateCost();
+        checkMaxUpgrades();
+        if (upgradecount > 0 && this.name != "Wall")
+        {
+            GameObject.Find("Upgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(true);
+        }*/
     }
 }
