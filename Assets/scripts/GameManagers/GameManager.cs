@@ -248,6 +248,10 @@ public class GameManager : MonoBehaviour
         print(relations.sicilianMobRelations);
 
         DataSave();
+        if (relations.booze <= 0)
+        {
+            SceneManager.LoadScene("fail");
+        }
 
         if (atBoss)
         {
