@@ -14,10 +14,10 @@ public class InkExternalFunctions
         story.BindExternalFunction("StartNegotiation", (int d, int i, int b) => StartNegotiation(d, i, b));
 
         // Resource Functions
-        story.BindExternalFunction("CheckPlayerCash", () => CheckPlayerCash());
-        story.BindExternalFunction("CheckPlayerBooze", () => CheckPlayerBooze());
-        story.BindExternalFunction("CheckPlayerTires", () => CheckPlayerTires());
-        story.BindExternalFunction("CheckPlayerPaneling", () => CheckPlayerPaneling());
+        story.BindExternalFunction("GetPlayerCash", () => GetPlayerCash());
+        story.BindExternalFunction("GetPlayerBooze", () => GetPlayerBooze());
+        story.BindExternalFunction("GetPlayerTires", () => GetPlayerTires());
+        story.BindExternalFunction("GetPlayerPaneling", () => GetPlayerPaneling());
 
         story.BindExternalFunction("AddCash", (int amount) => AddCash(amount));
         story.BindExternalFunction("AddBooze", (int amount) => AddBooze(amount));
@@ -52,10 +52,10 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("StartBossCombat");
         story.UnbindExternalFunction("StartNegotiation");
 
-        story.UnbindExternalFunction("DoesPlayerHaveEnoughCash");
-        story.UnbindExternalFunction("DoesPlayerHaveEnoughBooze");
-        story.UnbindExternalFunction("DoesPlayerHaveEnoughTires");
-        story.UnbindExternalFunction("DoesPlayerHaveEnoughPaneling");
+        story.UnbindExternalFunction("GetPlayerCash");
+        story.UnbindExternalFunction("GetPlayerBooze");
+        story.UnbindExternalFunction("GetPlayerTires");
+        story.UnbindExternalFunction("GetPlayerPaneling");
 
         story.UnbindExternalFunction("AddCash");
         story.UnbindExternalFunction("AddBooze");
@@ -124,24 +124,24 @@ public class InkExternalFunctions
     }
 
     #region Functions that Check Player Resources
-    public int CheckPlayerCash()
+    public void GetPlayerCash()
     {
-        return RelationshipsFramework.Instance.cash;
+        DialogueManager.GetInstance().UpdateInkDialogueVariable("cash", (Ink.Runtime.Object)new IntValue(RelationshipsFramework.Instance.cash));
     }
 
-    public int CheckPlayerBooze()
+    public void GetPlayerBooze()
     {
-        return RelationshipsFramework.Instance.booze;
+        DialogueManager.GetInstance().UpdateInkDialogueVariable("booze", (Ink.Runtime.Object)new IntValue(RelationshipsFramework.Instance.booze));
     }
 
-    public int CheckPlayerTires()
+    public void GetPlayerTires()
     {
-        return RelationshipsFramework.Instance.tires;
+        DialogueManager.GetInstance().UpdateInkDialogueVariable("tires", (Ink.Runtime.Object)new IntValue(RelationshipsFramework.Instance.tires));
     }
 
-    public int CheckPlayerPaneling()
+    public void GetPlayerPaneling()
     {
-        return RelationshipsFramework.Instance.paneling;
+        DialogueManager.GetInstance().UpdateInkDialogueVariable("paneling", (Ink.Runtime.Object)new IntValue(RelationshipsFramework.Instance.paneling));
     }
     #endregion
 
