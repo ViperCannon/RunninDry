@@ -19,7 +19,9 @@ Yes, yes, ye can take a swing at 'em this time. But listen up first, 'cause ye n
     -> END
     
 === Tutorial ===
-Click n' drag a card towards an enemy to spend that many caps and execute the card's effects on that enemy. Each of yer cards has a number on it; that's its cap cost. In the top right, ye'll see a belt 'o bullets. Those are yer caps, which ye only have a set amount of per turn! Once yer out, ye gotta end yer turn and take yer lumps from whoever's standing opposite ye.
+Click n' drag a card towards an enemy -that'd be the the goons to the right- to execute the card's effects on that enemy. However, usin' a card comes at a cost.
+In the top right, ye'll see a belt 'o bullets. Those are yer caps, which ye only have a set amount of per turn! Each of yer cards has a number on it; that's its cap cost. 
+Once yer out, ye gotta end yer turn and take yer lumps from whoever's standing opposite ye.
     Got that? 
     
 + [Yep.]

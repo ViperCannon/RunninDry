@@ -1,13 +1,26 @@
+EXTERNAL GetPlayerCash()
 EXTERNAL AddCash(int amount)
 EXTERNAL AlterCivilianRelations(int amount)
 EXTERNAL FullPartyHeal(int amount)
 
+VAR cash = 0
+
 -> main
 
 === main ===
-Stopped at a red light, an enterprising young man in a red-and-white paper hat strolls up to your car. Knocking on a window, he proffers what seems to be a sausage on a long, thin bun. He clears his throat and speaks. "Get'cha fresh, delicious hot dogs! Good for what ails ya! Two bucks for three! Best dogs this side of the Park, no buts about it!" It does smell pretty good...
+~ GetPlayerCash()
+Stopped at a red light, an enterprising young man in a red-and-white paper hat strolls up to your car and knocks on a window.
 
-+ [Pay for the Decadent Dogs.]
++  [Roll down the window.] -> choice
+
++  [Not interested.]
+    You decide not to indulge him. You wave him off as he dejectedly moves on to the car behind you.
+    -> END
+
+=== choice ===
+He clears his throat and speaks. "Get'cha fresh, delicious hot dogs! Good for what ails ya! Two bucks for three! Best dogs this side of the Park, no buts about it!" It does smell pretty good...
+
++ {cash >= 2} [Pay for the Decadent Dogs.]
    ~ AddCash(-2)
    ~ AlterCivilianRelations(3)
    ~ FullPartyHeal(5)
