@@ -14,10 +14,10 @@ public class InkExternalFunctions
         story.BindExternalFunction("StartNegotiation", (int d, int i, int b) => StartNegotiation(d, i, b));
 
         // Resource Functions
-        story.BindExternalFunction("DoesPlayerHaveEnoughCash", (int amount) => DoesPlayerHaveEnoughCash(amount));
-        story.BindExternalFunction("DoesPlayerHaveEnoughBooze", (int amount) => DoesPlayerHaveEnoughBooze(amount));
-        story.BindExternalFunction("DoesPlayerHaveEnoughTires", (int amount) => DoesPlayerHaveEnoughTires(amount));
-        story.BindExternalFunction("DoesPlayerHaveEnoughPaneling", (int amount) => DoesPlayerHaveEnoughPaneling(amount));
+        story.BindExternalFunction("CheckPlayerCash", () => CheckPlayerCash());
+        story.BindExternalFunction("CheckPlayerBooze", () => CheckPlayerBooze());
+        story.BindExternalFunction("CheckPlayerTires", () => CheckPlayerTires());
+        story.BindExternalFunction("CheckPlayerPaneling", () => CheckPlayerPaneling());
 
         story.BindExternalFunction("AddCash", (int amount) => AddCash(amount));
         story.BindExternalFunction("AddBooze", (int amount) => AddBooze(amount));
@@ -124,24 +124,24 @@ public class InkExternalFunctions
     }
 
     #region Functions that Check Player Resources
-    public bool DoesPlayerHaveEnoughCash(int amount)
+    public int CheckPlayerCash()
     {
-        return RelationshipsFramework.Instance.cash >= amount;
+        return RelationshipsFramework.Instance.cash;
     }
 
-    public bool DoesPlayerHaveEnoughBooze(int amount)
+    public int CheckPlayerBooze()
     {
-        return RelationshipsFramework.Instance.booze >= amount;
+        return RelationshipsFramework.Instance.booze;
     }
 
-    public bool DoesPlayerHaveEnoughTires(int amount)
+    public int CheckPlayerTires()
     {
-        return RelationshipsFramework.Instance.tires >= amount;
+        return RelationshipsFramework.Instance.tires;
     }
 
-    public bool DoesPlayerHaveEnoughPaneling(int amount)
+    public int CheckPlayerPaneling()
     {
-        return RelationshipsFramework.Instance.paneling >= amount;
+        return RelationshipsFramework.Instance.paneling;
     }
     #endregion
 

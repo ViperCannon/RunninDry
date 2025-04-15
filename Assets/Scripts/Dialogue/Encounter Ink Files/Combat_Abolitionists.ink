@@ -1,3 +1,4 @@
+EXTERNAL CheckPlayerPaneling()
 EXTERNAL AddPaneling(int amount)
 EXTERNAL AlterProhibitionistRelations(int amount)
 EXTERNAL AlterCivilianRelations(int amount)
@@ -11,7 +12,11 @@ You weren't sure what it was from a distance, but as you closed the distance you
 
 + [Oblige 'em.]
     ~ StartCombat()
- 
+
+
+~temp paneling = CheckPlayerPaneling()
+
+{paneling >= 1}
 + [... You *are* in a big metal machine.]
     ~ AddPaneling(-1)
     ~ AlterProhibitionistRelations(-10)
