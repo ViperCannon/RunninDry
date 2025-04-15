@@ -1,12 +1,9 @@
-using UnityEngine;
-
 public class Resilient : Buff
 {
     public Resilient()
     {
         buffName = "Resilient";
         turnDuration = 0;
-        intensity = 0;
         target = null;
     }
 
@@ -14,54 +11,7 @@ public class Resilient : Buff
     {
         buffName = "Resilient";
         turnDuration = initTurnDuration;
-        intensity = 0;
         target = character;
-    }
-
-    new public void ResolveEffect(CombatCardDisplay cardInstance, CharacterInstance character)
-    {
-        Resilient existingResilient = null;
-
-        foreach (Buff buff in character.activeBuffs)
-        {
-            if (buff is Resilient resilient)
-            {
-                existingResilient = resilient;
-                break;
-            }
-        }
-
-        if (existingResilient != null)
-        {
-            existingResilient.AddStacks(cardInstance.cardData.turnDuration);
-        }
-        else
-        {
-            character.ApplyBuff(new Resilient(character, cardInstance.cardData.turnDuration));
-        }
-    }
-
-    new public void ResolveEffect(CombatCard action, CharacterInstance character)
-    {
-        Resilient existingResilient = null;
-
-        foreach (Buff buff in character.activeBuffs)
-        {
-            if (buff is Resilient resilient)
-            {
-                existingResilient = resilient;
-                break;
-            }
-        }
-
-        if (existingResilient != null)
-        {
-            existingResilient.AddStacks(action.turnDuration);
-        }
-        else
-        {
-            character.ApplyBuff(new Resilient(character, action.turnDuration));
-        }
     }
 
     public override void UpdateEffect()
@@ -70,12 +20,8 @@ public class Resilient : Buff
 
         if (turnDuration <= 0)
         {
+            target.isResilient = false;
             target.RemoveBuff(this);
         }
-    }
-
-    void AddStacks(int addTurnDurration)
-    {
-        turnDuration += addTurnDurration;
     }
 }

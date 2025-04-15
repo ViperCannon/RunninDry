@@ -12,7 +12,7 @@ public class CombatCard : Card
     public int heal;
     public int secondaryHeal;
     public int turnDuration; //for applied effects
-    public int chanceEffect; //chance for applied effects (do not use for blind)
+    public int chanceEffect; //chance for applied effects
     public List<CombatSubType> subTypes;
     public List<CardTarget> validTargets;
 

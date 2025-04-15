@@ -19,7 +19,8 @@ MonoBehaviour:
   cardDescription: Barley gains Counter for two turns
   cardEffects: []
   cardBuffs:
-  - {fileID: 11500000, guid: 0e1874373abed484fabb4453ac7160d5, type: 3}
+  - {fileID: 11400000, guid: a1298312ba68c6a4aa36d63130234996, type: 2}
+  cardDebuffs: []
   unlocked: 1
   character: 2
   damage: 0

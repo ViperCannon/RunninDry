@@ -21,8 +21,9 @@ MonoBehaviour:
     Inflict Disarmed for two turns'
   cardEffects:
   - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
-  cardBuffs:
-  - {fileID: 11500000, guid: aec9bca67402b574b8ab32a7105fc9b1, type: 3}
+  cardBuffs: []
+  cardDebuffs:
+  - {fileID: 11400000, guid: aa948977f0cc2b0478bdb325a5922dc9, type: 2}
   unlocked: 1
   character: 1
   damage: 5

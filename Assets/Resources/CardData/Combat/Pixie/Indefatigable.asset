@@ -19,7 +19,8 @@ MonoBehaviour:
   cardDescription: Gives another ally Resilient for two turns
   cardEffects: []
   cardBuffs:
-  - {fileID: 11500000, guid: 275b416ea1897fd43b70d8942a42b647, type: 3}
+  - {fileID: 11400000, guid: e36a1a62439ebe746854a91c26d72393, type: 2}
+  cardDebuffs: []
   unlocked: 0
   character: 0
   damage: 0

@@ -31,31 +31,8 @@ namespace SpeakeasyStreet
                     effect.ResolveEffect(card, target);
                 }
 
-                foreach (IBuffEffect effect in card.cardData.GetBuffEffects())
-                {
-                    if (card.cardData.IsAOE())
-                    {
-                        if (card.cardData.validTargets[0] == CombatCard.CardTarget.AllPlayers || card.cardData.validTargets[0] == CombatCard.CardTarget.AllCharacters)
-                        {
-                            foreach (AllyInstance ally in CombatManager.Instance.Allies)
-                            {
-                                effect.ResolveEffect(card, ally);
-                            }
-                        }
-                        
-                        if (card.cardData.validTargets[0] == CombatCard.CardTarget.AllEnemies || card.cardData.validTargets[0] == CombatCard.CardTarget.AllCharacters)
-                        {
-                            foreach (EnemyInstance enemy in CombatManager.Instance.Enemies)
-                            {
-                                effect.ResolveEffect(card, enemy);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        effect.ResolveEffect(card, target);
-                    }      
-                }
+
+                CombatBuffAndDebuffHelper(card.cardData, target);
             }
             else
             {
@@ -69,10 +46,10 @@ namespace SpeakeasyStreet
                     effect.ResolveEffect(card);
                 }
 
-                foreach (IBuffEffect effect in card.cardData.GetBuffEffects())
+                /*foreach (IBuffEffect effect in card.cardData.GetBuffEffects())
                 {
                     effect.ResolveEffect(card);
-                }
+                }*/
             }
 
             
@@ -86,32 +63,62 @@ namespace SpeakeasyStreet
                 effect.ResolveEffect(action, target);
             }
 
-            foreach (IBuffEffect effect in action.GetBuffEffects())
+            CombatBuffAndDebuffHelper(action, target);
+        }
+        
+        void CombatBuffAndDebuffHelper(CombatCard card, CharacterInstance target)
+        {
+            foreach (DebuffSO effect in card.cardDebuffs)
             {
-                if (action.IsAOE())
+                if (card.IsAOE())
                 {
-                    if (action.validTargets[0] == CombatCard.CardTarget.AllPlayers  || action.validTargets[0] == CombatCard.CardTarget.AllCharacters)
+                    if (card.validTargets[0] == CombatCard.CardTarget.AllPlayers || card.validTargets[0] == CombatCard.CardTarget.AllCharacters)
                     {
                         foreach (AllyInstance ally in CombatManager.Instance.Allies)
                         {
-                            effect.ResolveEffect(action, ally);
+                            effect.CombatAddDebuff(card, ally);
                         }
                     }
-                    
-                    if (action.validTargets[0] == CombatCard.CardTarget.AllEnemies || action.validTargets[0] == CombatCard.CardTarget.AllCharacters)
+
+                    if (card.validTargets[0] == CombatCard.CardTarget.AllEnemies || card.validTargets[0] == CombatCard.CardTarget.AllCharacters)
                     {
                         foreach (EnemyInstance enemy in CombatManager.Instance.Enemies)
                         {
-                            effect.ResolveEffect(action, enemy);
+                            effect.CombatAddDebuff(card, enemy);
                         }
                     }
                 }
                 else
                 {
-                    effect.ResolveEffect(action, target);
+                    effect.CombatAddDebuff(card, target);
                 }
-                    
+            }
+
+            foreach (BuffSO effect in card.cardBuffs)
+            {
+                if (card.IsAOE())
+                {
+                    if (card.validTargets[0] == CombatCard.CardTarget.AllPlayers || card.validTargets[0] == CombatCard.CardTarget.AllCharacters)
+                    {
+                        foreach (AllyInstance ally in CombatManager.Instance.Allies)
+                        {
+                            effect.CombatAddBuff(card, ally);
+                        }
+                    }
+
+                    if (card.validTargets[0] == CombatCard.CardTarget.AllEnemies || card.validTargets[0] == CombatCard.CardTarget.AllCharacters)
+                    {
+                        foreach (EnemyInstance enemy in CombatManager.Instance.Enemies)
+                        {
+                            effect.CombatAddBuff(card, enemy);
+                        }
+                    }
+                }
+                else
+                {
+                    effect.CombatAddBuff(card, target);
+                }
             }
         }
-    }
+    } 
 }

@@ -21,8 +21,9 @@ MonoBehaviour:
     Target becomes Marked'
   cardEffects:
   - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
-  cardBuffs:
-  - {fileID: 11500000, guid: 0e05df42d3f547d408783ac10c30d557, type: 3}
+  cardBuffs: []
+  cardDebuffs:
+  - {fileID: 11400000, guid: d62a2223181264640816e77e53f13288, type: 2}
   unlocked: 1
   character: 0
   damage: 5

@@ -13,18 +13,16 @@ public class CharacterInstance : MonoBehaviour, IDataPersistence
     public float defenseMultiplier = 1f;
 
     public bool isStunned = false;
+    public bool isBleeding = false;
     public bool isResilient = false;
     public bool isDowned = false;
 
-    public List<Buff> activeBuffs;
-    public List<Debuff> activeDebuffs;
+    public List<Buff> activeBuffs = new();
+    public List<Debuff> activeDebuffs = new();
 
     private void Start()
     {
         combatManager = CombatManager.Instance;
-
-        activeBuffs = new List<Buff>();
-        activeDebuffs = new List<Debuff>();
     }
 
     public virtual void TakeDamage(int damage)

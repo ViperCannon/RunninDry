@@ -21,8 +21,9 @@ MonoBehaviour:
     Stuns the enemy for 1 turn'
   cardEffects:
   - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
-  cardBuffs:
-  - {fileID: 11500000, guid: 90fe7b8d0632b8c489d611334542d660, type: 3}
+  cardBuffs: []
+  cardDebuffs:
+  - {fileID: 11400000, guid: 7b7bd7a568dd820429599e71c59a03b1, type: 2}
   unlocked: 0
   character: 2
   damage: 10

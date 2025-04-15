@@ -20,7 +20,8 @@ MonoBehaviour:
   cardEffects:
   - {fileID: 11400000, guid: 528e90c46b8743541b5129adf9238ec9, type: 2}
   cardBuffs:
-  - {fileID: 11500000, guid: e0f0a5891248a2c4c9f94c2562932b2d, type: 3}
+  - {fileID: 11400000, guid: ed3803fe1df6b0e459a031b0abbd5009, type: 2}
+  cardDebuffs: []
   unlocked: 0
   character: 1
   damage: 0
