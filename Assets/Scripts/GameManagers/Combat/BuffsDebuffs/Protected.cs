@@ -4,25 +4,25 @@ public class Protected : Buff
     //Bodyguard Baldwin effect
     public Protected()
     {
-        buffName = "Protected";
-        turnDuration = 0;
-        target = null;
+        BuffName = "Protected";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public Protected(CharacterInstance character, int initTurnDuration)
     {
-        buffName = "Protected";
-        turnDuration = initTurnDuration;
-        target = character;
+        BuffName = "Protected";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if (turnDuration <= 0)
+        if (TurnDuration <= 0)
         {
-            target.RemoveBuff(this);
+            Target.RemoveBuff(this);
         }
     }
 }

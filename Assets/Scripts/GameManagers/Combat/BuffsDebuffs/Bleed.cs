@@ -2,26 +2,26 @@ public class Bleed : Debuff
 {
     public Bleed()
     {
-        debuffName = "Bleed";
-        turnDuration = 0;
-        target = null;
+        DebuffName = "Bleed";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public Bleed(CharacterInstance character, int initTurnDuration)
     {
-        debuffName = "Bleed";
-        turnDuration = initTurnDuration;
-        target = character;
+        DebuffName = "Bleed";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if(turnDuration <= 0)
+        if(TurnDuration <= 0)
         {
-            target.isBleeding = false;
-            target.RemoveDebuff(this);
+            Target.isBleeding = false;
+            Target.RemoveDebuff(this);
         }
     }
 }

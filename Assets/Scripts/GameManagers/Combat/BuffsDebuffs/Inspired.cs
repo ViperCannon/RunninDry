@@ -2,25 +2,25 @@ public class Inspired : Buff
 {
     public Inspired()
     {
-        buffName = "Inspired";
-        turnDuration = 0;
-        target = null;
+        BuffName = "Inspired";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public Inspired(CharacterInstance character, int initTurnDuration)
     {
-        buffName = "Inspired";
-        turnDuration = initTurnDuration;
-        target = character;
+        BuffName = "Inspired";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if (turnDuration <= 0)
+        if (TurnDuration <= 0)
         {
-            target.RemoveBuff(this);
+            Target.RemoveBuff(this);
         }
     }
 }

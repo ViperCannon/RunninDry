@@ -2,24 +2,24 @@ public class PissedOff : Buff
 {
     public PissedOff()
     {
-        buffName = "PissedOff";
-        turnDuration = 0;
-        target = null;
+        BuffName = "PissedOff";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public PissedOff(CharacterInstance character, int initTurnDuration)
     {
-        buffName = "PissedOff";
-        turnDuration = initTurnDuration;
-        target = character;
+        BuffName = "PissedOff";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if (turnDuration <= 0)
+        if (TurnDuration <= 0)
         {
-            target.RemoveBuff(this);
+            Target.RemoveBuff(this);
         }
     }
 }

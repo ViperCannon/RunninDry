@@ -2,32 +2,32 @@ public class Blind : Debuff
 {
     public Blind()
     {
-        debuffName = "Blind";
-        turnDuration = 0;
-        target = null;
+        DebuffName = "Blind";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public Blind(CharacterInstance character)
     {
-        debuffName = "Blind";
-        turnDuration = 1;
-        target = character;
+        DebuffName = "Blind";
+        TurnDuration = 1;
+        Target = character;
     }
 
     public Blind(CharacterInstance character, int initTurnDuration)
     {
-        debuffName = "Blind";
-        turnDuration = initTurnDuration;
-        target = character;
+        DebuffName = "Blind";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if (turnDuration <= 0)
+        if (TurnDuration <= 0)
         {
-            target.RemoveDebuff(this);
+            Target.RemoveDebuff(this);
         }
     }
 }

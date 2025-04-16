@@ -19,7 +19,7 @@ public class BuffSO : ScriptableObject
     {
         foreach (Buff buff in target.activeBuffs)
         {
-            if (buff.buffName == buffName.ToString())
+            if (buff.BuffName == buffName.ToString())
             {
                 Debug.Log("Adding additional turns to " + buffName.ToString() + ".");
                 buff.AddStacks(card.turnDuration);

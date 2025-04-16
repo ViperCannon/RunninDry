@@ -1,8 +1,26 @@
 public abstract class Buff
 {
-    public string buffName;
-    public int turnDuration;
-    public CharacterInstance target;
+    string buffName;
+    int turnDuration;
+    CharacterInstance target;
+
+    public string BuffName
+    {
+        get { return buffName; }
+        set { buffName = value; }
+    }
+
+    public int TurnDuration
+    {
+        get { return turnDuration; }
+        set { turnDuration = value; }
+    }
+
+    public CharacterInstance Target
+    {
+        get { return target; }
+        set { target = value; }
+    }
 
     public abstract void UpdateEffect();
 

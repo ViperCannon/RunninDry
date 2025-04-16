@@ -2,25 +2,25 @@ public class Bulwark : Buff
 {
     public Bulwark()
     {
-        buffName = "Bulwark";
-        turnDuration = 0;
-        target = null;
+        BuffName = "Bulwark";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public Bulwark(CharacterInstance character, int initTurnDuration)
     {
-        buffName = "Bulwark";
-        turnDuration = initTurnDuration;
-        target = character;
+        BuffName = "Bulwark";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if (turnDuration <= 0)
+        if (TurnDuration <= 0)
         {
-            target.RemoveBuff(this);
+            Target.RemoveBuff(this);
         }
     }
 }

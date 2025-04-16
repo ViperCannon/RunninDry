@@ -2,26 +2,26 @@ public class Resilient : Buff
 {
     public Resilient()
     {
-        buffName = "Resilient";
-        turnDuration = 0;
-        target = null;
+        BuffName = "Resilient";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public Resilient(CharacterInstance character, int initTurnDuration)
     {
-        buffName = "Resilient";
-        turnDuration = initTurnDuration;
-        target = character;
+        BuffName = "Resilient";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if (turnDuration <= 0)
+        if (TurnDuration <= 0)
         {
-            target.isResilient = false;
-            target.RemoveBuff(this);
+            Target.isResilient = false;
+            Target.RemoveBuff(this);
         }
     }
 }

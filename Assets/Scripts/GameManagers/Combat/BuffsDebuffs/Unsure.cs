@@ -2,25 +2,25 @@ public class Unsure : Debuff
 {
     public Unsure()
     {
-        debuffName = "Unsure";
-        turnDuration = 0;
-        target = null;
+        DebuffName = "Unsure";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public Unsure(CharacterInstance character, int initTurnDuration)
     {
-        debuffName = "Unsure";
-        turnDuration = initTurnDuration;
-        target = character;
+        DebuffName = "Unsure";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if (turnDuration <= 0)
+        if (TurnDuration <= 0)
         {
-            target.RemoveDebuff(this);
+            Target.RemoveDebuff(this);
         }
     }
 }

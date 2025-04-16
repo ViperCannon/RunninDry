@@ -19,7 +19,7 @@ public class DebuffSO : ScriptableObject
     {
         foreach (Debuff debuff in target.activeDebuffs)
         {
-            if (debuff.debuffName == debuffName.ToString())
+            if (debuff.DebuffName == debuffName.ToString())
             {
                 Debug.Log("Adding additional turns to " + debuffName.ToString() + ".");
                 debuff.AddStacks(card.turnDuration);

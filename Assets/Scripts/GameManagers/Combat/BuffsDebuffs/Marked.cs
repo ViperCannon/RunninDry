@@ -2,32 +2,32 @@ public class Marked : Debuff
 {
     public Marked()
     {
-        debuffName = "Marked";
-        turnDuration = 0;
-        target = null;
+        DebuffName = "Marked";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public Marked(CharacterInstance character)
     {
-        debuffName = "Marked";
-        turnDuration = 0;
-        target = character;
+        DebuffName = "Marked";
+        TurnDuration = 0;
+        Target = character;
     }
 
     public Marked(CharacterInstance character, int initTurnDuration)
     {
-        debuffName = "Marked";
-        turnDuration = initTurnDuration;
-        target = character;
+        DebuffName = "Marked";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if (turnDuration <= 0)
+        if (TurnDuration <= 0)
         {
-            target.RemoveDebuff(this);
+            Target.RemoveDebuff(this);
         }
     }
 }

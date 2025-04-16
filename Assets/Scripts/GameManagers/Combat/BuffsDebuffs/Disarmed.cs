@@ -2,25 +2,25 @@ public class Disarmed : Debuff
 {
     public Disarmed()
     {
-        debuffName = "Disarmed";
-        turnDuration = 0;
-        target = null;
+        DebuffName = "Disarmed";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public Disarmed(CharacterInstance character, int initTurnDuration)
     {
-        debuffName = "Disarmed";
-        turnDuration = initTurnDuration;
-        target = character;
+        DebuffName = "Disarmed";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if (turnDuration <= 0)
+        if (TurnDuration <= 0)
         {
-            target.RemoveDebuff(this);
+            Target.RemoveDebuff(this);
         }
     }
 }

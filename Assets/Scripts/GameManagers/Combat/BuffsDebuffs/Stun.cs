@@ -2,33 +2,33 @@ public class Stun : Debuff
 {
     public Stun()
     {
-        debuffName = "Stun";
-        turnDuration = 0;
-        target = null;
+        DebuffName = "Stun";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public Stun(CharacterInstance character)
     {
-        debuffName = "Stun";
-        turnDuration = 1;
-        target = character;
+        DebuffName = "Stun";
+        TurnDuration = 1;
+        Target = character;
     }
 
     public Stun(CharacterInstance character, int initTurnDuration)
     {
-        debuffName = "Stun";
-        turnDuration = initTurnDuration;
-        target = character;
+        DebuffName = "Stun";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if (turnDuration <= 0)
+        if (TurnDuration <= 0)
         {
-            target.isStunned = false;
-            target.RemoveDebuff(this);
+            Target.isStunned = false;
+            Target.RemoveDebuff(this);
         }
     }
 }

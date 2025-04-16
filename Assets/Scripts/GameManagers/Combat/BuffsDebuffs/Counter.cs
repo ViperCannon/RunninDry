@@ -2,25 +2,25 @@ public class Counter : Buff
 {
     public Counter()
     {
-        buffName = "Counter";
-        turnDuration = 0;
-        target = null;
+        BuffName = "Counter";
+        TurnDuration = 0;
+        Target = null;
     }
 
     public Counter(CharacterInstance character, int initTurnDuration)
     {
-        buffName = "Counter";
-        turnDuration = initTurnDuration;
-        target = character;
+        BuffName = "Counter";
+        TurnDuration = initTurnDuration;
+        Target = character;
     }
 
     public override void UpdateEffect()
     {
-        turnDuration--;
+        TurnDuration--;
 
-        if (turnDuration <= 0)
+        if (TurnDuration <= 0)
         {
-            target.RemoveBuff(this);
+            Target.RemoveBuff(this);
         }
     }
 }
