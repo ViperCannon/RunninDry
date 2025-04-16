@@ -16,7 +16,6 @@ TagManager:
   - Background
   - GameManager
   - HealthBar
-  - BuffDebuffs
   layers:
   - Default
   - TransparentFX
