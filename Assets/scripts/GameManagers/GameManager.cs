@@ -247,6 +247,7 @@ public class GameManager : MonoBehaviour
         print(relations.norwegianMobRelations);
         print(relations.sicilianMobRelations);
 
+        relations.inRun = true;
         DataSave();
         if (relations.booze <= 0)
         {

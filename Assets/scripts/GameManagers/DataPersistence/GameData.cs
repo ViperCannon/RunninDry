@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Map;
+using JetBrains.Annotations;
 
 [System.Serializable]
 
@@ -19,7 +20,7 @@ public class GameData
     public List<string> NBarleycards;
     public List<string> CBarleycards;
 
-
+    public bool inRun;
     //public List<string> hubPurchases;
     public int chairUpgrades;
     public int comfortUpgrades;
@@ -68,6 +69,7 @@ public class GameData
         activeBuffs = new List<Buff>();
         activeDebuffs = new List<Debuff>();
 
+        inRun = false;
         //hubPurchases = new List<string>();
         chairUpgrades = 0;
         comfortUpgrades = 0;

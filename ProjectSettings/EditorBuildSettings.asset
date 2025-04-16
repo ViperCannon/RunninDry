@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/pausemenu.unity
     guid: 4c46f1f34e20d254095d353cfa91f5ea
+  - enabled: 1
+    path: Assets/Scenes/fail.unity
+    guid: 4cfaeedc7664cf545a9a45274cbde8b7
+  - enabled: 1
+    path: Assets/Scenes/losescreen.unity
+    guid: b03d0ceb9056a2c499bf0f55c16985e6
   m_configObjects: {}
