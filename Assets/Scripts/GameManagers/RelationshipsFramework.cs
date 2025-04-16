@@ -36,6 +36,7 @@ public class RelationshipsFramework : MonoBehaviour, IDataPersistence
     public int score;
 
     public int stockupgrade;
+    public int chairupgrade;
 
     public void LoadData(GameData data)
     {
@@ -53,6 +54,7 @@ public class RelationshipsFramework : MonoBehaviour, IDataPersistence
         this.civilianRelations = data.civilianRelations;
 
         stockupgrade = data.stockUpgrades;
+        chairupgrade = data.chairUpgrades;
 
         inRun = data.inRun;
     }

@@ -27,6 +27,7 @@ public class GameData
     public int barUpgrades;
     public int wallUpgrades;
     public int stockUpgrades;
+    public int entertainmentUpgrades;
 
     public int barMoney;
 
@@ -78,6 +79,7 @@ public class GameData
         barUpgrades = 0;
         wallUpgrades = 0;
         stockUpgrades = 0;
+        entertainmentUpgrades = 0;
 
         barMoney = 5;
 

@@ -48,7 +48,7 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
             {
                 GameObject.Find("Upgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(false);
             }
-            hub.purchasedUpgrade(this.name);
+            hub.purchasedUpgrade(this.name, upgradecount);
             upgradecount++;
             hub.GameSave();
             //add to a list of purchased upgrades to remember if this is destroyed
@@ -90,6 +90,9 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
             case "Stock":
                 upgradecount = data.stockUpgrades;
                 break;
+            case "Entertainment":
+                upgradecount = data.entertainmentUpgrades;
+                break;
             default:
 
                 break;
@@ -114,6 +117,9 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
                 break;
             case "Stock":
                 data.stockUpgrades = upgradecount;
+                break;
+            case "Entertainment":
+                data.entertainmentUpgrades = upgradecount;
                 break;
             default:
                 

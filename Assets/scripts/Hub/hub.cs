@@ -82,7 +82,11 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
             relationshipframework.cash -= tax;
             relationshipframework.inRun = false;
         }
-        
+        else
+        {
+            GameObject.Find("tax").SetActive(false);
+        }
+
         if (relationshipframework.cash <= 0)
         {
             SceneManager.LoadScene("losescreen");
@@ -94,7 +98,7 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         //do the if (this.gameobject.name == "bottles" && relationshipframework.cash >= bottleCost) 
     }
 
-    public void purchasedUpgrade(string item)
+    public void purchasedUpgrade(string item, int upgradecount)
     {
         //this is where any additional effects we want to have happen would happen
         //hubPurchases.Add(item);
@@ -115,13 +119,21 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
                 break;
             case "Bar":
                 barUpgrades++;
-                barMoney += (barMoney + (15 * barUpgrades));
+                barMoney += (barMoney + (15 * upgradecount));
                 break;
             case "Wall":
                 
                 break;
             case "Stock":
                 stockUpgrades++;
+                break;
+            case "Entertainment":
+                relationshipframework.copRelations += (5 * (1 + upgradecount));
+                relationshipframework.russianMobRelations += (5 * (1 + upgradecount));
+                relationshipframework.norwegianMobRelations += (5 * (1 + upgradecount));
+                relationshipframework.prohibitionistsRelations += (5 * (1 + upgradecount));
+                relationshipframework.drunkardRelations += (5 * (1 + upgradecount));
+                relationshipframework.civilianRelations += (5 * (1 + upgradecount));
                 break;
             default:
                 Debug.Log(item);
