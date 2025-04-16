@@ -35,6 +35,8 @@ public class RelationshipsFramework : MonoBehaviour, IDataPersistence
     public int tires;
     public int score;
 
+    public int stockupgrade;
+
     public void LoadData(GameData data)
     {
         this.cash = data.cash;
@@ -49,6 +51,8 @@ public class RelationshipsFramework : MonoBehaviour, IDataPersistence
         this.prohibitionistsRelations = data.prohibitionistsRelations;
         this.drunkardRelations = data.drunkardRelations;
         this.civilianRelations = data.civilianRelations;
+
+        stockupgrade = data.stockUpgrades;
 
         inRun = data.inRun;
     }

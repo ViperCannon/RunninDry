@@ -181,7 +181,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadHub()
     {
-        relations.cash += relations.booze * 4;
+        relations.cash += relations.booze * (2 * (1 + relations.stockupgrade));
         relations.booze = 0;
         relations.paneling = 3;
         relations.tires = 3;

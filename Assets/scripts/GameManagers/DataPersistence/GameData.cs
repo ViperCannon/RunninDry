@@ -28,6 +28,8 @@ public class GameData
     public int wallUpgrades;
     public int stockUpgrades;
 
+    public int barMoney;
+
     public List<Buff> activeBuffs;
     public List<Debuff> activeDebuffs;
 
@@ -76,6 +78,8 @@ public class GameData
         barUpgrades = 0;
         wallUpgrades = 0;
         stockUpgrades = 0;
+
+        barMoney = 5;
 
         this.sceneInt = 0;
 

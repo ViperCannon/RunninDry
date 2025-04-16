@@ -48,9 +48,9 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
             {
                 GameObject.Find("Upgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(false);
             }
+            hub.purchasedUpgrade(this.name);
             upgradecount++;
             hub.GameSave();
-            hub.purchasedUpgrade(this.name);
             //add to a list of purchased upgrades to remember if this is destroyed
             //Destroy(this.gameObject);
             if (this.name != "Wall")

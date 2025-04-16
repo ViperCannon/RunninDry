@@ -21,6 +21,14 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     public GameObject upgradeBoxes;
     bool hideBoxes = false;
 
+    int chairUpgrades;
+    int comfortUpgrades;
+    int barUpgrades;
+    int wallUpgrades;
+    int stockUpgrades;
+
+    int barMoney;
+
     public int tax;
     int wallupgrade;
 
@@ -97,38 +105,46 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         }
 
 
-        /*switch (item)
+        switch (item)
         {
             case "Chairs":
-                chairs1.SetActive(true);
+                chairUpgrades++;
                 break;
             case "Comforts":
-                rug1.SetActive(true);
+                comfortUpgrades++;
                 break;
             case "Bar":
-                bar1.SetActive(true);
+                barUpgrades++;
+                barMoney += (barMoney + (15 * barUpgrades));
                 break;
             case "Wall":
-                wall1.SetActive(true);
+                
                 break;
             case "Stock":
-                stock1.SetActive(true);
+                stockUpgrades++;
                 break;
             default:
                 Debug.Log(item);
                 break;
-        }*/
+        }
     }
 
     public void LoadData(GameData data)
     {
         wallupgrade = data.wallUpgrades;
+
+        chairUpgrades = data.chairUpgrades;
+        comfortUpgrades = data.comfortUpgrades;
+        barUpgrades = data.barUpgrades;
+        stockUpgrades = data.stockUpgrades;
+        barMoney = data.barMoney;
         //hubPurchases = data.hubPurchases;
     }
 
     public void SaveData(ref GameData data)
     {
         //data.hubPurchases = hubPurchases;
+        data.barMoney = barMoney;
     }
 
     private void AddPhysics2DRaycaster()
@@ -148,6 +164,7 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     public void continuebutton()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        relationshipframework.cash += barMoney;
         GameSave();
         SceneManager.LoadScene(2);
     }
