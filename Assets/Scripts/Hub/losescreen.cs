@@ -21,6 +21,12 @@ public class losescreen : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
+    public void titlescreen()
+    {
+        GameObject.Find("DataPersistenceManager").GetComponent<DataPersistenceManager>().DeleteGame();
+        SceneManager.LoadScene(0);
+    }
+
     // Update is called once per frame
     void Update()
     {

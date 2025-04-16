@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -20,7 +21,10 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     public GameObject upgradeBoxes;
     bool hideBoxes = false;
 
+    public int tax;
     int wallupgrade;
+
+    public TMP_Text taxes;
 
     Ray ray;
     RaycastHit hit;
@@ -36,6 +40,8 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         {
             wall1.SetActive(true);
         }
+        //tax math here if needed
+        taxes.text = "You paid $" + tax + " in taxes. Don't forget.";
         /*for (int i = 0; i < hubPurchases.Count; i++)
         {
             GameObject.Find(hubPurchases[i]).SetActive(false);
@@ -62,6 +68,17 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
                     break;
             }
         }*/
+        relationshipframework.booze = 0;
+        if (relationshipframework.inRun)
+        {
+            relationshipframework.cash -= tax;
+            relationshipframework.inRun = false;
+        }
+        
+        if (relationshipframework.cash <= 0)
+        {
+            SceneManager.LoadScene("losescreen");
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

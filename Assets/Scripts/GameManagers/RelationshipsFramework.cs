@@ -19,6 +19,8 @@ public class RelationshipsFramework : MonoBehaviour, IDataPersistence
         }
     }
 
+    public bool inRun;
+
     public int copRelations;
     public int russianMobRelations;
     public int norwegianMobRelations;
@@ -47,6 +49,8 @@ public class RelationshipsFramework : MonoBehaviour, IDataPersistence
         this.prohibitionistsRelations = data.prohibitionistsRelations;
         this.drunkardRelations = data.drunkardRelations;
         this.civilianRelations = data.civilianRelations;
+
+        inRun = data.inRun;
     }
 
     public void NewRun()
@@ -70,6 +74,8 @@ public class RelationshipsFramework : MonoBehaviour, IDataPersistence
         data.prohibitionistsRelations = this.prohibitionistsRelations;
         data.drunkardRelations = this.drunkardRelations;
         data.civilianRelations = this.civilianRelations;
+
+        data.inRun = inRun;
     }
 
     private void Start()

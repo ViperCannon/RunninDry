@@ -45,6 +45,14 @@ public class DataPersistenceManager : MonoBehaviour
         LoadGame();
     }
 
+    public void DeleteGame()
+    {
+        if (System.IO.File.Exists(Application.persistentDataPath + "/" + fileName))
+        {
+            System.IO.File.Delete(Application.persistentDataPath + "/" + fileName);
+        }
+    }
+
     public void NewGame()
     {
         if (System.IO.File.Exists(Application.persistentDataPath + "/" + fileName))
