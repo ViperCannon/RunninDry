@@ -11,6 +11,15 @@ public class DeckBuilderTab : MonoBehaviour
     public DeckBuilderCharacter Character;
     TextMeshProUGUI tabLabel;
 
+    public AudioSource audioSource;
+    public AudioClip[] hoverSounds;
+    public AudioClip[] switchTabSounds;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     void Awake()
     {
         buttonVisual = GetComponent<Image>();
@@ -45,6 +54,7 @@ public class DeckBuilderTab : MonoBehaviour
 
     void ChangeButtonColor(Color c)
     {
+        audioSource.PlayOneShot(hoverSounds[Random.Range(0, hoverSounds.Length)]);
         buttonVisual.color = c;
     }
 }
