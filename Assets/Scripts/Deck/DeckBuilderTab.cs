@@ -15,11 +15,6 @@ public class DeckBuilderTab : MonoBehaviour
     public AudioClip[] hoverSounds;
     public AudioClip[] switchTabSounds;
 
-    private void Start()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
-
     void Awake()
     {
         buttonVisual = GetComponent<Image>();
