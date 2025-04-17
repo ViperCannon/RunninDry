@@ -27,9 +27,14 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     int wallUpgrades;
     int stockUpgrades;
 
+    int totalUpgrades;
+
     int barMoney;
 
-    public int tax;
+    public int taxAmount;
+
+    int totalTax;
+
     int wallupgrade;
 
     public TMP_Text taxes;
@@ -49,7 +54,9 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
             wall1.SetActive(true);
         }
         //tax math here if needed
-        taxes.text = "You paid $" + tax + " in taxes. Don't forget.";
+        totalTax = taxAmount * (1 + totalUpgrades);
+
+        taxes.text = "You paid $" + totalTax + " in taxes. Don't forget.";
         /*for (int i = 0; i < hubPurchases.Count; i++)
         {
             GameObject.Find(hubPurchases[i]).SetActive(false);
@@ -79,7 +86,7 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         relationshipframework.booze = 0;
         if (relationshipframework.inRun)
         {
-            relationshipframework.cash -= tax;
+            relationshipframework.cash -= totalTax;
             relationshipframework.inRun = false;
         }
         else
@@ -100,6 +107,7 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
 
     public void purchasedUpgrade(string item, int upgradecount)
     {
+        totalUpgrades++;
         //this is where any additional effects we want to have happen would happen
         //hubPurchases.Add(item);
         //dataManager.SaveGame();
@@ -150,6 +158,8 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         barUpgrades = data.barUpgrades;
         stockUpgrades = data.stockUpgrades;
         barMoney = data.barMoney;
+
+        totalUpgrades = data.totalUpgrades;
         //hubPurchases = data.hubPurchases;
     }
 
@@ -157,6 +167,7 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
     {
         //data.hubPurchases = hubPurchases;
         data.barMoney = barMoney;
+        data.totalUpgrades = totalUpgrades;
     }
 
     private void AddPhysics2DRaycaster()

@@ -29,6 +29,8 @@ public class GameData
     public int stockUpgrades;
     public int entertainmentUpgrades;
 
+    public int totalUpgrades;
+
     public int barMoney;
 
     public List<Buff> activeBuffs;
@@ -80,6 +82,8 @@ public class GameData
         wallUpgrades = 0;
         stockUpgrades = 0;
         entertainmentUpgrades = 0;
+
+        totalUpgrades = 0;
 
         barMoney = 5;
 
