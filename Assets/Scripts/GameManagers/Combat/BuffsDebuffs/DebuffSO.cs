@@ -14,6 +14,7 @@ public class DebuffSO : ScriptableObject
     }
 
     public CombatDebuffType debuffName;
+    public GameObject iconPrefab;
 
     public void CombatAddDebuff(CombatCard card, CharacterInstance target)
     {
@@ -82,8 +83,12 @@ public class DebuffSO : ScriptableObject
                 break;
 
             case CombatDebuffType.Stun:
+    
+                GameObject uiInstance = Instantiate(iconPrefab, target.buffsDebuffs.transform);
+                Stun stun = new(target, card.turnDuration, uiInstance.GetComponent<BuffDebuffUI>());
 
-                Stun stun = new(target, card.turnDuration);
+                Debug.Log(stun.ui.transform.name);
+
                 target.ApplyDebuff(stun);
                 target.isStunned = true;
 

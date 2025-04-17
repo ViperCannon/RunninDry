@@ -331,6 +331,9 @@ MonoBehaviour:
   baseData: {fileID: 11400000, guid: f3bcd32156b148b4f8c5516f430b6989, type: 2}
   sprites:
   - {fileID: 7589802346305588381}
+  healthBar: {fileID: 6979767376813433546}
+  healthText: {fileID: 220804548817966494}
+  buffsDebuffs: {fileID: 4267894791201822106}
   actions:
   - {fileID: 11400000, guid: 1e6b83d136f75ba42bfd191ab402175f, type: 2}
   currentAction: {fileID: 0}

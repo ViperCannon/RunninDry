@@ -13,9 +13,9 @@ public class EnemyInstance : CharacterInstance
     GameObject[] sprites;
 
     const float MAX_HEALTHBAR_SIZE = 7.2f;
-    GameObject healthBar;
-    GameObject healthText;
 
+    public GameObject healthBar;
+    public GameObject healthText;
     public List<CombatCard> actions;
 
     [SerializeField]
@@ -31,16 +31,6 @@ public class EnemyInstance : CharacterInstance
 
         maxHealth = baseData.baseMaxHealth;
         currentHealth = maxHealth;
-
-        foreach (Transform child in transform)
-        {
-            if (child.CompareTag("HealthBar"))
-            {
-                healthBar = child.GetChild(0).gameObject;
-                healthText = child.GetChild(1).gameObject;
-                break;
-            }
-        }
 
         UpdateHealthBar();
     }

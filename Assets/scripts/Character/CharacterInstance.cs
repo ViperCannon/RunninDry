@@ -20,6 +20,8 @@ public class CharacterInstance : MonoBehaviour, IDataPersistence
     public List<Buff> activeBuffs = new();
     public List<Debuff> activeDebuffs = new();
 
+    public GameObject buffsDebuffs;
+
     private void Start()
     {
         combatManager = CombatManager.Instance;
@@ -45,6 +47,8 @@ public class CharacterInstance : MonoBehaviour, IDataPersistence
 
     public bool RemoveBuff(Buff buff)
     {
+        Destroy(buff.ui.gameObject);
+
         return activeBuffs.Remove(buff);
     }
 

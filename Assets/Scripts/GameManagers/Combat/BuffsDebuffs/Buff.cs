@@ -4,6 +4,7 @@ public abstract class Buff
     int turnDuration;
     CharacterInstance target;
 
+    public BuffDebuffUI ui;
     public string BuffName
     {
         get { return buffName; }
@@ -13,7 +14,14 @@ public abstract class Buff
     public int TurnDuration
     {
         get { return turnDuration; }
-        set { turnDuration = value; }
+        set
+        {
+            turnDuration = value;
+            if (ui != null)
+            {
+                ui.SetTurns(turnDuration);
+            }
+        }
     }
 
     public CharacterInstance Target

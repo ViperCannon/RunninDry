@@ -694,6 +694,9 @@ MonoBehaviour:
   isResilient: 0
   isDowned: 0
   baseData: {fileID: 11400000, guid: 5c76b5156608d794d85695880182c484, type: 2}
+  healthBar: {fileID: 7791585911361030596}
+  healthText: {fileID: 6268827167600826977}
+  buffsDebuffs: {fileID: 8062513075576401378}
   caps: 2
 --- !u!1 &7791585911361030596
 GameObject:

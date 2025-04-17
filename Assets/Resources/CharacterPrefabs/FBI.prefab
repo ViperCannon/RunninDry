@@ -342,6 +342,9 @@ MonoBehaviour:
   - {fileID: 8782685966013763953}
   - {fileID: 3731547299098439359}
   - {fileID: 2030755705406575767}
+  healthBar: {fileID: 6042485837304633158}
+  healthText: {fileID: 1562009651523056294}
+  buffsDebuffs: {fileID: 3134234623552130485}
   actions:
   - {fileID: 11400000, guid: 2e5231cebf752144495f9bf11752d7f7, type: 2}
   currentAction: {fileID: 0}

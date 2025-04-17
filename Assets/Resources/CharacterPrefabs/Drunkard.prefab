@@ -135,6 +135,9 @@ MonoBehaviour:
   sprites:
   - {fileID: 6129038983476899606}
   - {fileID: 2878912825543805698}
+  healthBar: {fileID: 7445963529161313100}
+  healthText: {fileID: 5049384162502208425}
+  buffsDebuffs: {fileID: 699590375546997108}
   actions:
   - {fileID: 11400000, guid: 894dbbc344ce455448316efa0034670c, type: 2}
   currentAction: {fileID: 0}
