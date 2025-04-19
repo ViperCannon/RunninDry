@@ -14,6 +14,7 @@ public class BuffSO : ScriptableObject
     }
 
     public CombatBuffType buffName;
+    public GameObject iconPrefab;
 
     public void CombatAddBuff(CombatCard card, CharacterInstance target)
     {
@@ -50,46 +51,48 @@ public class BuffSO : ScriptableObject
 
     void CombatAddBuffHelper(CombatCard card, CharacterInstance target)
     {
+        GameObject uiInstance = Instantiate(iconPrefab, target.buffsDebuffs.transform);
+
         switch (buffName)
         {
             case CombatBuffType.Bulwark:
 
-                Bulwark bulwark = new(target, card.turnDuration);
+                Bulwark bulwark = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(bulwark);
 
                 break;
 
             case CombatBuffType.Counter:
 
-                Counter counter = new(target, card.turnDuration);
+                Counter counter = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(counter);
 
                 break;
 
             case CombatBuffType.Inspired:
 
-                Inspired inspired = new(target, card.turnDuration);
+                Inspired inspired = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(inspired);
 
                 break;
 
             case CombatBuffType.PissedOff:
 
-                PissedOff pissedOff = new(target, card.turnDuration);
+                PissedOff pissedOff = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(pissedOff);
 
                 break;
 
             case CombatBuffType.Protected:
 
-                Protected protect = new(target, card.turnDuration);
+                Protected protect = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(protect);
 
                 break;
 
             case CombatBuffType.Resilient:
 
-                Resilient resilient = new(target, card.turnDuration);
+                Resilient resilient = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(resilient);
                 target.isResilient = true;
 

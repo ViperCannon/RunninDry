@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Disarmed
   m_EditorClassIdentifier: 
   debuffName: 2
+  iconPrefab: {fileID: 5582427001632318565, guid: ad3fa2b2eba415d488e83413ac7648b8, type: 3}

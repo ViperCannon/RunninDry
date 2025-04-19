@@ -51,11 +51,13 @@ public class DebuffSO : ScriptableObject
 
     void CombatAddDebuffHelper(CombatCard card, CharacterInstance target)
     {
+        GameObject uiInstance = Instantiate(iconPrefab, target.buffsDebuffs.transform);
+
         switch (debuffName)
         {
             case CombatDebuffType.Bleed:
 
-                Bleed bleed = new(target, card.turnDuration);
+                Bleed bleed = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyDebuff(bleed);
                 target.isBleeding = true;
 
@@ -63,31 +65,28 @@ public class DebuffSO : ScriptableObject
 
             case CombatDebuffType.Blind:
 
-                Blind blind = new(target, card.turnDuration);
+                Blind blind = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyDebuff(blind);
 
                 break;
 
             case CombatDebuffType.Disarmed:
 
-                Disarmed disarmed = new(target, card.turnDuration);
+                Disarmed disarmed = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyDebuff(disarmed);
 
                 break;
 
             case CombatDebuffType.Marked:
 
-                Marked marked = new(target, card.turnDuration);
+                Marked marked = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyDebuff(marked);
 
                 break;
 
             case CombatDebuffType.Stun:
-    
-                GameObject uiInstance = Instantiate(iconPrefab, target.buffsDebuffs.transform);
-                Stun stun = new(target, card.turnDuration, uiInstance.GetComponent<BuffDebuffUI>());
-
-                Debug.Log(stun.ui.transform.name);
+     
+                Stun stun = new(target, uiInstance.GetComponent<BuffDebuffUI>());
 
                 target.ApplyDebuff(stun);
                 target.isStunned = true;
@@ -96,7 +95,7 @@ public class DebuffSO : ScriptableObject
 
             case CombatDebuffType.Unsure:
 
-                Unsure unsure = new(target, card.turnDuration);
+                Unsure unsure = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyDebuff(unsure);
 
                 break;

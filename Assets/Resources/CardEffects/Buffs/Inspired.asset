@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Inspired
   m_EditorClassIdentifier: 
   buffName: 2
+  iconPrefab: {fileID: 5582427001632318565, guid: ea2548b87a1440742ae96cf36e9f5afc, type: 3}

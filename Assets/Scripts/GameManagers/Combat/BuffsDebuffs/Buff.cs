@@ -1,14 +1,22 @@
 public abstract class Buff
 {
     string buffName;
+    BuffDebuffUI ui;
     int turnDuration;
     CharacterInstance target;
 
-    public BuffDebuffUI ui;
+   
+
     public string BuffName
     {
         get { return buffName; }
         set { buffName = value; }
+    }
+
+    public BuffDebuffUI UI
+    {
+        get { return ui; }
+        set { ui = value; }
     }
 
     public int TurnDuration
@@ -17,7 +25,7 @@ public abstract class Buff
         set
         {
             turnDuration = value;
-            if (ui != null)
+            if (ui != null && turnDuration >= 0)
             {
                 ui.SetTurns(turnDuration);
             }
@@ -35,5 +43,6 @@ public abstract class Buff
     public void AddStacks(int addTurnDuration)
     {
         turnDuration += addTurnDuration;
+        ui.SetTurns(turnDuration);
     }
 }

@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Content: {fileID: 256227930979508602}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -336,6 +336,7 @@ MonoBehaviour:
   isBleeding: 0
   isResilient: 0
   isDowned: 0
+  buffsDebuffs: {fileID: 3134234623552130485}
   baseData: {fileID: 11400000, guid: 9aa2958b485995741a4c2f0dccf22a6e, type: 2}
   sprites:
   - {fileID: 6388526310932317809}
@@ -344,7 +345,6 @@ MonoBehaviour:
   - {fileID: 2030755705406575767}
   healthBar: {fileID: 6042485837304633158}
   healthText: {fileID: 1562009651523056294}
-  buffsDebuffs: {fileID: 3134234623552130485}
   actions:
   - {fileID: 11400000, guid: 2e5231cebf752144495f9bf11752d7f7, type: 2}
   currentAction: {fileID: 0}
@@ -406,8 +406,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 0.7, y: 0.7}
-  m_Spacing: {x: 0.05, y: 0.15}
+  m_CellSize: {x: 0.7, y: 0.85}
+  m_Spacing: {x: 0.05, y: -0.05}
   m_Constraint: 1
   m_ConstraintCount: 4
 --- !u!114 &446761656722607121

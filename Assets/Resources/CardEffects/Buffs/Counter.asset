@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Counter
   m_EditorClassIdentifier: 
   buffName: 1
+  iconPrefab: {fileID: 5582427001632318565, guid: 0a8590b23380ffe469f65e0ea90756c9, type: 3}

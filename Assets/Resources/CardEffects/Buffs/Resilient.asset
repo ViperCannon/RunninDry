@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Resilient
   m_EditorClassIdentifier: 
   buffName: 5
+  iconPrefab: {fileID: 5582427001632318565, guid: 1aaf4b4fa62cd9c4eb56781f4caa9a66, type: 3}

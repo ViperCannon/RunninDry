@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Protected
   m_EditorClassIdentifier: 
   buffName: 4
+  iconPrefab: {fileID: 5582427001632318565, guid: 3b33dff7b9f522b48bb46bf57ea16047, type: 3}

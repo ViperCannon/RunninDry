@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Bleed
   m_EditorClassIdentifier: 
   debuffName: 0
+  iconPrefab: {fileID: 5582427001632318565, guid: cac592c769b736942b5b0842cfdc2494, type: 3}

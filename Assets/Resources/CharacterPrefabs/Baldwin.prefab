@@ -693,10 +693,10 @@ MonoBehaviour:
   isBleeding: 0
   isResilient: 0
   isDowned: 0
+  buffsDebuffs: {fileID: 8062513075576401378}
   baseData: {fileID: 11400000, guid: 5c76b5156608d794d85695880182c484, type: 2}
   healthBar: {fileID: 7791585911361030596}
   healthText: {fileID: 6268827167600826977}
-  buffsDebuffs: {fileID: 8062513075576401378}
   caps: 2
 --- !u!1 &7791585911361030596
 GameObject:
@@ -835,8 +835,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 0.7, y: 0.7}
-  m_Spacing: {x: 0.05, y: 0.15}
+  m_CellSize: {x: 0.7, y: 0.85}
+  m_Spacing: {x: 0.05, y: -0.05}
   m_Constraint: 1
   m_ConstraintCount: 4
 --- !u!114 &6468979444440380009
@@ -945,7 +945,7 @@ MonoBehaviour:
   m_Content: {fileID: 5752831772063433133}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135

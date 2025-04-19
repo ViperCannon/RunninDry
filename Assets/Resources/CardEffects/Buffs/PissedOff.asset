@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: PissedOff
   m_EditorClassIdentifier: 
   buffName: 3
+  iconPrefab: {fileID: 5582427001632318565, guid: f6d07869982692942a2a8df51e67cb03, type: 3}

@@ -47,7 +47,7 @@ public class CharacterInstance : MonoBehaviour, IDataPersistence
 
     public bool RemoveBuff(Buff buff)
     {
-        Destroy(buff.ui.gameObject);
+        Destroy(buff.UI.gameObject);
 
         return activeBuffs.Remove(buff);
     }
@@ -60,6 +60,8 @@ public class CharacterInstance : MonoBehaviour, IDataPersistence
 
     public bool RemoveDebuff(Debuff debuff)
     {
+        Destroy(debuff.UI.gameObject);
+
         return activeDebuffs.Remove(debuff);
     }
 

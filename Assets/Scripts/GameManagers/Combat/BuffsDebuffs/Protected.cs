@@ -5,13 +5,23 @@ public class Protected : Buff
     public Protected()
     {
         BuffName = "Protected";
+        UI = null;
         TurnDuration = 0;
         Target = null;
     }
 
-    public Protected(CharacterInstance character, int initTurnDuration)
+    public Protected(CharacterInstance character, BuffDebuffUI ui)
     {
         BuffName = "Protected";
+        UI = ui;
+        TurnDuration = 1;
+        Target = character;
+    }
+
+    public Protected(CharacterInstance character, BuffDebuffUI ui, int initTurnDuration)
+    {
+        BuffName = "Protected";
+        UI = ui;
         TurnDuration = initTurnDuration;
         Target = character;
     }

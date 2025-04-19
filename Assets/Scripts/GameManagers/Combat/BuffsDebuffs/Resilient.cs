@@ -3,13 +3,23 @@ public class Resilient : Buff
     public Resilient()
     {
         BuffName = "Resilient";
+        UI = null;
         TurnDuration = 0;
         Target = null;
     }
 
-    public Resilient(CharacterInstance character, int initTurnDuration)
+    public Resilient(CharacterInstance character, BuffDebuffUI ui)
     {
         BuffName = "Resilient";
+        UI = ui;
+        TurnDuration = 1;
+        Target = character;
+    }
+
+    public Resilient(CharacterInstance character, BuffDebuffUI ui, int initTurnDuration)
+    {
+        BuffName = "Resilient";
+        UI = ui;
         TurnDuration = initTurnDuration;
         Target = character;
     }

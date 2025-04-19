@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Marked
   m_EditorClassIdentifier: 
   debuffName: 3
+  iconPrefab: {fileID: 5582427001632318565, guid: dd334f1251d02a647b23a9c94eb6ce45, type: 3}

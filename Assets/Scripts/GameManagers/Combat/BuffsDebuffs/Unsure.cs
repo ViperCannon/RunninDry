@@ -3,13 +3,23 @@ public class Unsure : Debuff
     public Unsure()
     {
         DebuffName = "Unsure";
+        UI = null;
         TurnDuration = 0;
         Target = null;
     }
 
-    public Unsure(CharacterInstance character, int initTurnDuration)
+    public Unsure(CharacterInstance character, BuffDebuffUI ui)
     {
         DebuffName = "Unsure";
+        UI = ui;
+        TurnDuration = 0;
+        Target = character;
+    }
+
+    public Unsure(CharacterInstance character, BuffDebuffUI ui, int initTurnDuration)
+    {
+        DebuffName = "Unsure";
+        UI = ui;
         TurnDuration = initTurnDuration;
         Target = character;
     }

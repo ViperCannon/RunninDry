@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Unsure
   m_EditorClassIdentifier: 
   debuffName: 5
+  iconPrefab: {fileID: 5582427001632318565, guid: 8533fbff04fef684d93def0a18725030, type: 3}

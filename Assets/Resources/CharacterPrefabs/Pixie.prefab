@@ -420,8 +420,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 0.7, y: 0.7}
-  m_Spacing: {x: 0.05, y: 0.15}
+  m_CellSize: {x: 0.7, y: 0.85}
+  m_Spacing: {x: 0.05, y: -0.05}
   m_Constraint: 1
   m_ConstraintCount: 4
 --- !u!114 &6273139975887088627
@@ -698,7 +698,7 @@ MonoBehaviour:
   m_Content: {fileID: 7794271679638648655}
   m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -856,10 +856,10 @@ MonoBehaviour:
   isBleeding: 0
   isResilient: 0
   isDowned: 0
+  buffsDebuffs: {fileID: 4483243928721564248}
   baseData: {fileID: 11400000, guid: 768bd7968b95d3d4f92bf5ad8a080bee, type: 2}
   healthBar: {fileID: 6783782280414152522}
   healthText: {fileID: 1675058056259492150}
-  buffsDebuffs: {fileID: 4483243928721564248}
   caps: 2
 --- !u!1 &9059587202863269669
 GameObject:

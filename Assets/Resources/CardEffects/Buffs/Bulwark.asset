@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Bulwark
   m_EditorClassIdentifier: 
   buffName: 0
+  iconPrefab: {fileID: 5582427001632318565, guid: ce026436bef85204db3e91baf558fa76, type: 3}
