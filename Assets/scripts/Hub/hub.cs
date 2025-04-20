@@ -49,10 +49,10 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         //may need to change GameManager to something else depending what holds the money variable
         dataManager = GameObject.Find("DataPersistenceManager").GetComponent<DataPersistenceManager>();
         relationshipframework = GameObject.Find("GameManager").GetComponent<RelationshipsFramework>();
-        if (wallupgrade > 0)
+        /*if (wallupgrade > 0)
         {
             wall1.SetActive(true);
-        }
+        }*/
         //tax math here if needed
         totalTax = taxAmount * (1 + totalUpgrades);
 
@@ -111,10 +111,10 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
         //this is where any additional effects we want to have happen would happen
         //hubPurchases.Add(item);
         //dataManager.SaveGame();
-        if (item == "Wall")
+        /*if (item == "Wall")
         {
             wall1.SetActive(true);
-        }
+        }*/
 
 
         switch (item)

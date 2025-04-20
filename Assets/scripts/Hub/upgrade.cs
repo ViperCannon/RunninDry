@@ -24,6 +24,10 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
         {
             GameObject.Find("Upgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(true);
         }
+        else if (upgradecount > 0 && this.name == "Wall")
+        {
+            GameObject.Find("WallUpgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(true);
+        }
     }
 
     void Awake()
@@ -57,7 +61,11 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
             {
                 GameObject.Find("Upgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(true);
             }
-            cost += initialCost;
+            else if (this.name == "Wall")
+            {
+                GameObject.Find("WallUpgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(true);
+            }
+                cost += initialCost;
             updateCost();
             checkMaxUpgrades();
         }
