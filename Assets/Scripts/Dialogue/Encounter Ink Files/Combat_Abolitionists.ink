@@ -1,4 +1,5 @@
 EXTERNAL GetPlayerPaneling()
+EXTERNAL DisableChoiceButton(int choice)
 EXTERNAL AddPaneling(int amount)
 EXTERNAL AlterProhibitionistRelations(int amount)
 EXTERNAL AlterCivilianRelations(int amount)
@@ -11,12 +12,15 @@ VAR paneling = 0
 
 === main ===
 ~ GetPlayerPaneling()
+{ paneling < 1:
+~ DisableChoiceButton(1)
+} 
 You weren't sure what it was from a distance, but as you closed the distance you sure found out. It was a mob of angry abolitionists, and now they've got you surrounded. A particularly beefy one yells through your window. "Right then! We know what you're doing. Come out and we'll settle this like men!"
 
 + [Oblige 'em.]
     ~ StartCombat()
 
-+ {paneling >= 1} [... You *are* in a big metal machine.]
++ [... You *are* in a big metal machine.]
     ~ AddPaneling(-1)
     ~ AlterProhibitionistRelations(-10)
     ~ AlterCivilianRelations(-3)

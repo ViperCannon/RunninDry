@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using static Ink.Runtime.Story;
 
 public class DialogueManager : MonoBehaviour
@@ -20,6 +21,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private GameObject[] choices;
     private TextMeshProUGUI[] choicesText;
 
+    [Header("Choices UI")]
+    [SerializeField] private GameObject choiceParent;
+    [SerializeField] private Button[] choicebuttons;
+
     private InkExternalFunctions externalFunctions;
     private InkDialogueVariables dialogueVariables;
 
@@ -31,6 +36,17 @@ public class DialogueManager : MonoBehaviour
             Destroy(this);
         }
         else instance = this;
+
+        if (choiceParent != null)
+        {
+            choicebuttons = new Button[choices.Length];
+            
+            for (int i = 0; i < choices.Length; i++)
+            {
+                choicebuttons[i] = choiceParent.transform.GetChild(i).gameObject.GetComponent<Button>();
+            }
+        }
+        else Debug.LogWarning("Choice Buttons Parent is NULL! Please select it in the editor!");
 
         externalFunctions = new InkExternalFunctions();
     }
@@ -78,6 +94,11 @@ public class DialogueManager : MonoBehaviour
     public void OpenDialogue(TextAsset inkJSON)
     {
         Debug.Log("Opening the dialogue box and starting the current Dialogue Story!");
+        for (int i = 0; i < choices.Length; i++)
+        {
+            EnableChoice(i);
+        }
+
         currentStory = new Story(inkJSON.text);
         externalFunctions.Bind(currentStory);
         dialogueVariables = new InkDialogueVariables(currentStory);
@@ -159,6 +180,26 @@ public class DialogueManager : MonoBehaviour
     {
         currentStory.ChooseChoiceIndex(choiceIndex);
         ContinueStory();
+    }
+
+    public void EnableChoice(int choice)
+    {
+        if (choice >= 0 && choice < choices.Length)
+        {
+            Debug.Log("Enabling choice " + choice + "!");
+            choicebuttons[choice].interactable = true;
+        }
+        else Debug.LogWarning(choice + " is ouitside the range of available choice options!");
+    }
+
+    public void DisableChoice(int choice)
+    {
+        if (choice >= 0 && choice < choicebuttons.Length)
+        {
+            Debug.Log("Disabling choice " + choice + "!");
+            choicebuttons[choice].interactable = false;
+        }
+        else Debug.LogWarning(choice + " is ouitside the range of available choice options!");
     }
 
     public void UpdateInkDialogueVariable(string name, Ink.Runtime.Object value)

@@ -19,6 +19,9 @@ public class InkExternalFunctions
         story.BindExternalFunction("GetPlayerTires", () => GetPlayerTires());
         story.BindExternalFunction("GetPlayerPaneling", () => GetPlayerPaneling());
 
+        story.BindExternalFunction("EnableChoiceButton", (int choice) => EnableChoiceButton(choice));
+        story.BindExternalFunction("DisableChoiceButton", (int choice) => DisableChoiceButton(choice));
+
         story.BindExternalFunction("AddCash", (int amount) => AddCash(amount));
         story.BindExternalFunction("AddBooze", (int amount) => AddBooze(amount));
         story.BindExternalFunction("AddScore", (int amount) => AddScore(amount));
@@ -56,6 +59,9 @@ public class InkExternalFunctions
         story.UnbindExternalFunction("GetPlayerBooze");
         story.UnbindExternalFunction("GetPlayerTires");
         story.UnbindExternalFunction("GetPlayerPaneling");
+
+        story.UnbindExternalFunction("EnableChoiceButton");
+        story.UnbindExternalFunction("DisableChoiceButton");
 
         story.UnbindExternalFunction("AddCash");
         story.UnbindExternalFunction("AddBooze");
@@ -142,6 +148,18 @@ public class InkExternalFunctions
     public void GetPlayerPaneling()
     {
         DialogueManager.GetInstance().UpdateInkDialogueVariable("paneling", (Ink.Runtime.Object)new IntValue(RelationshipsFramework.Instance.paneling));
+    }
+    #endregion
+
+    #region Functions that Toggle Choice Selection
+    public void EnableChoiceButton(int choice)
+    {
+        DialogueManager.GetInstance().EnableChoice(choice);
+    }
+
+    public void DisableChoiceButton(int choice)
+    {
+        DialogueManager.GetInstance().DisableChoice(choice);
     }
     #endregion
 
