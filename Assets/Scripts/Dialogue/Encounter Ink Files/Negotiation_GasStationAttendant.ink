@@ -1,3 +1,5 @@
+EXTERNAL GetPlayerCash()
+EXTERNAL DisableChoiceButton(int choice)
 EXTERNAL AddCash(int amount)
 EXTERNAL AddTires(int amount)
 EXTERNAL AddPaneling(int amount)
@@ -8,14 +10,19 @@ EXTERNAL StartNegotiation(int d, int i, int b)
 EXTERNAL FullPartyHeal(int amount)
 
 VAR negotiationSuccess = false
+VAR cash = 0
 
 -> main
 
 === main ===
+~ GetPlayerCash()
+{cash < 10:
+~ DisableChoiceButton(0)
+} 
 You pull into a gas station looking to refuel while patching up the car and grabing a bite to eat. As the attendant is fueling up the car you notice he looks a bit... green. Perhaps you could use this to your advantage?
 
-+ [Just pay for your snacks.]
-    ~ AddCash(-15)
++ [Just pay for your snacks. (-$10)]
+    ~ AddCash(-10)
     ~ FullPartyHeal(5)
     ~ AddTires(1)
     ~ AddPaneling(1)

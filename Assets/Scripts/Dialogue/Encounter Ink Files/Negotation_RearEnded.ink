@@ -1,13 +1,19 @@
+EXTERNAL GetPlayerPaneling()
+EXTERNAL DisableChoiceButton(int choice)
 EXTERNAL AddPaneling(int amount)
-
 EXTERNAL StartCombat()
 EXTERNAL StartNegotiation(int d, int i, int b)
 
 VAR negotiationSuccess = false
+VAR paneling = 0
 
 -> main
 
 === main ===
+~ GetPlayerPaneling()
+{paneling < 1:
+~ DisableChoiceButton(0)
+} 
 As you stop at an intersection, you feel a slight bump and hear a clang of metal. Looking out the window, some ignoramus didn't stop in time and rear ended you! Irate, the man and his passenger jump out of his automobile, demanding your name and compensation... was this on purpose?
 
 + [Defuse the situation.]
