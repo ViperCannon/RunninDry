@@ -8,7 +8,7 @@ public class losescreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject.Find("DataPersistenceManager").GetComponent<DataPersistenceManager>().DeleteGame();
     }
 
     public void restart()
@@ -23,7 +23,6 @@ public class losescreen : MonoBehaviour
 
     public void titlescreen()
     {
-        GameObject.Find("DataPersistenceManager").GetComponent<DataPersistenceManager>().DeleteGame();
         SceneManager.LoadScene(0);
     }
 

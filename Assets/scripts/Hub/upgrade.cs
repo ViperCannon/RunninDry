@@ -48,11 +48,15 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
         if (relationshipframework.cash >= cost)
         {
             relationshipframework.cash -= cost;
-            if (upgradecount > 0)
+            if (upgradecount > 0 && this.name != "Wall")
             {
                 GameObject.Find("Upgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(false);
             }
-            hub.purchasedUpgrade(this.name, upgradecount);
+            else if (upgradecount > 0 && this.name == "Wall")
+            {
+                GameObject.Find("WallUpgrades").transform.Find(this.name + upgradecount).gameObject.SetActive(false);
+            }
+                hub.purchasedUpgrade(this.name, upgradecount);
             upgradecount++;
             hub.GameSave();
             //add to a list of purchased upgrades to remember if this is destroyed

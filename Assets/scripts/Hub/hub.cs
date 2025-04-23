@@ -54,7 +54,7 @@ public class Hub : MonoBehaviour, IPointerDownHandler, IDataPersistence
             wall1.SetActive(true);
         }*/
         //tax math here if needed
-        totalTax = taxAmount * (1 + totalUpgrades);
+        totalTax = (taxAmount) * (1 + totalUpgrades);
 
         taxes.text = "You paid $" + totalTax + " in taxes. Don't forget.";
         /*for (int i = 0; i < hubPurchases.Count; i++)
