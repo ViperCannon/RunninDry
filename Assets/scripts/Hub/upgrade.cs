@@ -5,18 +5,22 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 //using static UnityEditor.Progress;
 
-public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
+public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence, IPointerEnterHandler, IPointerExitHandler
 {
     public int cost;
     public int initialCost;
     RelationshipsFramework relationshipframework;
     TMP_Text text;
     Hub hub;
+
+    GameObject infoPanel;
     int upgradecount = 0;
     public int maxUpgrades;
     // Start is called before the first frame update
     void Start()
     {
+        infoPanel = this.gameObject.transform.Find("Info").gameObject;
+        infoPanel.SetActive(false);
         cost = initialCost * (1+upgradecount);
         updateCost();
         checkMaxUpgrades();
@@ -73,6 +77,16 @@ public class Upgrade : MonoBehaviour, IPointerDownHandler, IDataPersistence
             updateCost();
             checkMaxUpgrades();
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        infoPanel.SetActive(true);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        infoPanel.SetActive(false);
     }
 
     public void checkMaxUpgrades()
