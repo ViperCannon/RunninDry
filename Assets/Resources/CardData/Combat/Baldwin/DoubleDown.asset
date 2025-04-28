@@ -22,8 +22,10 @@ MonoBehaviour:
   cardEffects:
   - {fileID: 11400000, guid: 79c2942d80bfd094b99b41810c94ceea, type: 2}
   - {fileID: 11400000, guid: 79c2942d80bfd094b99b41810c94ceea, type: 2}
+  cardBuffs: []
+  cardDebuffs: []
   unlocked: 1
-  character: 1
+  character: 2
   damage: 10
   secondaryDamage: 0
   selfDamage: 0

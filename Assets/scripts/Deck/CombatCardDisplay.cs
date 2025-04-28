@@ -45,7 +45,7 @@ public class CombatCardDisplay : CardDisplay
 
         nameText.text = cardData.cardName;
 
-        characterFlair[(int)cardData.character].gameObject.SetActive(true);
+        characterFlair[(int)cardData.character - 1].gameObject.SetActive(true);
 
         if (cardData.subTypes.Contains(CombatCard.CombatSubType.Unload))
         {

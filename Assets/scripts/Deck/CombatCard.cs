@@ -18,6 +18,7 @@ public class CombatCard : Card
 
     public enum PlayableCharacter
     {
+        Enemy,
         Pixie,
         Baldwin,
         Barley

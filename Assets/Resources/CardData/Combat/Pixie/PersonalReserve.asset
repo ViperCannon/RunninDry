@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: PersonalReserve
   m_EditorClassIdentifier: 
   cardName: Personal Reserve
+  cardArt: {fileID: 21300000, guid: d4c762a9b7316de4781f6dac26539527, type: 3}
   cost: 2
   drawAmount: 0
   cardDescription: Heal an ally for {heal}
   cardEffects:
   - {fileID: 11400000, guid: fc2b1b90b59a16b40826be29ce6e272d, type: 2}
+  cardBuffs: []
+  cardDebuffs: []
   unlocked: 0
-  character: 0
+  character: 1
   damage: 0
   secondaryDamage: 0
   selfDamage: 0
@@ -29,4 +32,3 @@ MonoBehaviour:
   chanceEffect: 0
   subTypes: 04000000
   validTargets: 0300000000000000
-  cardArt: {fileID: 21300000, guid: d4c762a9b7316de4781f6dac26539527, type: 3}

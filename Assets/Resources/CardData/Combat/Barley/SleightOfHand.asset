@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: SleightOfHand
   m_EditorClassIdentifier: 
   cardName: Sleight of Hand
+  cardArt: {fileID: 21300000, guid: 26c77f7a1d0e4e84da537086d1a01b6b, type: 3}
   cost: 3
   drawAmount: 0
   cardDescription: 'Deals {damage} melee damage
@@ -21,8 +22,10 @@ MonoBehaviour:
     in a KO'
   cardEffects:
   - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
+  cardBuffs: []
+  cardDebuffs: []
   unlocked: 0
-  character: 2
+  character: 3
   damage: 10
   secondaryDamage: 0
   selfDamage: 0
@@ -32,4 +35,3 @@ MonoBehaviour:
   chanceEffect: 0
   subTypes: 01000000
   validTargets: 02000000
-  cardArt: {fileID: 21300000, guid: 26c77f7a1d0e4e84da537086d1a01b6b, type: 3}

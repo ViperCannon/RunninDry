@@ -26,7 +26,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 128e9921a280c964fbd9d3b1b7b4bde7, type: 2}
   cardDebuffs: []
   unlocked: 0
-  character: 1
+  character: 2
   damage: 0
   secondaryDamage: 0
   selfDamage: 0

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Overtorque
   m_EditorClassIdentifier: 
   cardName: Overtorque
+  cardArt: {fileID: 21300000, guid: 6c77cbe103c093143918998452fa2c60, type: 3}
   cost: 2
   drawAmount: 0
   cardDescription: 'Deal {damage} melee damge
@@ -21,8 +22,10 @@ MonoBehaviour:
   cardEffects:
   - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
   - {fileID: 11400000, guid: 8c8192ec262a17847a3b3dcf2be2dcfc, type: 2}
+  cardBuffs: []
+  cardDebuffs: []
   unlocked: 0
-  character: 1
+  character: 2
   damage: 15
   secondaryDamage: 0
   selfDamage: 5
@@ -32,4 +35,3 @@ MonoBehaviour:
   chanceEffect: 0
   subTypes: 01000000
   validTargets: 02000000
-  cardArt: {fileID: 21300000, guid: 6c77cbe103c093143918998452fa2c60, type: 3}
