@@ -10,25 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37dcde15ecb28344598abe7925af9690, type: 3}
-  m_Name: BasicAttack
+  m_Name: Glass Bottle
   m_EditorClassIdentifier: 
-  cardName: Basic Attack
+  cardName: 
   cardArt: {fileID: 0}
   cost: 0
   drawAmount: 0
-  cardDescription: Basic enemy attack
+  cardDescription: 
   cardEffects:
-  - {fileID: 11400000, guid: 9faaf10255183254d8686af43fcc27f3, type: 2}
+  - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
   cardBuffs: []
-  cardDebuffs: []
+  cardDebuffs:
+  - {fileID: 11400000, guid: 0830d6dd564fe79408a8fe8b6cfe78b4, type: 2}
   unlocked: 0
   character: 0
-  damage: 4
+  damage: 2
   secondaryDamage: 0
   selfDamage: 0
   heal: 0
   secondaryHeal: 0
   turnDuration: 0
   chanceEffect: 0
-  subTypes: 01000000
+  subTypes: 00000000
   validTargets: 03000000

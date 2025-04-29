@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37dcde15ecb28344598abe7925af9690, type: 3}
-  m_Name: BasicAttack
+  m_Name: Call to Action
   m_EditorClassIdentifier: 
-  cardName: Basic Attack
+  cardName: Call to Action
   cardArt: {fileID: 0}
   cost: 0
   drawAmount: 0
-  cardDescription: Basic enemy attack
+  cardDescription: Heal all Allies; +4HP
   cardEffects:
-  - {fileID: 11400000, guid: 9faaf10255183254d8686af43fcc27f3, type: 2}
+  - {fileID: 11400000, guid: fc2b1b90b59a16b40826be29ce6e272d, type: 2}
   cardBuffs: []
   cardDebuffs: []
   unlocked: 0
   character: 0
-  damage: 4
+  damage: 0
   secondaryDamage: 0
   selfDamage: 0
-  heal: 0
+  heal: 4
   secondaryHeal: 0
   turnDuration: 0
   chanceEffect: 0
-  subTypes: 01000000
-  validTargets: 03000000
+  subTypes: 04000000
+  validTargets: 04000000

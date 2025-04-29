@@ -10,20 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37dcde15ecb28344598abe7925af9690, type: 3}
-  m_Name: BasicAttack
+  m_Name: Mob
   m_EditorClassIdentifier: 
-  cardName: Basic Attack
+  cardName: Mob
   cardArt: {fileID: 0}
   cost: 0
   drawAmount: 0
-  cardDescription: Basic enemy attack
+  cardDescription: Attacks N times, where N is the number of Civilians currently
+    alive.
   cardEffects:
-  - {fileID: 11400000, guid: 9faaf10255183254d8686af43fcc27f3, type: 2}
+  - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
   cardBuffs: []
   cardDebuffs: []
   unlocked: 0
   character: 0
-  damage: 4
+  damage: 3
   secondaryDamage: 0
   selfDamage: 0
   heal: 0

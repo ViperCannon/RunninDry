@@ -19,9 +19,11 @@ MonoBehaviour:
   cardDescription: Basic enemy attack
   cardEffects:
   - {fileID: 11400000, guid: 9faaf10255183254d8686af43fcc27f3, type: 2}
+  cardBuffs: []
+  cardDebuffs: []
   unlocked: 0
   character: 0
-  damage: 5
+  damage: 3
   secondaryDamage: 0
   selfDamage: 0
   heal: 0
