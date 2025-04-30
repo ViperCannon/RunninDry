@@ -429,6 +429,9 @@ MonoBehaviour:
   healthText: {fileID: 6979009398742869045}
   actions:
   - {fileID: 11400000, guid: cb4a9352943f9824085255ff7f071a56, type: 2}
+  - {fileID: 11400000, guid: 7fd849c83f9f7d34994af308af990acc, type: 2}
+  - {fileID: 11400000, guid: 0f81a5af59c5c73458934b6f438654dd, type: 2}
+  - {fileID: 11400000, guid: 9656373c706073c4f9b47ffe1d3e4574, type: 2}
   currentAction: {fileID: 0}
   currentTarget: {fileID: 0}
 --- !u!1 &5585983228733006980

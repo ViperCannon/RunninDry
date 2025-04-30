@@ -140,6 +140,10 @@ MonoBehaviour:
   healthText: {fileID: 5049384162502208425}
   actions:
   - {fileID: 11400000, guid: 894dbbc344ce455448316efa0034670c, type: 2}
+  - {fileID: 11400000, guid: fcb7b8b5607a96a41b8d1d5f1578db7e, type: 2}
+  - {fileID: 11400000, guid: 36a51518da279e24e8fe65b5bc77564a, type: 2}
+  - {fileID: 11400000, guid: 69d654cd01f2f8c45968db6e995f1d0b, type: 2}
+  - {fileID: 11400000, guid: 2c760a506caa9184ba93a39ac8c67472, type: 2}
   currentAction: {fileID: 0}
   currentTarget: {fileID: 0}
 --- !u!1 &2800428299789602689

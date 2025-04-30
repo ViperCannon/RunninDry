@@ -685,6 +685,11 @@ MonoBehaviour:
   healthText: {fileID: 1633506550460938934}
   actions:
   - {fileID: 11400000, guid: 2e5231cebf752144495f9bf11752d7f7, type: 2}
+  - {fileID: 11400000, guid: a05c764a6552054418b8351da69d26ee, type: 2}
+  - {fileID: 11400000, guid: 64619987679fad641bc1bd56c6149522, type: 2}
+  - {fileID: 11400000, guid: fb2bbe614c270e9469090e456720838f, type: 2}
+  - {fileID: 11400000, guid: 76c69ff02b7ebee46b96d89c3861f0d0, type: 2}
+  - {fileID: 11400000, guid: 59efc0e74b116c3448f4730058266ee5, type: 2}
   currentAction: {fileID: 0}
   currentTarget: {fileID: 0}
 --- !u!1 &7344737768230555585
