@@ -368,6 +368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8906268265482911728}
   - component: {fileID: 1208522402772242587}
+  - component: {fileID: 8082732402896260592}
   m_Layer: 5
   m_Name: DeckManager
   m_TagString: Untagged
@@ -411,6 +412,113 @@ MonoBehaviour:
   discardCounter: {fileID: 7796207427257103997}
   inCombat: 0
   inNegotiation: 0
+  audioSource: {fileID: 0}
+  cardDrawSounds:
+  - {fileID: 8300000, guid: 2a4052c0c4891f447af0f1342f971579, type: 3}
+  - {fileID: 8300000, guid: 5f76e637572c03445809225eb56c3c67, type: 3}
+  - {fileID: 8300000, guid: c973aed4677f27341b3562c7b5c2bc5b, type: 3}
+  cardDiscardSounds:
+  - {fileID: 8300000, guid: 1298ade8cd6a142408704731a097aa14, type: 3}
+  - {fileID: 8300000, guid: 0b5166f42f6b4a54b80f7780bf454e39, type: 3}
+  - {fileID: 8300000, guid: 486aeda2465bd984a896c7c19ee1d2f4, type: 3}
+  cardShuffleSounds:
+  - {fileID: 8300000, guid: 5ec6a8b750edea141bae4ae731440f81, type: 3}
+--- !u!82 &8082732402896260592
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5548114904161604092}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5830072098870016977
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,8 +642,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1766f733187b394f9827502e6dedef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatManager: {fileID: 0}
-  cardResolver: {fileID: 0}
   combatCardPrefab: {fileID: 6918855918595928429, guid: 8a3f8740bdad72c49ab1d372bc242991, type: 3}
   negotiationCardPrefab: {fileID: 8560931936898634180, guid: 5a61abea3958558439dab38fd729649f, type: 3}
   deckManager: {fileID: 1208522402772242587}
