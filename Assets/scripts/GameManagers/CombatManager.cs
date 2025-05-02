@@ -266,9 +266,9 @@ public class CombatManager : MonoBehaviour
                     yield break;
                 }
 
-                e.SetTarget(null);
-                e.SetAction(-1);
-                e.UpdateEnemyIntent();
+                //e.SetTarget(null);
+                //e.SetAction(-1);
+                //e.UpdateEnemyIntent();
 
                 yield return new WaitForSeconds(.5f); // Wait for a short period between actions
             }     

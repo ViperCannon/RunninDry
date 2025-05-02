@@ -32,7 +32,9 @@ public class CombatCard : Card
         Debuff,
         Heal,
         Unload, //X cost Cards that use up the remaining of the player's CAPs
-        Draw
+        Draw,
+        Special,
+        Flee
     }
 
     public enum CardTarget

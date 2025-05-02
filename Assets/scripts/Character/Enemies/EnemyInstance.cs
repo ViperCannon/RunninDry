@@ -18,6 +18,11 @@ public class EnemyInstance : CharacterInstance
     public GameObject healthText;
     public List<CombatCard> actions;
 
+    public GameObject intentsContainer;
+
+    [SerializeField]
+    GameObject intent;
+
     [SerializeField]
     CombatCard currentAction;
     [SerializeField]
@@ -39,6 +44,11 @@ public class EnemyInstance : CharacterInstance
     {
         Debug.Log("Enemy attack registered");
         CardEffectResolver.Instance.ResolveEnemyEffect(currentAction, currentTarget);
+
+        if (intent != null)
+        {
+            intent.SetActive(false);
+        }
     }
 
     public override void TakeDamage(int damage)
@@ -172,5 +182,90 @@ public class EnemyInstance : CharacterInstance
     public void UpdateEnemyIntent()
     {
         //change visual indicators of what the enemy is doing this turn and who they are targeting if applicable
+
+        if (isStunned)
+        {
+            intent = intentsContainer.transform.GetChild(11).gameObject;
+            intent.SetActive(true);
+            return;
+        }
+        
+        if(currentAction.subTypes.Count > 1 && currentAction.subTypes.Contains(CombatCard.CombatSubType.Projectile))
+        {
+            if (currentAction.subTypes.Contains(CombatCard.CombatSubType.Buff))
+            {
+                intent = intentsContainer.transform.GetChild(6).gameObject;
+                intent.SetActive(true);
+            }
+            else
+            {
+                intent = intentsContainer.transform.GetChild(8).gameObject;
+                intent.SetActive(true);
+            }
+
+            return;
+        }
+        else if (currentAction.subTypes.Count > 1 && currentAction.subTypes.Contains(CombatCard.CombatSubType.Melee))
+        {
+            if (currentAction.subTypes.Contains(CombatCard.CombatSubType.Buff))
+            {
+                intent = intentsContainer.transform.GetChild(5).gameObject;
+                intent.SetActive(true);
+            }
+            else
+            {
+                intent = intentsContainer.transform.GetChild(7).gameObject;
+                intent.SetActive(true);
+            }
+
+            return;
+        }
+        
+        switch(currentAction.subTypes[0])
+        {
+            case CombatCard.CombatSubType.Melee:
+
+                intent = intentsContainer.transform.GetChild(0).gameObject;
+                intent.SetActive(true);
+
+                break;
+
+            case CombatCard.CombatSubType.Projectile:
+
+                intent = intentsContainer.transform.GetChild(1).gameObject;
+                intent.SetActive(true);
+
+                break;
+
+            case CombatCard.CombatSubType.Buff:
+            case CombatCard.CombatSubType.Heal:
+
+                intent = intentsContainer.transform.GetChild(2).gameObject;
+                intent.SetActive(true);
+
+                break;
+
+            case CombatCard.CombatSubType.Debuff:
+
+                intent = intentsContainer.transform.GetChild(3).gameObject;
+                intent.SetActive(true);
+
+                break;
+
+            case CombatCard.CombatSubType.Special:
+
+                intent = intentsContainer.transform.GetChild(9).gameObject;
+                intent.SetActive(true);
+
+                break;
+
+            case CombatCard.CombatSubType.Flee:
+
+                intent = intentsContainer.transform.GetChild(10).gameObject;
+                intent.SetActive(true);
+
+                break;
+        }
+
     }
 }
