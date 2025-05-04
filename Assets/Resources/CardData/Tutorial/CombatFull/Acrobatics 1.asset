@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Acrobatics 1
   m_EditorClassIdentifier: 
   cardName: Acrobatics
+  cardArt: {fileID: 21300000, guid: ab3cd499ff3bf2947b728ddc39c67c5a, type: 3}
   cost: 1
   drawAmount: 2
   cardDescription: 'Deals {damage} melee damage
@@ -21,8 +22,10 @@ MonoBehaviour:
   cardEffects:
   - {fileID: 11400000, guid: 29d877e7adaca504bb0cccab700c8d67, type: 2}
   - {fileID: 11400000, guid: e0d146735183f964e9d4bae856adb425, type: 2}
+  cardBuffs: []
+  cardDebuffs: []
   unlocked: 1
-  character: 2
+  character: 3
   damage: 4
   secondaryDamage: 0
   selfDamage: 0
@@ -32,4 +35,3 @@ MonoBehaviour:
   chanceEffect: 0
   subTypes: 0100000006000000
   validTargets: 02000000
-  cardArt: {fileID: 21300000, guid: ab3cd499ff3bf2947b728ddc39c67c5a, type: 3}
