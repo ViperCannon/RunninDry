@@ -17,8 +17,7 @@ MonoBehaviour:
   cost: 4
   drawAmount: 0
   cardDescription: Baldwin gains Bulwark for three turns
-  cardEffects:
-  - {fileID: 11400000, guid: 528e90c46b8743541b5129adf9238ec9, type: 2}
+  cardEffects: []
   cardBuffs:
   - {fileID: 11400000, guid: ed3803fe1df6b0e459a031b0abbd5009, type: 2}
   cardDebuffs: []

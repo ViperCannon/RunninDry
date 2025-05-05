@@ -13,12 +13,14 @@ MonoBehaviour:
   m_Name: Belittle
   m_EditorClassIdentifier: 
   cardName: Belittle
-  cardArt: {fileID: 21300000, guid: 50cb6e37ea03b944eb42977fccc0f112, type: 3}
+  cardArt: {fileID: 21300000, guid: 101b3979c17cc994b8000d43bfdbbee6, type: 3}
   cost: 0
   drawAmount: 0
   cardDescription: 
   cardEffects:
   - {fileID: 11400000, guid: 6d31d92759a03a045b5afe5f0c9d1868, type: 2}
+  cardBuffs: []
+  cardDebuffs: []
   unlocked: 0
   character: 0
   numberOfDice: 2

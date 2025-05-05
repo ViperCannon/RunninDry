@@ -67,6 +67,10 @@ public class CombatCardPhysics : MonoBehaviour, IBeginDragHandler, IDragHandler,
             {
                 Debug.Log("Successfully Played Card!");
             }
+            else if (cardDisplay.cardData.validTargets[0] == CombatCard.CardTarget.Self && handManager.PlayCard(transform.gameObject, cardDisplay, cardDisplay.character.GetComponent<CharacterInstance>()))
+            {
+                Debug.Log("Successfully Played Self-Targeting Card!");
+            }
             else if (((cardDisplay.cardData.cost == 0)  || (combatManager.currentCaps >= cardDisplay.cardData.cost)) && currentTarget != null && currentTarget.CompareTag(cardDisplay.cardData.validTargets[0].ToString()) && (currentTarget.name != cardDisplay.cardData.character.ToString() 
                 || cardDisplay.cardData.IsSelfInclusive()) && handManager.PlayCard(transform.gameObject, cardDisplay, currentTarget.GetComponent<CharacterInstance>()))
             {

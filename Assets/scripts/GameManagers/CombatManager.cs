@@ -253,7 +253,7 @@ public class CombatManager : MonoBehaviour
             {
                 Debug.Log("Enemy attacking!");
 
-                if (e.GetTarget().isDowned)
+                if (e.GetTarget() != null && e.GetTarget().isDowned)
                 {
                     e.SetRandomTarget();
                 }
