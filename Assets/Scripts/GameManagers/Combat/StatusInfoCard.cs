@@ -15,8 +15,7 @@ public class StatusInfoCard : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         GameObject canvas = FindObjectOfType<Canvas>().gameObject;
         InfoCardInstance.transform.SetParent(canvas.transform);
-
-        InfoCardInstance.transform.position = Vector3.zero;
+        InfoCardInstance.transform.position = new Vector3(Screen.width * 0.5f, (Screen.height * 0.5f) + 150, 0);
     }
 
     public void OnPointerExit(PointerEventData eventData)
