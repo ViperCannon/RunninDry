@@ -207,9 +207,4 @@ public class DialogueManager : MonoBehaviour
         dialogueVariables.UpdateVariableState(name, value);
         dialogueVariables.SyncSingleVariableToStory(currentStory, KeyValuePair.Create(name, value));
     }
-
-    private void OnDestroy()
-    {
-        externalFunctions.Unbind(currentStory);
-    }
 }
