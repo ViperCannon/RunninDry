@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "-= BLIND =- \nAll damage dealt by the afflicted is halved."
+  m_text: "-= BLIND =- \nAll damage dealt is halved."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c20eb4102de3ae49ba6e809114dd42d, type: 2}
   m_sharedMaterial: {fileID: -8196980649855182878, guid: 4c20eb4102de3ae49ba6e809114dd42d, type: 2}

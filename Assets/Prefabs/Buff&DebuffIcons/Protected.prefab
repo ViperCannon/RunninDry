@@ -273,4 +273,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0e125898aa1f4343b55e1d77896c221, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InfoCard: {fileID: 4388256055951736264, guid: 5f11913149fdf2a48a0496de808ebd63, type: 3}
+  InfoCard: {fileID: 4388256055951736264, guid: bffd4e5c060b45f4897dc0f79bd9e139, type: 3}

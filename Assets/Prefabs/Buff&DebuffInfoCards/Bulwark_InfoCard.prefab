@@ -141,8 +141,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "-= BULWARK =- \nAll damage dealt to the afflicted is halved- with the
-    exception of Bleed Damage."
+  m_text: "-= BULWARK =- \nAll damage taken is halved- with the exception of Bleed
+    Damage."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4c20eb4102de3ae49ba6e809114dd42d, type: 2}
   m_sharedMaterial: {fileID: -8196980649855182878, guid: 4c20eb4102de3ae49ba6e809114dd42d, type: 2}
