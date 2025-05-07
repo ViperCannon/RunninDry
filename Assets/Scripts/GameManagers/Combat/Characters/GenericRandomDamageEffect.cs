@@ -26,9 +26,52 @@ public class GenericRandomDamageEffect : ScriptableObject, ICardEffect
             }
         }
 
-        int totalDamage = int.Parse(cardInstance.currentDamage); //account for target's buff/debuffs in future
+        bool takeCounter = false;
+        float modifier = 1f;
+        int totalDamage = 0;
 
-        newTarget.TakeDamage(totalDamage);     
+        if (target.hasBulwark)
+        {
+            modifier -= 0.5f;
+        }
+
+        if (target.hasMarked && cardInstance.cardData.subTypes.Contains(CombatCard.CombatSubType.Projectile))
+        {
+            modifier += 0.5f;
+        }
+
+        totalDamage = Mathf.RoundToInt((cardInstance.currentDamage * modifier) + 0.4999f);
+
+        if(target != null)
+        {
+            if (target.hasCounter)
+            {
+                takeCounter = true;
+                CounterDamage.CalcCounter(totalDamage);
+            }
+
+            target.TakeDamage(totalDamage);
+
+            if (takeCounter)
+            {
+                target.TakeDamage(CounterDamage.counterDamage);
+            }
+        }
+
+        takeCounter = false;
+
+        if (newTarget.hasCounter)
+        {
+            takeCounter = true;
+            CounterDamage.CalcCounter(totalDamage);
+        }
+
+        newTarget.TakeDamage(totalDamage);
+
+        if (takeCounter)
+        {
+            newTarget.TakeDamage(CounterDamage.counterDamage);
+        }
     }
 
     public void ResolveEffect(NegotiationCardDisplay cardInstance)

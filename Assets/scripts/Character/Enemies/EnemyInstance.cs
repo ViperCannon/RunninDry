@@ -147,7 +147,7 @@ public class EnemyInstance : CharacterInstance
         return currentAction;
     }
 
-    public void SetRandomTarget()
+    public CharacterInstance SetRandomTarget()
     {
         if (!currentAction.IsAOE() && currentAction.validTargets[0] != CombatCard.CardTarget.Self) //Must be a single target action in this case
         {
@@ -195,6 +195,8 @@ public class EnemyInstance : CharacterInstance
         {
             currentTarget = null;
         }
+
+        return currentTarget;
     }
 
     public void SetTarget(CharacterInstance target)
@@ -210,6 +212,11 @@ public class EnemyInstance : CharacterInstance
     public void UpdateEnemyIntent()
     {
         //change visual indicators of what the enemy is doing this turn and who they are targeting if applicable
+        if(intent != null)
+        {
+            intent.SetActive(false);
+        }
+
 
         if (isStunned)
         {

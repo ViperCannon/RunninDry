@@ -10,7 +10,7 @@ public class CombatCardDisplay : CardDisplay
 
     public Image[] cost;
 
-    public string currentDamage;
+    public int currentDamage;
     public string currentSecondaryDamage;
     public string currentSelfDamage;
     public string currentHeal;
@@ -22,7 +22,6 @@ public class CombatCardDisplay : CardDisplay
 
     public void UpdateCardDisplay()
     {
-        currentDamage = (cardData.damage).ToString();
         currentSecondaryDamage = (cardData.secondaryDamage).ToString();
         currentSelfDamage = (cardData.selfDamage).ToString();
         currentHeal = (cardData.heal).ToString();
@@ -40,6 +39,15 @@ public class CombatCardDisplay : CardDisplay
                 }
             } 
         }
+        if(CombatManager.Instance != null && CombatManager.Instance.inCombat)
+        {
+            currentDamage = UpdateDamage();
+        }
+        else
+        {
+            currentDamage = cardData.damage;
+        }
+        
 
         cardImage.sprite = cardData.cardArt;
 
@@ -58,7 +66,7 @@ public class CombatCardDisplay : CardDisplay
 
         newDesc = cardData.cardDescription;
 
-        newDesc = newDesc.Replace("{damage}", currentDamage);
+        newDesc = newDesc.Replace("{damage}", currentDamage.ToString());
         newDesc = newDesc.Replace("{secondaryDamage}", currentSecondaryDamage);
         newDesc = newDesc.Replace("{selfDamage}", currentSelfDamage);
         newDesc = newDesc.Replace("{heal}", currentHeal);
@@ -68,4 +76,40 @@ public class CombatCardDisplay : CardDisplay
         descText.text = newDesc;
     }
 
+
+    int UpdateDamage()
+    {
+        AllyInstance a = character.GetComponent<AllyInstance>();
+        int damage;
+        float modifier = 1f;
+
+        if (a.hasBlind)
+        {
+            modifier -= 0.5f;
+        }
+
+        if (cardData.subTypes.Contains(CombatCard.CombatSubType.Projectile) && a.hasDisarmed)
+        {
+            modifier -= 0.5f;
+        }
+
+        if (cardData.subTypes.Contains(CombatCard.CombatSubType.Melee) && a.hasPissedOff)
+        {
+            modifier += 0.5f;
+        }
+
+        if (a.hasInspired)
+        {
+            modifier += 0.25f;
+        }
+
+        if (a.hasUnsure)
+        {
+            modifier -= 0.25f;
+        }
+
+        damage = Mathf.RoundToInt((cardData.damage * modifier) + 0.4999f);
+
+        return damage;
+    }
 }

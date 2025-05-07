@@ -33,6 +33,8 @@ public class CombatManager : MonoBehaviour
         EnemyTurn
     }
 
+    public EnemyInstance activeEnemy;
+
     [Header("Combat Participant Data")]
     public List<AllyData> AlliesData;
     public List<EnemyData> EnemiesData;
@@ -297,6 +299,8 @@ public class CombatManager : MonoBehaviour
     {
         foreach (EnemyInstance e in Enemies)
         {
+            activeEnemy = e;
+
             if(e != null && e.gameObject.activeSelf)
             {
                 for (int i = e.activeDebuffs.Count - 1; i >= 0; i--)
@@ -324,7 +328,11 @@ public class CombatManager : MonoBehaviour
                     e.SetRandomTarget();
                 }
 
-                e.PerformAction(); // Let each enemy perform its action
+                if (!e.isStunned)
+                {
+                    e.PerformAction(); // Let each enemy perform its action
+                }
+
                 yield return new WaitForSeconds(.5f);
 
                 if (IsCombatOver())
@@ -349,6 +357,8 @@ public class CombatManager : MonoBehaviour
                 }
 
                 yield return new WaitForSeconds(.5f); // Wait for a short period between actions
+
+                activeEnemy = null;
             }     
         }
     }

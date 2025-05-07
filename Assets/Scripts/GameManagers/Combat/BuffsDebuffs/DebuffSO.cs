@@ -88,12 +88,21 @@ public class DebuffSO : ScriptableObject
                 break;
 
             case CombatDebuffType.Stun:
-     
-                Stun stun = new(target, uiInstance.GetComponent<BuffDebuffUI>());
+                if (!target.isStunned)
+                {
+                    Stun stun = new(target, uiInstance.GetComponent<BuffDebuffUI>());
 
-                target.ApplyDebuff(stun);
-                target.isStunned = true;
+                    target.ApplyDebuff(stun);
 
+
+                    target.isStunned = true;
+
+                    if (target is EnemyInstance temp)
+                    {
+                        temp.UpdateEnemyIntent();
+                    }
+                }
+                
                 break;
 
             case CombatDebuffType.Unsure:
