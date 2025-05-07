@@ -30,6 +30,7 @@ public class Blind : Debuff
 
         if (TurnDuration <= 0)
         {
+            Target.hasBlind = false;
             Target.RemoveDebuff(this);
         }
     }

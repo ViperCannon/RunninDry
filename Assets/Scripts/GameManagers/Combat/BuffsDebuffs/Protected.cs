@@ -32,6 +32,7 @@ public class Protected : Buff
 
         if (TurnDuration <= 0)
         {
+            Target.hasProtected = false;
             Target.RemoveBuff(this);
         }
     }

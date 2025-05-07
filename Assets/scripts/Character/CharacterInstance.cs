@@ -12,9 +12,20 @@ public class CharacterInstance : MonoBehaviour, IDataPersistence
     public float damageMultiplier = 1f;
     public float defenseMultiplier = 1f;
 
+    public bool hasBleeding = false;
+    public bool hasBlind = false;
+    public bool hasBulwark = false;
+    public bool hasCounter = false;
+    public bool hasDisarmed = false;
+    public bool hasInspired = false;
+    public bool hasMarked = false;
+    public bool hasPissedOff = false;
+    public bool hasProtected = false;
+    public bool hasResilient = false;
+    public bool hasUnsure = false;
     public bool isStunned = false;
-    public bool isBleeding = false;
-    public bool isResilient = false;
+    
+    
     public bool isDowned = false;
 
     public List<Buff> activeBuffs = new();
@@ -29,7 +40,7 @@ public class CharacterInstance : MonoBehaviour, IDataPersistence
 
     public virtual void TakeDamage(int damage)
     {
-    
+        
     }
 
     public void Heal(int amount)

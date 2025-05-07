@@ -30,6 +30,7 @@ public class Marked : Debuff
 
         if (TurnDuration <= 0)
         {
+            Target.hasMarked = false;
             Target.RemoveDebuff(this);
         }
     }

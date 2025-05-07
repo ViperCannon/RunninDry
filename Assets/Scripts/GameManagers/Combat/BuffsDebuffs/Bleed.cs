@@ -26,11 +26,12 @@ public class Bleed : Debuff
 
     public override void UpdateEffect()
     {
+        Target.TakeDamage(TurnDuration);
         TurnDuration--;
 
         if(TurnDuration <= 0)
         {
-            Target.isBleeding = false;
+            Target.hasBleeding = false;
             Target.RemoveDebuff(this);
         }
     }

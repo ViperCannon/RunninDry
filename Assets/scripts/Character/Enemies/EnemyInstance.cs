@@ -54,7 +54,18 @@ public class EnemyInstance : CharacterInstance
     public override void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (currentHealth <= 0)
+
+        if (currentHealth <= 0 && hasResilient)
+        {
+            currentHealth = 1;
+            foreach (Resilient r in activeBuffs)
+            {
+                r.UpdateEffect();
+            }
+
+            Debug.Log("Defied death!");
+        }
+        else if (currentHealth <= 0)
         {
             currentHealth = 0;
             isDowned = true;

@@ -29,11 +29,34 @@ public class AllyInstance : CharacterInstance
     public override void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (currentHealth <= 0)
+
+        if (currentHealth <= 0 && hasResilient)
+        {
+            currentHealth = 1;
+            foreach(Resilient r in activeBuffs)
+            {
+                r.UpdateEffect();
+            }
+
+            Debug.Log("Defied death!");
+        }
+        else if (currentHealth <= 0)
         {
             currentHealth = 0;
             isDowned = true;
             col.enabled = false;
+
+            for (int i = activeDebuffs.Count - 1; i >= 0; i--)
+            {
+                activeDebuffs[i].TurnDuration = 0;
+                activeDebuffs[i].UpdateEffect();
+            }
+
+            for (int i = activeBuffs.Count - 1; i >= 0; i--)
+            {
+                activeBuffs[i].TurnDuration = 0;
+                activeBuffs[i].UpdateEffect();
+            }
         }
         else if (currentHealth > maxHealth)
         {
@@ -45,6 +68,20 @@ public class AllyInstance : CharacterInstance
         {
             isDowned = false;
             col.enabled = true;
+
+            if (hasCounter)
+            {
+                CounterDamage.CalcCounter(damage);
+
+                for (int i = activeBuffs.Count - 1; i >= 0; i--)
+                {
+                    if(activeBuffs[i] is Counter)
+                    {
+                        activeBuffs[i].UpdateEffect();
+                        break;
+                    }
+                }
+            }
         }
 
         UpdateHealthBar();

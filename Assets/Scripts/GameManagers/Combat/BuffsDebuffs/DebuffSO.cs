@@ -59,7 +59,7 @@ public class DebuffSO : ScriptableObject
 
                 Bleed bleed = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyDebuff(bleed);
-                target.isBleeding = true;
+                target.hasBleeding = true;
 
                 break;
 
@@ -67,6 +67,7 @@ public class DebuffSO : ScriptableObject
 
                 Blind blind = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyDebuff(blind);
+                target.hasBlind = true;
 
                 break;
 
@@ -74,6 +75,7 @@ public class DebuffSO : ScriptableObject
 
                 Disarmed disarmed = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyDebuff(disarmed);
+                target.hasDisarmed = true;
 
                 break;
 
@@ -81,6 +83,7 @@ public class DebuffSO : ScriptableObject
 
                 Marked marked = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyDebuff(marked);
+                target.hasMarked = true;
 
                 break;
 
@@ -97,6 +100,7 @@ public class DebuffSO : ScriptableObject
 
                 Unsure unsure = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyDebuff(unsure);
+                target.hasUnsure = true;
 
                 break;
         }

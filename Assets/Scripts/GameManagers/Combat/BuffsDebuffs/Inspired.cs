@@ -30,6 +30,7 @@ public class Inspired : Buff
 
         if (TurnDuration <= 0)
         {
+            Target.hasInspired = false;
             Target.RemoveBuff(this);
         }
     }

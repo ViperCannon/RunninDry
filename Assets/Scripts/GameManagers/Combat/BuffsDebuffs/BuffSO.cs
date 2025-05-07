@@ -59,6 +59,7 @@ public class BuffSO : ScriptableObject
 
                 Bulwark bulwark = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(bulwark);
+                target.hasBulwark = true;
 
                 break;
 
@@ -66,6 +67,7 @@ public class BuffSO : ScriptableObject
 
                 Counter counter = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(counter);
+                target.hasCounter = true;
 
                 break;
 
@@ -73,6 +75,7 @@ public class BuffSO : ScriptableObject
 
                 Inspired inspired = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(inspired);
+                target.hasInspired = true;
 
                 break;
 
@@ -80,6 +83,7 @@ public class BuffSO : ScriptableObject
 
                 PissedOff pissedOff = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(pissedOff);
+                target.hasPissedOff = true;
 
                 break;
 
@@ -87,6 +91,7 @@ public class BuffSO : ScriptableObject
 
                 Protected protect = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(protect);
+                target.hasProtected = true;
 
                 break;
 
@@ -94,7 +99,7 @@ public class BuffSO : ScriptableObject
 
                 Resilient resilient = new(target, uiInstance.GetComponent<BuffDebuffUI>(), card.turnDuration);
                 target.ApplyBuff(resilient);
-                target.isResilient = true;
+                target.hasResilient = true;
 
                 break;
         }

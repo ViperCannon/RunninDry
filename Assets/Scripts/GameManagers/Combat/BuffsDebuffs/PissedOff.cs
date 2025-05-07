@@ -29,6 +29,7 @@ public class PissedOff : Buff
 
         if (TurnDuration <= 0)
         {
+            Target.hasPissedOff = false;
             Target.RemoveBuff(this);
         }
     }

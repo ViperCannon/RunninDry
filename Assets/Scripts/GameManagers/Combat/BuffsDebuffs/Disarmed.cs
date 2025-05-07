@@ -30,6 +30,7 @@ public class Disarmed : Debuff
 
         if (TurnDuration <= 0)
         {
+            Target.hasDisarmed = false;
             Target.RemoveDebuff(this);
         }
     }

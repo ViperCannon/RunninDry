@@ -30,6 +30,7 @@ public class Counter : Buff
 
         if (TurnDuration <= 0)
         {
+            Target.hasCounter = false;
             Target.RemoveBuff(this);
         }
     }

@@ -232,6 +232,30 @@ public class CombatManager : MonoBehaviour
 
         UpdateCaps(capsRefreshLimit - currentCaps);
 
+        foreach (AllyInstance a in Allies)
+        {
+            if (!a.isDowned)
+            {
+                for (int i = a.activeDebuffs.Count - 1; i >= 0; i--)
+                {
+                    if (a.activeDebuffs[i] is Bleed)
+                    {
+                        a.activeDebuffs[i].UpdateEffect();
+                        break;
+                    }
+                }
+
+                for (int i = a.activeDebuffs.Count - 1; i >= 0; i--)
+                {
+                    if (a.activeBuffs[i] is Counter)
+                    {
+                        a.activeBuffs[i].UpdateEffect();
+                        break;
+                    }
+                }
+            }
+        }
+
         // Handle player actions (drawing Cards, playing Cards, etc.)
         handManager.AttemptDraw(6);
 
@@ -239,6 +263,28 @@ public class CombatManager : MonoBehaviour
         {
             // Wait until the player decides to end their turn
             yield return null;
+        }
+
+        foreach (AllyInstance a in Allies)
+        {
+            if (!a.isDowned)
+            {
+                foreach (Debuff d in a.activeDebuffs)
+                {
+                    if (d is not Bleed)
+                    {
+                        d.UpdateEffect();
+                    }
+                }
+
+                foreach (Buff b in a.activeBuffs)
+                {
+                    if (b is not Counter)
+                    {
+                        b.UpdateEffect();
+                    }
+                }
+            }
         }
 
         handManager.DiscardHand();
@@ -251,6 +297,24 @@ public class CombatManager : MonoBehaviour
         {
             if(e != null && e.gameObject.activeSelf)
             {
+                for (int i = e.activeDebuffs.Count - 1; i >= 0; i--)
+                {
+                    if (e.activeDebuffs[i] is Bleed)
+                    {
+                        e.activeDebuffs[i].UpdateEffect();
+                        break;
+                    }
+                }
+
+                for(int i = e.activeDebuffs.Count - 1; i >= 0; i--)
+                {
+                    if (e.activeBuffs[i] is Counter)
+                    {
+                        e.activeBuffs[i].UpdateEffect();
+                        break;
+                    }
+                }
+
                 Debug.Log("Enemy attacking!");
 
                 if (e.GetTarget() != null && e.GetTarget().isDowned)
@@ -266,9 +330,21 @@ public class CombatManager : MonoBehaviour
                     yield break;
                 }
 
-                //e.SetTarget(null);
-                //e.SetAction(-1);
-                //e.UpdateEnemyIntent();
+                for (int i = e.activeDebuffs.Count - 1; i >= 0; i--)
+                {
+                    if (e.activeDebuffs[i] is not Bleed)
+                    {
+                        e.activeDebuffs[i].UpdateEffect();
+                    }
+                }
+
+                for (int i = e.activeBuffs.Count - 1; i >= 0; i--)
+                {
+                    if (e.activeBuffs[i] is not Counter)
+                    {
+                        e.activeBuffs[i].UpdateEffect();
+                    }
+                }
 
                 yield return new WaitForSeconds(.5f); // Wait for a short period between actions
             }     

@@ -30,6 +30,7 @@ public class Bulwark : Buff
 
         if (TurnDuration <= 0)
         {
+            Target.hasBulwark = false;
             Target.RemoveBuff(this);
         }
     }

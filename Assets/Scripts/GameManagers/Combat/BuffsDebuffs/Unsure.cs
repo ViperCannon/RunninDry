@@ -30,6 +30,7 @@ public class Unsure : Debuff
 
         if (TurnDuration <= 0)
         {
+            Target.hasUnsure = false;
             Target.RemoveDebuff(this);
         }
     }

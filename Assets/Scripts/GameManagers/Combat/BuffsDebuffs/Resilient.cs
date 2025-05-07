@@ -30,7 +30,7 @@ public class Resilient : Buff
 
         if (TurnDuration <= 0)
         {
-            Target.isResilient = false;
+            Target.hasResilient = false;
             Target.RemoveBuff(this);
         }
     }
