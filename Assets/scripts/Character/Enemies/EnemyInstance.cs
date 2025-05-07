@@ -21,6 +21,9 @@ public class EnemyInstance : CharacterInstance
     public GameObject intentsContainer;
 
     [SerializeField]
+    GameObject deathAnimation;
+
+    [SerializeField]
     GameObject intent;
 
     [SerializeField]
@@ -58,18 +61,32 @@ public class EnemyInstance : CharacterInstance
         if (currentHealth <= 0 && hasResilient)
         {
             currentHealth = 1;
-            foreach (Resilient r in activeBuffs)
+
+            for (int i = activeBuffs.Count - 1; i >= 0; i--)
             {
-                r.UpdateEffect();
+                if (activeBuffs[i] is Resilient)
+                {
+                    activeBuffs[i].UpdateEffect();
+                    break;
+                }
             }
 
             Debug.Log("Defied death!");
         }
         else if (currentHealth <= 0)
         {
+            Debug.Log(CombatManager.Instance.lastPlayedCard.cardName);
+
+            if(CombatManager.Instance.lastPlayedCard.cardName is "Sleight of Hand")
+            {
+                RelationshipsFramework.Instance.cash += 10;
+                Debug.Log("Added 10 cash");
+            }
+
             currentHealth = 0;
             isDowned = true;
-            gameObject.SetActive(false);
+
+            StartCoroutine(Die());
         }
         else if (currentHealth > maxHealth)
         {
@@ -278,5 +295,13 @@ public class EnemyInstance : CharacterInstance
                 break;
         }
 
+    }
+
+    IEnumerator Die()
+    {
+        Instantiate(deathAnimation, gameObject.transform);
+
+        yield return new WaitForSeconds (.57f);
+        gameObject.SetActive(false);
     }
 }

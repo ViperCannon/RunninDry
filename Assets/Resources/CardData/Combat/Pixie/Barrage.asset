@@ -23,7 +23,7 @@ MonoBehaviour:
   cardDebuffs: []
   unlocked: 0
   character: 1
-  damage: 5
+  damage: 3
   secondaryDamage: 0
   selfDamage: 0
   heal: 0

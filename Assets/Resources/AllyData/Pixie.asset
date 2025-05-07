@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Pixie
   m_EditorClassIdentifier: 
   AllyName: Pixie
-  baseMaxHealth: 20
+  baseMaxHealth: 30

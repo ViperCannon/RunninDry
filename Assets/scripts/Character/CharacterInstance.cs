@@ -91,4 +91,22 @@ public class CharacterInstance : MonoBehaviour, IDataPersistence
         data.activeBuffs = activeBuffs;
         data.activeDebuffs = activeDebuffs;
     }
+
+    public void ClearDebuffs()
+    {
+        for (int i = activeDebuffs.Count - 1; i >= 0; i--)
+        {
+            activeDebuffs[i].TurnDuration = 0;
+            activeDebuffs[i].UpdateEffect();
+        }
+    }
+
+    public void ClearBuffs()
+    {
+        for (int i = activeBuffs.Count - 1; i >= 0; i--)
+        {
+            activeBuffs[i].TurnDuration = 0;
+            activeBuffs[i].UpdateEffect();
+        }
+    }
 }

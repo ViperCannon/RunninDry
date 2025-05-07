@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Barley
   m_EditorClassIdentifier: 
   AllyName: Barley
-  baseMaxHealth: 12
+  baseMaxHealth: 20

@@ -245,7 +245,7 @@ public class CombatManager : MonoBehaviour
                     }
                 }
 
-                for (int i = a.activeDebuffs.Count - 1; i >= 0; i--)
+                for (int i = a.activeBuffs.Count - 1; i >= 0; i--)
                 {
                     if (a.activeBuffs[i] is Counter)
                     {
@@ -269,19 +269,21 @@ public class CombatManager : MonoBehaviour
         {
             if (!a.isDowned)
             {
-                foreach (Debuff d in a.activeDebuffs)
+                for (int i = a.activeDebuffs.Count - 1; i >= 0; i--)
                 {
-                    if (d is not Bleed)
+                    if (a.activeDebuffs[i] is not Bleed)
                     {
-                        d.UpdateEffect();
+                        a.activeDebuffs[i].UpdateEffect();
+                        break;
                     }
                 }
 
-                foreach (Buff b in a.activeBuffs)
+                for (int i = a.activeBuffs.Count - 1; i >= 0; i--)
                 {
-                    if (b is not Counter)
+                    if (a.activeBuffs[i] is not Counter)
                     {
-                        b.UpdateEffect();
+                        a.activeBuffs[i].UpdateEffect();
+                        break;
                     }
                 }
             }
@@ -306,7 +308,7 @@ public class CombatManager : MonoBehaviour
                     }
                 }
 
-                for(int i = e.activeDebuffs.Count - 1; i >= 0; i--)
+                for(int i = e.activeBuffs.Count - 1; i >= 0; i--)
                 {
                     if (e.activeBuffs[i] is Counter)
                     {
@@ -454,6 +456,10 @@ public class CombatManager : MonoBehaviour
                     p.Heal((int)(p.maxHealth * 0.4f));
                 }
             }
+
+            p.ClearDebuffs();
+
+            p.ClearBuffs();
         }
 
         foreach (EnemyInstance e in Enemies)

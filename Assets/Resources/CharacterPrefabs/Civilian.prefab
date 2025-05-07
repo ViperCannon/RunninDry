@@ -1305,9 +1305,18 @@ MonoBehaviour:
   currentHealth: 0
   damageMultiplier: 1
   defenseMultiplier: 1
+  hasBleeding: 0
+  hasBlind: 0
+  hasBulwark: 0
+  hasCounter: 0
+  hasDisarmed: 0
+  hasInspired: 0
+  hasMarked: 0
+  hasPissedOff: 0
+  hasProtected: 0
+  hasResilient: 0
+  hasUnsure: 0
   isStunned: 0
-  isBleeding: 0
-  isResilient: 0
   isDowned: 0
   buffsDebuffs: {fileID: 238561978587023844}
   baseData: {fileID: 11400000, guid: 8342131c52923214aa5106f13384a305, type: 2}
@@ -1322,6 +1331,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0f81a5af59c5c73458934b6f438654dd, type: 2}
   - {fileID: 11400000, guid: 9656373c706073c4f9b47ffe1d3e4574, type: 2}
   intentsContainer: {fileID: 7664117506044778664}
+  deathAnimation: {fileID: 1307155787472261647, guid: b56ccec4ab538c44396adc1f9deae169, type: 3}
   intent: {fileID: 0}
   currentAction: {fileID: 0}
   currentTarget: {fileID: 0}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Baldwin
   m_EditorClassIdentifier: 
   AllyName: Baldwin
-  baseMaxHealth: 30
+  baseMaxHealth: 45

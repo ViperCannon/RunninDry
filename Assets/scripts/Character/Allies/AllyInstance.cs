@@ -33,9 +33,14 @@ public class AllyInstance : CharacterInstance
         if (currentHealth <= 0 && hasResilient)
         {
             currentHealth = 1;
-            foreach(Resilient r in activeBuffs)
+
+            for (int i = activeBuffs.Count - 1; i >= 0; i--)
             {
-                r.UpdateEffect();
+                if (activeBuffs[i] is Resilient)
+                {
+                    activeBuffs[i].UpdateEffect();
+                    break;
+                }
             }
 
             Debug.Log("Defied death!");
@@ -46,17 +51,8 @@ public class AllyInstance : CharacterInstance
             isDowned = true;
             col.enabled = false;
 
-            for (int i = activeDebuffs.Count - 1; i >= 0; i--)
-            {
-                activeDebuffs[i].TurnDuration = 0;
-                activeDebuffs[i].UpdateEffect();
-            }
-
-            for (int i = activeBuffs.Count - 1; i >= 0; i--)
-            {
-                activeBuffs[i].TurnDuration = 0;
-                activeBuffs[i].UpdateEffect();
-            }
+            ClearDebuffs();
+            ClearBuffs();
         }
         else if (currentHealth > maxHealth)
         {
