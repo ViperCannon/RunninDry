@@ -274,3 +274,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InfoCard: {fileID: 1170971569593052743, guid: e7978b6fccc956146af6b2a839514b58, type: 3}
+  PositionOffset: {x: 0, y: 150, z: 0}
