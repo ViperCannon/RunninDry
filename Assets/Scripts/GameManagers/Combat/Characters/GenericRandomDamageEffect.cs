@@ -30,20 +30,20 @@ public class GenericRandomDamageEffect : ScriptableObject, ICardEffect
         float modifier = 1f;
         int totalDamage = 0;
 
-        if (target.hasBulwark)
-        {
-            modifier -= 0.5f;
-        }
-
-        if (target.hasMarked && cardInstance.cardData.subTypes.Contains(CombatCard.CombatSubType.Projectile))
-        {
-            modifier += 0.5f;
-        }
-
-        totalDamage = Mathf.RoundToInt((cardInstance.currentDamage * modifier) + 0.4999f);
-
         if(target != null)
         {
+            if (target.hasBulwark)
+            {
+                modifier -= 0.5f;
+            }
+
+            if (target.hasMarked && cardInstance.cardData.subTypes.Contains(CombatCard.CombatSubType.Projectile))
+            {
+                modifier += 0.5f;
+            }
+
+            totalDamage = Mathf.RoundToInt((cardInstance.currentDamage * modifier) + 0.4999f);
+
             if (target.hasCounter)
             {
                 takeCounter = true;
@@ -58,7 +58,20 @@ public class GenericRandomDamageEffect : ScriptableObject, ICardEffect
             }
         }
 
+        modifier = 1f;
         takeCounter = false;
+
+        if (newTarget.hasBulwark)
+        {
+            modifier -= 0.5f;
+        }
+
+        if (newTarget.hasMarked && cardInstance.cardData.subTypes.Contains(CombatCard.CombatSubType.Projectile))
+        {
+            modifier += 0.5f;
+        }
+
+        totalDamage = Mathf.RoundToInt((cardInstance.currentDamage * modifier) + 0.4999f);
 
         if (newTarget.hasCounter)
         {

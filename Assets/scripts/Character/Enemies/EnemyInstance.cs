@@ -75,9 +75,7 @@ public class EnemyInstance : CharacterInstance
         }
         else if (currentHealth <= 0)
         {
-            Debug.Log(CombatManager.Instance.lastPlayedCard.cardName);
-
-            if(CombatManager.Instance.lastPlayedCard.cardName is "Sleight of Hand")
+            if(CombatManager.Instance.lastPlayedCard != null && CombatManager.Instance.lastPlayedCard.cardName is "Sleight of Hand")
             {
                 RelationshipsFramework.Instance.cash += 10;
                 Debug.Log("Added 10 cash");

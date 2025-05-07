@@ -106,4 +106,9 @@ public class AllyInstance : CharacterInstance
 
         healthBar.transform.localScale = newScale;
     }
+
+    public string GetName()
+    {
+        return baseData.AllyName;
+    }
 }

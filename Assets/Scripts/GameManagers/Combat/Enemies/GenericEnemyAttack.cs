@@ -12,6 +12,18 @@ public class GenericEnemyAttack : ScriptableObject, IEnemyEffect
         float modifier = 1f;
         bool takeCounter = false;
 
+        if (target is AllyInstance && target.hasProtected)
+        {
+            foreach (AllyInstance a in CombatManager.Instance.Allies)
+            {
+                if (a.GetName() == "Baldwin" && !a.isDowned)
+                {
+                    target = a;
+                    break;
+                }
+            }
+        }
+
         if (e.hasBlind)
         {
             modifier -= 0.5f;
