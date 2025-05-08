@@ -28,7 +28,7 @@ MonoBehaviour:
   selfDamage: 0
   heal: 0
   secondaryHeal: 0
-  turnDuration: 0
+  turnDuration: 2
   chanceEffect: 0
   subTypes: 02000000
   validTargets: 04000000

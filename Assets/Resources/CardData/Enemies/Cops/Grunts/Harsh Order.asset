@@ -16,7 +16,7 @@ MonoBehaviour:
   cardArt: {fileID: 0}
   cost: 0
   drawAmount: 0
-  cardDescription: Grants one Stack of Inspired status for 2 turns in exchange for
+  cardDescription: Grants two Stack of Inspired status for 2 turns in exchange for
     3 HP.
   cardEffects: []
   cardBuffs:

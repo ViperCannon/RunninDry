@@ -16,7 +16,7 @@ MonoBehaviour:
   cardArt: {fileID: 0}
   cost: 0
   drawAmount: 0
-  cardDescription: Inflicts Unsure to Self for 3 Turns and heals 5 HP
+  cardDescription: Inflicts Unsure to Self for 2 Turns and heals 5 HP
   cardEffects:
   - {fileID: 11400000, guid: fc2b1b90b59a16b40826be29ce6e272d, type: 2}
   cardBuffs: []
@@ -28,7 +28,7 @@ MonoBehaviour:
   selfDamage: 0
   heal: 5
   secondaryHeal: 0
-  turnDuration: 3
+  turnDuration: 2
   chanceEffect: 0
   subTypes: 03000000
   validTargets: 00000000

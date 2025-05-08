@@ -72,9 +72,9 @@ public class GenericDamageEffect : ScriptableObject, ICardEffect
                     CounterDamage.CalcCounter(totalDamage);
                 }
 
-                if (enemy != null)
+                if(enemy != null && enemy.gameObject != null)
                 {
-                    enemy.TakeDamage(totalDamage);   
+                    enemy.TakeDamage(totalDamage);
                 }
 
                 if (takeCounter)
@@ -83,6 +83,7 @@ public class GenericDamageEffect : ScriptableObject, ICardEffect
                 }
 
                 takeCounter = false;
+                modifier = 1f;
             }
         }
     }

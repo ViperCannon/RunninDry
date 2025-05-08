@@ -308,5 +308,6 @@ public class EnemyInstance : CharacterInstance
 
         yield return new WaitForSeconds (.57f);
         gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

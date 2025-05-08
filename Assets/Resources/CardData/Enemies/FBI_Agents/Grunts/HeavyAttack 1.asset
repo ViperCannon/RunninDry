@@ -16,7 +16,7 @@ MonoBehaviour:
   cardArt: {fileID: 0}
   cost: 0
   drawAmount: 0
-  cardDescription: Deals 8 damage
+  cardDescription: Deals 12 damage
   cardEffects:
   - {fileID: 11400000, guid: 9faaf10255183254d8686af43fcc27f3, type: 2}
   cardBuffs: []

@@ -249,7 +249,7 @@ public class CombatManager : MonoBehaviour
 
                 for (int i = a.activeBuffs.Count - 1; i >= 0; i--)
                 {
-                    if (a.activeBuffs[i] is Counter)
+                    if (a.activeBuffs[i] is Counter || a.activeBuffs[i] is Resilient)
                     {
                         a.activeBuffs[i].UpdateEffect();
                         break;
@@ -282,7 +282,7 @@ public class CombatManager : MonoBehaviour
 
                 for (int i = a.activeBuffs.Count - 1; i >= 0; i--)
                 {
-                    if (a.activeBuffs[i] is not Counter)
+                    if (a.activeBuffs[i] is not Counter && a.activeBuffs[i] is not Resilient)
                     {
                         a.activeBuffs[i].UpdateEffect();
                         break;
@@ -314,7 +314,7 @@ public class CombatManager : MonoBehaviour
 
                 for(int i = e.activeBuffs.Count - 1; i >= 0; i--)
                 {
-                    if (e.activeBuffs[i] is Counter)
+                    if (e.activeBuffs[i] is Counter || e.activeBuffs[i] is Resilient)
                     {
                         e.activeBuffs[i].UpdateEffect();
                         break;
@@ -350,7 +350,7 @@ public class CombatManager : MonoBehaviour
 
                 for (int i = e.activeBuffs.Count - 1; i >= 0; i--)
                 {
-                    if (e.activeBuffs[i] is not Counter)
+                    if (e.activeBuffs[i] is not Counter && e.activeBuffs[i] is not Resilient)
                     {
                         e.activeBuffs[i].UpdateEffect();
                     }

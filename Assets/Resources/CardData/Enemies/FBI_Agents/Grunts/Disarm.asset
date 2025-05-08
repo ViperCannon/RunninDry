@@ -16,7 +16,7 @@ MonoBehaviour:
   cardArt: {fileID: 0}
   cost: 0
   drawAmount: 0
-  cardDescription: Inflicts Disarmed for 3 Turns
+  cardDescription: Inflicts Disarmed for 2 Turns
   cardEffects: []
   cardBuffs: []
   cardDebuffs:
@@ -28,7 +28,7 @@ MonoBehaviour:
   selfDamage: 0
   heal: 0
   secondaryHeal: 0
-  turnDuration: 0
+  turnDuration: 2
   chanceEffect: 0
   subTypes: 03000000
   validTargets: 03000000

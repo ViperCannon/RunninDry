@@ -16,7 +16,7 @@ MonoBehaviour:
   cardArt: {fileID: 0}
   cost: 0
   drawAmount: 0
-  cardDescription: 50% Inflicts Stun for 2 Turn
+  cardDescription: 'Inflicts Stun '
   cardEffects: []
   cardBuffs: []
   cardDebuffs:
@@ -29,6 +29,6 @@ MonoBehaviour:
   heal: 0
   secondaryHeal: 0
   turnDuration: 0
-  chanceEffect: 50
-  subTypes: 
-  validTargets: 
+  chanceEffect: 0
+  subTypes: 03000000
+  validTargets: 03000000
