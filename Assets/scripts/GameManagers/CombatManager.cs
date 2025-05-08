@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SpeakeasyStreet;
 using System.Linq;
+using SpeakeasyStreet;
+
 
 public class CombatManager : MonoBehaviour
 {
@@ -498,14 +499,29 @@ public class CombatManager : MonoBehaviour
 
         if (teamWiped)
         {
-            RelationshipsFramework.Instance.booze--;
+            if (GameManager.Instance.atBoss)
+            {
+                RelationshipsFramework.Instance.booze -= 5;
+            }
+            else
+            {
+                RelationshipsFramework.Instance.booze -= 2;
+            }
+            return;
         }
 
-        if(RelationshipsFramework.Instance.booze <= 0)
+        if (enemiesWiped)
         {
-            //Game Over, kick back to hub
-
-            GameManager.Instance.LoadHub();
+            if (GameManager.Instance.atBoss)
+            {
+                RelationshipsFramework.Instance.booze += 5;
+            }
+            else
+            {
+                RelationshipsFramework.Instance.booze += 2;
+                RelationshipsFramework.Instance.cash += 2;
+            }
+            
         }
     }
 
@@ -529,7 +545,7 @@ public class CombatManager : MonoBehaviour
 
         for (int i = 0; i < Random.Range(1, 2); i++)
         {
-            // Pick a random non-boss enemy type! 
+            // Pick a random elite enemy type! 
             EnemyData currentEnemy = eliteTypes[Random.Range(0, eliteTypes.Count)];
 
             // Allocate the new enemy it to Enemies!
@@ -541,7 +557,7 @@ public class CombatManager : MonoBehaviour
     {
         Enemies.Clear();
 
-        // Pick a random non-boss enemy type! 
+        // Pick a random boss enemy type! 
         EnemyData currentEnemy = bossTypes[Random.Range(0, bossTypes.Count)];
 
         // Allocate the new enemy it to Enemies!

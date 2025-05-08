@@ -191,7 +191,12 @@ public class GameManager : MonoBehaviour
         relations.tires = 3;
         DataSave();
         atBoss = false;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("hubworld");
+    }
+
+    public void Fail()
+    {
+        SceneManager.LoadScene("fail");
     }
 
     #region Car Move In/Out Functions
@@ -255,13 +260,13 @@ public class GameManager : MonoBehaviour
         DataSave();
         if (relations.booze <= 0)
         {
-            SceneManager.LoadScene("fail");
+            Fail();
         }
 
         if (atBoss)
         {
             deck.Reset();
-            relations.cash += relations.booze * 4;
+            relations.cash += relations.booze * 4 * (1 + relations.stockupgrade);
             relations.booze = 0;
             LoadHub();
         }
