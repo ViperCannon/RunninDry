@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 610848632983071593}
   - component: {fileID: 8964537759902184077}
   m_Layer: 0
-  m_Name: SicillianMob
+  m_Name: SicilianMob
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
